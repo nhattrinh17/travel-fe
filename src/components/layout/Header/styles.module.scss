@@ -1,0 +1,71 @@
+.language-wrapper {
+  &__options {
+    display: none;
+  }
+
+  &:hover &__options {
+    display: block;
+  }
+}
+
+.packet-tour__wrapper {
+  &--list {
+    display: none;
+  }
+
+  &:hover &--list {
+    display: block;
+  }
+}
+
+.daily-tour__wrapper {
+  &--list {
+    display: none;
+  }
+
+  &:hover &--list {
+    display: block;
+  }
+}
+
+.cruises__wrapper {
+  &--list {
+    display: none;
+  }
+
+  &:hover &--list {
+    display: block;
+  }
+}
+
+@media (min-width: 1024px) {
+  .packet-tour__wrapper {
+    &--list {
+      display: none;
+    }
+
+    &:hover &--list {
+      display: grid;
+    }
+  }
+
+  .daily-tour__wrapper {
+    &--list {
+      display: none;
+    }
+
+    &:hover &--list {
+      display: grid;
+    }
+  }
+
+  .cruises__wrapper {
+    &--list {
+      display: none;
+    }
+
+    &:hover &--list {
+      display: grid;
+    }
+  }
+}
