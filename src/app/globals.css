@@ -10,9 +10,10 @@
   --background-end-rgb: 255, 255, 255;
   --primary-color: #00ab99;
   --secondary-color: #168888;
-  --bg-header-color: #006b6bb3;
+  --bg-header-color: rgba(0, 107, 107, 0.7);
   --height-header: 70px;
   --text-hover-default: #25ab4b;
+  --bg-footer-color: #016166;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -35,12 +35,18 @@ const config: Config = {
         "0%": { transform: "translateX(-100%)", opacity: "0" },
         "100%": { transform: "translateX(0)", opacity: "1" },
       },
+      zoomInZoomOut: {
+        "0%": { transform: "scale(1)" },
+        "50%": { transform: "scale(1.2)" },
+        "100%": { transform: "scale(1)" },
+      },
     },
     animation: {
       slideDown: "slideDown 0.5s ease-out forwards",
       slideUp: "slideUp 0.5s ease-out forwards",
       slideLeft: "slideLeft 0.5s ease-out forwards",
       slideRight: "slideRight 0.5s ease-out forwards",
+      zoomInZoomOut: "zoomInZoomOut 14s ease-out infinite",
     },
   },
   plugins: [],

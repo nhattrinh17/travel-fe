@@ -12,23 +12,16 @@ import classNames from "classnames/bind";
 import { TourHeaderItem } from "../TourHeaderItem";
 import { cruises, packetTour } from "@/mocks";
 import { CruisesHeaderItem } from "../CruisesHeaderItem";
+import { languageList } from "@/constants";
 
 const cx = classNames.bind(styles);
-
-const languageList = [
-  { name: "en", positionY: -4 },
-  { name: "fr", positionY: -30 },
-  { name: "ko", positionY: -151 },
-  { name: "zh-CN", positionY: -200 },
-  { name: "ja", positionY: -176 },
-];
 
 export function HeaderLayout(): JSX.Element {
   const [showNav, setShowNav] = useState(true);
   const [language, setLanguage] = useState<{
     name: string;
     positionY: number;
-  }>();
+  }>({ name: "en", positionY: -4 });
   const [showAllTour, setShowAllTour] = useState(false);
 
   useEffect(() => {
@@ -36,7 +29,12 @@ export function HeaderLayout(): JSX.Element {
     const languageCookie = cookies[COOKIE_NAME]?.split("/")[2];
 
     if (languageCookie) {
-      setLanguage(languageList.find((i) => i.name == languageCookie));
+      setLanguage(
+        languageList.find((i) => i.name == languageCookie) || {
+          name: "en",
+          positionY: -4,
+        }
+      );
     }
   }, []);
 
@@ -64,7 +62,7 @@ export function HeaderLayout(): JSX.Element {
   }, []);
 
   return (
-    <header className="bg-[var(--bg-header-color)] h-[var(--height-header)]">
+    <header className="bg-[var(--bg-header-color)] h-[var(--height-header)] sticky top-0 left-0 right-0 z-10">
       <div className="container flex items-center h-full justify-between [&>div,&>a]:transition-colors [&>div,&>a]:ease-linear">
         <Link href={"/"} className="h-[80%] w-full max-w-[20%] mr-4">
           <Image
