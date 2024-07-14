@@ -1,7 +1,18 @@
-import { Head } from "next/document";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+// tooltips
+import "react-tooltip/dist/react-tooltip.css";
 import "./globals.css";
 import Script from "next/script";
 import { MainLayout } from "@/layout/main";
+
+// import function to register Swiper custom elements
+// import { register } from "swiper/element/bundle";
+// // register Swiper custom elements
+// register();
 
 export default function RootLayout({
   children,

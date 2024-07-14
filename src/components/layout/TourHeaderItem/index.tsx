@@ -11,18 +11,16 @@ export function TourHeaderItem({
   name,
   slug,
   typeTour,
-  key,
 }: {
   typeTour: string;
   name: string;
   image: string;
   slug: string;
   like: number;
-  key: number;
 }): JSX.Element {
   return (
     <div className="relative group w-full h-full text-white hover:text-[var(--text-hover-default)] transition-colors duration-500">
-      <Link key={key} href={`/tour?name=${slug}&type=${typeTour}`} className="">
+      <Link href={`/tour?name=${slug}&type=${typeTour}`} className="">
         <div className="w-full h-full overflow-hidden transition-transform">
           <Image
             alt="image tour"

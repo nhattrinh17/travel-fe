@@ -8,7 +8,6 @@ export function CruisesHeaderItem({
   name,
   position,
   slug,
-  key,
 }: {
   name: string;
   slug: string;
@@ -17,13 +16,11 @@ export function CruisesHeaderItem({
     name: string;
     slug: string;
   }[];
-  key: number;
 }): JSX.Element {
   {
     return (
       <div className="w-full mb-5 lg:mb-0">
         <Link
-          key={key}
           href={`/cruise?name=${slug}&type=parent`}
           className="group relative w-full text-white hover:text-[var(--text-hover-default)] transition-colors duration-500 hover:image:"
         >
@@ -43,7 +40,7 @@ export function CruisesHeaderItem({
 
         <ul>
           {position.map((item, index) => (
-            <li key={index} className="w-full">
+            <li key={`${item.name}-${index}`} className="w-full">
               <Link
                 href={`/cruise?name=${item.slug}&type=child`}
                 className="mt-2 w-full flex justify-center lg:justify-start hover:text-[#f8d540]"

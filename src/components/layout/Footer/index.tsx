@@ -12,7 +12,7 @@ import Link from "next/link";
 
 export function FooterLayout(): JSX.Element {
   return (
-    <footer>
+    <footer className="relative z-[-1]">
       <div className="bg-white py-5">
         <div className="container flex flex-col lg:flex-row justify-between items-center">
           <div className="w-[70px]">
@@ -48,13 +48,13 @@ export function FooterLayout(): JSX.Element {
       </div>
       <div className="py-6 bg-[var(--bg-footer-color)]">
         <div className="container">
-          <div className="flex justify-center text-xs">
-            <p className="uppercase font-bold text-[#b9d0d0]">Language :</p>
-            <ul className="flex items-center">
+          <div className="flex flex-col lg:flex-row items-center justify-center text-xs">
+            <p className="uppercase font-bold text-[#b9d0d0] mb-2">Language:</p>
+            <ul className="flex items-center flex-wrap justify-center">
               {languageList.map((ld, indx) => (
                 <li
                   key={indx}
-                  className="flex justify-center items-center uppercase text-white mx-4"
+                  className="flex justify-center items-center mb-2 uppercase text-white mx-4"
                 >
                   <span className="block mr-2 font-bold">
                     {ld.name.split("-")[1] ? ld.name.split("-")[1] : ld.name}

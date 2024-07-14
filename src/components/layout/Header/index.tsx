@@ -41,7 +41,6 @@ export function HeaderLayout(): JSX.Element {
   useEffect(() => {
     // Hàm để kiểm tra kích thước màn hình và cập nhật trạng thái showFilter
     const handleResize = () => {
-      console.log("🚀 ~ handleResize ~ window.innerWidth:", window.innerWidth);
       if (window.innerWidth >= 1024) {
         setShowNav(true);
       } else {
@@ -110,13 +109,13 @@ export function HeaderLayout(): JSX.Element {
               >
                 {packetTour.map((tour, index) => (
                   <div
-                    key={index}
+                    key={`${tour.id}-${index}`}
                     className={cx("", {
                       block: index < 11 || showAllTour,
                       "lg:hidden": index >= 11 && !showAllTour,
                     })}
                   >
-                    <TourHeaderItem {...tour} key={index} typeTour="packet" />
+                    <TourHeaderItem {...tour} typeTour="packet" />
                   </div>
                 ))}
                 <div

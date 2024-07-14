@@ -68,3 +68,31 @@ body {
     width: 1200px;
   }
 }
+
+.line-text::after {
+  position: absolute;
+  content: "";
+  height: 2px;
+  right: 40%;
+  left: 40%;
+  bottom: -8px;
+  background-color: #06b28b;
+}
+
+
+/* Over wite css slider */
+
+.swiper {}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ccc !important;
+}
+
+/* .swiper-button-next {
+  right: -5% !important;
+}
+
+.swiper-button-prev {
+  left: -5% !important;
+} */
