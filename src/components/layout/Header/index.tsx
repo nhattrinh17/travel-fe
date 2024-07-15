@@ -1,6 +1,6 @@
 "use client";
 
-import { faBars, faSortDown } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faSortDown, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
@@ -81,6 +81,11 @@ export function HeaderLayout(): JSX.Element {
             }
           )}
         >
+          <FontAwesomeIcon
+            onClick={() => setShowNav(false)}
+            icon={faXmark}
+            className="block lg:hidden absolute top-5 right-4 text-2xl z-[1] text-white"
+          />
           <div
             className={cx(
               "fixed top-0 left-0 right-0 bottom-0 lg:relative items-center flex flex-col lg:flex-row justify-center  lg:justify-between bg-[#0e2240e6] lg:bg-transparent h-full"

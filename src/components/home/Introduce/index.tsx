@@ -2,9 +2,9 @@ import Image from "next/image";
 
 export function IntroduceHome(): JSX.Element {
   return (
-    <section className="bg-[#f9f9f9] py-14">
-      <div className="container grid grid-cols-3 gap-5">
-        <div className="relative bg-white border-2 border-[#bbe6dd] px-4 pt-8 pb-4 rounded-lg flex flex-col items-center">
+    <section className="bg-[#f9f9f9] pt-14 pb-10 ">
+      <div className="container grid grid-cols-1 lg:grid-cols-3 gap-5">
+        <div className="relative bg-white border-2 mb-5 lg:mb-0 border-[#bbe6dd] px-4 pt-8 pb-4 rounded-lg flex flex-col items-center">
           <Image
             alt="introduce "
             src={"/home/introduce/icon_why_cruise.svg"}
@@ -20,7 +20,7 @@ export function IntroduceHome(): JSX.Element {
             Experts with over 20 years of experience
           </p>
         </div>
-        <div className="relative bg-white border-2 border-[#bbe6dd] px-4 pt-8 pb-4 rounded-lg flex flex-col items-center">
+        <div className="relative bg-white border-2 mb-5 lg:mb-0 border-[#bbe6dd] px-4 pt-8 pb-4 rounded-lg flex flex-col items-center">
           <Image
             alt="introduce "
             src={"/home/introduce/icon_why_reviews.png"}
@@ -36,7 +36,7 @@ export function IntroduceHome(): JSX.Element {
             Response & Friendly Support from the team
           </p>
         </div>
-        <div className="relative bg-white border-2 border-[#bbe6dd] px-4 pt-8 pb-4 rounded-lg flex flex-col items-center">
+        <div className="relative bg-white border-2 mb-5 lg:mb-0 border-[#bbe6dd] px-4 pt-8 pb-4 rounded-lg flex flex-col items-center">
           <Image
             alt="introduce "
             src={"/home/introduce/icon-price.svg"}

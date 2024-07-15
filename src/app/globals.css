@@ -86,13 +86,18 @@ body {
 
 .swiper-button-next,
 .swiper-button-prev {
-  color: #ccc !important;
+  display: none !important;
+  ;
 }
 
-/* .swiper-button-next {
-  right: -5% !important;
+/* pagination */
+
+.swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+  background: #ccc;
 }
 
-.swiper-button-prev {
-  left: -5% !important;
-} */
+.swiper-pagination-bullet-active {
+  background: #acacac !important;
+}

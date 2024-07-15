@@ -1,17 +1,20 @@
 "use client";
 
-import { CruiseItem } from "@/components/CruiseItem";
-import { topCruise } from "@/mocks";
+import { topTour } from "@/mocks";
 import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Keyboard, Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
+import { TourItem } from "@/components/TourItem";
+import { useRef } from "react";
 
-export function Top10Cruise(): JSX.Element {
+export function Top10PacketTour(): JSX.Element {
+  const sectionRef = useRef<HTMLElement>(null);
+
   return (
-    <section className="bg-[#f1f1f1] py-5">
+    <section ref={sectionRef} className="bg-[#f1f1f1] py-5">
       <div className="container">
-        <Link href={""} className="relative">
+        {/* <Link href={""} className="relative">
           <Image
             alt="iamge"
             src={"/home/top10Cruise/banner-sale.jpg"}
@@ -20,9 +23,9 @@ export function Top10Cruise(): JSX.Element {
             className="w-full object-contain opacity-95 hover:opacity-100"
           />
           <button className="absolute text-white bg-[#f5a528cc] hover:bg-[var(--bg-footer-color)] font-bold px-4 py-3 rounded-3xl bottom-0 mb-2 left-1/2 -translate-x-1/2">
-            7 Cruise Details
+            7 Tours Details
           </button>
-        </Link>
+        </Link> */}
 
         <Image
           alt="100%"
@@ -32,34 +35,38 @@ export function Top10Cruise(): JSX.Element {
           className="mx-auto mt-4"
         />
 
-        <h2 className="my-3 text-2xl font-bold text-[var(--secondary-color)] w-full text-center relative line-text">
-          TOP 10 BEST HALONG BAY CRUISE DEALS RECOMMENDED FOR YOU
+        <h2 className="my-3 text-2xl uppercase font-bold text-[var(--secondary-color)] w-full text-center relative line-text">
+          TOP 10 BEST PACKET TOUR DEALS RECOMMENDED FOR YOU
         </h2>
 
         <p className="text-[#666] text-sm text-center px-0 lg:px-12">
-          The highly trusted collection of Best Halong Bay Cruises that is
-          frequently updated by our Halong Cruise Experts depending much on the
-          cruises' conditions: best facilities, unique experiences, best offers,
-          high-end meals on board, professional staff, and especially excellent
-          comments, feedback from our real valuable customers. We hope that you
-          can select a suitable Halong bay cruise for your holiday and have
-          unforgettable experiences beside your beloved ones.
+          The highly trusted collection of Best Tour that is frequently updated
+          by our Halong Tour Experts depending much on the tours conditions:
+          best facilities, unique experiences, best offers, high-end meals on
+          board, professional staff, and especially excellent comments, feedback
+          from our real valuable customers. We hope that you can select a
+          suitable tour for your holiday and have unforgettable experiences
+          beside your beloved ones.
           <br></br>
           <span className="font-bold">
             Save Time - Save Money - Travel more!
           </span>
         </p>
         {/* <div className="grid grid-cols-2 gap-5 pt-6">
-          <CruiseItem {...topCruise[0]} />
+          <CruiseItem {...topTour[0]} />
         </div> */}
       </div>
       <div className="relative pt-5">
         <i
           onClick={() => {
-            const preBtnSwiper = document.querySelector(".swiper-button-prev");
-            if (preBtnSwiper) (preBtnSwiper as HTMLElement).click();
+            if (sectionRef.current) {
+              const preBtnSwiper = sectionRef.current.querySelector(
+                ".swiper-button-prev"
+              );
+              if (preBtnSwiper) (preBtnSwiper as HTMLElement).click();
+            }
           }}
-          className="hidden lg:block cursor-pointer opacity-60 hover:opacity-100  w-10 h-20 bg-[url(/share/back.svg)] bg-contain absolute left-8 top-1/3 -translate-y-1/2 "
+          className="hidden lg:block cursor-pointer opacity-60 hover:opacity-100 w-10 h-20 bg-[url(/share/back.svg)] bg-contain absolute left-8 top-1/3 -translate-y-1/2 "
         ></i>
         <div className="container hidden lg:block">
           <Swiper
@@ -73,9 +80,9 @@ export function Top10Cruise(): JSX.Element {
             className="mySwiper"
             loop
           >
-            {topCruise.map((cruise, index) => (
+            {topTour.map((tour, index) => (
               <SwiperSlide key={index}>
-                <CruiseItem {...cruise} typeShow="home" />
+                <TourItem {...tour} typeShow="home" />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -91,19 +98,23 @@ export function Top10Cruise(): JSX.Element {
             className="mySwiper"
             loop
           >
-            {topCruise.map((cruise, index) => (
+            {topTour.map((tour, index) => (
               <SwiperSlide key={index}>
-                <CruiseItem {...cruise} typeShow="home" />
+                <TourItem {...tour} typeShow="home" />
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
         <i
           onClick={() => {
-            const preBtnSwiper = document.querySelector(".swiper-button-next");
-            if (preBtnSwiper) (preBtnSwiper as HTMLElement).click();
+            if (sectionRef.current) {
+              const preBtnSwiper = sectionRef.current.querySelector(
+                ".swiper-button-next"
+              );
+              if (preBtnSwiper) (preBtnSwiper as HTMLElement).click();
+            }
           }}
-          className="hidden lg:block cursor-pointer opacity-60 hover:opacity-100  w-10 h-20 bg-[url(/share/next.svg)] bg-contain absolute right-8 top-1/3 -translate-y-1/2 "
+          className="hidden lg:block cursor-pointer opacity-60 hover:opacity-100 w-10 h-20 bg-[url(/share/next.svg)] bg-contain absolute right-8 top-1/3 -translate-y-1/2 "
         ></i>
       </div>
 

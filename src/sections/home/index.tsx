@@ -1,7 +1,10 @@
 import { SliderAndSearch } from "@/components/SliderAndSearch";
+import { BudgetCruise } from "@/components/home/BudgetCruise";
 import { IntroduceHome } from "@/components/home/Introduce";
+import { LuxuryCruise } from "@/components/home/LuxuryCruise";
 import { Top10Cruise } from "@/components/home/Top10Cruise";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Top10DailyTour } from "@/components/home/Top10DailyTour";
+import { Top10PacketTour } from "@/components/home/Top10PacketTour";
 
 export function HomeSection(): JSX.Element {
   return (
@@ -9,6 +12,10 @@ export function HomeSection(): JSX.Element {
       <SliderAndSearch />
       <IntroduceHome />
       <Top10Cruise />
+      <LuxuryCruise />
+      <BudgetCruise />
+      <Top10PacketTour />
+      <Top10DailyTour />
     </div>
   );
 }

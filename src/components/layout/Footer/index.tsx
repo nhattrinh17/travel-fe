@@ -77,8 +77,8 @@ export function FooterLayout(): JSX.Element {
             height={209}
             className="w-full object-contain py-4 opacity-80 hover:opacity-100"
           />
-          <div className="grid grid-cols-7 lg:grid-cols-6 gap-10 text-xs text-[#ccc]">
-            <div className="col-span-7 lg:col-span-2 flex flex-col">
+          <div className="grid lg:grid-cols-6 gap-10 text-xs text-[#ccc]">
+            <div className="col-span-6 lg:col-span-2 flex flex-col">
               <Image
                 alt="inside travel"
                 src={"/home/footer/inside-travel-logo.webp"}
@@ -136,7 +136,7 @@ export function FooterLayout(): JSX.Element {
                 />
               </div>
             </div>
-            <ul className="col-span-2 lg:col-span-1">
+            <ul className="col-span-3 lg:col-span-1">
               <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
                 <Link href={""} className="block py-2">
                   About Us
@@ -198,7 +198,7 @@ export function FooterLayout(): JSX.Element {
                 </Link>
               </li>
             </ul>
-            <ul className="col-span-2 lg:col-span-1">
+            <ul className="col-span-3 lg:col-span-1">
               <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
                 <Link href={""} className="block py-2">
                   Best Halong Bay Cruises
@@ -260,7 +260,7 @@ export function FooterLayout(): JSX.Element {
                 </Link>
               </li>
             </ul>
-            <div className="col-span-3 lg:col-span-2">
+            <div className="col-span-6 lg:col-span-2">
               <Image
                 alt="confirm "
                 src={"/home/footer/chl_secure.jpg"}

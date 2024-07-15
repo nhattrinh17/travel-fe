@@ -19,7 +19,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Tooltip } from "react-tooltip";
 
-export function CruiseItem({
+export function TourItem({
   discount,
   imageMain,
   isFlashSale,
@@ -27,8 +27,6 @@ export function CruiseItem({
   name,
   services,
   price,
-  styleCruise,
-  totalRoms,
   content,
   serviceSpecial,
   typeShow,
@@ -43,8 +41,6 @@ export function CruiseItem({
     slug: string;
   }[];
   price: number;
-  styleCruise: string;
-  totalRoms: number;
   content: string;
   serviceSpecial: { name: string; content: string }[];
   typeShow: string;
@@ -162,21 +158,26 @@ export function CruiseItem({
             <span>/p.p</span>
           </div>
         </div>
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center text-[#888888] text-xs">
-            <div className="flex mr-2">
-              <FontAwesomeIcon
-                icon={faBookmark}
-                className="relative top-1 mr-1"
-              />
-              <span>Style:{styleCruise}</span>
-            </div>
-            <div className="flex mr-2">
-              <FontAwesomeIcon icon={faBed} className="relative top-1 mr-1" />
-              <span>Rooms:{totalRoms}</span>
-            </div>
+        <div className="flex items-center justify-between mb-3 h-[25px]">
+          <div
+            className={classNames("flex justify-end items-center", {
+              hidden: !isFlashSale,
+            })}
+          >
+            <Image
+              alt="flash sale"
+              src={"/home/top10Cruise/gif-flash.gif"}
+              width={20}
+              height={25}
+            />
+            <span className="uppercase  text-[#FF9900] font-bold text-xs mx-1">
+              Flash Sale Now
+            </span>
+            <span className="inline-block text-center w-9 h-4 bg-[url(/home/top10Cruise/discount.svg)] bg-contain text-[11px] font-bold text-white bg-no-repeat">
+              {discount}%
+            </span>
           </div>
-          <div className="flex">
+          <div className="flex ml-auto">
             <FontAwesomeIcon
               icon={faCheck}
               className="text-[var(--text-hover-default)] text-base mr-1"
@@ -186,29 +187,8 @@ export function CruiseItem({
             </span>
           </div>
         </div>
-        <div
-          className={classNames("flex justify-end items-center", {
-            hidden: !isFlashSale,
-          })}
-        >
-          <Image
-            alt="flash sale"
-            src={"/home/top10Cruise/gif-flash.gif"}
-            width={20}
-            height={25}
-          />
-          <span className="uppercase  text-[#FF9900] font-bold text-xs mx-1">
-            Flash Sale Now
-          </span>
-          <span className="inline-block text-center w-9 h-4 bg-[url(/home/top10Cruise/discount.svg)] bg-contain text-[11px] font-bold text-white bg-no-repeat">
-            {discount}%
-          </span>
-        </div>
-        <div
-          className={classNames("w-full", {
-            "pt-[25px]": !isFlashSale,
-          })}
-        >
+
+        <div className={classNames("w-full")}>
           <div className="h-1 w-5 bg-[#BBBBBB] mt-4 rounded-md"></div>
           <div
             className={classNames({
