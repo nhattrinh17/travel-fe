@@ -889,3 +889,226 @@ export const topTour = [
     ],
   },
 ];
+
+export const cruiseHome = [
+  {
+    name: "Ambassador Signature Cruise",
+    timeLaunched: 2023,
+    travelerLove: [
+      "Style: Modern Luxurious",
+      " Feature 39 opulent cabins, each with a private balcony and en-suite bathroom",
+      " Ambassador New Menu Launch: Michelin-style À La Carte Dinner and Upgraded Vietnamese Seafood Buffet Lunch",
+      " High-class service with highlights of premium Asian - European cuisine",
+      " Diverse entertainment options on board: live music, spa, squid fishing, …",
+      " Visit unique and famous scenic spots on the bay: Viet Hai Fishing Village, Dark and Bright Cave",
+      " 5-star overnight cruise in Lan Ha Bay  ",
+      " 5-star overnight cruise in Lan Ha Bay  ",
+      " 5-star overnight cruise in Lan Ha Bay  ",
+    ],
+    totalStar: 5,
+    isFlashSale: true,
+    discount: 22,
+    images: [
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+    ],
+    isAllMeals: true,
+    services: [
+      {
+        name: "All Meals Include",
+        slug: "allMeals",
+      },
+    ],
+    price: 300,
+    styleCruise: "Modern",
+    totalRoms: 100,
+    content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Ambassador Signature Cruise for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
+    serviceSpecial: [
+      {
+        name: "COMPLIMENTARY COOKING DEMONSTRATION",
+        content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
+      },
+      {
+        name: "COMPLIMENTARY COOKING DEMONSTRATION",
+        content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
+      },
+      {
+        name: "COMPLIMENTARY COOKING DEMONSTRATION",
+        content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
+      },
+      {
+        name: "COMPLIMENTARY COOKING DEMONSTRATION",
+        content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
+      },
+    ],
+  },
+  {
+    name: "Ambassador Signature Cruise",
+    timeLaunched: 2023,
+    travelerLove: [
+      "Style: Modern Luxurious",
+      " Feature 39 opulent cabins, each with a private balcony and en-suite bathroom",
+      " Ambassador New Menu Launch: Michelin-style À La Carte Dinner and Upgraded Vietnamese Seafood Buffet Lunch",
+      " High-class service with highlights of premium Asian - European cuisine",
+      " Diverse entertainment options on board: live music, spa, squid fishing, …",
+      " Visit unique and famous scenic spots on the bay: Viet Hai Fishing Village, Dark and Bright Cave",
+      " 5-star overnight cruise in Lan Ha Bay  ",
+      " 5-star overnight cruise in Lan Ha Bay  ",
+      " 5-star overnight cruise in Lan Ha Bay  ",
+    ],
+    totalStar: 5,
+    isFlashSale: false,
+    discount: 22,
+    images: [
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+    ],
+    isAllMeals: true,
+    services: [
+      {
+        name: "All Meals Include",
+        slug: "allMeals",
+      },
+    ],
+    price: 300,
+    styleCruise: "Modern",
+    totalRoms: 100,
+    content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Ambassador Signature Cruise for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
+    serviceSpecial: [
+      {
+        name: "COMPLIMENTARY COOKING DEMONSTRATION",
+        content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
+      },
+      {
+        name: "COMPLIMENTARY COOKING DEMONSTRATION",
+        content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
+      },
+      {
+        name: "COMPLIMENTARY COOKING DEMONSTRATION",
+        content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
+      },
+      {
+        name: "COMPLIMENTARY COOKING DEMONSTRATION",
+        content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
+      },
+    ],
+  },
+  {
+    name: "Ambassador Signature Cruise",
+    timeLaunched: 2023,
+    travelerLove: [
+      "Style: Modern Luxurious",
+      " Feature 39 opulent cabins, each with a private balcony and en-suite bathroom",
+      " Ambassador New Menu Launch: Michelin-style À La Carte Dinner and Upgraded Vietnamese Seafood Buffet Lunch",
+      " High-class service with highlights of premium Asian - European cuisine",
+      " Diverse entertainment options on board: live music, spa, squid fishing, …",
+      " Visit unique and famous scenic spots on the bay: Viet Hai Fishing Village, Dark and Bright Cave",
+      " 5-star overnight cruise in Lan Ha Bay  ",
+      " 5-star overnight cruise in Lan Ha Bay  ",
+      " 5-star overnight cruise in Lan Ha Bay  ",
+    ],
+    totalStar: 5,
+    isFlashSale: true,
+    discount: 22,
+    images: [
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+    ],
+    isAllMeals: true,
+    services: [
+      {
+        name: "All Meals Include",
+        slug: "allMeals",
+      },
+    ],
+    price: 300,
+    styleCruise: "Modern",
+    totalRoms: 100,
+    content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Ambassador Signature Cruise for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
+    serviceSpecial: [
+      {
+        name: "COMPLIMENTARY COOKING DEMONSTRATION",
+        content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
+      },
+      {
+        name: "COMPLIMENTARY COOKING DEMONSTRATION",
+        content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
+      },
+      {
+        name: "COMPLIMENTARY COOKING DEMONSTRATION",
+        content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
+      },
+      {
+        name: "COMPLIMENTARY COOKING DEMONSTRATION",
+        content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
+      },
+    ],
+  },
+  {
+    name: "Ambassador Signature Cruise",
+    timeLaunched: 2023,
+    travelerLove: [
+      "Style: Modern Luxurious",
+      " Feature 39 opulent cabins, each with a private balcony and en-suite bathroom",
+      " Ambassador New Menu Launch: Michelin-style À La Carte Dinner and Upgraded Vietnamese Seafood Buffet Lunch",
+      " High-class service with highlights of premium Asian - European cuisine",
+      " Diverse entertainment options on board: live music, spa, squid fishing, …",
+      " Visit unique and famous scenic spots on the bay: Viet Hai Fishing Village, Dark and Bright Cave",
+      " 5-star overnight cruise in Lan Ha Bay  ",
+      " 5-star overnight cruise in Lan Ha Bay  ",
+      " 5-star overnight cruise in Lan Ha Bay  ",
+    ],
+    totalStar: 5,
+    isFlashSale: true,
+    discount: 22,
+    images: [
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+    ],
+    isAllMeals: true,
+    services: [
+      {
+        name: "All Meals Include",
+        slug: "allMeals",
+      },
+    ],
+    price: 300,
+    styleCruise: "Modern",
+    totalRoms: 100,
+    content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Ambassador Signature Cruise for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
+    serviceSpecial: [
+      {
+        name: "COMPLIMENTARY COOKING DEMONSTRATION",
+        content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
+      },
+      {
+        name: "COMPLIMENTARY COOKING DEMONSTRATION",
+        content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
+      },
+      {
+        name: "COMPLIMENTARY COOKING DEMONSTRATION",
+        content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
+      },
+      {
+        name: "COMPLIMENTARY COOKING DEMONSTRATION",
+        content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
+      },
+    ],
+  },
+];

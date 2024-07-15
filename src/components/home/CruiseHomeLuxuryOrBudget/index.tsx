@@ -143,7 +143,7 @@ export function CruiseHomeLuxuryOrBudget({
           <div className="flex">
             <FontAwesomeIcon
               icon={faCheck}
-              className="text-[var(--text-hover-default)] text-base"
+              className="text-[var(--text-hover-default)] text-base mr-1"
             />
             <span className="text-[#888888] text-xs font-bold">
               Best Price Guarantee

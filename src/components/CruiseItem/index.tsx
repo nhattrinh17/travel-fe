@@ -237,7 +237,14 @@ export function CruiseItem({
         >
           {serviceSpecial.map((item, index) => (
             <li key={index}>
-              <div className="flex justify-between pb-2 border-b-[2px] border-dotted">
+              <div
+                className={classNames(
+                  "flex justify-between pb-2 border-dotted cursor-pointer",
+                  {
+                    "border-b-[2px]": !showDetailSpecial.includes(index),
+                  }
+                )}
+              >
                 <label
                   onClick={() =>
                     setShowDetailSpecial((pre) =>
@@ -256,7 +263,7 @@ export function CruiseItem({
                   className={classNames(
                     "mr-1 text-[var(--text-hover-default)]",
                     {
-                      "rotate-180": showDetailSpecial.includes(index),
+                      "rotate-180": !showDetailSpecial.includes(index),
                     }
                   )}
                 />
