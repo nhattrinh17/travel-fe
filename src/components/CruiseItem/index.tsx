@@ -59,7 +59,10 @@ export function CruiseItem({
       className={classNames("group w-full shadow-md")}
       style={{ marginBottom: marginBottom }}
     >
-      <Link href={""} className="relative w-full block overflow-hidden">
+      <Link
+        href={`/cruise/${name}`}
+        className="relative w-full block overflow-hidden"
+      >
         <Image
           alt="image cruise"
           src={images[0]}
@@ -113,7 +116,7 @@ export function CruiseItem({
         <div className="flex justify-between items-start mb-2">
           <div>
             <h3 className="text-[var(--secondary-color)] font-bold text-xl">
-              <Link href={""}>{name}</Link>
+              <Link href={`/cruise/${name}`}>{name}</Link>
             </h3>
             <div className="flex">
               {Array.from({ length: 5 }, (v, i) => i + 1).map((i, index) => (

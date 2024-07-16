@@ -1,11 +1,13 @@
 import {
   IconDefinition,
+  faBanSmoking,
   faBicycle,
   faChildReaching,
   faHotTubPerson,
   faKitchenSet,
   faPeopleGroup,
   faUtensils,
+  faWind,
 } from "@fortawesome/free-solid-svg-icons";
 
 export const languageList = [
@@ -23,4 +25,9 @@ export const mapServiceIcons: { [key: string]: IconDefinition } = {
   taiChiClass: faChildReaching,
   cyCling: faBicycle,
   familyRoom: faPeopleGroup,
+};
+
+export const mapAmenitiesIcons: { [key: string]: IconDefinition } = {
+  banSmoking: faBanSmoking,
+  airConditioning: faWind,
 };

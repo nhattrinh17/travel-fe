@@ -23,6 +23,10 @@ const config: Config = {
         "0%": { transform: "translateY(-100%)", opacity: "0" },
         "100%": { transform: "translateY(0)", opacity: "1" },
       },
+      slideDownSort: {
+        "0%": { transform: "translateY(-10%)", opacity: "0" },
+        "100%": { transform: "translateY(0)", opacity: "1" },
+      },
       slideUp: {
         "0%": { transform: "translateY(0)", opacity: "1" },
         "100%": { transform: "translateY(-100%)", opacity: "0" },
@@ -43,6 +47,7 @@ const config: Config = {
     },
     animation: {
       slideDown: "slideDown 0.5s ease-out forwards",
+      slideDownSort: "slideDownSort 0.5s ease-out forwards",
       slideUp: "slideUp 0.5s ease-out forwards",
       slideLeft: "slideLeft 0.5s ease-out forwards",
       slideRight: "slideRight 0.5s ease-out forwards",

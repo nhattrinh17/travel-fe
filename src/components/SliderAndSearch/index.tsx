@@ -7,8 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames/bind";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import styles from "./styles.module.scss";
 
-const cx = classNames.bind({});
+const cx = classNames.bind(styles);
 
 export function SliderAndSearch(): JSX.Element {
   const [sliderActive, setSliderActive] = useState(0);
@@ -417,11 +418,10 @@ export function SliderAndSearch(): JSX.Element {
               </div>
 
               <button
-                className="mx-2 rounded-xl w-[230px] p-3 uppercase text-white bg-[#d0720b]"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(to right, #e6b834 0%, #f5a42a 51%, #d0720b 100%) ",
-                }}
+                className={cx(
+                  "submit_search",
+                  "mx-2 rounded-xl w-[230px] p-3 uppercase text-white bg-[#d0720b]"
+                )}
               >
                 Search Cruises
               </button>

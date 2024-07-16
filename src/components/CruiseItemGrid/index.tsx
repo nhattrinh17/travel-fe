@@ -54,7 +54,7 @@ export function CruiseItemGrid({
   return (
     <div className="group bg-white w-full shadow-md mb-10 flex flex-col lg:flex-row p-8 rounded-md">
       <Link
-        href={""}
+        href={`/cruise/${name}`}
         className="relative w-[550px] max-w-full h-fit block overflow-hidden mr-3"
       >
         <div>
@@ -133,7 +133,7 @@ export function CruiseItemGrid({
       <div className="">
         <div className="flex flex-col lg:flex-row justify-between items-start pb-2 border-b-[1px] border-[#ddd] border-dotted">
           <h3 className="text-[var(--secondary-color)] font-bold text-xl mb-2">
-            <Link href={""}>{name}</Link>
+            <Link href={`/cruise/${name}`}>{name}</Link>
           </h3>
           <div className="flex items-center mb-2">
             {Array.from({ length: 5 }, (v, i) => i + 1).map((i, index) => (
