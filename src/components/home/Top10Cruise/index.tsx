@@ -75,7 +75,7 @@ export function Top10Cruise(): JSX.Element {
           >
             {topCruise.map((cruise, index) => (
               <SwiperSlide key={index}>
-                <CruiseItem {...cruise} typeShow="home" />
+                <CruiseItem {...cruise} marginBottom={80} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -93,7 +93,7 @@ export function Top10Cruise(): JSX.Element {
           >
             {topCruise.map((cruise, index) => (
               <SwiperSlide key={index}>
-                <CruiseItem {...cruise} typeShow="home" />
+                <CruiseItem {...cruise} marginBottom={80} />
               </SwiperSlide>
             ))}
           </Swiper>

@@ -1,11 +1,11 @@
 "use client";
 
-import { HomeCruiseSection } from "@/sections/HomeCruise";
+import { DetailCruise } from "@/sections/DetailCruise";
 
 export default function CruisePageBySlug({
   params,
 }: {
   params: { slug: string };
 }): JSX.Element {
-  return <HomeCruiseSection slug={params.slug} />;
+  return <DetailCruise slug={params.slug} />;
 }

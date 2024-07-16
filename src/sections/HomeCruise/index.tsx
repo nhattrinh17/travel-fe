@@ -1,14 +1,23 @@
 "use client";
 
+import { CruiseItem } from "@/components/CruiseItem";
 import { CruiseItemGrid } from "@/components/CruiseItemGrid";
 import { IntroCruiseAndTour } from "@/components/IntroCruiseAndTour";
 import { SliderAndSearch } from "@/components/SliderAndSearch";
 import { IntroduceHome } from "@/components/home/Introduce";
-import { cruiseHome } from "@/mocks";
-import { faBorderAll, faListUl } from "@fortawesome/free-solid-svg-icons";
+import { mapServiceIcons } from "@/constants";
+import { cruiseHome, destinationNear } from "@/mocks";
+import {
+  faBorderAll,
+  faListUl,
+  faLocationDot,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
+import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
+import { Tooltip } from "react-tooltip";
 
 export function HomeCruiseSection({ slug }: { slug: string }): JSX.Element {
   const [typeShow, setTypeShow] = useState("list");
@@ -21,7 +30,7 @@ export function HomeCruiseSection({ slug }: { slug: string }): JSX.Element {
         title="All 43 Best Family Halong Bay Cruises"
         description="With many years of experience working as Halong Bay Cruise expert as well as receiving and summarizing several valuable feedbacks from our old customers, I group a list of cruises for families based on common criteria such as cruises and cabins' features as well as their itineraries. These choices belong to all three classes of cruises in Halong Bay. Therefore, it is suitable for each family's requirement. These Halong bay cruises are commonly chosen by family due to their connecting cabins, large sundecks and elegant dining rooms & bars which will surely make your family feel comfortable."
       />
-      <div className="bg-[#f1f1f1]">
+      <section className="bg-[var(--bg-container-color)]  py-4">
         <div className="container">
           <div className="hidden lg:flex justify-between pb-3">
             <div className="flex items-center text-sm text-[#333]">
@@ -75,11 +84,86 @@ export function HomeCruiseSection({ slug }: { slug: string }): JSX.Element {
               </div>
             </div>
           </div>
-          <div className="pb-5">
-            <CruiseItemGrid {...cruiseHome[0]} />
+          <div
+            className={classNames("pb-5 grid", {
+              "grid-cols-1 lg:grid-cols-2 gap-5": typeShow == "list",
+            })}
+          >
+            {cruiseHome.map((cruise, index) =>
+              typeShow == "grid" ? (
+                <CruiseItemGrid key={index} {...cruise} />
+              ) : (
+                <CruiseItem key={index} marginBottom={0} {...cruise} />
+              )
+            )}
           </div>
         </div>
-      </div>
+      </section>
+
+      <section className="bg-[var(--bg-container-color)] py-4">
+        <div className="container">
+          <div className="flex flex-col items-center mb-5">
+            <FontAwesomeIcon
+              icon={faLocationDot}
+              className="text-3xl text-[var(--primary-color)] mb-2"
+            />
+            <h2 className="my-3 text-2xl font-bold text-[var(--secondary-color)] w-full text-center relative line-text">
+              Other Bai Tu Long Bay Cruise Destinations
+            </h2>
+          </div>
+          <div>
+            {destinationNear.map((item, index) => (
+              <div
+                key={index}
+                className="bg-white border-[1px] rounded-lg p-4 grid grid-cols-1 lg:grid-cols-4 gap-5 mb-4"
+              >
+                <Link href={""} className="block">
+                  <Image
+                    alt="destination"
+                    src={item.image}
+                    width={260}
+                    height={155}
+                    className="w-full object-contain hover:opacity-95"
+                  />
+                </Link>
+                <div className="col-span-1 lg:col-span-3">
+                  <h4 className="text-[var(--text-hover-default)] text-xl font-bold mb-1">
+                    {item.name}
+                  </h4>
+                  <div className="flex items-center">
+                    <div className="flex">
+                      {item.services.map((service, index) => (
+                        <div key={index}>
+                          <FontAwesomeIcon
+                            icon={mapServiceIcons[service.slug]}
+                            data-tooltip-id={`tooltip-service-${service.slug}`}
+                            data-tooltip-content={service.name}
+                            data-tooltip-place="top"
+                            className="text-[#aaa] text-xs p-2 rounded-full border-[1px] border-[#ddd] mx-1"
+                          />
+                          <Tooltip id={`tooltip-service-${service.slug}`} />
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex">
+                      <FontAwesomeIcon
+                        icon={faLocationDot}
+                        className="text-[#aaa] mx-1"
+                      />
+                      <span className="text-sm text-[#aaa]">
+                        {item.location}
+                      </span>
+                    </div>
+                  </div>
+                  <p className="text-start text-[#666] text-sm">
+                    {item.content}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

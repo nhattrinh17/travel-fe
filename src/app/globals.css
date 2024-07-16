@@ -14,6 +14,7 @@
   --height-header: 70px;
   --text-hover-default: #25ab4b;
   --bg-footer-color: #016166;
+  --bg-container-color: #f1f1f1;
 }
 
 @media (prefers-color-scheme: dark) {

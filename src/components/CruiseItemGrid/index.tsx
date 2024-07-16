@@ -52,7 +52,7 @@ export function CruiseItemGrid({
   const [mountLike, setMountLike] = useState(false);
 
   return (
-    <div className="group bg-white w-full shadow-md mb-20 flex flex-col lg:flex-row p-8 rounded-md">
+    <div className="group bg-white w-full shadow-md mb-10 flex flex-col lg:flex-row p-8 rounded-md">
       <Link
         href={""}
         className="relative w-[550px] max-w-full h-fit block overflow-hidden mr-3"

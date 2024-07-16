@@ -21,7 +21,7 @@ import { Tooltip } from "react-tooltip";
 
 export function CruiseItem({
   discount,
-  imageMain,
+  images,
   isFlashSale,
   isAllMeals,
   name,
@@ -31,12 +31,12 @@ export function CruiseItem({
   totalRoms,
   content,
   serviceSpecial,
-  typeShow,
+  marginBottom,
 }: {
   name: string;
   isFlashSale: boolean;
   discount: number;
-  imageMain: string;
+  images: string[];
   isAllMeals: boolean;
   services: {
     name: string;
@@ -47,7 +47,7 @@ export function CruiseItem({
   totalRoms: number;
   content: string;
   serviceSpecial: { name: string; content: string }[];
-  typeShow: string;
+  marginBottom: number;
 }): JSX.Element {
   const [showContent, setShowContent] = useState(false);
   const [showAllServiceSpecial, setShowAllServiceSpecial] = useState(false);
@@ -55,11 +55,14 @@ export function CruiseItem({
   const [mountLike, setMountLike] = useState(false);
 
   return (
-    <div className="group w-full shadow-md mb-20">
+    <div
+      className={classNames("group w-full shadow-md")}
+      style={{ marginBottom: marginBottom }}
+    >
       <Link href={""} className="relative w-full block overflow-hidden">
         <Image
           alt="image cruise"
-          src={imageMain}
+          src={images[0]}
           width={570}
           height={306}
           className="w-full object-contain group-hover:scale-[1.15] transition-all duration-500"

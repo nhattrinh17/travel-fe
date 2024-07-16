@@ -161,7 +161,6 @@ export const cruises = [
       },
     ],
   },
-
   {
     name: "cruises 2",
     slug: "cruises-2",
@@ -248,8 +247,9 @@ export const topCruise = [
     totalStar: 5,
     isFlashSale: true,
     discount: 22,
-    imageMain:
+    images: [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+    ],
     isAllMeals: true,
     services: [
       {
@@ -285,8 +285,9 @@ export const topCruise = [
     totalStar: 5,
     isFlashSale: false,
     discount: 22,
-    imageMain:
+    images: [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+    ],
     isAllMeals: true,
     services: [
       {
@@ -322,8 +323,9 @@ export const topCruise = [
     totalStar: 5,
     isFlashSale: true,
     discount: 22,
-    imageMain:
+    images: [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+    ],
     isAllMeals: true,
     services: [
       {
@@ -359,8 +361,9 @@ export const topCruise = [
     totalStar: 5,
     isFlashSale: true,
     discount: 22,
-    imageMain:
+    images: [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+    ],
     isAllMeals: true,
     services: [
       {
@@ -396,8 +399,9 @@ export const topCruise = [
     totalStar: 5,
     isFlashSale: true,
     discount: 22,
-    imageMain:
+    images: [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+    ],
     isAllMeals: true,
     services: [
       {
@@ -433,8 +437,9 @@ export const topCruise = [
     totalStar: 5,
     isFlashSale: true,
     discount: 22,
-    imageMain:
+    images: [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+    ],
     isAllMeals: true,
     services: [
       {
@@ -470,8 +475,9 @@ export const topCruise = [
     totalStar: 5,
     isFlashSale: true,
     discount: 22,
-    imageMain:
+    images: [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+    ],
     isAllMeals: true,
     services: [
       {
@@ -507,8 +513,9 @@ export const topCruise = [
     totalStar: 5,
     isFlashSale: true,
     discount: 22,
-    imageMain:
+    images: [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
+    ],
     isAllMeals: true,
     services: [
       {
@@ -1110,5 +1117,50 @@ export const cruiseHome = [
         content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
       },
     ],
+  },
+];
+
+export const destinationNear = [
+  {
+    image:
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/destinations-halong/cong-dam-fishing-village/Cong%20Dam%20area%201650-388.jpg",
+    name: "Cong Dam Area",
+    services: [
+      {
+        name: "All Meals Include",
+        slug: "allMeals",
+      },
+    ],
+    location: "Bai Tu Long Bay",
+    content:
+      "Located on the less touristy Bai Tu Long Bay, Cong Dam Area is best known for its majestic and poetic natural beauty of an outdoor geological museum. Visitors will feel overwhelmed by the rock mountains formed from stacked stones in straight lines and the peaceful space of waterscape and surrounding scenery.Coming...",
+  },
+  {
+    image:
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/destinations-halong/cong-dam-fishing-village/Cong%20Dam%20area%201650-388.jpg",
+    name: "Cong Dam Area",
+    services: [
+      {
+        name: "All Meals Include",
+        slug: "allMeals",
+      },
+    ],
+    location: "Bai Tu Long Bay",
+    content:
+      "Located on the less touristy Bai Tu Long Bay, Cong Dam Area is best known for its majestic and poetic natural beauty of an outdoor geological museum. Visitors will feel overwhelmed by the rock mountains formed from stacked stones in straight lines and the peaceful space of waterscape and surrounding scenery.Coming...",
+  },
+  {
+    image:
+      "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/destinations-halong/cong-dam-fishing-village/Cong%20Dam%20area%201650-388.jpg",
+    name: "Cong Dam Area",
+    services: [
+      {
+        name: "All Meals Include",
+        slug: "allMeals",
+      },
+    ],
+    location: "Bai Tu Long Bay",
+    content:
+      "Located on the less touristy Bai Tu Long Bay, Cong Dam Area is best known for its majestic and poetic natural beauty of an outdoor geological museum. Visitors will feel overwhelmed by the rock mountains formed from stacked stones in straight lines and the peaceful space of waterscape and surrounding scenery.Coming...",
   },
 ];
