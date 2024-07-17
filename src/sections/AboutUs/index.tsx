@@ -90,7 +90,7 @@ export function AboutUsSection(): JSX.Element {
       <section>
         <div className="w-full h-[800px]">
           <div className="bg-[url(/about-us/bg1.jpeg)] bg-no-repeat bg-cover w-full h-full object-cover">
-            <div className="container h-full flex justify-end items-end py-5">
+            <div className="container h-full flex justify-end items-center py-5">
               <form className="p-10 bg-white shadow-md rounded-md">
                 <div className="mb-7">
                   {" "}
@@ -172,7 +172,7 @@ export function AboutUsSection(): JSX.Element {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-7">
           {dataUser.map((user, index) => (
             <div key={index}>
               <Image

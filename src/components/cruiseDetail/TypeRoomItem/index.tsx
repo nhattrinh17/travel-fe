@@ -11,9 +11,10 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames/bind";
 import Image from "next/image";
-import { Pagination } from "swiper/modules";
+import { FreeMode, Navigation, Pagination, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./styles.module.scss";
+import { useState } from "react";
 
 const cx = classNames.bind(styles);
 
@@ -46,9 +47,11 @@ export function TypeRoomCruiseItem({
   totalRooms,
   typeBed,
 }: Params): JSX.Element {
+  const [imageActive, setImageActive] = useState<any>(null);
+
   return (
     <div
-      className="fixed left-0 right-0 bottom-0 py-4 bg-[#0000003b] z-20"
+      className="fixed left-0 right-0 bottom-0 top-0 py-4 bg-[#0000003b] z-20 flex items-center justify-center"
       onClick={onClose}
     >
       <div
@@ -68,12 +71,13 @@ export function TypeRoomCruiseItem({
         <div className="p-4 grid grid-cols-2 gap-5">
           <div>
             <Swiper
+              thumbs={{ swiper: imageActive }}
               slidesPerView={1}
               spaceBetween={0}
               pagination={{
                 clickable: true,
               }}
-              modules={[Pagination]}
+              modules={[Pagination, FreeMode, Thumbs]}
               className="mySwiper"
               loop
             >
@@ -89,6 +93,29 @@ export function TypeRoomCruiseItem({
                 </SwiperSlide>
               ))}
             </Swiper>
+            <div className="mt-2">
+              <Swiper
+                onSwiper={setImageActive}
+                spaceBetween={10}
+                slidesPerView={4}
+                freeMode={true}
+                watchSlidesProgress={true}
+                modules={[FreeMode, Navigation, Thumbs]}
+                className="mySwiper-bottom"
+              >
+                {images.slice(0, 4).map((image, index) => (
+                  <SwiperSlide key={index}>
+                    <Image
+                      alt={image}
+                      src={image}
+                      width={820}
+                      height={440}
+                      className="w-full object-contain "
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
           </div>
           <div>
             <h5

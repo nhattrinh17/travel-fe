@@ -11,7 +11,8 @@
   --primary-color: #00ab99;
   --secondary-color: #168888;
   --secondary1-color: #00ab99;
-  --bg-header-color: #006b6bb3;
+  --bg-header-color: #006b6b;
+  /* --bg-header-color: #006b6bb3; */
   --height-header: 70px;
   --text-hover-default: #25ab4b;
   --bg-footer-color: #016166;

@@ -139,7 +139,10 @@ export function HeaderLayout(): JSX.Element {
                   </div>
                 ))}
                 <div
-                  onClick={() => setShowAllTour(true)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowAllTour(true);
+                  }}
                   className={cx(
                     "w-full h-full hidden lg:flex  items-center justify-center bg-[url(/home/op50.png)] hover:text-[var(--text-hover-default)]",
                     {
@@ -196,7 +199,10 @@ export function HeaderLayout(): JSX.Element {
                   </div>
                 ))}
                 <div
-                  onClick={() => setShowAllTour(true)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowAllTour(true);
+                  }}
                   className={cx(
                     "w-full h-full hidden lg:flex  items-center justify-center bg-[url(/home/op50.png)] hover:text-[var(--text-hover-default)]",
                     {

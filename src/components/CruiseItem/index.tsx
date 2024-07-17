@@ -117,7 +117,7 @@ export function CruiseItem({
         </div>
       </Link>
 
-      <div className="px-2 py-3">
+      <div className="px-2 py-3 bg-white">
         <div className="flex justify-between items-start mb-2">
           <div>
             <h3 className="text-[var(--secondary-color)] font-bold text-xl">

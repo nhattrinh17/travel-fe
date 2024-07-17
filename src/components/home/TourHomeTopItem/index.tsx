@@ -40,7 +40,7 @@ export function TourHomeTop10Item({
   const [mountLike, setMountLike] = useState(false);
 
   return (
-    <div className="group w-full shadow-md mb-5">
+    <div className="group w-full mb-5">
       <Link href={""} className="relative w-full block overflow-hidden">
         <Image
           alt="image cruise"
@@ -88,7 +88,7 @@ export function TourHomeTop10Item({
         </div>
       </Link>
 
-      <div className="px-2 py-3">
+      <div className="px-2 py-3 bg-white">
         <div className={classNames("  items-center")}>
           {Array.from({ length: totalStar }, (v, i) => i + 1).map(
             (i, index) => (

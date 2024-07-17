@@ -125,7 +125,7 @@ const cruiseDetail = {
         "https://www.insidetravel.com/uploads/photo-e/cruises/Orchid-Trendy-Cruise/orchid-trendy-premium-deluxe-double-1650-388.jpg",
         "https://www.insidetravel.com/uploads/photo-e/cruises/Orchid-Trendy-Cruise/orchid-trendy-premium-deluxe-double-1650-388.jpg",
         "https://www.insidetravel.com/uploads/photo-e/cruises/Orchid-Trendy-Cruise/orchid-trendy-premium-deluxe-double-1650-388.jpg",
-        "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Dlx650-388.jpg",
+        "https://www.insidetravel.com/uploads/photo-e/cruises/Ambassador-Signature/Dlx650-388.jpg",
       ],
       content:
         "Located on the upper deck, 17 Executive Ambassador Balcony cabins serve you a relaxing stay in luxurious comfort. All 28 sqm rooms feature large windows and a private furnished balcony for the marvelous views of Lan Ha Bay. Connecting rooms are available.",
@@ -154,7 +154,7 @@ const cruiseDetail = {
       ],
       images: [
         "https://www.insidetravel.com/uploads/photo-e/cruises/Orchid-Trendy-Cruise/orchid-trendy-premium-deluxe-double-1650-388.jpg",
-        "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Dlx650-388.jpg",
+        "https://www.insidetravel.com/uploads/photo-e/cruises/Ambassador-Signature/Dlx650-388.jpg",
       ],
       content:
         "Located on the upper deck, 17 Executive Ambassador Balcony cabins serve you a relaxing stay in luxurious comfort. All 28 sqm rooms feature large windows and a private furnished balcony for the marvelous views of Lan Ha Bay. Connecting rooms are available.",
@@ -183,7 +183,7 @@ const cruiseDetail = {
       ],
       images: [
         "https://www.insidetravel.com/uploads/photo-e/cruises/Orchid-Trendy-Cruise/orchid-trendy-premium-deluxe-double-1650-388.jpg",
-        "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Dlx650-388.jpg",
+        "https://www.insidetravel.com/uploads/photo-e/cruises/Ambassador-Signature/Dlx650-388.jpg",
       ],
       content:
         "Located on the upper deck, 17 Executive Ambassador Balcony cabins serve you a relaxing stay in luxurious comfort. All 28 sqm rooms feature large windows and a private furnished balcony for the marvelous views of Lan Ha Bay. Connecting rooms are available.",
@@ -212,7 +212,7 @@ const cruiseDetail = {
       ],
       images: [
         "https://www.insidetravel.com/uploads/photo-e/cruises/Orchid-Trendy-Cruise/orchid-trendy-premium-deluxe-double-1650-388.jpg",
-        "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Dlx650-388.jpg",
+        "https://www.insidetravel.com/uploads/photo-e/cruises/Ambassador-Signature/Dlx650-388.jpg",
       ],
       content:
         "Located on the upper deck, 17 Executive Ambassador Balcony cabins serve you a relaxing stay in luxurious comfort. All 28 sqm rooms feature large windows and a private furnished balcony for the marvelous views of Lan Ha Bay. Connecting rooms are available.",
@@ -241,7 +241,7 @@ const cruiseDetail = {
       ],
       images: [
         "https://www.insidetravel.com/uploads/photo-e/cruises/Orchid-Trendy-Cruise/orchid-trendy-premium-deluxe-double-1650-388.jpg",
-        "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Dlx650-388.jpg",
+        "https://www.insidetravel.com/uploads/photo-e/cruises/Ambassador-Signature/Dlx650-388.jpg",
       ],
       content:
         "Located on the upper deck, 17 Executive Ambassador Balcony cabins serve you a relaxing stay in luxurious comfort. All 28 sqm rooms feature large windows and a private furnished balcony for the marvelous views of Lan Ha Bay. Connecting rooms are available.",
@@ -270,7 +270,7 @@ const cruiseDetail = {
       ],
       images: [
         "https://www.insidetravel.com/uploads/photo-e/cruises/Orchid-Trendy-Cruise/orchid-trendy-premium-deluxe-double-1650-388.jpg",
-        "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Dlx650-388.jpg",
+        "https://www.insidetravel.com/uploads/photo-e/cruises/Ambassador-Signature/Dlx650-388.jpg",
       ],
       content:
         "Located on the upper deck, 17 Executive Ambassador Balcony cabins serve you a relaxing stay in luxurious comfort. All 28 sqm rooms feature large windows and a private furnished balcony for the marvelous views of Lan Ha Bay. Connecting rooms are available.",
@@ -646,10 +646,7 @@ export function DetailCruise({}: { slug: string }): JSX.Element {
               <span
                 onClick={() => setShowTravelerLove((pre) => !pre)}
                 className={cx(
-                  "cursor-pointer text-sm w-full flex items-center text-[var(--text-hover-default)] pt-3 mb-4",
-                  {
-                    "shadow-[0px_-15px_15px_#fff]": !showTravelerLove,
-                  }
+                  "cursor-pointer text-sm w-full flex items-center text-[var(--text-hover-default)] pt-3 mb-4"
                 )}
               >
                 {showTravelerLove ? "Show less" : "Show More"}

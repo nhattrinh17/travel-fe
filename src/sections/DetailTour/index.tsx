@@ -175,7 +175,7 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
             </div>
             <div className="flex flex-wrap lg:overflow-hidden">
               {/* Detail */}
-              <div className="basis-full flex-1 shadow-md mb-3">
+              <div className="basis-full flex-1 shadow-md mb-3 lg:mb-0">
                 <div
                   onClick={() => setTabActive(0)}
                   className={cx(
@@ -200,7 +200,7 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                 </div>
               </div>
               {/* Itinerany */}
-              <div className="basis-full flex-1 shadow-md mb-3">
+              <div className="basis-full flex-1 shadow-md mb-3 lg:mb-0">
                 <div
                   onClick={() => setTabActive(1)}
                   className={cx(
@@ -229,7 +229,7 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                               "box--day"
                             )}
                           >
-                            {index}
+                            {index + 1}
                           </div>
                         </div>
                       </div>
@@ -248,7 +248,7 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                 </div>
               </div>
               {/* Deals */}
-              <div className="basis-full flex-1 shadow-md mb-3">
+              <div className="basis-full flex-1 shadow-md mb-3 lg:mb-0">
                 <div
                   onClick={() => setTabActive(2)}
                   className={cx(
@@ -355,7 +355,7 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                 </div>
               </div>
               {/* Photo */}
-              <div className="basis-full flex-1 shadow-md mb-3">
+              <div className="basis-full flex-1 shadow-md mb-3 lg:mb-0">
                 <div
                   onClick={() => setTabActive(3)}
                   className={cx(
