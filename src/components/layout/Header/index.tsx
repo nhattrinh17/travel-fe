@@ -65,7 +65,7 @@ export function HeaderLayout(): JSX.Element {
   }, []);
 
   return (
-    <header className="bg-[var(--bg-header-color)] h-[var(--height-header)] sticky top-0 left-0 right-0 z-10">
+    <header className="bg-[var(--bg-header-color)] h-[var(--height-header)] sticky top-0 left-0 right-0 z-[11]">
       <div className="container flex items-center h-full justify-between [&>div,&>a]:transition-colors [&>div,&>a]:ease-linear">
         <Link href={"/"} className="h-[80%] w-full max-w-[20%] mr-4">
           <Image
