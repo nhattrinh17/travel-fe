@@ -1,71 +1,71 @@
-.language-wrapper {
-  &__options {
-    display: none;
-  }
+// .language-wrapper {
+//   &__options {
+//     display: none;
+//   }
 
-  &:hover &__options {
-    display: block;
-  }
-}
+//   &:hover &__options {
+//     display: block;
+//   }
+// }
 
-.packet-tour__wrapper {
-  &--list {
-    display: none;
-  }
+// .packet-tour__wrapper {
+//   &--list {
+//     display: none;
+//   }
 
-  &:hover &--list {
-    display: block;
-  }
-}
+//   &:hover &--list {
+//     display: block;
+//   }
+// }
 
-.daily-tour__wrapper {
-  &--list {
-    display: none;
-  }
+// .daily-tour__wrapper {
+//   &--list {
+//     display: none;
+//   }
 
-  &:hover &--list {
-    display: block;
-  }
-}
+//   &:hover &--list {
+//     display: block;
+//   }
+// }
 
-.cruises__wrapper {
-  &--list {
-    display: none;
-  }
+// .cruises__wrapper {
+//   &--list {
+//     display: none;
+//   }
 
-  &:hover &--list {
-    display: block;
-  }
-}
+//   &:hover &--list {
+//     display: block;
+//   }
+// }
 
-@media (min-width: 1024px) {
-  .packet-tour__wrapper {
-    &--list {
-      display: none;
-    }
+// @media (min-width: 1024px) {
+//   .packet-tour__wrapper {
+//     &--list {
+//       display: none;
+//     }
 
-    &:hover &--list {
-      display: grid;
-    }
-  }
+//     &:hover &--list {
+//       display: grid;
+//     }
+//   }
 
-  .daily-tour__wrapper {
-    &--list {
-      display: none;
-    }
+//   .daily-tour__wrapper {
+//     &--list {
+//       display: none;
+//     }
 
-    &:hover &--list {
-      display: grid;
-    }
-  }
+//     &:hover &--list {
+//       display: grid;
+//     }
+//   }
 
-  .cruises__wrapper {
-    &--list {
-      display: none;
-    }
+//   .cruises__wrapper {
+//     &--list {
+//       display: none;
+//     }
 
-    &:hover &--list {
-      display: grid;
-    }
-  }
-}
+//     &:hover &--list {
+//       display: grid;
+//     }
+//   }
+// }

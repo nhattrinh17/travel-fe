@@ -18,6 +18,11 @@ import {
   faUser,
   faSubtract,
   faPlus,
+  faChevronLeft,
+  faChevronRight,
+  faCircleInfo,
+  faComments,
+  faCircleQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames/bind";
@@ -28,6 +33,10 @@ import styles from "./styles.module.scss";
 import { DatePickerCustomer } from "@/uiCore";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons/faLocationDot";
 import { TypeRoomCruiseItem } from "@/components/cruiseDetail/TypeRoomItem";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import { luxuryCruise } from "@/mocks";
+import { CruiseHomeLuxuryOrBudget } from "@/components/home/CruiseHomeLuxuryOrBudget";
 
 const cruiseDetail = {
   name: "Ambassador Signature Cruise",
@@ -59,6 +68,12 @@ const cruiseDetail = {
     {
       name: "All Meals Include",
       slug: "allMeals",
+      type: ["feature", "meal"],
+    },
+    {
+      name: "All Meals Include",
+      slug: "spa",
+      type: ["feature", "Fitness-recreation"],
     },
   ],
   price: 300,
@@ -107,9 +122,9 @@ const cruiseDetail = {
         "Balcony",
       ],
       images: [
-        "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambas%20Bal650-388.jpg",
-        "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambas%20Bal650-388.jpg",
-        "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambas%20Bal650-388.jpg",
+        "https://www.insidetravel.com/uploads/photo-e/cruises/Orchid-Trendy-Cruise/orchid-trendy-premium-deluxe-double-1650-388.jpg",
+        "https://www.insidetravel.com/uploads/photo-e/cruises/Orchid-Trendy-Cruise/orchid-trendy-premium-deluxe-double-1650-388.jpg",
+        "https://www.insidetravel.com/uploads/photo-e/cruises/Orchid-Trendy-Cruise/orchid-trendy-premium-deluxe-double-1650-388.jpg",
         "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Dlx650-388.jpg",
       ],
       content:
@@ -138,7 +153,7 @@ const cruiseDetail = {
         "Balcony",
       ],
       images: [
-        "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambas%20Bal650-388.jpg",
+        "https://www.insidetravel.com/uploads/photo-e/cruises/Orchid-Trendy-Cruise/orchid-trendy-premium-deluxe-double-1650-388.jpg",
         "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Dlx650-388.jpg",
       ],
       content:
@@ -167,7 +182,7 @@ const cruiseDetail = {
         "Balcony",
       ],
       images: [
-        "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambas%20Bal650-388.jpg",
+        "https://www.insidetravel.com/uploads/photo-e/cruises/Orchid-Trendy-Cruise/orchid-trendy-premium-deluxe-double-1650-388.jpg",
         "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Dlx650-388.jpg",
       ],
       content:
@@ -196,7 +211,7 @@ const cruiseDetail = {
         "Balcony",
       ],
       images: [
-        "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambas%20Bal650-388.jpg",
+        "https://www.insidetravel.com/uploads/photo-e/cruises/Orchid-Trendy-Cruise/orchid-trendy-premium-deluxe-double-1650-388.jpg",
         "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Dlx650-388.jpg",
       ],
       content:
@@ -225,7 +240,7 @@ const cruiseDetail = {
         "Balcony",
       ],
       images: [
-        "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambas%20Bal650-388.jpg",
+        "https://www.insidetravel.com/uploads/photo-e/cruises/Orchid-Trendy-Cruise/orchid-trendy-premium-deluxe-double-1650-388.jpg",
         "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Dlx650-388.jpg",
       ],
       content:
@@ -254,7 +269,7 @@ const cruiseDetail = {
         "Balcony",
       ],
       images: [
-        "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambas%20Bal650-388.jpg",
+        "https://www.insidetravel.com/uploads/photo-e/cruises/Orchid-Trendy-Cruise/orchid-trendy-premium-deluxe-double-1650-388.jpg",
         "https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Dlx650-388.jpg",
       ],
       content:
@@ -267,21 +282,14 @@ const cruiseDetail = {
       title: "Ambassador Signature Cruise 2 Days 1 Night",
       route:
         " Hanoi → Lan Ha bay → Viet Hai Fishing Village → Dark and Bright Cave → Hanoi",
-      content: `<div id="tab21767" class="tour-itinerary" style="text-align: center;"><!--tab-pane fade--> <div class="panel-group no-margin" id="accordion1"> <div class="panel"> <div class="panel-heading" id="heading1"> <br>                                        <h4 class="panel-title"> <a id="coll" class="accordion-toggle title_days " data-toggle="collapse" data-parent="#accordion" href="javascript:;"> <!--#collapse$s+2--> <small>Day 1:</small>Hanoi - Lan Ha bay - Viet Hai Fishing Village                                            </a> </h4> </div> <div id="collapse2" class="panel-collapse detail_days collapse in " aria-labelledby="heading1"> <div class="panel-body no-padding"> <div class="row"> <div class="col-lg-8 optional-list"> <ul> <li class="tran"> <i class="fa fa-exchange"></i> <span>Transfer:</span> <a href="javascript:;" style="float: left;text-indent: initial;" title="Drive from Hanoi to Halong around 2.5 hours " data-toggle="tooltip"><span class="fa fa-car"></span></a> <a href="javascript:;" style="float: left;text-indent: initial;" title="Transfer from pier to Paradise Grand Cruise by tender " data-toggle="tooltip"></a> <a href="javascript:;" style="float: left;text-indent: initial;" title="Cruising in Lan Ha" data-toggle="tooltip"><span class="fa fa-ship"></span></a> </li> <li class="activities-s"> <i class="fa fa-university icon_meals"></i> <span>Activities:</span> <p>Transfer from Hanoi Old Quarter to Ambassador lounge, check in, transfer to ship, Welcome drink in Ambassador Signature Cruises, Enjoy delicious lunch while the cruise is sailing into Halong Bay, Visit Viet Hai Fishing Village, explore features of the locals' daily life, enjoy canapes on the twin sundeck, Dinner served in restaurant, night activities</p> </li> </ul> <div id="txt-tour"> <p></p><div><b>10:00 – 11:30</b> Check in at Ambassador's Lounge (1st Floor, Terminal - Halong International Cruise Port, Bai Chay Ward, Halong City).</div><div><b><br>11:45 – 12:30 </b>Passengers are transferred to <b>Ambassador Signature Cruise</b> (in Gia Luan Pier) by speedboat.</div><div><b><br>12:30 – 12:45 </b>A short welcoming briefing will be held at the Piano Lounge or at the restaurant, whilst you are sipping our special welcome drink.</div><div><b><br>12:45 – 14:00</b> <b>Savor a delicious lunch</b> whilst enjoying the majestic views of Lan Ha Bay’s islands and islets.</div><div><b><br>15:00 – 16:45</b> Your first excursion is <b>Viet Hai Fishing Village</b> - a primitive and tranquil location with precious traditional cultural values. You will have <b>a chance to explore features of the locals’ daily life</b>, <b>visit fish lakes, bee houses, ancient houses, or experience fish foot massage.</b></div><div><b><br>15:45 – 16:15</b> For guests who are not participating in the excursion, we will <b>serve home-made cakes</b> at the Piano Lounge. Guests can also stay onboard and opt for an afternoon of pampering at Spa* or relaxing on the Sundeck whilst admiring the magnificent scenery of Lan Ha Bay.</div><div><b><br>17:30 – 18:30</b> At sundown, <b>Ambassador Signature Cruise</b> will anchor overnight.</div><div>This is the perfect time for you to <b>enjoy cooking class </b>or <b>Happy Hour* and Canapes at the Piano Lounge</b> or on the Sundeck (depends on weather conditions).</div><div><b><br>19:00</b> Savor a <b>premium dinner at the restaurant</b>.</div><div>(Dress code: formal/semi formal/smart casual)</div><div><b><br>21:00 – 23:00</b> After dinner, indulge in drinks* and <b>enjoy live music at the Piano Lounge</b>, <b>squid fishing, a spa treatment*, or movies at your cabin. (Note: Live music is not available on Monday)&nbsp;</b></div><p></p> </div> <!--Experience--> <!-- end experience --> <ul> <li class="meals"> <i class="fa fa-cutlery icon_meals"></i> <span>Meals:</span> <p> Lunch, Dinner                                                            </p> </li> </ul> </div> <div class="col-lg-4"> <div class="slide-photo"> <div class="mix-grid"> <div class="mix mix-slide"> <div class="thumbnail"> </div> </div> </div> </div> <div class="option-hotel"> <div class="panel"> <div class="panel-heading" id="heading-hotel2403"> <h4 class="panel-title"> <a id="coll" class="accordion-toggle  collapsed" data-toggle="collapse" data-parent="#accordion-hotel2403" href="#collapse-hotel240301767" aria-expanded="false"> <small class="title-hotel"><i class="pull-left fa fa-bed"></i>Accommodation</small> <span class="icon hotel fa fa-plus"></span> </a> </h4> </div> <div id="collapse-hotel240301767" class="panel-collapse collapse" aria-labelledby="heading-hotel2403" aria-expanded="false" style="height: 0px;"> <div class="panel-body option-hotel-body" style="padding:0;"> <div class="suplier-tour-map-tour"> <div class="mix-grid"> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Overview 3650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> <img class="image-slide" src="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Overview 3650-388.jpg" alt=""> <span class="count-img">58</span> <i class="fa fa-expand fa-search-plus zoom"></i> <span class="location"><i class="fa fa-map-marker"></i> Halong Bay</span> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/9650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/8650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/10650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/6650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/5650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/7650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/4650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/3650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Soup650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Main Course 3650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Main Course 4650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Main Course 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Dessert 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Main Course 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Dessert 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Appetizer 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Appetizer 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Sundeck 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Spa 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Spa 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Restaurant 3650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Restaurant 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Restaurant 4650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Restaurant 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Piano Lounge 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Piano Lounge 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Lobby 3650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Lobby 4650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Lobby 4650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Lobby 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Lobby 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/executive650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/executive room650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/executive cabin650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/exe650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Captain650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/capatain650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambass Captain650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Cap650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambass Capt650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambass Cap650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Suite Am650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Suite cabin650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Suite650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambass Suite650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Amba Suite650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambass Dlx650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Dlx650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambass 1st650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambas Bal650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Cabin 4650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Cabin 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Cabin 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Cabin 3650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Cabin 5650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Cabin 6650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> </div> <a class="img" href="https://www.halongbaycruises.com/cruise/ambassador-signature-cruise.html" rel="nofollow" target="_blank"> <span class="name-hotel-option"> Ambassador Signature Cruise<br> <span class="start-tour"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </span> </span> </a> </div> <p>STYLE <br> Modern</p> <p>NO. ROOM <br> 39</p> <p>FEATURES <br> All Meals Included, spa, cooking class</p> </div> </div> </div> </div> </div> </div> </div> </div> </div> </div> </div>`,
+      content: `<p>aaaaaaaaaaaaaaaaaaaaaaa</p>`,
     },
     {
       totalDay: 3,
       title: "Ambassador Signature Cruise 2 Days 1 Night",
       route:
         " Hanoi → Lan Ha bay → Viet Hai Fishing Village → Dark and Bright Cave → Hanoi",
-      content: `<div id="tab21767" class="tour-itinerary" style="text-align: center;"><!--tab-pane fade--> <div class="panel-group no-margin" id="accordion1"> <div class="panel"> <div class="panel-heading" id="heading1"> <br>                                        <h4 class="panel-title"> <a id="coll" class="accordion-toggle title_days " data-toggle="collapse" data-parent="#accordion" href="javascript:;"> <!--#collapse$s+2--> <small>Day 1:</small>Hanoi - Lan Ha bay - Viet Hai Fishing Village                                            </a> </h4> </div> <div id="collapse2" class="panel-collapse detail_days collapse in " aria-labelledby="heading1"> <div class="panel-body no-padding"> <div class="row"> <div class="col-lg-8 optional-list"> <ul> <li class="tran"> <i class="fa fa-exchange"></i> <span>Transfer:</span> <a href="javascript:;" style="float: left;text-indent: initial;" title="Drive from Hanoi to Halong around 2.5 hours " data-toggle="tooltip"><span class="fa fa-car"></span></a> <a href="javascript:;" style="float: left;text-indent: initial;" title="Transfer from pier to Paradise Grand Cruise by tender " data-toggle="tooltip"></a> <a href="javascript:;" style="float: left;text-indent: initial;" title="Cruising in Lan Ha" data-toggle="tooltip"><span class="fa fa-ship"></span></a> </li> <li class="activities-s"> <i class="fa fa-university icon_meals"></i> <span>Activities:</span> <p>Transfer from Hanoi Old Quarter to Ambassador lounge, check in, transfer to ship, Welcome drink in Ambassador Signature Cruises, Enjoy delicious lunch while the cruise is sailing into Halong Bay, Visit Viet Hai Fishing Village, explore features of the locals' daily life, enjoy canapes on the twin sundeck, Dinner served in restaurant, night activities</p> </li> </ul> <div id="txt-tour"> <p></p><div><b>10:00 – 11:30</b> Check in at Ambassador's Lounge (1st Floor, Terminal - Halong International Cruise Port, Bai Chay Ward, Halong City).</div><div><b><br>11:45 – 12:30 </b>Passengers are transferred to <b>Ambassador Signature Cruise</b> (in Gia Luan Pier) by speedboat.</div><div><b><br>12:30 – 12:45 </b>A short welcoming briefing will be held at the Piano Lounge or at the restaurant, whilst you are sipping our special welcome drink.</div><div><b><br>12:45 – 14:00</b> <b>Savor a delicious lunch</b> whilst enjoying the majestic views of Lan Ha Bay’s islands and islets.</div><div><b><br>15:00 – 16:45</b> Your first excursion is <b>Viet Hai Fishing Village</b> - a primitive and tranquil location with precious traditional cultural values. You will have <b>a chance to explore features of the locals’ daily life</b>, <b>visit fish lakes, bee houses, ancient houses, or experience fish foot massage.</b></div><div><b><br>15:45 – 16:15</b> For guests who are not participating in the excursion, we will <b>serve home-made cakes</b> at the Piano Lounge. Guests can also stay onboard and opt for an afternoon of pampering at Spa* or relaxing on the Sundeck whilst admiring the magnificent scenery of Lan Ha Bay.</div><div><b><br>17:30 – 18:30</b> At sundown, <b>Ambassador Signature Cruise</b> will anchor overnight.</div><div>This is the perfect time for you to <b>enjoy cooking class </b>or <b>Happy Hour* and Canapes at the Piano Lounge</b> or on the Sundeck (depends on weather conditions).</div><div><b><br>19:00</b> Savor a <b>premium dinner at the restaurant</b>.</div><div>(Dress code: formal/semi formal/smart casual)</div><div><b><br>21:00 – 23:00</b> After dinner, indulge in drinks* and <b>enjoy live music at the Piano Lounge</b>, <b>squid fishing, a spa treatment*, or movies at your cabin. (Note: Live music is not available on Monday)&nbsp;</b></div><p></p> </div> <!--Experience--> <!-- end experience --> <ul> <li class="meals"> <i class="fa fa-cutlery icon_meals"></i> <span>Meals:</span> <p> Lunch, Dinner                                                            </p> </li> </ul> </div> <div class="col-lg-4"> <div class="slide-photo"> <div class="mix-grid"> <div class="mix mix-slide"> <div class="thumbnail"> </div> </div> </div> </div> <div class="option-hotel"> <div class="panel"> <div class="panel-heading" id="heading-hotel2403"> <h4 class="panel-title"> <a id="coll" class="accordion-toggle  collapsed" data-toggle="collapse" data-parent="#accordion-hotel2403" href="#collapse-hotel240301767" aria-expanded="false"> <small class="title-hotel"><i class="pull-left fa fa-bed"></i>Accommodation</small> <span class="icon hotel fa fa-plus"></span> </a> </h4> </div> <div id="collapse-hotel240301767" class="panel-collapse collapse" aria-labelledby="heading-hotel2403" aria-expanded="false" style="height: 0px;"> <div class="panel-body option-hotel-body" style="padding:0;"> <div class="suplier-tour-map-tour"> <div class="mix-grid"> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Overview 3650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> <img class="image-slide" src="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Overview 3650-388.jpg" alt=""> <span class="count-img">58</span> <i class="fa fa-expand fa-search-plus zoom"></i> <span class="location"><i class="fa fa-map-marker"></i> Halong Bay</span> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/9650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/8650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/10650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/6650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/5650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/7650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/4650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/3650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Soup650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Main Course 3650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Main Course 4650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Main Course 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Dessert 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Main Course 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Dessert 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Appetizer 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Appetizer 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Sundeck 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Spa 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Spa 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Restaurant 3650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Restaurant 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Restaurant 4650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Restaurant 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Piano Lounge 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Piano Lounge 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Lobby 3650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Lobby 4650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Lobby 4650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Lobby 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Lobby 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/executive650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/executive room650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/executive cabin650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/exe650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Captain650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/capatain650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambass Captain650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Cap650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambass Capt650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambass Cap650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Suite Am650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Suite cabin650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Suite650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambass Suite650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Amba Suite650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambass Dlx650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Dlx650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambass 1st650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambas Bal650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Cabin 4650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Cabin 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Cabin 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Cabin 3650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Cabin 5650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Cabin 6650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> </div> <a class="img" href="https://www.halongbaycruises.com/cruise/ambassador-signature-cruise.html" rel="nofollow" target="_blank"> <span class="name-hotel-option"> Ambassador Signature Cruise<br> <span class="start-tour"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </span> </span> </a> </div> <p>STYLE <br> Modern</p> <p>NO. ROOM <br> 39</p> <p>FEATURES <br> All Meals Included, spa, cooking class</p> </div> </div> </div> </div> </div> </div> </div> </div> </div> </div> </div>`,
-    },
-    {
-      totalDay: 4,
-      title: "Ambassador Signature Cruise 2 Days 1 Night",
-      route:
-        " Hanoi → Lan Ha bay → Viet Hai Fishing Village → Dark and Bright Cave → Hanoi",
-      content: `<div id="tab21767" class="tour-itinerary" style="text-align: center;"><!--tab-pane fade--> <div class="panel-group no-margin" id="accordion1"> <div class="panel"> <div class="panel-heading" id="heading1"> <br>                                        <h4 class="panel-title"> <a id="coll" class="accordion-toggle title_days " data-toggle="collapse" data-parent="#accordion" href="javascript:;"> <!--#collapse$s+2--> <small>Day 1:</small>Hanoi - Lan Ha bay - Viet Hai Fishing Village                                            </a> </h4> </div> <div id="collapse2" class="panel-collapse detail_days collapse in " aria-labelledby="heading1"> <div class="panel-body no-padding"> <div class="row"> <div class="col-lg-8 optional-list"> <ul> <li class="tran"> <i class="fa fa-exchange"></i> <span>Transfer:</span> <a href="javascript:;" style="float: left;text-indent: initial;" title="Drive from Hanoi to Halong around 2.5 hours " data-toggle="tooltip"><span class="fa fa-car"></span></a> <a href="javascript:;" style="float: left;text-indent: initial;" title="Transfer from pier to Paradise Grand Cruise by tender " data-toggle="tooltip"></a> <a href="javascript:;" style="float: left;text-indent: initial;" title="Cruising in Lan Ha" data-toggle="tooltip"><span class="fa fa-ship"></span></a> </li> <li class="activities-s"> <i class="fa fa-university icon_meals"></i> <span>Activities:</span> <p>Transfer from Hanoi Old Quarter to Ambassador lounge, check in, transfer to ship, Welcome drink in Ambassador Signature Cruises, Enjoy delicious lunch while the cruise is sailing into Halong Bay, Visit Viet Hai Fishing Village, explore features of the locals' daily life, enjoy canapes on the twin sundeck, Dinner served in restaurant, night activities</p> </li> </ul> <div id="txt-tour"> <p></p><div><b>10:00 – 11:30</b> Check in at Ambassador's Lounge (1st Floor, Terminal - Halong International Cruise Port, Bai Chay Ward, Halong City).</div><div><b><br>11:45 – 12:30 </b>Passengers are transferred to <b>Ambassador Signature Cruise</b> (in Gia Luan Pier) by speedboat.</div><div><b><br>12:30 – 12:45 </b>A short welcoming briefing will be held at the Piano Lounge or at the restaurant, whilst you are sipping our special welcome drink.</div><div><b><br>12:45 – 14:00</b> <b>Savor a delicious lunch</b> whilst enjoying the majestic views of Lan Ha Bay’s islands and islets.</div><div><b><br>15:00 – 16:45</b> Your first excursion is <b>Viet Hai Fishing Village</b> - a primitive and tranquil location with precious traditional cultural values. You will have <b>a chance to explore features of the locals’ daily life</b>, <b>visit fish lakes, bee houses, ancient houses, or experience fish foot massage.</b></div><div><b><br>15:45 – 16:15</b> For guests who are not participating in the excursion, we will <b>serve home-made cakes</b> at the Piano Lounge. Guests can also stay onboard and opt for an afternoon of pampering at Spa* or relaxing on the Sundeck whilst admiring the magnificent scenery of Lan Ha Bay.</div><div><b><br>17:30 – 18:30</b> At sundown, <b>Ambassador Signature Cruise</b> will anchor overnight.</div><div>This is the perfect time for you to <b>enjoy cooking class </b>or <b>Happy Hour* and Canapes at the Piano Lounge</b> or on the Sundeck (depends on weather conditions).</div><div><b><br>19:00</b> Savor a <b>premium dinner at the restaurant</b>.</div><div>(Dress code: formal/semi formal/smart casual)</div><div><b><br>21:00 – 23:00</b> After dinner, indulge in drinks* and <b>enjoy live music at the Piano Lounge</b>, <b>squid fishing, a spa treatment*, or movies at your cabin. (Note: Live music is not available on Monday)&nbsp;</b></div><p></p> </div> <!--Experience--> <!-- end experience --> <ul> <li class="meals"> <i class="fa fa-cutlery icon_meals"></i> <span>Meals:</span> <p> Lunch, Dinner                                                            </p> </li> </ul> </div> <div class="col-lg-4"> <div class="slide-photo"> <div class="mix-grid"> <div class="mix mix-slide"> <div class="thumbnail"> </div> </div> </div> </div> <div class="option-hotel"> <div class="panel"> <div class="panel-heading" id="heading-hotel2403"> <h4 class="panel-title"> <a id="coll" class="accordion-toggle  collapsed" data-toggle="collapse" data-parent="#accordion-hotel2403" href="#collapse-hotel240301767" aria-expanded="false"> <small class="title-hotel"><i class="pull-left fa fa-bed"></i>Accommodation</small> <span class="icon hotel fa fa-plus"></span> </a> </h4> </div> <div id="collapse-hotel240301767" class="panel-collapse collapse" aria-labelledby="heading-hotel2403" aria-expanded="false" style="height: 0px;"> <div class="panel-body option-hotel-body" style="padding:0;"> <div class="suplier-tour-map-tour"> <div class="mix-grid"> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Overview 3650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> <img class="image-slide" src="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Overview 3650-388.jpg" alt=""> <span class="count-img">58</span> <i class="fa fa-expand fa-search-plus zoom"></i> <span class="location"><i class="fa fa-map-marker"></i> Halong Bay</span> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/9650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/8650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/10650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/6650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/5650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/7650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/4650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/3650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Soup650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Main Course 3650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Main Course 4650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Main Course 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Dessert 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Main Course 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Dessert 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Appetizer 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Appetizer 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Sundeck 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Spa 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Spa 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Restaurant 3650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Restaurant 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Restaurant 4650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Restaurant 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Piano Lounge 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Piano Lounge 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Lobby 3650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Lobby 4650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Lobby 4650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Lobby 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Lobby 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/executive650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/executive room650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/executive cabin650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/exe650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Captain650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/capatain650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambass Captain650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Cap650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambass Capt650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambass Cap650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Suite Am650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Suite cabin650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Suite650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambass Suite650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Amba Suite650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambass Dlx650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Dlx650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambass 1st650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Ambas Bal650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Cabin 4650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Cabin 2650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Cabin 1650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Cabin 3650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Cabin 5650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> <div class="mix mix-slide"> <div class="thumbnail"> <a href="https://d1k2oi80tv211b.cloudfront.net/uploads/photo-e/cruises/Ambassador-Signature/Cabin 6650-388.jpg" data-lightbox="image-map-suppliertour0" data-title="Ambassador Signature Cruise" class="mix-zoom"> </a> </div> </div> </div> <a class="img" href="https://www.halongbaycruises.com/cruise/ambassador-signature-cruise.html" rel="nofollow" target="_blank"> <span class="name-hotel-option"> Ambassador Signature Cruise<br> <span class="start-tour"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </span> </span> </a> </div> <p>STYLE <br> Modern</p> <p>NO. ROOM <br> 39</p> <p>FEATURES <br> All Meals Included, spa, cooking class</p> </div> </div> </div> </div> </div> </div> </div> </div> </div> </div> </div>`,
+      content: `<p>aaaaaaaaaaaaaaaaaaaaaaa</p>`,
     },
   ],
 };
@@ -349,9 +357,16 @@ export function DetailCruise({}: { slug: string }): JSX.Element {
   // Itineraries
   const [itinerariesActive, setItinerariesActive] = useState<number[]>([]);
 
+  // Overview and Review
+  const [tabIndexActive, setTabIndexActive] = useState<number>(0);
+
+  // May be like
+  const sectionMayAlsoRef = useRef<HTMLElement>(null);
+
   return (
     <div className="bg-[var(--bg-container-color)]">
       <div className="container">
+        {/* header */}
         <section className="">
           <div className="py-3 border-b-[1px] border-dotted">
             <Image
@@ -361,7 +376,7 @@ export function DetailCruise({}: { slug: string }): JSX.Element {
               height={162}
               className="w-full object-contain"
             />
-            <div className="flex justify-between pt-3">
+            <div className="flex justify-between pt-3 mb-3 flex-col lg:flex-row">
               <div>
                 <h1 className="text-[var(--text-hover-default)] font-bold text-2xl">
                   {cruiseDetail.name}
@@ -389,20 +404,20 @@ export function DetailCruise({}: { slug: string }): JSX.Element {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center justify-between lg:justify-center">
                 <Image
                   alt="flash sale"
-                  src={"/detailCruise/flash_text.png"}
+                  src={"/share/flash_text.png"}
                   width={90}
                   height={65}
-                  className="mr-4"
+                  className="mr-4 hidden lg:block"
                 />
                 <Image
                   alt="best price"
-                  src={"/detailCruise/best-price-3.png"}
+                  src={"/share/best-price-3.png"}
                   width={120}
                   height={65}
-                  className="mr-4"
+                  className="mr-4  hidden lg:block"
                 />
                 <div className="">
                   <span className="ml-auto text-xs">Only From</span>
@@ -453,7 +468,7 @@ export function DetailCruise({}: { slug: string }): JSX.Element {
                     )}
                   >
                     <label className="flex text-[red] font-bold text-sm">
-                      <span className="bg-[url(/home/top10Cruise/iconprice.svg)] bg-contain w-4 h-4 block relative top-1 mr-2"></span>
+                      <span className="bg-[url(/home/top10Cruise/iconprice.svg)] bg-contain bg-no-repeat w-4 h-4 block relative top-1 mr-2"></span>
                       {index + 1}.{item.name}
                     </label>
                     <FontAwesomeIcon
@@ -474,8 +489,8 @@ export function DetailCruise({}: { slug: string }): JSX.Element {
             </ul>
           </div>
 
-          <div className="flex my-3">
-            <div className="flex items-center text-[#888888] text-[13px]">
+          <div className="flex my-3 flex-col lg:flex-row">
+            <div className="flex mb-3 items-center text-[#888888] text-[13px]">
               <div className="flex mr-2">
                 <FontAwesomeIcon
                   icon={faBookmark}
@@ -517,7 +532,7 @@ export function DetailCruise({}: { slug: string }): JSX.Element {
         {/* Image */}
         <section>
           <div className="grid grid-cols-5 gap-2 max-h-[376px] overflow-hidden">
-            <div className="col-span-3 overflow-hidden relative h-full">
+            <div className="col-span-5 lg:col-span-3 overflow-hidden relative h-full">
               <Image
                 alt="aaaa"
                 src={cruiseDetail.images[0]}
@@ -565,8 +580,15 @@ export function DetailCruise({}: { slug: string }): JSX.Element {
               >
                 <p>All Meals Included</p>
               </div>
+              <div
+                className={cx(
+                  "absolute bottom-1 right-0 px-2 py-1 text-white text-xs text-center underline cursor-pointer"
+                )}
+              >
+                <p>See All {cruiseDetail.images.length} photos</p>
+              </div>
             </div>
-            <div className="col-span-2 flex flex-col max-h-full">
+            <div className=" hidden lg:flex col-span-2 flex-col max-h-full">
               <div className="col-span-1 overflow-hidden relative basis-[39%] pb-1 ">
                 <Image
                   alt="aaaa"
@@ -590,7 +612,7 @@ export function DetailCruise({}: { slug: string }): JSX.Element {
         </section>
         {/* Intro */}
         <section className="border-b-[1px] pb-4 border-dotted grid grid-cols-4 gap-5">
-          <div className="col-span-3">
+          <div className="col-span-4 lg:col-span-3">
             <div className="border-b-[1px] border-dotted border-[#ddd] flex items-center py-4">
               <FontAwesomeIcon
                 icon={faHeartSolid}
@@ -636,7 +658,7 @@ export function DetailCruise({}: { slug: string }): JSX.Element {
               <div className="h-[2px] w-6 bg-[#BBBBBB] mt-4 rounded-md"></div>
             </div>
           </div>
-          <div className="col-span-1 flex flex-col py-3 items-center">
+          <div className=" hidden lg:flex col-span-1 flex-col py-3 items-center">
             <div className="w-28 h-28">
               <Image
                 alt=""
@@ -680,10 +702,10 @@ export function DetailCruise({}: { slug: string }): JSX.Element {
         {/* Type Room */}
         <section className="py-4">
           <form
-            className="bg-[var(--secondary1-color)] rounded-xl grid grid-cols-4 gap-8 p-3 font-bold"
+            className="bg-[var(--secondary1-color)] rounded-xl grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-8 p-3 font-bold"
             onSubmit={(e) => e.preventDefault()}
           >
-            <div className="px-2 mb-3 w-full lg:mb-0 p3 flex flex-col lg:flex-row items-center font-bold  h-full ">
+            <div className="px-2 w-full mb-0 p-3 flex flex-col lg:flex-row items-center font-bold  h-full ">
               <select
                 className={cx(
                   "cursor-pointer w-full bg-transparent outline-none text-white border-b-[1px] border-b-[#fff] border-dashed flex items-center justify-between"
@@ -696,7 +718,7 @@ export function DetailCruise({}: { slug: string }): JSX.Element {
 
             <div
               className={cx(
-                "px-2 mb-3 lg:mb-0 w-full h-full  border-[#e6e6e6] relative"
+                "px-2 lg:mb-w-full h-full  border-[#e6e6e6] relative"
               )}
             >
               <label
@@ -920,13 +942,13 @@ export function DetailCruise({}: { slug: string }): JSX.Element {
 
           <div className="shadow-sm bg-white mt-5 p-10">
             <div className="grid grid-cols-6 border-b-[1px] border-dotted text-[var(--text-color-default)]">
-              <div className="col-span-4 pb-2 ">
+              <div className="col-span-6 lg:col-span-4 pb-2 ">
                 <span className="font-bold">Room Types</span>
               </div>
-              <div className="col-span-1 pb-2 px-3">
+              <div className=" hidden lg:block col-span-1 pb-2 px-3">
                 <span className="font-bold block text-end">Max</span>
               </div>
-              <div className="col-span-1 pb-2 ">
+              <div className="hidden lg:block col-span-1 pb-2 ">
                 <span className="font-bold block text-end">Rate</span>
               </div>
             </div>
@@ -937,8 +959,8 @@ export function DetailCruise({}: { slug: string }): JSX.Element {
                   "border-b-[1px]": cruiseDetail.typeRooms.length - 1 != index,
                 })}
               >
-                <div className="col-span-4 flex">
-                  <figure className="w-[40%]">
+                <div className="col-span-6 lg:col-span-4 block lg:flex">
+                  <figure className="w-full lg:w-[40%] ">
                     <Image
                       alt="image room"
                       src={room.images[0]}
@@ -953,7 +975,7 @@ export function DetailCruise({}: { slug: string }): JSX.Element {
                       More info »
                     </span>
                   </figure>
-                  <div className="ml-5">
+                  <div className="lg:ml-5">
                     <h3
                       onClick={() => setRoomTypeActive(index)}
                       className="hover:underline cursor-pointer text-[var(--text-hover-default)] text-xl font-semibold"
@@ -1001,7 +1023,7 @@ export function DetailCruise({}: { slug: string }): JSX.Element {
                     </ul>
                   </div>
                 </div>
-                <div className="col-span-1 px-3 flex items-end justify-end my-auto">
+                <div className="hidden lg:flex col-span-1 px-3 items-end justify-end my-auto">
                   {Array.from({ length: room.maxPerson }, (v, i) => i + 1).map(
                     (i, index) => (
                       <FontAwesomeIcon
@@ -1015,10 +1037,10 @@ export function DetailCruise({}: { slug: string }): JSX.Element {
                     )
                   )}
                 </div>
-                <div className="col-span-1 my-auto ml-auto">
+                <div className="hidden lg:block col-span-1 my-auto ml-auto">
                   <Image
                     alt="flash sale"
-                    src={"/detailCruise/flash_text.png"}
+                    src={"/share/flash_text.png"}
                     width={90}
                     height={65}
                     className="object-contain"
@@ -1109,6 +1131,225 @@ export function DetailCruise({}: { slug: string }): JSX.Element {
                 ></div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Overview */}
+        <section>
+          <div className="flex justify-between border-b-[1px]">
+            <div className="flex">
+              <div
+                onClick={() => setTabIndexActive(0)}
+                className={cx(
+                  "flex items-center px-2 border-b-[3px] mr-1 cursor-pointer hover:border-[var(--secondary-color)] hover:text-[var(--secondary-color)]",
+                  {
+                    "border-[var(--secondary-color)] text-[var(--secondary-color)]":
+                      tabIndexActive == 0,
+                    "border-transparent text-[#555]": tabIndexActive != 0,
+                  }
+                )}
+              >
+                <FontAwesomeIcon icon={faCircleInfo} className="mr-3" />
+                <span className="font-bold text-lg">Over views</span>
+              </div>
+
+              <div
+                onClick={() => setTabIndexActive(1)}
+                className={cx(
+                  "flex items-center px-2 border-b-[3px] mx-1 cursor-pointer hover:border-[var(--secondary-color)] hover:text-[var(--secondary-color)]",
+                  {
+                    "border-[var(--secondary-color)] text-[var(--secondary-color)]":
+                      tabIndexActive == 1,
+                    "border-transparent text-[#555]": tabIndexActive != 1,
+                  }
+                )}
+              >
+                <FontAwesomeIcon icon={faComments} className="mr-3" />
+                <span className="font-bold text-lg">Reviews</span>
+              </div>
+            </div>
+            <div>
+              <div
+                onClick={() => setTabIndexActive(2)}
+                className={cx(
+                  "flex items-center px-2 border-b-[3px] mx-1 cursor-pointer hover:border-[var(--secondary-color)] hover:text-[var(--secondary-color)]",
+                  {
+                    "border-[var(--secondary-color)] text-[var(--secondary-color)]":
+                      tabIndexActive == 2,
+                    "border-transparent text-[#555]": tabIndexActive != 2,
+                  }
+                )}
+              >
+                <FontAwesomeIcon icon={faCircleQuestion} className="mr-3" />
+                <span className="font-bold text-lg">Question & Answer</span>
+              </div>
+            </div>
+          </div>
+          <div className={cx()}>
+            <div
+              className="py-5"
+              dangerouslySetInnerHTML={{ __html: cruiseDetail.content }}
+            ></div>
+            <h4 className="font-bold text-[var(--text-color-default)]">
+              Features
+            </h4>
+            <div className="my-5 py-5 border-t-[2px] border-b-[2px] border-dotted grid grid-cols-4">
+              <div className="flex text-[#333] text-[13px]">
+                <FontAwesomeIcon
+                  icon={mapServiceIcons["allMeals"]}
+                  className="mr-3"
+                />
+                <span>All Meals Included</span>
+              </div>
+            </div>
+
+            <h4 className="font-bold text-[var(--text-color-default)]">Meal</h4>
+            <div className="my-5 py-3 grid grid-cols-4">
+              <div className="flex text-[#333] text-[13px]">
+                <FontAwesomeIcon
+                  icon={mapServiceIcons["allMeals"]}
+                  className="mr-3"
+                />
+                <span>All Meals Included</span>
+              </div>
+            </div>
+
+            <h4 className="font-bold text-[var(--text-color-default)]">
+              Internet
+            </h4>
+            <div className="my-5 py-3 grid grid-cols-4">
+              <div className="flex text-[#333] text-[13px]">
+                <FontAwesomeIcon
+                  icon={mapServiceIcons["allMeals"]}
+                  className="mr-3"
+                />
+                <span>All Meals Included</span>
+              </div>
+            </div>
+
+            <h4 className="font-bold text-[var(--text-color-default)]">
+              Transportations
+            </h4>
+            <div className="my-5 py-3 grid grid-cols-4">
+              <div className="flex text-[#333] text-[13px]">
+                <FontAwesomeIcon
+                  icon={mapServiceIcons["allMeals"]}
+                  className="mr-3"
+                />
+                <span>All Meals Included</span>
+              </div>
+            </div>
+
+            <h4 className="font-bold text-[var(--text-color-default)]">
+              Fitness & recreation
+            </h4>
+            <div className="my-5 py-3 grid grid-cols-4">
+              <div className="flex text-[#333] text-[13px]">
+                <FontAwesomeIcon
+                  icon={mapServiceIcons["allMeals"]}
+                  className="mr-3"
+                />
+                <span>All Meals Included</span>
+              </div>
+            </div>
+
+            <h4 className="font-bold text-[var(--text-color-default)]">
+              Water sports
+            </h4>
+            <div className="my-5 py-3 grid grid-cols-4">
+              <div className="flex text-[#333] text-[13px]">
+                <FontAwesomeIcon
+                  icon={mapServiceIcons["allMeals"]}
+                  className="mr-3"
+                />
+                <span>All Meals Included</span>
+              </div>
+            </div>
+
+            <h4 className="font-bold text-[var(--text-color-default)]">
+              Land sports
+            </h4>
+            <div className="my-5 py-3 grid grid-cols-4">
+              <div className="flex text-[#333] text-[13px]">
+                <FontAwesomeIcon
+                  icon={mapServiceIcons["allMeals"]}
+                  className="mr-3"
+                />
+                <span>All Meals Included</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* May also like */}
+        <section ref={sectionMayAlsoRef} className="bg-[#f1f1f1] py-5">
+          <div className="container">
+            <h2 className="my-3 text-2xl font-bold text-[var(--secondary-color)] w-full text-center relative line-text">
+              You May Also Like...
+            </h2>
+          </div>
+          <div className="relative container pt-5">
+            <FontAwesomeIcon
+              onClick={() => {
+                if (sectionMayAlsoRef.current) {
+                  const preBtnSwiper = sectionMayAlsoRef.current.querySelector(
+                    ".swiper-button-prev"
+                  );
+                  if (preBtnSwiper) (preBtnSwiper as HTMLElement).click();
+                }
+              }}
+              className="cursor-pointer w-5 h-5 absolute top-1/3 -translate-y-1/2 z-10 text-[#555555cc] bg-[#ffffff99] hover:bg-[#ffffffe6] drop-shadow-md p-3 rounded-full -left-2 "
+              icon={faChevronLeft}
+            />
+
+            <div className="hidden lg:block">
+              <Swiper
+                slidesPerView={3}
+                spaceBetween={30}
+                navigation={{}}
+                modules={[Navigation]}
+                className="swiper-luxury"
+                loop
+              >
+                {luxuryCruise.map((cruise, index) => (
+                  <SwiperSlide key={index}>
+                    <CruiseHomeLuxuryOrBudget {...cruise} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+            <div className="block lg:hidden">
+              <Swiper
+                slidesPerView={1}
+                spaceBetween={0}
+                className="swiper-luxury"
+                loop
+              >
+                {luxuryCruise.map((cruise, index) => (
+                  <SwiperSlide key={index}>
+                    <CruiseHomeLuxuryOrBudget {...cruise} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+            <FontAwesomeIcon
+              onClick={() => {
+                if (sectionMayAlsoRef.current) {
+                  const preBtnSwiper = sectionMayAlsoRef.current.querySelector(
+                    ".swiper-button-next"
+                  );
+                  if (preBtnSwiper) (preBtnSwiper as HTMLElement).click();
+                }
+              }}
+              className="cursor-pointer w-5 h-5 absolute top-1/3 -translate-y-1/2 z-10 text-[#555555cc] bg-[#ffffff99] hover:bg-[#ffffffe6] drop-shadow-md p-3 rounded-full -right-2 "
+              icon={faChevronRight}
+            />
+          </div>
+
+          <div className="container flex justify-center">
+            <button className="mx-auto text-sm font-bold text-[var(--text-hover-default)] w-fit px-10 py-2 rounded-3xl border-[2px] border-dotted border-[#0cab5b] mt-3 hover:bg-[#06b28b] hover:text-white ">
+              View more <span>{`»`}</span>
+            </button>
           </div>
         </section>
       </div>

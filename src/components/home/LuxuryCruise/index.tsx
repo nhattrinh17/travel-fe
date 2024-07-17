@@ -82,7 +82,7 @@ export function LuxuryCruise(): JSX.Element {
 
       <div className="container flex justify-center">
         <button className="mx-auto text-sm font-bold text-[var(--text-hover-default)] w-fit px-10 py-2 rounded-3xl border-[2px] border-dotted border-[#0cab5b] mt-3 hover:bg-[#06b28b] hover:text-white ">
-          View Luxury Cruises <span>{`>>`}</span>
+          View Luxury Cruises <span>{`»`}</span>
         </button>
       </div>
     </section>

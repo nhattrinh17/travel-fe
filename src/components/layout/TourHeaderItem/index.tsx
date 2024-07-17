@@ -1,9 +1,10 @@
-// "use client";
+"use client";
 
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export function TourHeaderItem({
   image,
@@ -11,16 +12,28 @@ export function TourHeaderItem({
   name,
   slug,
   typeTour,
+  cancelNavMobile,
 }: {
   typeTour: string;
   name: string;
   image: string;
   slug: string;
   like: number;
+  cancelNavMobile: () => void;
 }): JSX.Element {
+  const route = useRouter();
+
   return (
     <div className="relative group w-full h-full text-white hover:text-[var(--text-hover-default)] transition-colors duration-500">
-      <Link href={`/tour?name=${slug}&type=${typeTour}`} className="">
+      <div
+        onClick={() => {
+          if (window.innerWidth < 1024) {
+            cancelNavMobile();
+          }
+          route.push(`/tour?name=${slug}&type=${typeTour}`);
+        }}
+        className=""
+      >
         <div className="w-full h-full overflow-hidden transition-transform">
           <Image
             alt="image tour"
@@ -37,7 +50,7 @@ export function TourHeaderItem({
           <span className="text-sm mr-1">{like}</span>
           <FontAwesomeIcon icon={faHeart} />
         </div>
-      </Link>
+      </div>
     </div>
   );
 }

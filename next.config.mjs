@@ -5,7 +5,11 @@ const nextConfig = {
     API_URL: "http://localhost:9999/api",
   },
   images: {
-    domains: ["d1k2oi80tv211b.cloudfront.net", "storage.googleapis.com"],
+    domains: [
+      "www.insidetravel.com",
+      "d1k2oi80tv211b.cloudfront.net",
+      "storage.googleapis.com",
+    ],
   },
 };
 

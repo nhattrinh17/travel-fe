@@ -19,6 +19,10 @@ const config: Config = {
       },
     },
     keyframes: {
+      fadeIn: {
+        "0%": { opacity: "0" },
+        "100%": { opacity: "1" },
+      },
       slideDown: {
         "0%": { transform: "translateY(-100%)", opacity: "0" },
         "100%": { transform: "translateY(0)", opacity: "1" },
@@ -51,6 +55,7 @@ const config: Config = {
       slideUp: "slideUp 0.5s ease-out forwards",
       slideLeft: "slideLeft 0.5s ease-out forwards",
       slideRight: "slideRight 0.5s ease-out forwards",
+      fadeIn: "fadeIn 0.5s ease-out forwards",
       zoomInZoomOut: "zoomInZoomOut 14s ease-out infinite",
     },
   },

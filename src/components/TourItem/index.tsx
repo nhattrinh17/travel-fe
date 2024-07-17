@@ -1,7 +1,10 @@
 "use client";
 
 import { mapServiceIcons } from "@/constants";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import {
+  faHeart,
+  faStar as faStarRegular,
+} from "@fortawesome/free-regular-svg-icons";
 import {
   faStar,
   faHeart as faHeartSolid,
@@ -10,40 +13,33 @@ import {
   faBolt,
   faCheck,
   faThumbsUp,
-  faBookmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Tooltip } from "react-tooltip";
 
 export function TourItem({
   discount,
-  imageMain,
+  images,
   isFlashSale,
-  isAllMeals,
   name,
-  services,
   price,
   content,
   serviceSpecial,
-  typeShow,
+  marginBottom,
+  totalStar,
 }: {
   name: string;
+  totalStar: number;
   isFlashSale: boolean;
   discount: number;
-  imageMain: string;
-  isAllMeals: boolean;
-  services: {
-    name: string;
-    slug: string;
-  }[];
+  images: string[];
   price: number;
   content: string;
   serviceSpecial: { name: string; content: string }[];
-  typeShow: string;
+  marginBottom: number;
 }): JSX.Element {
   const [showContent, setShowContent] = useState(false);
   const [showAllServiceSpecial, setShowAllServiceSpecial] = useState(false);
@@ -51,11 +47,17 @@ export function TourItem({
   const [mountLike, setMountLike] = useState(false);
 
   return (
-    <div className="group w-full shadow-md mb-20">
-      <Link href={""} className="relative w-full block overflow-hidden">
+    <div
+      className="group w-full shadow-md"
+      style={{ marginBottom: marginBottom }}
+    >
+      <Link
+        href={`/tour/${name}`}
+        className="relative w-full block overflow-hidden"
+      >
         <Image
           alt="image cruise"
-          src={imageMain}
+          src={images[0]}
           width={570}
           height={306}
           className="w-full object-contain group-hover:scale-[1.15] transition-all duration-500"
@@ -89,49 +91,31 @@ export function TourItem({
             className="text-2xl"
           />
         </div>
-
-        <div
-          className={classNames(
-            "absolute bottom-2 left-0 px-2 py-1 text-white text-xs text-center bg-[#390]",
-            {
-              hidden: !isAllMeals,
-            }
-          )}
-        >
-          <p>All Meals Included</p>
-        </div>
       </Link>
 
       <div className="px-2 py-3">
         <div className="flex justify-between items-start mb-2">
           <div>
             <h3 className="text-[var(--secondary-color)] font-bold text-xl">
-              <Link href={""}>{name}</Link>
+              <Link href={`/tour/${name}`}>{name}</Link>
             </h3>
             <div className="flex">
-              {Array.from({ length: 5 }, (v, i) => i + 1).map((i, index) => (
-                <FontAwesomeIcon
-                  key={index}
-                  icon={faStar}
-                  className="mr-1 text-[orange] text-xs"
-                />
-              ))}
+              {Array.from({ length: 5 }, (v, i) => i + 1).map((i, index) =>
+                i <= totalStar ? (
+                  <FontAwesomeIcon
+                    key={index}
+                    icon={faStar}
+                    className="mr-1 text-[orange] text-xs"
+                  />
+                ) : (
+                  <FontAwesomeIcon
+                    key={index}
+                    icon={faStarRegular}
+                    className="mr-1 text-[var(--text-color-default)] text-xs"
+                  />
+                )
+              )}
             </div>
-          </div>
-
-          <div className="flex">
-            {services.map((service, index) => (
-              <div key={index}>
-                <FontAwesomeIcon
-                  icon={mapServiceIcons[service.slug]}
-                  data-tooltip-id={`tooltip-service-${service.slug}`}
-                  data-tooltip-content={service.name}
-                  data-tooltip-place="top"
-                  className="text-[#333] text-xs p-2 rounded-full border-[1px] border-[#ddd] mx-1"
-                />
-                <Tooltip id={`tooltip-service-${service.slug}`} />
-              </div>
-            ))}
           </div>
         </div>
         <div className="flex justify-between items-center mb-3">

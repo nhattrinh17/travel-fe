@@ -1,7 +1,10 @@
 "use client";
 
 import { mapServiceIcons } from "@/constants";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import {
+  faHeart,
+  faStar as faStarRegular,
+} from "@fortawesome/free-regular-svg-icons";
 import {
   faStar,
   faHeart as faHeartSolid,
@@ -32,11 +35,13 @@ export function CruiseItem({
   content,
   serviceSpecial,
   marginBottom,
+  totalStar,
 }: {
   name: string;
   isFlashSale: boolean;
   discount: number;
   images: string[];
+  totalStar: number;
   isAllMeals: boolean;
   services: {
     name: string;
@@ -119,13 +124,21 @@ export function CruiseItem({
               <Link href={`/cruise/${name}`}>{name}</Link>
             </h3>
             <div className="flex">
-              {Array.from({ length: 5 }, (v, i) => i + 1).map((i, index) => (
-                <FontAwesomeIcon
-                  key={index}
-                  icon={faStar}
-                  className="mr-1 text-[orange] text-xs"
-                />
-              ))}
+              {Array.from({ length: 5 }, (v, i) => i + 1).map((i, index) =>
+                i <= totalStar ? (
+                  <FontAwesomeIcon
+                    key={index}
+                    icon={faStar}
+                    className="mr-1 text-[orange] text-xs"
+                  />
+                ) : (
+                  <FontAwesomeIcon
+                    key={index}
+                    icon={faStarRegular}
+                    className="mr-1 text-[var(--text-color-default)] text-xs"
+                  />
+                )
+              )}
             </div>
           </div>
 

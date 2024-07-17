@@ -1,6 +1,6 @@
 "use client";
 
-import { luxuryCruise } from "@/mocks";
+import { top10DailyTour } from "@/mocks";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -44,7 +44,7 @@ export function Top10DailyTour(): JSX.Element {
             className="swiper-luxury"
             loop
           >
-            {luxuryCruise.map((cruise, index) => (
+            {top10DailyTour.map((cruise, index) => (
               <SwiperSlide key={index}>
                 <TourHomeTop10Item {...cruise} />
               </SwiperSlide>
@@ -58,7 +58,7 @@ export function Top10DailyTour(): JSX.Element {
             className="swiper-luxury"
             loop
           >
-            {luxuryCruise.map((cruise, index) => (
+            {top10DailyTour.map((cruise, index) => (
               <SwiperSlide key={index}>
                 <TourHomeTop10Item {...cruise} />
               </SwiperSlide>

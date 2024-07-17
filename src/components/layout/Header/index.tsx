@@ -23,6 +23,10 @@ export function HeaderLayout(): JSX.Element {
     positionY: number;
   }>({ name: "en", positionY: -4 });
   const [showAllTour, setShowAllTour] = useState(false);
+  const [showPacketTour, setShowPacketTour] = useState(false);
+  const [showDailyTour, setShowDailyTour] = useState(false);
+  const [showCruises, setShowCruises] = useState(false);
+  const [showLanguage, setShowLanguage] = useState(false);
 
   useEffect(() => {
     const cookies = parseCookies();
@@ -92,9 +96,13 @@ export function HeaderLayout(): JSX.Element {
             )}
           >
             <div
-              onMouseLeave={() => setShowAllTour(false)}
+              onMouseEnter={() => setShowPacketTour(true)}
+              onClick={() => setShowPacketTour((pre) => !pre)}
+              onMouseLeave={() => {
+                setShowAllTour(false);
+                setShowPacketTour(false);
+              }}
               className={cx(
-                "packet-tour__wrapper",
                 "relative px-2 cursor-pointer text-center w-full lg:w-auto py-1 lg:py-0 lg:hover:bg-[var(--primary-color)] text-white font-bold lg:h-full"
               )}
             >
@@ -108,8 +116,11 @@ export function HeaderLayout(): JSX.Element {
 
               <div
                 className={cx(
-                  "packet-tour__wrapper--list",
-                  "lg:absolute left-0 top-full lg:bg-[var(--primary-color)] p-2 w-full lg:w-[740px] grid-cols-4 gap-2"
+                  "lg:absolute left-0 top-full lg:bg-[var(--primary-color)] p-2 w-full lg:w-[740px] grid-cols-4 gap-2",
+                  {
+                    "block lg:grid": showPacketTour,
+                    hidden: !showPacketTour,
+                  }
                 )}
               >
                 {packetTour.map((tour, index) => (
@@ -120,7 +131,11 @@ export function HeaderLayout(): JSX.Element {
                       "lg:hidden": index >= 11 && !showAllTour,
                     })}
                   >
-                    <TourHeaderItem {...tour} typeTour="packet" />
+                    <TourHeaderItem
+                      cancelNavMobile={() => setShowNav(false)}
+                      {...tour}
+                      typeTour="packet"
+                    />
                   </div>
                 ))}
                 <div
@@ -137,9 +152,13 @@ export function HeaderLayout(): JSX.Element {
               </div>
             </div>
             <div
-              onMouseLeave={() => setShowAllTour(false)}
+              onMouseEnter={() => setShowDailyTour(true)}
+              onClick={() => setShowDailyTour((pre) => !pre)}
+              onMouseLeave={() => {
+                setShowAllTour(false);
+                setShowDailyTour(false);
+              }}
               className={cx(
-                "daily-tour__wrapper",
                 "relative px-2 cursor-pointer text-center w-full lg:w-auto py-1 lg:py-0 lg:hover:bg-[var(--primary-color)] text-white font-bold lg:h-full"
               )}
             >
@@ -153,8 +172,11 @@ export function HeaderLayout(): JSX.Element {
 
               <div
                 className={cx(
-                  "daily-tour__wrapper--list",
-                  "lg:absolute left-0 top-full lg:bg-[var(--primary-color)] p-2 w-full lg:w-[740px] grid-cols-4 gap-2"
+                  "lg:absolute left-0 top-full lg:bg-[var(--primary-color)] p-2 w-full lg:w-[740px] grid-cols-4 gap-2",
+                  {
+                    "block lg:grid": showDailyTour,
+                    hidden: !showDailyTour,
+                  }
                 )}
               >
                 {packetTour.map((tour, index) => (
@@ -165,7 +187,12 @@ export function HeaderLayout(): JSX.Element {
                       "lg:hidden": index >= 11 && !showAllTour,
                     })}
                   >
-                    <TourHeaderItem {...tour} key={index} typeTour="packet" />
+                    <TourHeaderItem
+                      cancelNavMobile={() => setShowNav(false)}
+                      {...tour}
+                      key={index}
+                      typeTour="packet"
+                    />
                   </div>
                 ))}
                 <div
@@ -182,8 +209,10 @@ export function HeaderLayout(): JSX.Element {
               </div>
             </div>
             <div
+              onMouseEnter={() => setShowCruises(true)}
+              onClick={() => setShowCruises((pre) => !pre)}
+              onMouseLeave={() => setShowCruises(false)}
               className={cx(
-                "cruises__wrapper",
                 "relative px-2 cursor-pointer w-full lg:w-auto lg:hover:bg-[var(--primary-color)] text-white font-bold lg:h-full"
               )}
             >
@@ -197,12 +226,19 @@ export function HeaderLayout(): JSX.Element {
 
               <div
                 className={cx(
-                  "cruises__wrapper--list",
-                  "lg:absolute top-full left-[-200%] p-2 grid-cols-3 gap-2 w-full lg:w-[740px] bg-[#ffffff12] lg:bg-[var(--primary-color)]"
+                  "lg:absolute top-full left-[-200%] p-2 grid-cols-3 gap-2 w-full lg:w-[740px] bg-[#ffffff12] lg:bg-[var(--primary-color)]",
+                  {
+                    "block lg:grid": showCruises,
+                    hidden: !showCruises,
+                  }
                 )}
               >
                 {cruises.map((cruise, index) => (
-                  <CruisesHeaderItem key={index} {...cruise} />
+                  <CruisesHeaderItem
+                    key={index}
+                    {...cruise}
+                    cancelNavMobile={() => setShowNav(false)}
+                  />
                 ))}
               </div>
             </div>
@@ -222,7 +258,7 @@ export function HeaderLayout(): JSX.Element {
               <h2 className="uppercase text-xl lg:text-xs">About US</h2>
             </Link>
             <Link
-              href={""}
+              href={"/contact-us"}
               className="px-2 cursor-pointer py-1 lg:py-0 lg:hover:bg-[var(--primary-color)] text-white font-bold lg:h-full flex items-center"
             >
               <h2 className="uppercase text-xl lg:text-xs">Contact US</h2>
@@ -240,9 +276,11 @@ export function HeaderLayout(): JSX.Element {
             </div>
 
             <div
+              onMouseEnter={() => setShowLanguage(true)}
+              onClick={() => setShowLanguage((pre) => !pre)}
+              onMouseLeave={() => setShowLanguage(false)}
               className={cx(
-                "px-2 cursor-pointer py-1 lg:py-0 lg:hover:bg-[var(--primary-color)] text-white font-bold w-full lg:w-auto lg:h-full relative",
-                "language-wrapper"
+                "px-2 cursor-pointer py-1 lg:py-0 lg:hover:bg-[var(--primary-color)] text-white font-bold w-full lg:w-auto lg:h-full relative"
               )}
             >
               <div className="flex items-center uppercase justify-center lg:h-full">
@@ -260,10 +298,10 @@ export function HeaderLayout(): JSX.Element {
                 />
               </div>
               <div
-                className={cx(
-                  "w-full lg:absolute top-full right-0",
-                  "language-wrapper__options"
-                )}
+                className={cx("w-full lg:absolute top-full right-0", {
+                  "block lg:grid": showLanguage,
+                  hidden: !showLanguage,
+                })}
               >
                 <LanguageSwitcher />
               </div>

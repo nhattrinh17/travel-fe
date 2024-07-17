@@ -82,7 +82,7 @@ export function Top10PacketTour(): JSX.Element {
           >
             {topTour.map((tour, index) => (
               <SwiperSlide key={index}>
-                <TourItem {...tour} typeShow="home" />
+                <TourItem {...tour} marginBottom={80} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -100,7 +100,7 @@ export function Top10PacketTour(): JSX.Element {
           >
             {topTour.map((tour, index) => (
               <SwiperSlide key={index}>
-                <TourItem {...tour} typeShow="home" />
+                <TourItem {...tour} marginBottom={80} />
               </SwiperSlide>
             ))}
           </Swiper>

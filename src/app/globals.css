@@ -104,3 +104,8 @@ body {
 .swiper-pagination-bullet-active {
   background: #acacac !important;
 }
+
+/* css swipper */
+.swiper__image--tour-active {
+  height: 100%;
+}

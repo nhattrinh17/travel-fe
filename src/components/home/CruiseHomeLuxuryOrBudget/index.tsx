@@ -19,7 +19,7 @@ import { useState } from "react";
 
 export function CruiseHomeLuxuryOrBudget({
   discount,
-  imageMain,
+  images,
   isFlashSale,
   name,
   price,
@@ -30,7 +30,7 @@ export function CruiseHomeLuxuryOrBudget({
   name: string;
   isFlashSale: boolean;
   discount: number;
-  imageMain: string;
+  images: string[];
   isAllMeals: boolean;
   price: number;
   timeLaunched: number;
@@ -44,7 +44,7 @@ export function CruiseHomeLuxuryOrBudget({
       <Link href={""} className="relative w-full block overflow-hidden">
         <Image
           alt="image cruise"
-          src={imageMain}
+          src={images[0]}
           width={570}
           height={306}
           className="w-full object-contain group-hover:scale-[1.15] transition-all duration-500"

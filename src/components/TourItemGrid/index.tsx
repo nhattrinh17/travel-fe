@@ -20,15 +20,12 @@ import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Tooltip } from "react-tooltip";
 
-export function CruiseItemGrid({
+export function TourItemGrid({
   discount,
   images,
   isFlashSale,
-  isAllMeals,
   name,
-  services,
   price,
   timeLaunched,
   totalRoms,
@@ -41,11 +38,6 @@ export function CruiseItemGrid({
   totalStar: number;
   discount: number;
   images: string[];
-  isAllMeals: boolean;
-  services: {
-    name: string;
-    slug: string;
-  }[];
   price: number;
   timeLaunched: number;
   totalRoms: number;
@@ -59,7 +51,7 @@ export function CruiseItemGrid({
   return (
     <div className="group bg-white w-full shadow-md mb-10 flex flex-col lg:flex-row p-8 rounded-md">
       <Link
-        href={`/cruise/${name}`}
+        href={`/tour/${name}`}
         className="relative w-[550px] max-w-full h-fit block overflow-hidden mr-3"
       >
         <div>
@@ -122,23 +114,12 @@ export function CruiseItemGrid({
             className="text-2xl"
           />
         </div>
-
-        <div
-          className={classNames(
-            "absolute bottom-2 right-0 px-2 py-1 text-white text-xs text-center bg-[#390]",
-            {
-              hidden: !isAllMeals,
-            }
-          )}
-        >
-          <p>All Meals Included</p>
-        </div>
       </Link>
 
       <div className="">
         <div className="flex flex-col lg:flex-row justify-between items-start pb-2 border-b-[1px] border-[#ddd] border-dotted">
           <h3 className="text-[var(--secondary-color)] font-bold text-xl mb-2">
-            <Link href={`/cruise/${name}`}>{name}</Link>
+            <Link href={`/tour/${name}`}>{name}</Link>
           </h3>
           <div className="flex items-center mb-2">
             <div className="flex">
@@ -240,47 +221,28 @@ export function CruiseItemGrid({
             <div className="h-[2px] w-6 bg-[#BBBBBB] mt-4 rounded-md"></div>
           </div>
         </div>
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex">
-            {services.map((service, index) => (
-              <div key={index}>
-                <FontAwesomeIcon
-                  icon={mapServiceIcons[service.slug]}
-                  data-tooltip-id={`tooltip-service-${service.slug}`}
-                  data-tooltip-content={service.name}
-                  data-tooltip-place="top"
-                  className="text-[#333] text-xs p-2 rounded-full border-[1px] border-[#ddd] mx-1"
-                />
-                <Tooltip id={`tooltip-service-${service.slug}`} />
-              </div>
-            ))}
+        <div className="ml-auto">
+          <div className="flex items-end pb-1">
+            <span className="text-sm text-[#999]">Only From</span>
+            <del
+              className={classNames("mx-1 text-[#FF9900] font-bold text-2xl", {
+                hidden: !discount,
+              })}
+            >
+              ${price}
+            </del>
+            <span className="ml-1 text-2xl text-[var(--text-hover-default)] font-bold">
+              ${Math.ceil(price - price * (discount / 100 || 0))}
+            </span>
           </div>
-          <div>
-            <div className="flex items-end pb-1">
-              <span className="text-sm text-[#999]">Only From</span>
-              <del
-                className={classNames(
-                  "mx-1 text-[#FF9900] font-bold text-2xl",
-                  {
-                    hidden: !discount,
-                  }
-                )}
-              >
-                ${price}
-              </del>
-              <span className="ml-1 text-2xl text-[var(--text-hover-default)] font-bold">
-                ${Math.ceil(price - price * (discount / 100 || 0))}
-              </span>
-            </div>
-            <div className="flex">
-              <FontAwesomeIcon
-                icon={faCheck}
-                className="text-[var(--text-hover-default)] text-base mr-1"
-              />
-              <span className="text-[#888888] text-xs font-bold">
-                Best Price Guarantee
-              </span>
-            </div>
+          <div className="flex">
+            <FontAwesomeIcon
+              icon={faCheck}
+              className="text-[var(--text-hover-default)] text-base mr-1"
+            />
+            <span className="text-[#888888] text-xs font-bold">
+              Best Price Guarantee
+            </span>
           </div>
         </div>
 

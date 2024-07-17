@@ -48,7 +48,7 @@ export function TypeRoomCruiseItem({
 }: Params): JSX.Element {
   return (
     <div
-      className="fixed left-0 right-0 bottom-0 py-4 bg-[#0000003b]"
+      className="fixed left-0 right-0 bottom-0 py-4 bg-[#0000003b] z-20"
       onClick={onClose}
     >
       <div
