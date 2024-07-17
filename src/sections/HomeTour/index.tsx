@@ -9,13 +9,13 @@ import { tourHome } from "@/mocks";
 import { faBorderAll, faListUl } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
-export function HomeTourSection({
-  slugDestination,
-}: {
-  slugDestination: string;
-}): JSX.Element {
+export function HomeTourSection(): JSX.Element {
+  const searchParams = useSearchParams();
+  const slugDestination = searchParams.get("name") || "";
+
   const [typeShow, setTypeShow] = useState("list");
   return (
     <div className="-mt-[var(--height-header)]">

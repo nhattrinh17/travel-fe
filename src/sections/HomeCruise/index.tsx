@@ -16,10 +16,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { Tooltip } from "react-tooltip";
 
-export function HomeCruiseSection({ slug }: { slug: string }): JSX.Element {
+export function HomeCruiseSection(): JSX.Element {
+  const searchParams = useSearchParams();
+  const slug = searchParams.get("name") || "";
   const [typeShow, setTypeShow] = useState("list");
 
   return (

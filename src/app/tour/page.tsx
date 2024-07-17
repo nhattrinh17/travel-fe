@@ -1,11 +1,10 @@
-"use client";
-
 import { HomeTourSection } from "@/sections/HomeTour";
-import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 export default function TourPage(): JSX.Element {
-  const searchParams = useSearchParams();
-  const name = searchParams.get("name") || "";
-
-  return <HomeTourSection slugDestination={name} />;
+  return (
+    <Suspense>
+      <HomeTourSection />
+    </Suspense>
+  );
 }
