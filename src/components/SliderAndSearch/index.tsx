@@ -103,7 +103,7 @@ export function SliderAndSearch(): JSX.Element {
             className="w-full h-full object-cover animate-zoomInZoomOut"
           />
         </div>
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center">
+        <div className="z-10 absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center">
           <Image
             alt="logoCenter"
             src={logoCenter}
@@ -219,7 +219,7 @@ export function SliderAndSearch(): JSX.Element {
                 {showSelectDate ? (
                   <div
                     ref={boxSelectDateRef}
-                    className={cx("absolute z-10 top-[calc(100%+20px)]")}
+                    className={cx("absolute z-[20] top-[calc(100%+20px)]")}
                   >
                     <DatePickerCustomer
                       onChangePicker={(date) => setDate(date)}

@@ -178,10 +178,13 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
               <div className="basis-full flex-1 shadow-md mb-3">
                 <div
                   onClick={() => setTabActive(0)}
-                  className={cx("cursor-pointer py-3 px-7 uppercase", {
-                    "bg-white text-black": tabActive !== 0,
-                    "bg-[var(--primary-color)] text-white": tabActive == 0,
-                  })}
+                  className={cx(
+                    "cursor-pointer py-3 px-7 uppercase block lg:hidden",
+                    {
+                      "bg-white text-black": tabActive !== 0,
+                      "bg-[var(--primary-color)] text-white": tabActive == 0,
+                    }
+                  )}
                 >
                   <h3 className="font-bold">Detail</h3>
                 </div>
@@ -200,10 +203,13 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
               <div className="basis-full flex-1 shadow-md mb-3">
                 <div
                   onClick={() => setTabActive(1)}
-                  className={cx("cursor-pointer py-3 px-7 uppercase", {
-                    "bg-white text-black": tabActive !== 1,
-                    "bg-[var(--primary-color)] text-white": tabActive == 1,
-                  })}
+                  className={cx(
+                    "cursor-pointer py-3 px-7 uppercase block lg:hidden",
+                    {
+                      "bg-white text-black": tabActive !== 1,
+                      "bg-[var(--primary-color)] text-white": tabActive == 1,
+                    }
+                  )}
                 >
                   <h3 className="font-bold">Itinerary</h3>
                 </div>
@@ -245,10 +251,13 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
               <div className="basis-full flex-1 shadow-md mb-3">
                 <div
                   onClick={() => setTabActive(2)}
-                  className={cx("cursor-pointer py-3 px-7 uppercase", {
-                    "bg-white text-black": tabActive !== 2,
-                    "bg-[var(--primary-color)] text-white": tabActive == 2,
-                  })}
+                  className={cx(
+                    "cursor-pointer py-3 px-7 uppercase block lg:hidden",
+                    {
+                      "bg-white text-black": tabActive !== 2,
+                      "bg-[var(--primary-color)] text-white": tabActive == 2,
+                    }
+                  )}
                 >
                   <h3 className="font-bold">Deals</h3>
                 </div>
@@ -349,10 +358,13 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
               <div className="basis-full flex-1 shadow-md mb-3">
                 <div
                   onClick={() => setTabActive(3)}
-                  className={cx("cursor-pointer py-3 px-7 uppercase", {
-                    "bg-white text-black": tabActive !== 3,
-                    "bg-[var(--primary-color)] text-white": tabActive == 3,
-                  })}
+                  className={cx(
+                    "cursor-pointer py-3 px-7 uppercase block lg:hidden",
+                    {
+                      "bg-white text-black": tabActive !== 3,
+                      "bg-[var(--primary-color)] text-white": tabActive == 3,
+                    }
+                  )}
                 >
                   <h3 className="font-bold">Photo</h3>
                 </div>

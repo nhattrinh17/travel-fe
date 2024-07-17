@@ -252,7 +252,7 @@ export function HeaderLayout(): JSX.Element {
               <h2 className="uppercase text-xl lg:text-xs">Flash Deals</h2>
             </div>
             <Link
-              href={""}
+              href={"/about-us"}
               className="px-2 cursor-pointer py-1 lg:py-0 lg:hover:bg-[var(--primary-color)] text-white font-bold lg:h-full flex items-center"
             >
               <h2 className="uppercase text-xl lg:text-xs">About US</h2>
