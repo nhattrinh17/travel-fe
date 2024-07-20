@@ -28,34 +28,36 @@ export function CruiseItem({
   isFlashSale,
   isAllMeals,
   name,
-  services,
+  accompaniedServices,
   price,
   styleCruise,
-  totalRoms,
-  content,
-  serviceSpecial,
+  totalRom,
+  contentBrief,
+  specialOffers,
   marginBottom,
   totalStar,
+  slug,
 }: {
   name: string;
+  slug: string;
   isFlashSale: boolean;
   discount: number;
   images: string[];
   totalStar: number;
   isAllMeals: boolean;
-  services: {
+  accompaniedServices: {
     name: string;
     slug: string;
   }[];
   price: number;
   styleCruise: string;
-  totalRoms: number;
-  content: string;
-  serviceSpecial: { name: string; content: string }[];
+  totalRom: number;
+  contentBrief: string;
+  specialOffers: { name: string; content: string }[];
   marginBottom: number;
 }): JSX.Element {
   const [showContent, setShowContent] = useState(false);
-  const [showAllServiceSpecial, setShowAllServiceSpecial] = useState(false);
+  const [showAllSpecialOffers, setShowAllSpecialOffers] = useState(false);
   const [showDetailSpecial, setShowDetailSpecial] = useState<number[]>([]);
   const [mountLike, setMountLike] = useState(false);
 
@@ -65,7 +67,7 @@ export function CruiseItem({
       style={{ marginBottom: marginBottom }}
     >
       <Link
-        href={`/cruise/${name}`}
+        href={`/cruise/${slug}`}
         className="relative w-full block overflow-hidden"
       >
         <Image
@@ -121,7 +123,7 @@ export function CruiseItem({
         <div className="flex justify-between items-start mb-2">
           <div>
             <h3 className="text-[var(--secondary-color)] font-bold text-xl">
-              <Link href={`/cruise/${name}`}>{name}</Link>
+              <Link href={`/cruise/${slug}`}>{name}</Link>
             </h3>
             <div className="flex">
               {Array.from({ length: 5 }, (v, i) => i + 1).map((i, index) =>
@@ -143,7 +145,7 @@ export function CruiseItem({
           </div>
 
           <div className="flex">
-            {services.map((service, index) => (
+            {accompaniedServices.map((service, index) => (
               <div key={index}>
                 <FontAwesomeIcon
                   icon={mapServiceIcons[service.slug]}
@@ -192,7 +194,7 @@ export function CruiseItem({
             </div>
             <div className="flex mr-2">
               <FontAwesomeIcon icon={faBed} className="relative top-1 mr-1" />
-              <span>Rooms:{totalRoms}</span>
+              <span>Rooms:{totalRom}</span>
             </div>
           </div>
           <div className="flex">
@@ -234,7 +236,7 @@ export function CruiseItem({
               "h-[36px] overflow-hidden": !showContent,
               "h-auto": showContent,
             })}
-            dangerouslySetInnerHTML={{ __html: content }}
+            dangerouslySetInnerHTML={{ __html: contentBrief }}
           ></div>
           <span
             onClick={() => setShowContent((pre) => !pre)}
@@ -250,11 +252,11 @@ export function CruiseItem({
         </div>
         <ul
           className={classNames({
-            "h-[52px] overflow-hidden": !showAllServiceSpecial,
-            "h-auto": showAllServiceSpecial,
+            "h-[52px] overflow-hidden": !showAllSpecialOffers,
+            "h-auto": showAllSpecialOffers,
           })}
         >
-          {serviceSpecial.map((item, index) => (
+          {specialOffers.map((item, index) => (
             <li key={index}>
               <div
                 className={classNames(
@@ -300,15 +302,15 @@ export function CruiseItem({
           ))}
         </ul>
         <span
-          onClick={() => setShowAllServiceSpecial((pre) => !pre)}
+          onClick={() => setShowAllSpecialOffers((pre) => !pre)}
           className={classNames(
             "cursor-pointer block text-sm w-full text-[#25ab4b] pt-3 mb-4",
             {
-              "shadow-[0px_-15px_15px_#fff]": !showAllServiceSpecial,
+              "shadow-[0px_-15px_15px_#fff]": !showAllSpecialOffers,
             }
           )}
         >
-          ...{showAllServiceSpecial ? "Less" : "More"}
+          ...{showAllSpecialOffers ? "Less" : "More"}
         </span>
       </div>
     </div>

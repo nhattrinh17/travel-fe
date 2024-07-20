@@ -8,6 +8,7 @@ import "react-tooltip/dist/react-tooltip.css";
 import "./globals.css";
 import Script from "next/script";
 import { MainLayout } from "@/layout/main";
+import StoreProvider from "./StoreProvider";
 
 // // import function to register Swiper custom elements
 // import { register } from "swiper/element/bundle";
@@ -36,7 +37,9 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <MainLayout>{children}</MainLayout>
+        <StoreProvider>
+          <MainLayout>{children}</MainLayout>
+        </StoreProvider>
       </body>
     </html>
   );

@@ -21,9 +21,10 @@ export function IntroCruiseAndTour({
         <h2 className="my-3 text-2xl font-bold text-[var(--secondary-color)] w-full text-center relative line-text">
           {title}
         </h2>
-        <p className="text-[#666] text-sm text-center px-0 lg:px-12">
-          {description}
-        </p>
+        <div
+          className="text-[#666] text-sm text-center px-0 lg:px-12"
+          dangerouslySetInnerHTML={{ __html: description }}
+        ></div>
       </div>
     </section>
   );

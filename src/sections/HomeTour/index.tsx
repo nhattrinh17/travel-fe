@@ -5,7 +5,9 @@ import { SliderAndSearch } from "@/components/SliderAndSearch";
 import { TourItem } from "@/components/TourItem";
 import { TourItemGrid } from "@/components/TourItemGrid";
 import { IntroduceHome } from "@/components/home/Introduce";
+import { useAppSelector } from "@/lib";
 import { tourHome } from "@/mocks";
+import { useHomeTour } from "@/utils/handleTour";
 import { faBorderAll, faListUl } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
@@ -15,6 +17,12 @@ import { useState } from "react";
 export function HomeTourSection(): JSX.Element {
   const searchParams = useSearchParams();
   const slugDestination = searchParams.get("name") || "";
+
+  const [sort, setSort] = useState("");
+  const [typeSort, setTypeSort] = useState("");
+  const { packetTours } = useAppSelector((state) => state.packetTour);
+  const packetTourBySlug = packetTours.find((i) => i.slug == slugDestination);
+  const dataTour = useHomeTour(packetTourBySlug?.id, sort, typeSort);
 
   const [typeShow, setTypeShow] = useState("list");
   return (
@@ -42,8 +50,22 @@ export function HomeTourSection(): JSX.Element {
               </select>
               <select className="border-b-[1px] border-dashed bg-transparent mx-2 outline-none py-2 pl-1 pr-3">
                 <option>--Pricing--</option>
-                <option>Ascending</option>
-                <option>Descending</option>
+                <option
+                  onClick={() => {
+                    setSort("price");
+                    setTypeSort("ASC");
+                  }}
+                >
+                  Ascending
+                </option>
+                <option
+                  onClick={() => {
+                    setSort("price");
+                    setTypeSort("DESC");
+                  }}
+                >
+                  Descending
+                </option>
               </select>
             </div>
             <div className="flex">
@@ -84,7 +106,7 @@ export function HomeTourSection(): JSX.Element {
               "grid-cols-1 lg:grid-cols-2 gap-5": typeShow == "list",
             })}
           >
-            {tourHome.map((tour, index) =>
+            {dataTour.map((tour, index) =>
               typeShow == "grid" ? (
                 <TourItemGrid key={index} {...tour} />
               ) : (

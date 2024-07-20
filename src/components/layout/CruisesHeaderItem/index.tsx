@@ -8,14 +8,14 @@ import { useRouter } from "next/navigation";
 export function CruisesHeaderItem({
   image,
   name,
-  position,
+  detailLocations,
   slug,
   cancelNavMobile,
 }: {
   name: string;
   slug: string;
   image: string;
-  position: {
+  detailLocations: {
     name: string;
     slug: string;
   }[];
@@ -31,7 +31,7 @@ export function CruisesHeaderItem({
             if (window.innerWidth < 1024) {
               cancelNavMobile();
             }
-            route.push(`/cruise?name=${slug}&type=parent`);
+            route.push(`/cruise?destination=${slug}`);
           }}
           className="group relative w-full text-white hover:text-[var(--text-hover-default)] transition-colors duration-500 hover:image:"
         >
@@ -41,7 +41,7 @@ export function CruisesHeaderItem({
               src={image}
               width={172}
               height={122}
-              className="w-full h-auto object-contain group-hover:scale-110 hidden lg:block"
+              className="min-w-[170px] w-full h-auto object-contain group-hover:scale-110 hidden lg:block"
             />
           </div>
           <div className="lg:absolute left-0 right-0 bottom-0 text-center lg:bg-[url(/home/op50.png)]">
@@ -50,10 +50,10 @@ export function CruisesHeaderItem({
         </div>
 
         <ul>
-          {position.map((item, index) => (
+          {detailLocations.map((item, index) => (
             <li key={`${item.name}-${index}`} className="w-full">
               <Link
-                href={`/cruise?name=${item.slug}&type=child`}
+                href={`/cruise?destination=${slug}&detail=${item.slug}`}
                 className="mt-2 w-full flex justify-center lg:justify-start hover:text-[#f8d540]"
               >
                 <FontAwesomeIcon icon={faAngleRight} className="w-2 mr-1" />

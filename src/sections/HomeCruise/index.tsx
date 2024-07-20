@@ -6,7 +6,9 @@ import { IntroCruiseAndTour } from "@/components/IntroCruiseAndTour";
 import { SliderAndSearch } from "@/components/SliderAndSearch";
 import { IntroduceHome } from "@/components/home/Introduce";
 import { mapServiceIcons } from "@/constants";
+import { useAppSelector } from "@/lib";
 import { cruiseHome, destinationNear } from "@/mocks";
+import { useCruise } from "@/utils/handleCruise";
 import {
   faBorderAll,
   faListUl,
@@ -22,16 +24,30 @@ import { Tooltip } from "react-tooltip";
 
 export function HomeCruiseSection(): JSX.Element {
   const searchParams = useSearchParams();
-  const slug = searchParams.get("name") || "";
+  const destinationSlug = searchParams.get("destination") || "";
+  const detail = searchParams.get("detail") || "";
   const [typeShow, setTypeShow] = useState("list");
+
+  const { destinations } = useAppSelector((state) => state.destination);
+  const dataDestination = destinations.find((d) => d.slug == destinationSlug);
+  const dataDetailLocation = dataDestination?.detailLocations.find(
+    (i) => i.slug == detail
+  );
+
+  const idDestination = dataDestination?.id;
+  const idDetailLocation = dataDetailLocation?.id;
+
+  const { data } = useCruise(true, idDestination, idDetailLocation);
 
   return (
     <div className="-mt-[var(--height-header)]">
       <SliderAndSearch />
       <IntroduceHome />
       <IntroCruiseAndTour
-        title="All 43 Best Family Halong Bay Cruises"
-        description="With many years of experience working as Halong Bay Cruise expert as well as receiving and summarizing several valuable feedbacks from our old customers, I group a list of cruises for families based on common criteria such as cruises and cabins' features as well as their itineraries. These choices belong to all three classes of cruises in Halong Bay. Therefore, it is suitable for each family's requirement. These Halong bay cruises are commonly chosen by family due to their connecting cabins, large sundecks and elegant dining rooms & bars which will surely make your family feel comfortable."
+        title={dataDetailLocation?.title || dataDestination?.title || ""}
+        description={
+          dataDetailLocation?.description || dataDestination?.description || ""
+        }
       />
       <section className="bg-[var(--bg-container-color)]  py-4">
         <div className="container">
@@ -92,7 +108,7 @@ export function HomeCruiseSection(): JSX.Element {
               "grid-cols-1 lg:grid-cols-2 gap-5": typeShow == "list",
             })}
           >
-            {cruiseHome.map((cruise, index) =>
+            {data.map((cruise, index) =>
               typeShow == "grid" ? (
                 <CruiseItemGrid key={index} {...cruise} />
               ) : (

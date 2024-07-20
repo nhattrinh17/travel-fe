@@ -31,3 +31,5 @@ export const mapAmenitiesIcons: { [key: string]: IconDefinition } = {
   banSmoking: faBanSmoking,
   airConditioning: faWind,
 };
+
+export * from "./message";

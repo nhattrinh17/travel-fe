@@ -24,7 +24,7 @@ export function CruiseHomeLuxuryOrBudget({
   name,
   price,
   timeLaunched,
-  totalRoms,
+  totalRom,
   totalStar,
 }: {
   name: string;
@@ -34,7 +34,7 @@ export function CruiseHomeLuxuryOrBudget({
   isAllMeals: boolean;
   price: number;
   timeLaunched: number;
-  totalRoms: number;
+  totalRom: number;
   totalStar: number;
 }): JSX.Element {
   const [mountLike, setMountLike] = useState(false);
@@ -119,7 +119,7 @@ export function CruiseHomeLuxuryOrBudget({
                 icon={faBed}
                 className="relative top-[2px] mr-1"
               />
-              <span>Rooms:{totalRoms}</span>
+              <span>Rooms:{totalRom}</span>
             </div>
           </div>
         </div>

@@ -13,6 +13,9 @@ import { TourHeaderItem } from "../TourHeaderItem";
 import { cruises, packetTour } from "@/mocks";
 import { CruisesHeaderItem } from "../CruisesHeaderItem";
 import { languageList } from "@/constants";
+import { usePacketTour } from "@/utils/handlePacketTour";
+import { useTourNav } from "@/utils/handleTour";
+import { useDestination } from "@/utils/handleDestination";
 
 const cx = classNames.bind(styles);
 
@@ -27,6 +30,11 @@ export function HeaderLayout(): JSX.Element {
   const [showDailyTour, setShowDailyTour] = useState(false);
   const [showCruises, setShowCruises] = useState(false);
   const [showLanguage, setShowLanguage] = useState(false);
+
+  // const dataNav
+  const { data: dataPacketTour } = usePacketTour();
+  const { data: dataDailyTour } = useTourNav();
+  const { data: dataDestination } = useDestination();
 
   useEffect(() => {
     const cookies = parseCookies();
@@ -107,7 +115,7 @@ export function HeaderLayout(): JSX.Element {
               )}
             >
               <div className="flex lg:h-full w-full lg:w-auto items-center justify-center">
-                <h2 className="uppercase text-xl lg:text-xs">Packet Tour</h2>
+                <h2 className="uppercase text-xl lg:text-xs">Packages Tour</h2>
                 <FontAwesomeIcon
                   icon={faSortDown}
                   className="w-3 ml-2 relative -top-1"
@@ -123,7 +131,7 @@ export function HeaderLayout(): JSX.Element {
                   }
                 )}
               >
-                {packetTour.map((tour, index) => (
+                {dataPacketTour.map((tour, index) => (
                   <div
                     key={`${tour.id}-${index}`}
                     className={cx("", {
@@ -144,9 +152,10 @@ export function HeaderLayout(): JSX.Element {
                     setShowAllTour(true);
                   }}
                   className={cx(
-                    "w-full h-full hidden lg:flex  items-center justify-center bg-[url(/home/op50.png)] hover:text-[var(--text-hover-default)]",
+                    "w-full h-full hidden items-center justify-center bg-[url(/home/op50.png)] hover:text-[var(--text-hover-default)]",
                     {
-                      hidden: showAllTour,
+                      hidden: showAllTour || dataPacketTour.length < 13,
+                      "lg:flex": dataPacketTour.length > 13,
                     }
                   )}
                 >
@@ -182,7 +191,7 @@ export function HeaderLayout(): JSX.Element {
                   }
                 )}
               >
-                {packetTour.map((tour, index) => (
+                {dataDailyTour.map((tour, index) => (
                   <div
                     key={index}
                     className={cx("", {
@@ -194,7 +203,7 @@ export function HeaderLayout(): JSX.Element {
                       cancelNavMobile={() => setShowNav(false)}
                       {...tour}
                       key={index}
-                      typeTour="packet"
+                      typeTour="daily"
                     />
                   </div>
                 ))}
@@ -204,9 +213,10 @@ export function HeaderLayout(): JSX.Element {
                     setShowAllTour(true);
                   }}
                   className={cx(
-                    "w-full h-full hidden lg:flex  items-center justify-center bg-[url(/home/op50.png)] hover:text-[var(--text-hover-default)]",
+                    "w-full h-full hidden items-center justify-center bg-[url(/home/op50.png)] hover:text-[var(--text-hover-default)]",
                     {
-                      hidden: showAllTour,
+                      hidden: showAllTour || dataDailyTour.length < 13,
+                      "lg:flex": !showAllTour || dataDailyTour.length >= 13,
                     }
                   )}
                 >
@@ -232,14 +242,17 @@ export function HeaderLayout(): JSX.Element {
 
               <div
                 className={cx(
-                  "lg:absolute top-full left-[-200%] p-2 grid-cols-3 gap-2 w-full lg:w-[740px] bg-[#ffffff12] lg:bg-[var(--primary-color)]",
+                  "lg:absolute top-full grid-cols-3 p-2 left-[-200%] gap-2 w-fit h-fit lg:w-[740px] bg-[#ffffff12] lg:bg-[var(--primary-color)]",
                   {
+                    // "grid-cols-3 left-[-200%]": dataDestination.length >= 3,
+                    // [`grid-cols-${dataDestination.length}`]:
+                    //   dataDestination.length < 3,
                     "block lg:grid": showCruises,
                     hidden: !showCruises,
                   }
                 )}
               >
-                {cruises.map((cruise, index) => (
+                {dataDestination.map((cruise, index) => (
                   <CruisesHeaderItem
                     key={index}
                     {...cruise}

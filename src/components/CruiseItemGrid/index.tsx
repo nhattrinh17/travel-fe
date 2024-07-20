@@ -28,38 +28,40 @@ export function CruiseItemGrid({
   isFlashSale,
   isAllMeals,
   name,
-  services,
+  accompaniedServices,
   price,
   timeLaunched,
-  totalRoms,
-  serviceSpecial,
-  travelerLove,
+  totalRom,
+  specialOffers,
+  travelerLoves,
   totalStar,
+  slug,
 }: {
   name: string;
+  slug: string;
   isFlashSale: boolean;
   totalStar: number;
   discount: number;
   images: string[];
   isAllMeals: boolean;
-  services: {
+  accompaniedServices: {
     name: string;
     slug: string;
   }[];
   price: number;
   timeLaunched: number;
-  totalRoms: number;
-  serviceSpecial: { name: string; content: string }[];
-  travelerLove: string[];
+  totalRom: number;
+  specialOffers: { name: string; content: string }[];
+  travelerLoves: string[];
 }): JSX.Element {
-  const [showTravelerLove, setShowTravelerLove] = useState(false);
+  const [showTravelerLoves, setShowTravelerLoves] = useState(false);
   const [showDetailSpecial, setShowDetailSpecial] = useState<number[]>([]);
   const [mountLike, setMountLike] = useState(false);
 
   return (
     <div className="group bg-white w-full shadow-md mb-10 flex flex-col lg:flex-row p-8 rounded-md">
       <Link
-        href={`/cruise/${name}`}
+        href={`/cruise/${slug}`}
         className="relative w-[550px] max-w-full h-fit block overflow-hidden mr-3"
       >
         <div>
@@ -138,7 +140,7 @@ export function CruiseItemGrid({
       <div className="">
         <div className="flex flex-col lg:flex-row justify-between items-start pb-2 border-b-[1px] border-[#ddd] border-dotted">
           <h3 className="text-[var(--secondary-color)] font-bold text-xl mb-2">
-            <Link href={`/cruise/${name}`}>{name}</Link>
+            <Link href={`/cruise/${slug}`}>{name}</Link>
           </h3>
           <div className="flex items-center mb-2">
             <div className="flex">
@@ -202,18 +204,18 @@ export function CruiseItemGrid({
                 color="#bbb"
               />
               <span className="text-[var(--text-hover-default)]">
-                Rooms:{totalRoms}
+                Rooms:{totalRom}
               </span>
             </div>
           </div>
           <div>
             <ul
               className={classNames({
-                "h-[140px] overflow-hidden": !showTravelerLove,
-                "h-auto": showTravelerLove,
+                "h-[140px] overflow-hidden": !showTravelerLoves,
+                "h-auto": showTravelerLoves,
               })}
             >
-              {travelerLove.map((item, index) => (
+              {travelerLoves.map((item, index) => (
                 <li key={index} className="flex items-center">
                   <FontAwesomeIcon
                     icon={faHeart}
@@ -227,22 +229,22 @@ export function CruiseItemGrid({
             </ul>
 
             <span
-              onClick={() => setShowTravelerLove((pre) => !pre)}
+              onClick={() => setShowTravelerLoves((pre) => !pre)}
               className={classNames(
                 "cursor-pointer block text-sm w-full text-[var(--text-hover-default)] pt-3 mb-4",
                 {
-                  "shadow-[0px_-15px_15px_#fff]": !showTravelerLove,
+                  "shadow-[0px_-15px_15px_#fff]": !showTravelerLoves,
                 }
               )}
             >
-              ...{showTravelerLove ? "Less" : "More"}
+              ...{showTravelerLoves ? "Less" : "More"}
             </span>
             <div className="h-[2px] w-6 bg-[#BBBBBB] mt-4 rounded-md"></div>
           </div>
         </div>
         <div className="flex items-center justify-between mb-4">
           <div className="flex">
-            {services.map((service, index) => (
+            {accompaniedServices.map((service, index) => (
               <div key={index}>
                 <FontAwesomeIcon
                   icon={mapServiceIcons[service.slug]}
@@ -290,7 +292,7 @@ export function CruiseItemGrid({
             // "h-auto": showAllServiceSpecial,
           })}
         >
-          {serviceSpecial.map((item, index) => (
+          {specialOffers.map((item, index) => (
             <li key={index}>
               <div
                 className={classNames(

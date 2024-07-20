@@ -19,6 +19,7 @@ import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { Tooltip } from "react-tooltip";
 
 export function TourItem({
   discount,
@@ -26,19 +27,23 @@ export function TourItem({
   isFlashSale,
   name,
   price,
-  content,
-  serviceSpecial,
+  contentBrief,
+  specialOffers,
   marginBottom,
+  accompaniedServices,
   totalStar,
+  slug,
 }: {
   name: string;
+  slug: string;
   totalStar: number;
   isFlashSale: boolean;
   discount: number;
   images: string[];
   price: number;
-  content: string;
-  serviceSpecial: { name: string; content: string }[];
+  contentBrief: string;
+  specialOffers: { name: string; content: string }[];
+  accompaniedServices: { id: number; name: string; slug: string }[];
   marginBottom: number;
 }): JSX.Element {
   const [showContent, setShowContent] = useState(false);
@@ -52,7 +57,7 @@ export function TourItem({
       style={{ marginBottom: marginBottom }}
     >
       <Link
-        href={`/tour/${name}`}
+        href={`/tour/${slug}`}
         className="relative w-full block overflow-hidden"
       >
         <Image
@@ -97,7 +102,7 @@ export function TourItem({
         <div className="flex justify-between items-start mb-2">
           <div>
             <h3 className="text-[var(--secondary-color)] font-bold text-xl">
-              <Link href={`/tour/${name}`}>{name}</Link>
+              <Link href={`/tour/${slug}`}>{name}</Link>
             </h3>
             <div className="flex">
               {Array.from({ length: 5 }, (v, i) => i + 1).map((i, index) =>
@@ -116,6 +121,20 @@ export function TourItem({
                 )
               )}
             </div>
+          </div>
+          <div className="flex flex-1 ml-4">
+            {accompaniedServices.map((service, index) => (
+              <div key={index}>
+                <FontAwesomeIcon
+                  icon={mapServiceIcons[service.slug]}
+                  data-tooltip-id={`tooltip-service-${service.slug}`}
+                  data-tooltip-content={service.name}
+                  data-tooltip-place="top"
+                  className="text-[#333] text-xs p-2 rounded-full border-[1px] border-[#ddd] mx-1"
+                />
+                <Tooltip id={`tooltip-service-${service.slug}`} />
+              </div>
+            ))}
           </div>
         </div>
         <div className="flex justify-between items-center mb-3">
@@ -179,7 +198,7 @@ export function TourItem({
               "h-[36px] overflow-hidden": !showContent,
               "h-auto": showContent,
             })}
-            dangerouslySetInnerHTML={{ __html: content }}
+            dangerouslySetInnerHTML={{ __html: contentBrief }}
           ></div>
           <span
             onClick={() => setShowContent((pre) => !pre)}
@@ -199,7 +218,7 @@ export function TourItem({
             "h-auto": showAllServiceSpecial,
           })}
         >
-          {serviceSpecial.map((item, index) => (
+          {specialOffers.map((item, index) => (
             <li key={index}>
               <div className="flex justify-between pb-2 border-b-[2px] border-dotted">
                 <label

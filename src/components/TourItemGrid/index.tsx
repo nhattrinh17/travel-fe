@@ -20,6 +20,7 @@ import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { Tooltip } from "react-tooltip";
 
 export function TourItemGrid({
   discount,
@@ -29,11 +30,14 @@ export function TourItemGrid({
   price,
   timeLaunched,
   totalRoms,
-  serviceSpecial,
-  travelerLove,
+  specialOffers,
+  travelerLoves,
   totalStar,
+  accompaniedServices,
+  slug,
 }: {
   name: string;
+  slug: string;
   isFlashSale: boolean;
   totalStar: number;
   discount: number;
@@ -41,18 +45,19 @@ export function TourItemGrid({
   price: number;
   timeLaunched: number;
   totalRoms: number;
-  serviceSpecial: { name: string; content: string }[];
-  travelerLove: string[];
+  specialOffers: { name: string; content: string }[];
+  travelerLoves: string[];
+  accompaniedServices: { id: number; name: string; slug: string }[];
 }): JSX.Element {
-  const [showTravelerLove, setShowTravelerLove] = useState(false);
+  const [showTravelerLoves, setShowTravelerLoves] = useState(false);
   const [showDetailSpecial, setShowDetailSpecial] = useState<number[]>([]);
   const [mountLike, setMountLike] = useState(false);
 
   return (
     <div className="group bg-white w-full shadow-md mb-10 flex flex-col lg:flex-row p-8 rounded-md">
       <Link
-        href={`/tour/${name}`}
-        className="relative w-[550px] max-w-full h-fit block overflow-hidden mr-3"
+        href={`/tour/${slug}`}
+        className="relative w-full lg:w-2/5 max-w-full h-fit block overflow-hidden mr-3"
       >
         <div>
           <div className="overflow-hidden ">
@@ -71,7 +76,7 @@ export function TourItemGrid({
                 src={images[1]}
                 width={275}
                 height={250}
-                className="w-full object-contain hover:scale-[1.15] transition-all duration-500"
+                className="w-full h-full object-cover hover:scale-[1.15] transition-all duration-500"
               />
             </div>
             <div className="basis-1/2 overflow-hidden">
@@ -80,7 +85,7 @@ export function TourItemGrid({
                 src={images[2]}
                 width={275}
                 height={250}
-                className="w-full object-contain hover:scale-[1.15] transition-all duration-500"
+                className="w-full h-full object-cover hover:scale-[1.15] transition-all duration-500"
               />
             </div>
           </div>
@@ -116,10 +121,10 @@ export function TourItemGrid({
         </div>
       </Link>
 
-      <div className="">
-        <div className="flex flex-col lg:flex-row justify-between items-start pb-2 border-b-[1px] border-[#ddd] border-dotted">
-          <h3 className="text-[var(--secondary-color)] font-bold text-xl mb-2">
-            <Link href={`/tour/${name}`}>{name}</Link>
+      <div className="w-full lg:w-3/5">
+        <div className="pb-2 border-b-[1px] border-[#ddd] border-dotted">
+          <h3 className="text-[var(--secondary-color)] font-bold text-xl mb-2 ">
+            <Link href={`/tour/${slug}`}>{name}</Link>
           </h3>
           <div className="flex items-center mb-2">
             <div className="flex">
@@ -190,11 +195,11 @@ export function TourItemGrid({
           <div>
             <ul
               className={classNames({
-                "h-[140px] overflow-hidden": !showTravelerLove,
-                "h-auto": showTravelerLove,
+                "h-[140px] overflow-hidden": !showTravelerLoves,
+                "h-auto": showTravelerLoves,
               })}
             >
-              {travelerLove.map((item, index) => (
+              {travelerLoves.map((item, index) => (
                 <li key={index} className="flex items-center">
                   <FontAwesomeIcon
                     icon={faHeart}
@@ -208,51 +213,70 @@ export function TourItemGrid({
             </ul>
 
             <span
-              onClick={() => setShowTravelerLove((pre) => !pre)}
+              onClick={() => setShowTravelerLoves((pre) => !pre)}
               className={classNames(
                 "cursor-pointer block text-sm w-full text-[var(--text-hover-default)] pt-3 mb-4",
                 {
-                  "shadow-[0px_-15px_15px_#fff]": !showTravelerLove,
+                  "shadow-[0px_-15px_15px_#fff]": !showTravelerLoves,
                 }
               )}
             >
-              ...{showTravelerLove ? "Less" : "More"}
+              ...{showTravelerLoves ? "Less" : "More"}
             </span>
             <div className="h-[2px] w-6 bg-[#BBBBBB] mt-4 rounded-md"></div>
           </div>
         </div>
-        <div className="ml-auto">
-          <div className="flex items-end pb-1">
-            <span className="text-sm text-[#999]">Only From</span>
-            <del
-              className={classNames("mx-1 text-[#FF9900] font-bold text-2xl", {
-                hidden: !discount,
-              })}
-            >
-              ${price}
-            </del>
-            <span className="ml-1 text-2xl text-[var(--text-hover-default)] font-bold">
-              ${Math.ceil(price - price * (discount / 100 || 0))}
-            </span>
-          </div>
+        <div className="flex justify-between">
           <div className="flex">
-            <FontAwesomeIcon
-              icon={faCheck}
-              className="text-[var(--text-hover-default)] text-base mr-1"
-            />
-            <span className="text-[#888888] text-xs font-bold">
-              Best Price Guarantee
-            </span>
+            {accompaniedServices.map((service, index) => (
+              <div key={index}>
+                <FontAwesomeIcon
+                  icon={mapServiceIcons[service.slug]}
+                  data-tooltip-id={`tooltip-service-${service.slug}`}
+                  data-tooltip-content={service.name}
+                  data-tooltip-place="top"
+                  className="text-[#333] text-xs p-2 rounded-full border-[1px] border-[#ddd] mx-1"
+                />
+                <Tooltip id={`tooltip-service-${service.slug}`} />
+              </div>
+            ))}
+          </div>
+          <div>
+            <div className="flex items-end">
+              <span className="text-sm text-[#999] block">Only From</span>
+              <del
+                className={classNames(
+                  "mx-1 text-[#FF9900] font-bold text-2xl",
+                  {
+                    hidden: !discount,
+                  }
+                )}
+              >
+                ${price}
+              </del>
+              <span className="ml-1 text-2xl text-[var(--text-hover-default)] font-bold">
+                ${Math.ceil(price - price * (discount / 100 || 0))}
+              </span>
+            </div>
+            <div className="flex">
+              <FontAwesomeIcon
+                icon={faCheck}
+                className="text-[var(--text-hover-default)] text-base mr-1"
+              />
+              <span className="text-[#888888] text-xs font-bold">
+                Best Price Guarantee
+              </span>
+            </div>
           </div>
         </div>
 
         <ul
           className={classNames({
-            // "h-[52px] overflow-hidden": !showAllServiceSpecial,
-            // "h-auto": showAllServiceSpecial,
+            // "h-[52px] overflow-hidden": !showAllspecialOffers,
+            // "h-auto": showAllspecialOffers,
           })}
         >
-          {serviceSpecial.map((item, index) => (
+          {specialOffers.map((item, index) => (
             <li key={index}>
               <div
                 className={classNames(
@@ -287,7 +311,7 @@ export function TourItemGrid({
               </div>
               <div
                 className={classNames(
-                  "border-[1px] bg-[#F9F9F9] mb-3 p-[10px]",
+                  "border-[1px] bg-[#F9F9F9] mb-3 p-[10px] w-full h-full overflow-hidden",
                   {
                     hidden: !showDetailSpecial.includes(index),
                   }
