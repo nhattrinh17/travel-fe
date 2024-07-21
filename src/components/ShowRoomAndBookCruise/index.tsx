@@ -27,6 +27,7 @@ import styles from "./styles.module.scss";
 import { setDataBookingCruise } from "@/lib/redux/app/cruise.slice";
 import { useRouter } from "next/navigation";
 import { TypeOtherServiceBooking, countries } from "@/constants";
+import { bookingCruise } from "@/utils/api";
 
 const cx = classNames.bind(styles);
 
@@ -44,8 +45,9 @@ export function ShowRoomAndBookCruise({
   const [roomTypeActive, setRoomTypeActive] = useState<number>();
   const [showDetailSpecial, setShowDetailSpecial] = useState<number[]>([]);
 
-  const dataRoomSelect =
-    useRef<{ indexRoom: number; nameRoom: string; price: number }[]>();
+  const dataRoomSelect = useRef<
+    { indexRoom: number; nameRoom: string; price: number }[]
+  >([]);
 
   const [itinerariesSelect, setItinerariesSelect] = useState(
     cruiseDetail?.itineraries[0].name || ""
@@ -53,10 +55,9 @@ export function ShowRoomAndBookCruise({
 
   //   total person
   const [refreshDataMarts, setRefreshDataMarts] = useState(true);
-  const dataMartsRoom =
-    useRef<
-      { typeRoom: string; adult: number; child: number; infant: number }[]
-    >();
+  const dataMartsRoom = useRef<
+    { typeRoom: string; adult: number; child: number; infant: number }[]
+  >([]);
   const boxSelectRoomRef = useRef<HTMLDivElement>(null);
 
   // Date Box
@@ -66,7 +67,6 @@ export function ShowRoomAndBookCruise({
   const boxSelectDateRef = useRef<HTMLDivElement>(null);
 
   // Other service
-  // const dataOtherService  = useRef<any[]>([]);
   const [dataOtherService, setDataOtherService] = useState<
     {
       name: string;
@@ -82,6 +82,15 @@ export function ShowRoomAndBookCruise({
     options?: string[];
   }>({});
   const [optionTransfer, setOptionTransfer] = useState<string>();
+
+  // contact info
+  const [phoneCountry, setPhoneCountry] = useState(countries[0].dial_code);
+  const [fullName, setFullName] = useState("");
+  const [country, setCountry] = useState(countries[0].name);
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState<number>();
+  const [otherRequest, setOtherRequest] = useState("");
+  const [textWarning, setTextWarning] = useState("");
 
   useEffect(() => {
     const handleClickOutside = (e: Event) => {
@@ -170,7 +179,11 @@ export function ShowRoomAndBookCruise({
               ))}
             </div>
           </h3>
-          <div className="flex items-center text-[#888888] text-[13px]">
+          <div
+            className={cx("flex items-center text-[#888888] text-[13px]", {
+              hidden: !bookingPage,
+            })}
+          >
             <div className="flex mr-2">
               <FontAwesomeIcon
                 icon={faBookmark}
@@ -527,7 +540,7 @@ export function ShowRoomAndBookCruise({
           }}
           className={cx(
             "submit_search",
-            "mx-2 rounded-xl w-[230px] p-3 uppercase text-white bg-[#d0720b]"
+            "lg:mx-2  rounded-xl w-full lg:w-[230px] p-3 uppercase text-white bg-[#d0720b]"
           )}
         >
           Check room rates
@@ -654,16 +667,20 @@ export function ShowRoomAndBookCruise({
         ))}
       </div>
       {/* Cruise Booking */}
-      <div className="">
+      <div
+        className={cx({
+          hidden: !bookingPage,
+        })}
+      >
         {dataMartsRoom.current?.map((item, index) => (
           <div
             key={index}
             className="py-5 px-3 bg-white shadow-sm mt-10 rounded-md"
           >
-            <div className="flex items-end justify-center text-lg text-[var(--secondary1-color)]">
+            <div className="flex items-end justify-center flex-wrap text-xs lg:text-lg text-[var(--secondary1-color)]">
               <FontAwesomeIcon
                 icon={faBed}
-                className="text-xl mr-1 relative -top-1"
+                className="text-sm lg:text-xl mr-1 relative -top-1"
               />
               <span className="font-bold">Room {index + 1}</span>:
               <span className="ml-1">{item.typeRoom} -</span>
@@ -674,20 +691,20 @@ export function ShowRoomAndBookCruise({
               <span className="font-bold mx-1">, {item.infant} Infant </span>
               <span className="text-xs">{"(0 - 4)"}</span>
             </div>
-            <div className="mt-6 border-[1px] border-[#ddd] border-r-0 flex  bg-[var(--secondary1-color)]">
-              <div className="flex-1 border-r-[1px] text-center border-[#ddd] px-3 py-[6px] text-white font-bold">
+            <div className="mt-6 border-[1px] border-[#ddd] border-r-0 grid grid-cols-12 text-xs lg:text-sm bg-[var(--secondary1-color)]">
+              <div className="flex-1 border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-6">
                 <span>Room's info</span>
               </div>
-              <div className="border-r-[1px] text-center border-[#ddd] px-3 py-[6px] text-white font-bold w-[10%]">
+              <div className="hidden lg:block border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-2">
                 <span>Pax</span>
               </div>
-              <div className="my-auto text-sm border-r-[1px] text-center border-[#ddd] px-3 py-[6px] text-white font-bold w-[10%]">
+              <div className="my-auto border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-2 lg:col-span-1">
                 <span>Total in USD</span>
               </div>
-              <div className="border-r-[1px] text-center border-[#ddd] px-3 py-[6px] text-white font-bold w-[10%]">
+              <div className="border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-2">
                 <span>Notes</span>
               </div>
-              <div className="border-r-[1px] text-center border-[#ddd] px-3 py-[6px] text-white font-bold w-[10%]">
+              <div className="border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-2 lg:col-span-1">
                 <span>Select</span>
               </div>
             </div>
@@ -703,9 +720,9 @@ export function ShowRoomAndBookCruise({
               .map((room1, index1) => (
                 <div
                   key={index1}
-                  className="grid grid-cols-10 hover:bg-[#eff9eb] items-start border-[1px] border-[#ddd] border-r-0 "
+                  className="grid grid-cols-12 hover:bg-[#eff9eb] items-start border-[1px] border-[#ddd] border-r-0 "
                 >
-                  <div className="py-1 px-1 border-r-[1px] border-[#ddd] flex col-span-6">
+                  <div className="py-1 px-1 border-r-[1px] border-[#ddd] flex flex-col lg:flex-row col-span-6">
                     <Image
                       alt="room"
                       src={room1.images[0]}
@@ -740,7 +757,7 @@ export function ShowRoomAndBookCruise({
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between border-r-[1px] h-full text-center border-[#ddd] px-3 py-[6px]col-span-1">
+                  <div className="hidden lg:flex items-center justify-between border-r-[1px] h-full text-center border-[#ddd] py-[6px] col-span-2">
                     <div className="flex items-end justify-center w-full">
                       {Array.from(
                         { length: room1.maxAdult },
@@ -764,15 +781,15 @@ export function ShowRoomAndBookCruise({
                       ))}
                     </div>
                   </div>
-                  <div className="border-r-[1px] w-full h-full text-center border-[#ddd] px-3 py-[6px]col-span-1">
+                  <div className="border-r-[1px] w-full h-full text-center border-[#ddd] py-[6px] col-span-2 lg:col-span-1">
                     <span className="text-[#fc8f30] h-full font-bold text-lg flex items-center justify-center">
                       {room1.price}$
                     </span>
                   </div>
-                  <div className="border-r-[1px] h-full text-center border-[#ddd] px-3 py-[6px]col-span-1">
+                  <div className="border-r-[1px] h-full text-center border-[#ddd] py-[6px] col-span-2">
                     <span></span>
                   </div>
-                  <div className="border-r-[1px] h-full flex justify-center text-center border-[#ddd] px-3 py-[6px]col-span-1">
+                  <div className="border-r-[1px] h-full flex justify-center text-center border-[#ddd] py-[6px] col-span-2 lg:col-span-1">
                     <input
                       onChange={() => {
                         const dataOld = dataRoomSelect.current?.find(
@@ -781,6 +798,15 @@ export function ShowRoomAndBookCruise({
                         if (dataOld) {
                           dataOld.nameRoom = room1.name;
                           dataOld.price = room1.price;
+                        } else {
+                          dataRoomSelect.current = [
+                            ...dataRoomSelect.current,
+                            {
+                              indexRoom: index + 1,
+                              nameRoom: room1.name,
+                              price: room1.price,
+                            },
+                          ];
                         }
                       }}
                       type="radio"
@@ -793,7 +819,7 @@ export function ShowRoomAndBookCruise({
           </div>
         ))}
         {/* Other service */}
-        <div className="mt-10 bg-white rounded-md py-5 px-6 grid grid-cols-2 gap-8">
+        <div className="mt-10 bg-white rounded-md py-5 px-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="h-auto">
             <h6 className="border-b-[1px] border-[#f5f5f5] text-[var(--text-hover-default)] text-xl font-bold pb-3">
               Other Service
@@ -840,7 +866,7 @@ export function ShowRoomAndBookCruise({
                         }}
                       ></label>
                     </div>
-                    <div className="grid grid-cols-4 mt-4 ml-2">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-4 ml-2">
                       <div>
                         <select
                           value={
@@ -868,7 +894,7 @@ export function ShowRoomAndBookCruise({
                               }
                             });
                           }}
-                          className="px-3 border-[1px] rounded-md outline-none py-[2px]"
+                          className="px-3 border-[1px] rounded-md w-full lg:w-auto outline-none py-[2px]"
                         >
                           <option value={0}>Adult</option>
                           {Array.from({ length: 11 }, (v, i) => i + 1).map(
@@ -908,7 +934,7 @@ export function ShowRoomAndBookCruise({
                               }
                             });
                           }}
-                          className="px-3 border-[1px] rounded-md outline-none py-[2px]"
+                          className="px-3 border-[1px] rounded-md w-full lg:w-auto outline-none py-[2px]"
                         >
                           <option value={0}>Child</option>
                           {Array.from({ length: 4 }, (v, i) => i + 1).map(
@@ -947,7 +973,7 @@ export function ShowRoomAndBookCruise({
                               }
                             });
                           }}
-                          className="px-3 border-[1px] rounded-md outline-none py-[2px]"
+                          className="px-3 border-[1px] rounded-md w-full lg:w-auto outline-none py-[2px]"
                         >
                           <option value={0}>Infant</option>
                           {Array.from({ length: 4 }, (v, i) => i + 1).map(
@@ -986,7 +1012,7 @@ export function ShowRoomAndBookCruise({
                               }
                             });
                           }}
-                          className="px-3  hover:shadow-2xl border-[1px] rounded-md outline-none py-[2px]"
+                          className="px-3 border-[1px] w-full lg:w-auto rounded-md outline-none py-[2px]"
                         >
                           <option value={""}>Time</option>
                           <option value={"10:30"}>10:30</option>
@@ -1110,7 +1136,7 @@ export function ShowRoomAndBookCruise({
             Contact Info
           </h6>
           <div className="grid grid-cols-3 text-xs">
-            <div className="flex flex-col items-center mt-5">
+            <div className="hidden lg:flex flex-col items-center mt-5 ">
               <p className="text-[var(--text-color-default)] text-sm">
                 Book with{" "}
               </p>
@@ -1150,25 +1176,77 @@ export function ShowRoomAndBookCruise({
               </p>
             </div>
 
-            <div className="col-span-2">
-              <form className="grid grid-cols-2 gap-x-5 gap-y-3 mt-5">
+            <div className="col-span-3 lg:col-span-2">
+              <form
+                className="block lg:grid grid-cols-2 gap-x-5 gap-y-3 mt-5"
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  if (dataRoomSelect.current?.length < dataBooking.totalRom)
+                    setTextWarning("Please kindly select your rooms...");
+                  const dataRoomSelectSend = dataMartsRoom.current.map(
+                    (item, index) => {
+                      return {
+                        nameRoom: dataRoomSelect.current.find(
+                          (i) => i.indexRoom == index + 1
+                        )?.nameRoom,
+                        indexRoom: index + 1,
+                        ...item,
+                      };
+                    }
+                  );
+                  const dataSend = {
+                    cruiseId: cruiseDetail.id,
+                    fullName,
+                    country,
+                    email,
+                    phone: `${phoneCountry} ${phone}`,
+                    typeItineraries: itinerariesSelect,
+                    date,
+                    totalRoom: dataBooking.totalRom,
+                    totalAdult: dataBooking.dataAdult.reduce(
+                      (pre, item, index) => (pre += item[`room${index + 1}`]),
+                      0
+                    ),
+                    totalChildren:
+                      dataBooking.dataChildren.reduce(
+                        (pre, item, index) => (pre += item[`room${index + 1}`]),
+                        0
+                      ) +
+                      dataBooking.dataInfant.reduce(
+                        (pre, item, index) => (pre += item[`room${index + 1}`]),
+                        0
+                      ),
+                    otherRequest,
+                    dataRoomSelect: dataRoomSelectSend,
+                    otherServices: dataOtherService,
+                    dataTransfer,
+                  };
+                  const res = await bookingCruise(dataSend);
+                }}
+              >
                 <div className="">
                   <label className="block font-bold text-sm text-[var(--text-hover-default)] mb-2">
                     Full Name*
                   </label>
                   <input
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
                     required
                     name="name"
                     className="w-full text-sm px-3 py-3 outline-none border-[1px]"
                   />
                 </div>
-                <div className="">
+                <div className="w-full">
                   <label className="block font-bold text-sm text-[var(--text-hover-default)] mb-2">
                     Country*
                   </label>
-                  <select className="w-full text-sm px-3 py-3 outline-none border-[1px]">
+                  <select
+                    defaultValue={country}
+                    onChange={(e) => setCountry(e.target.value)}
+                    className="w-full cursor-pointer text-sm pl-3 pr-7 lg:px-3 py-3 outline-none border-[1px]"
+                  >
                     {countries.map((country) => (
-                      <option key={country.code} value={country.code}>
+                      <option key={country.code} value={country.name}>
                         {country.name}
                       </option>
                     ))}
@@ -1179,8 +1257,11 @@ export function ShowRoomAndBookCruise({
                     Email Address*
                   </label>
                   <input
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
-                    name="name"
+                    name="email"
+                    type="email"
                     className="w-full text-sm px-3 py-3 outline-none border-[1px]"
                   />
                 </div>
@@ -1188,27 +1269,64 @@ export function ShowRoomAndBookCruise({
                   <label className="block font-bold text-sm text-[var(--text-hover-default)] mb-2">
                     Phone*
                   </label>
-                  <input
-                    required
-                    name="name"
-                    className="w-full text-sm px-3 py-3 outline-none border-[1px]"
-                  />
+                  <div className="relative w-full text-sm h-[46px] px-3 py-3 outline-none border-[1px]">
+                    <select
+                      id="select-phone"
+                      defaultValue={phoneCountry}
+                      onChange={(e) => setPhoneCountry(e.target.value)}
+                      className="absolute cursor-pointer text-transparent bg-transparent top-0 px-3 z-[1] left-0 right-0 bottom-0 w-full text-sm py-3 outline-none"
+                    >
+                      {countries.map((country) => (
+                        <option
+                          key={country.code}
+                          value={country.dial_code}
+                          className="text-black"
+                        >
+                          {country.name}
+                        </option>
+                      ))}
+                    </select>
+                    <label className="absolute top-0 left-3 bottom-0 flex items-center justify-center w-20 bg-white border-r-[1px]">{`${
+                      countries.find((i) => i.dial_code == phoneCountry)?.code
+                    }(${phoneCountry})`}</label>
+                    <input
+                      value={phone}
+                      onChange={(e) => {
+                        if (Number(e.target.value) > 0) {
+                          setPhone(+e.target.value);
+                        } else {
+                          setPhone(0);
+                        }
+                      }}
+                      required
+                      name="phone"
+                      className="outline-none absolute top-0 right-0 bottom-0 left-[100px] z-[2]"
+                    />
+                  </div>
                 </div>
                 <div className="col-span-2">
                   <label className="block font-bold text-sm text-[var(--text-hover-default)] mb-2">
                     Other Request
                   </label>
                   <textarea
+                    value={otherRequest}
+                    onChange={(e) => setOtherRequest(e.target.value)}
                     name="name"
                     className="w-full min-h-[160px] text-sm px-3 py-3 outline-none border-[1px]"
                   />
                 </div>
-                <span className="block">{"{ * fields are required }"}</span>
+                <span
+                  className={cx("block py-1", {
+                    "font-bold text-red-500 text-base": textWarning,
+                  })}
+                >
+                  {textWarning ? textWarning : "{ * fields are required }"}
+                </span>
                 <button
                   type="submit"
                   className={cx(
                     "submit_search",
-                    "col-span-2 mx-2 rounded-xl p-3 font-bold text-base uppercase text-white bg-[#d0720b]"
+                    "col-span-2 w-full mx-2 rounded-xl p-3 font-bold text-base uppercase text-white bg-[#d0720b]"
                   )}
                 >
                   SEND

@@ -31,7 +31,7 @@ export function CruiseItemGrid({
   accompaniedServices,
   price,
   timeLaunched,
-  totalRom,
+  totalRoom,
   specialOffers,
   travelerLoves,
   totalStar,
@@ -50,7 +50,7 @@ export function CruiseItemGrid({
   }[];
   price: number;
   timeLaunched: number;
-  totalRom: number;
+  totalRoom: number;
   specialOffers: { name: string; content: string }[];
   travelerLoves: string[];
 }): JSX.Element {
@@ -204,7 +204,7 @@ export function CruiseItemGrid({
                 color="#bbb"
               />
               <span className="text-[var(--text-hover-default)]">
-                Rooms:{totalRom}
+                Rooms:{totalRoom}
               </span>
             </div>
           </div>

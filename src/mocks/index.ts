@@ -251,7 +251,7 @@ export const topCruise = [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
     ],
     isAllMeals: true,
-    services: [
+    accompaniedServices: [
       {
         name: "All Meals Include",
         slug: "allMeals",
@@ -261,7 +261,7 @@ export const topCruise = [
     styleCruise: "Modern",
     totalRoms: 100,
     content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Ambassador Signature Cruise for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
-    serviceSpecial: [
+    specialOffers: [
       {
         name: "COMPLIMENTARY COOKING DEMONSTRATION",
         content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
@@ -289,7 +289,7 @@ export const topCruise = [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
     ],
     isAllMeals: true,
-    services: [
+    accompaniedServices: [
       {
         name: "All Meals Include",
         slug: "allMeals",
@@ -299,7 +299,7 @@ export const topCruise = [
     styleCruise: "Modern",
     totalRoms: 100,
     content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Ambassador Signature Cruise for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
-    serviceSpecial: [
+    specialOffers: [
       {
         name: "COMPLIMENTARY COOKING DEMONSTRATION",
         content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
@@ -327,7 +327,7 @@ export const topCruise = [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
     ],
     isAllMeals: true,
-    services: [
+    accompaniedServices: [
       {
         name: "All Meals Include",
         slug: "allMeals",
@@ -337,7 +337,7 @@ export const topCruise = [
     styleCruise: "Modern",
     totalRoms: 100,
     content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Ambassador Signature Cruise for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
-    serviceSpecial: [
+    specialOffers: [
       {
         name: "COMPLIMENTARY COOKING DEMONSTRATION",
         content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
@@ -365,7 +365,7 @@ export const topCruise = [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
     ],
     isAllMeals: true,
-    services: [
+    accompaniedServices: [
       {
         name: "All Meals Include",
         slug: "allMeals",
@@ -375,7 +375,7 @@ export const topCruise = [
     styleCruise: "Modern",
     totalRoms: 100,
     content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Ambassador Signature Cruise for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
-    serviceSpecial: [
+    specialOffers: [
       {
         name: "COMPLIMENTARY COOKING DEMONSTRATION",
         content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
@@ -403,7 +403,7 @@ export const topCruise = [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
     ],
     isAllMeals: true,
-    services: [
+    accompaniedServices: [
       {
         name: "All Meals Include",
         slug: "allMeals",
@@ -413,7 +413,7 @@ export const topCruise = [
     styleCruise: "Modern",
     totalRoms: 100,
     content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Ambassador Signature Cruise for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
-    serviceSpecial: [
+    specialOffers: [
       {
         name: "COMPLIMENTARY COOKING DEMONSTRATION",
         content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
@@ -441,7 +441,7 @@ export const topCruise = [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
     ],
     isAllMeals: true,
-    services: [
+    accompaniedServices: [
       {
         name: "All Meals Include",
         slug: "allMeals",
@@ -451,7 +451,7 @@ export const topCruise = [
     styleCruise: "Modern",
     totalRoms: 100,
     content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Ambassador Signature Cruise for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
-    serviceSpecial: [
+    specialOffers: [
       {
         name: "COMPLIMENTARY COOKING DEMONSTRATION",
         content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
@@ -479,7 +479,7 @@ export const topCruise = [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
     ],
     isAllMeals: true,
-    services: [
+    accompaniedServices: [
       {
         name: "All Meals Include",
         slug: "allMeals",
@@ -489,7 +489,7 @@ export const topCruise = [
     styleCruise: "Modern",
     totalRoms: 100,
     content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Ambassador Signature Cruise for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
-    serviceSpecial: [
+    specialOffers: [
       {
         name: "COMPLIMENTARY COOKING DEMONSTRATION",
         content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
@@ -517,7 +517,7 @@ export const topCruise = [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
     ],
     isAllMeals: true,
-    services: [
+    accompaniedServices: [
       {
         name: "All Meals Include",
         slug: "allMeals",
@@ -527,7 +527,7 @@ export const topCruise = [
     styleCruise: "Modern",
     totalRoms: 100,
     content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Ambassador Signature Cruise for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
-    serviceSpecial: [
+    specialOffers: [
       {
         name: "COMPLIMENTARY COOKING DEMONSTRATION",
         content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
@@ -560,6 +560,7 @@ export const luxuryCruise = [
     ],
     isAllMeals: true,
     price: 300,
+    accompaniedServices: [],
     totalRoms: 100,
   },
   {
@@ -573,6 +574,7 @@ export const luxuryCruise = [
     ],
     isAllMeals: true,
     price: 300,
+    accompaniedServices: [],
     totalRoms: 100,
   },
   {
@@ -586,6 +588,7 @@ export const luxuryCruise = [
     ],
     isAllMeals: true,
     price: 300,
+    accompaniedServices: [],
     totalRoms: 100,
   },
   {
@@ -599,6 +602,7 @@ export const luxuryCruise = [
     ],
     isAllMeals: true,
     price: 300,
+    accompaniedServices: [],
     totalRoms: 100,
   },
   {
@@ -612,6 +616,7 @@ export const luxuryCruise = [
     ],
     isAllMeals: true,
     price: 300,
+    accompaniedServices: [],
     totalRoms: 100,
   },
   {
@@ -625,6 +630,7 @@ export const luxuryCruise = [
     ],
     isAllMeals: true,
     price: 300,
+    accompaniedServices: [],
     totalRoms: 100,
   },
   {
@@ -638,6 +644,7 @@ export const luxuryCruise = [
     ],
     isAllMeals: true,
     price: 300,
+    accompaniedServices: [],
     totalRoms: 100,
   },
 ];
@@ -654,6 +661,7 @@ export const top10DailyTour = [
     ],
     isAllMeals: true,
     price: 300,
+    accompaniedServices: [],
     totalRoms: 100,
   },
   {
@@ -667,6 +675,7 @@ export const top10DailyTour = [
     ],
     isAllMeals: true,
     price: 300,
+    accompaniedServices: [],
     totalRoms: 100,
   },
   {
@@ -680,6 +689,7 @@ export const top10DailyTour = [
     ],
     isAllMeals: true,
     price: 300,
+    accompaniedServices: [],
     totalRoms: 100,
   },
   {
@@ -693,6 +703,7 @@ export const top10DailyTour = [
     ],
     isAllMeals: true,
     price: 300,
+    accompaniedServices: [],
     totalRoms: 100,
   },
   {
@@ -706,6 +717,7 @@ export const top10DailyTour = [
     ],
     isAllMeals: true,
     price: 300,
+    accompaniedServices: [],
     totalRoms: 100,
   },
   {
@@ -719,6 +731,7 @@ export const top10DailyTour = [
     ],
     isAllMeals: true,
     price: 300,
+    accompaniedServices: [],
     totalRoms: 100,
   },
   {
@@ -732,6 +745,7 @@ export const top10DailyTour = [
     ],
     isAllMeals: true,
     price: 300,
+    accompaniedServices: [],
     totalRoms: 100,
   },
 ];
@@ -747,10 +761,11 @@ export const topTour = [
     ],
     isAllMeals: true,
     price: 300,
+    accompaniedServices: [],
 
     totalRoms: 100,
     content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Hanoi Summer Tour - Van Don - Co To Island 3N2D from Hanoi 2024 for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
-    serviceSpecial: [
+    specialOffers: [
       {
         name: "COMPLIMENTARY COOKING DEMONSTRATION",
         content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
@@ -779,10 +794,11 @@ export const topTour = [
     ],
     isAllMeals: true,
     price: 300,
+    accompaniedServices: [],
 
     totalRoms: 100,
     content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Hanoi Summer Tour - Van Don - Co To Island 3N2D from Hanoi 2024 for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
-    serviceSpecial: [
+    specialOffers: [
       {
         name: "COMPLIMENTARY COOKING DEMONSTRATION",
         content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
@@ -811,10 +827,11 @@ export const topTour = [
     ],
     isAllMeals: true,
     price: 300,
+    accompaniedServices: [],
 
     totalRoms: 100,
     content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Hanoi Summer Tour - Van Don - Co To Island 3N2D from Hanoi 2024 for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
-    serviceSpecial: [
+    specialOffers: [
       {
         name: "COMPLIMENTARY COOKING DEMONSTRATION",
         content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
@@ -843,10 +860,11 @@ export const topTour = [
     ],
     isAllMeals: true,
     price: 300,
+    accompaniedServices: [],
 
     totalRoms: 100,
     content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Hanoi Summer Tour - Van Don - Co To Island 3N2D from Hanoi 2024 for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
-    serviceSpecial: [
+    specialOffers: [
       {
         name: "COMPLIMENTARY COOKING DEMONSTRATION",
         content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
@@ -875,10 +893,11 @@ export const topTour = [
     ],
     isAllMeals: true,
     price: 300,
+    accompaniedServices: [],
 
     totalRoms: 100,
     content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Hanoi Summer Tour - Van Don - Co To Island 3N2D from Hanoi 2024 for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
-    serviceSpecial: [
+    specialOffers: [
       {
         name: "COMPLIMENTARY COOKING DEMONSTRATION",
         content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
@@ -926,17 +945,18 @@ export const cruiseHome = [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
     ],
     isAllMeals: true,
-    services: [
+    accompaniedServices: [
       {
         name: "All Meals Include",
         slug: "allMeals",
       },
     ],
     price: 300,
+
     styleCruise: "Modern",
     totalRoms: 100,
     content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Ambassador Signature Cruise for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
-    serviceSpecial: [
+    specialOffers: [
       {
         name: "COMPLIMENTARY COOKING DEMONSTRATION",
         content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
@@ -981,17 +1001,18 @@ export const cruiseHome = [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
     ],
     isAllMeals: true,
-    services: [
+    accompaniedServices: [
       {
         name: "All Meals Include",
         slug: "allMeals",
       },
     ],
     price: 300,
+
     styleCruise: "Modern",
     totalRoms: 100,
     content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Ambassador Signature Cruise for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
-    serviceSpecial: [
+    specialOffers: [
       {
         name: "COMPLIMENTARY COOKING DEMONSTRATION",
         content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
@@ -1036,17 +1057,18 @@ export const cruiseHome = [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
     ],
     isAllMeals: true,
-    services: [
+    accompaniedServices: [
       {
         name: "All Meals Include",
         slug: "allMeals",
       },
     ],
     price: 300,
+
     styleCruise: "Modern",
     totalRoms: 100,
     content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Ambassador Signature Cruise for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
-    serviceSpecial: [
+    specialOffers: [
       {
         name: "COMPLIMENTARY COOKING DEMONSTRATION",
         content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
@@ -1091,17 +1113,18 @@ export const cruiseHome = [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
     ],
     isAllMeals: true,
-    services: [
+    accompaniedServices: [
       {
         name: "All Meals Include",
         slug: "allMeals",
       },
     ],
     price: 300,
+
     styleCruise: "Modern",
     totalRoms: 100,
     content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Ambassador Signature Cruise for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
-    serviceSpecial: [
+    specialOffers: [
       {
         name: "COMPLIMENTARY COOKING DEMONSTRATION",
         content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
@@ -1194,9 +1217,10 @@ export const tourHome = [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
     ],
     price: 300,
+    accompaniedServices: [],
     totalRoms: 100,
     content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Ambassador Signature Cruise for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
-    serviceSpecial: [
+    specialOffers: [
       {
         name: "COMPLIMENTARY COOKING DEMONSTRATION",
         content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
@@ -1241,9 +1265,10 @@ export const tourHome = [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
     ],
     price: 300,
+    accompaniedServices: [],
     totalRoms: 100,
     content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Ambassador Signature Cruise for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
-    serviceSpecial: [
+    specialOffers: [
       {
         name: "COMPLIMENTARY COOKING DEMONSTRATION",
         content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,
@@ -1288,9 +1313,10 @@ export const tourHome = [
       "https://d1k2oi80tv211b.cloudfront.net/uploads/photo/ambassador-signature-cruise-Ambassador%20Signature%20Cruise-1717584285.jpg",
     ],
     price: 300,
+    accompaniedServices: [],
     totalRoms: 100,
     content: `<p class="para-cruise" style="overflow: visible; height: auto;">Step on board the elegant and opulent Ambassador Signature Cruise for an unforgettable journey as you discover Lan Ha Bay's magnificence. With 39 trendy and modern cabins and a capacity for 120 guests, this 5-star floating hotel has everything you need for a feel-at-home journey in the middle of the sea: air conditioning, private balconies, en-suite bathrooms, and bathtubs. Along with first-rate accommodation, Ambassador Signature also offers a premium Asian – European cuisine experience as well as a complete complement of modern facilities, including a luxury spa on board, a piano lounge, and a restaurant &amp; bar.</p>`,
-    serviceSpecial: [
+    specialOffers: [
       {
         name: "COMPLIMENTARY COOKING DEMONSTRATION",
         content: `<div class="content" style="width: 100%;">The best way to learn about a culture is through its culture. Join us for a cooking class onboard with our chef. You will learn how to prepare the delectable traditional Vietnamese dishes and explore more Vietnamese culinary culture.<br><br><b>Conditions:</b><br>- Applied for all booking.</div>`,

@@ -31,7 +31,7 @@ export function CruiseItem({
   accompaniedServices,
   price,
   styleCruise,
-  totalRom,
+  totalRoom,
   contentBrief,
   specialOffers,
   marginBottom,
@@ -51,7 +51,7 @@ export function CruiseItem({
   }[];
   price: number;
   styleCruise: string;
-  totalRom: number;
+  totalRoom: number;
   contentBrief: string;
   specialOffers: { name: string; content: string }[];
   marginBottom: number;
@@ -194,7 +194,7 @@ export function CruiseItem({
             </div>
             <div className="flex mr-2">
               <FontAwesomeIcon icon={faBed} className="relative top-1 mr-1" />
-              <span>Rooms:{totalRom}</span>
+              <span>Rooms:{totalRoom}</span>
             </div>
           </div>
           <div className="flex">

@@ -112,3 +112,9 @@ export const getCruiseBySlug = (slug: string) => {
   let url = `cruise/${slug}`;
   return axios.get(url);
 };
+
+export const bookingCruise = (data: any) => {
+  const axios = new BaseAxios();
+  let url = `cruise/booking`;
+  return axios.post(url, data);
+};
