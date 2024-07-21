@@ -12,12 +12,11 @@ interface CruiseItem {
   isFlashSale: boolean;
   travelerLoves: any;
   price: number;
-  totalRoom: number;
   timeLaunched: number;
   styleCruise: string;
   createdAt: string;
   slug: string;
-  totalRom: number;
+  totalRoom: number;
   itineraries: { day: number; id: number; name: string; content: string }[];
   specialOffers: { id: number; name: string; content: string }[];
   accompaniedServices: { id: number; name: string; slug: string }[];
@@ -33,7 +32,8 @@ interface CruiseItem {
     images: string[]; // custom
     specialService: string[]; // custom
     content: string;
-    maxPerson: number;
+    maxAdult: number;
+    maxChildren: number;
     amenities: string[]; // custom
   }[];
 
@@ -49,6 +49,15 @@ interface cruiseSlice {
   limit: number;
   total: number;
   refreshData: boolean;
+  booking: {
+    date?: string;
+    type: string;
+    totalRom: number;
+    dataAdult: { [key: string]: number }[];
+    dataChildren: { [key: string]: number }[];
+    dataInfant: { [key: string]: number }[];
+    dataTypeRoom: { [key: string]: string }[];
+  };
 }
 
 const cruiseSlice = createSlice({
@@ -59,6 +68,31 @@ const cruiseSlice = createSlice({
     page: 1,
     total: 0,
     refreshData: true,
+    booking: {
+      date: undefined,
+      totalRom: 1,
+      dataAdult: [
+        {
+          room1: 2,
+        },
+      ],
+      dataChildren: [
+        {
+          room1: 0,
+        },
+      ],
+      dataInfant: [
+        {
+          room1: 0,
+        },
+      ],
+      dataTypeRoom: [
+        {
+          room1: "Double",
+        },
+      ],
+      type: "",
+    },
   } as cruiseSlice,
   reducers: {
     setDataCruiseDetail: (state, action) => {
@@ -73,8 +107,60 @@ const cruiseSlice = createSlice({
       state.page = action.payload.page;
       if (action.payload.resetCruiseDetail) {
         state.cruiseDetail = undefined;
+        state.booking = {
+          date: undefined,
+          totalRom: 1,
+          dataAdult: [
+            {
+              room1: 2,
+            },
+          ],
+          dataChildren: [
+            {
+              room1: 0,
+            },
+          ],
+          dataInfant: [
+            {
+              room1: 0,
+            },
+          ],
+          dataTypeRoom: [
+            {
+              room1: "Double",
+            },
+          ],
+          type: "",
+        };
       }
       state.refreshData = false;
+    },
+    setDataBookingCruise: (
+      state,
+      action: {
+        payload: {
+          date?: string;
+          type?: string;
+          totalRom?: number;
+          dataAdult?: { [key: string]: number }[];
+          dataChildren?: { [key: string]: number }[];
+          dataInfant?: { [key: string]: number }[];
+          dataTypeRoom?: { [key: string]: string }[];
+        };
+      }
+    ) => {
+      if (action.payload.date) state.booking.date = action.payload.date;
+      if (action.payload.dataAdult)
+        state.booking.dataAdult = action.payload.dataAdult;
+      if (action.payload.dataChildren)
+        state.booking.dataChildren = action.payload.dataChildren;
+      if (action.payload.dataInfant)
+        state.booking.dataInfant = action.payload.dataInfant;
+      if (action.payload.totalRom)
+        state.booking.totalRom = action.payload.totalRom;
+      if (action.payload.dataTypeRoom)
+        state.booking.dataTypeRoom = action.payload.dataTypeRoom;
+      if (action.payload.type) state.booking.type = action.payload.type;
     },
     setLimitOrPageCruise: (
       state,
@@ -104,6 +190,7 @@ export const {
   setLimitOrPageCruise,
   resetDataCruiseDetail,
   setDataCruiseDetail,
+  setDataBookingCruise,
 } = cruiseSlice.actions;
 
 export default cruiseSlice.reducer;

@@ -51,7 +51,6 @@ export function DetailCruise({ slug }: { slug: string }): JSX.Element {
   const sectionMayAlsoRef = useRef<HTMLElement>(null);
 
   // Data Cruise
-
   const cruiseDetail = useCruiseDetail(slug);
 
   const { data: dataCruiseSuggest } = useCruise(
@@ -121,13 +120,14 @@ export function DetailCruise({ slug }: { slug: string }): JSX.Element {
                     <span className="ml-auto text-xs">Only From</span>
                     <div className="flex items-end">
                       <del className="text-base font-bold text-[var(--text-hover-default)] mr-2">
-                        {cruiseDetail.price}
+                        {cruiseDetail.price}$
                       </del>
                       <span className="text-2xl text-[#FF9900] font-bold">
                         {Math.floor(
                           cruiseDetail.price -
                             (cruiseDetail.price * cruiseDetail.discount) / 100
                         )}
+                        $
                       </span>
                     </div>
                   </div>
@@ -208,7 +208,7 @@ export function DetailCruise({ slug }: { slug: string }): JSX.Element {
                     icon={faBed}
                     className="relative top-[2px] mr-1"
                   />
-                  <span>Rooms:{cruiseDetail.totalRom}</span>
+                  <span>Rooms:{cruiseDetail.totalRoom}</span>
                 </div>
               </div>
               <div className="flex">
@@ -412,7 +412,7 @@ export function DetailCruise({ slug }: { slug: string }): JSX.Element {
             </div>
           </section>
           {/* Type Room */}
-          <ShowRoomAndBookCruise />
+          <ShowRoomAndBookCruise bookingPage={false} />
           {/* Itineraries & Route */}
           <section className="py-3">
             <h2 className="text-[var(--secondary-color)] font-bold text-[22px] border-b-[2px] border-dotted pb-2">

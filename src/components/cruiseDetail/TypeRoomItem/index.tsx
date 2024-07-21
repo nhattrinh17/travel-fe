@@ -20,7 +20,8 @@ const cx = classNames.bind(styles);
 
 interface Params {
   name: string;
-  maxPerson: number;
+  maxAdult: number;
+  maxChildren: number;
   totalRooms: number;
   isViewOcean: boolean;
   typeBed: string;
@@ -40,7 +41,8 @@ export function TypeRoomCruiseItem({
   images,
   isViewOcean,
   location,
-  maxPerson,
+  maxAdult,
+  maxChildren,
   name,
   onClose,
   specialService,
@@ -140,7 +142,7 @@ export function TypeRoomCruiseItem({
             <ul className="text-[var(--text-color-default)] text-xs flex items-center pt-1 pb-3">
               <li className="mx-2 ">
                 <FontAwesomeIcon className="mr-2" icon={faUser} />
-                <span>{maxPerson}</span>
+                <span>{maxAdult + maxChildren}</span>
               </li>
               <li
                 className={cx("flex items-center mx-2 ", {
