@@ -36,6 +36,12 @@ interface CruiseItem {
     maxChildren: number;
     amenities: string[]; // custom
   }[];
+  otherServiceBookings: {
+    name: string;
+    description: string;
+    options: string;
+    type: number;
+  }[];
 
   // custom
   totalStar: number;

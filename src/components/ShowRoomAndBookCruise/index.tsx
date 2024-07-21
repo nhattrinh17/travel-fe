@@ -2,7 +2,7 @@
 
 import { useAppDispatch, useAppSelector } from "@/lib";
 import { DatePickerCustomer } from "@/uiCore";
-import { faCheckSquare } from "@fortawesome/free-regular-svg-icons";
+import { faCheckSquare, faHeart } from "@fortawesome/free-regular-svg-icons";
 import {
   faAngleUp,
   faArrowsUpDownLeftRight,
@@ -26,6 +26,7 @@ import { TypeRoomCruiseItem } from "../cruiseDetail/TypeRoomItem";
 import styles from "./styles.module.scss";
 import { setDataBookingCruise } from "@/lib/redux/app/cruise.slice";
 import { useRouter } from "next/navigation";
+import { TypeOtherServiceBooking, countries } from "@/constants";
 
 const cx = classNames.bind(styles);
 
@@ -42,6 +43,9 @@ export function ShowRoomAndBookCruise({
 
   const [roomTypeActive, setRoomTypeActive] = useState<number>();
   const [showDetailSpecial, setShowDetailSpecial] = useState<number[]>([]);
+
+  const dataRoomSelect =
+    useRef<{ indexRoom: number; nameRoom: string; price: number }[]>();
 
   const [itinerariesSelect, setItinerariesSelect] = useState(
     cruiseDetail?.itineraries[0].name || ""
@@ -60,6 +64,24 @@ export function ShowRoomAndBookCruise({
   const [date, setDate] = useState(new Date().toISOString());
   const [showSelectDate, setShowSelectDate] = useState(false);
   const boxSelectDateRef = useRef<HTMLDivElement>(null);
+
+  // Other service
+  // const dataOtherService  = useRef<any[]>([]);
+  const [dataOtherService, setDataOtherService] = useState<
+    {
+      name: string;
+      adult?: number;
+      child?: number;
+      infant?: number;
+      time?: string;
+    }[]
+  >([]);
+  const [dataTransfer, setDataTransfer] = useState<{
+    name?: string;
+    address?: string;
+    options?: string[];
+  }>({});
+  const [optionTransfer, setOptionTransfer] = useState<string>();
 
   useEffect(() => {
     const handleClickOutside = (e: Event) => {
@@ -634,7 +656,10 @@ export function ShowRoomAndBookCruise({
       {/* Cruise Booking */}
       <div className="">
         {dataMartsRoom.current?.map((item, index) => (
-          <div key={index} className="py-5 px-3 bg-white shadow-sm mt-10">
+          <div
+            key={index}
+            className="py-5 px-3 bg-white shadow-sm mt-10 rounded-md"
+          >
             <div className="flex items-end justify-center text-lg text-[var(--secondary1-color)]">
               <FontAwesomeIcon
                 icon={faBed}
@@ -649,14 +674,14 @@ export function ShowRoomAndBookCruise({
               <span className="font-bold mx-1">, {item.infant} Infant </span>
               <span className="text-xs">{"(0 - 4)"}</span>
             </div>
-            <div className="mt-6 border-[1px] border-[#ddd] border-r-0 flex bg-[var(--secondary1-color)]">
+            <div className="mt-6 border-[1px] border-[#ddd] border-r-0 flex  bg-[var(--secondary1-color)]">
               <div className="flex-1 border-r-[1px] text-center border-[#ddd] px-3 py-[6px] text-white font-bold">
                 <span>Room's info</span>
               </div>
               <div className="border-r-[1px] text-center border-[#ddd] px-3 py-[6px] text-white font-bold w-[10%]">
                 <span>Pax</span>
               </div>
-              <div className="border-r-[1px] text-center border-[#ddd] px-3 py-[6px] text-white font-bold w-[10%]">
+              <div className="my-auto text-sm border-r-[1px] text-center border-[#ddd] px-3 py-[6px] text-white font-bold w-[10%]">
                 <span>Total in USD</span>
               </div>
               <div className="border-r-[1px] text-center border-[#ddd] px-3 py-[6px] text-white font-bold w-[10%]">
@@ -678,7 +703,7 @@ export function ShowRoomAndBookCruise({
               .map((room1, index1) => (
                 <div
                   key={index1}
-                  className="grid grid-cols-10 items-start border-[1px] border-[#ddd] border-r-0 "
+                  className="grid grid-cols-10 hover:bg-[#eff9eb] items-start border-[1px] border-[#ddd] border-r-0 "
                 >
                   <div className="py-1 px-1 border-r-[1px] border-[#ddd] flex col-span-6">
                     <Image
@@ -689,7 +714,7 @@ export function ShowRoomAndBookCruise({
                       className="w-16 h-auto object-contain"
                     />
                     <div className="flex-1 ml-2">
-                      <h4 className="text-base text-[var(--text-hover-default)] mb-1 font-bold">
+                      <h4 className="text-base text-[var(--text-hover-default)] mb-1 font-bold hover:underline cursor-pointer">
                         {room1.name}
                       </h4>
                       <div className="flex">
@@ -749,15 +774,449 @@ export function ShowRoomAndBookCruise({
                   </div>
                   <div className="border-r-[1px] h-full flex justify-center text-center border-[#ddd] px-3 py-[6px]col-span-1">
                     <input
+                      onChange={() => {
+                        const dataOld = dataRoomSelect.current?.find(
+                          (i) => (i.indexRoom = index + 1)
+                        );
+                        if (dataOld) {
+                          dataOld.nameRoom = room1.name;
+                          dataOld.price = room1.price;
+                        }
+                      }}
                       type="radio"
                       name={`select-room-${index}`}
-                      className="bg-[var(--text-color-default)] checked:bg-red"
+                      className="bg-[var(--text-color-default)] checked:"
                     />
                   </div>
                 </div>
               ))}
           </div>
         ))}
+        {/* Other service */}
+        <div className="mt-10 bg-white rounded-md py-5 px-6 grid grid-cols-2 gap-8">
+          <div className="h-auto">
+            <h6 className="border-b-[1px] border-[#f5f5f5] text-[var(--text-hover-default)] text-xl font-bold pb-3">
+              Other Service
+            </h6>
+            <div className="py-3">
+              {cruiseDetail.otherServiceBookings
+                .filter((i) => i.type == TypeOtherServiceBooking.other)
+                .map((service, index) => (
+                  <div key={index} className="">
+                    <div className="flex">
+                      <input
+                        onChange={(e) => {
+                          const checkService = dataOtherService.find(
+                            (item) => item?.name == service.name
+                          );
+                          if (!e.target.checked && checkService) {
+                            setDataOtherService((pre) => {
+                              return pre.filter(
+                                (item) => item?.name != service.name
+                              );
+                            });
+                          } else if (e.target.checked && !checkService) {
+                            setDataOtherService((pre) => {
+                              return [
+                                ...pre,
+                                {
+                                  name: service.name,
+                                },
+                              ];
+                            });
+                          }
+                        }}
+                        checked={dataOtherService.some(
+                          (item) => item?.name == service.name
+                        )}
+                        id={`other-service-${index}`}
+                        type="checkbox"
+                        className="mr-2"
+                      />
+                      <label
+                        htmlFor={`other-service-${index}`}
+                        dangerouslySetInnerHTML={{
+                          __html: service.description,
+                        }}
+                      ></label>
+                    </div>
+                    <div className="grid grid-cols-4 mt-4 ml-2">
+                      <div>
+                        <select
+                          value={
+                            dataOtherService.find(
+                              (item) => item?.name == service.name
+                            )?.adult || 0
+                          }
+                          onChange={(e) => {
+                            setDataOtherService((pre) => {
+                              const newDta = [...pre];
+                              const checkService = newDta.find(
+                                (item) => item?.name == service.name
+                              );
+                              if (checkService) {
+                                checkService.adult = +e.target.value;
+                                return newDta;
+                              } else {
+                                return [
+                                  ...pre,
+                                  {
+                                    name: service.name,
+                                    adult: +e.target.value,
+                                  },
+                                ];
+                              }
+                            });
+                          }}
+                          className="px-3 border-[1px] rounded-md outline-none py-[2px]"
+                        >
+                          <option value={0}>Adult</option>
+                          {Array.from({ length: 11 }, (v, i) => i + 1).map(
+                            (i, index) => (
+                              <option key={index} value={i}>
+                                {i}
+                              </option>
+                            )
+                          )}
+                        </select>
+                      </div>
+
+                      <div>
+                        <select
+                          value={
+                            dataOtherService.find(
+                              (item) => item?.name == service.name
+                            )?.child || 0
+                          }
+                          onChange={(e) => {
+                            setDataOtherService((pre) => {
+                              const newDta = [...pre];
+                              const checkService = newDta.find(
+                                (item) => item?.name == service.name
+                              );
+                              if (checkService) {
+                                checkService.child = +e.target.value;
+                                return newDta;
+                              } else {
+                                return [
+                                  ...pre,
+                                  {
+                                    name: service.name,
+                                    child: +e.target.value,
+                                  },
+                                ];
+                              }
+                            });
+                          }}
+                          className="px-3 border-[1px] rounded-md outline-none py-[2px]"
+                        >
+                          <option value={0}>Child</option>
+                          {Array.from({ length: 4 }, (v, i) => i + 1).map(
+                            (i, index) => (
+                              <option key={index} value={i}>
+                                {i}
+                              </option>
+                            )
+                          )}
+                        </select>
+                      </div>
+                      <div>
+                        <select
+                          value={
+                            dataOtherService.find(
+                              (item) => item?.name == service.name
+                            )?.infant || 0
+                          }
+                          onChange={(e) => {
+                            setDataOtherService((pre) => {
+                              const newDta = [...pre];
+                              const checkService = newDta.find(
+                                (item) => item?.name == service.name
+                              );
+                              if (checkService) {
+                                checkService.infant = +e.target.value;
+                                return newDta;
+                              } else {
+                                return [
+                                  ...pre,
+                                  {
+                                    name: service.name,
+                                    infant: +e.target.value,
+                                  },
+                                ];
+                              }
+                            });
+                          }}
+                          className="px-3 border-[1px] rounded-md outline-none py-[2px]"
+                        >
+                          <option value={0}>Infant</option>
+                          {Array.from({ length: 4 }, (v, i) => i + 1).map(
+                            (i, index) => (
+                              <option key={index} value={i}>
+                                {i}
+                              </option>
+                            )
+                          )}
+                        </select>
+                      </div>
+                      <div>
+                        <select
+                          value={
+                            dataOtherService.find(
+                              (item) => item?.name == service.name
+                            )?.time || ""
+                          }
+                          onChange={(e) => {
+                            setDataOtherService((pre: any) => {
+                              const newDta = [...pre];
+                              const checkService = newDta.find(
+                                (item) => item?.name == service.name
+                              );
+                              if (checkService) {
+                                checkService.time = e.target.value;
+                                return newDta;
+                              } else {
+                                return [
+                                  ...pre,
+                                  {
+                                    name: service.name,
+                                    time: +e.target.value,
+                                  },
+                                ];
+                              }
+                            });
+                          }}
+                          className="px-3  hover:shadow-2xl border-[1px] rounded-md outline-none py-[2px]"
+                        >
+                          <option value={""}>Time</option>
+                          <option value={"10:30"}>10:30</option>
+                          <option value={"11:30"}>11:30</option>
+                          <option value={"13:30"}>13:30</option>
+                          <option value={"14:30"}>14:30</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+          <div className="">
+            <h6 className="border-b-[1px] border-[#f5f5f5] text-[var(--text-hover-default)] text-xl font-bold pb-3">
+              Transfer(optional)
+            </h6>
+            <div className="py-3">
+              {cruiseDetail.otherServiceBookings
+                .filter((i) => i.type == TypeOtherServiceBooking.transfer)
+                .map((service, index) => (
+                  <div key={index} className="">
+                    <div className="flex items-start">
+                      <input
+                        defaultChecked={service.name == optionTransfer}
+                        onChange={() => {
+                          setOptionTransfer(service.name);
+
+                          setDataTransfer((pre) => {
+                            return {
+                              name: service.name,
+                              address: "",
+                              options: [],
+                            };
+                          });
+                        }}
+                        name={`service-transfer`}
+                        type="radio"
+                        className="mr-2 mt-1"
+                      />
+                      <div className="">
+                        <label
+                          dangerouslySetInnerHTML={{
+                            __html: service.description,
+                          }}
+                        ></label>
+                        <div
+                          className={cx("ml-2", {
+                            hidden: service.name != optionTransfer,
+                          })}
+                        >
+                          <input
+                            type="text"
+                            value={dataTransfer.address}
+                            onChange={(e) => {
+                              setDataTransfer((pre) => {
+                                if (pre) {
+                                  const newData = { ...pre };
+                                  newData.address = e.target.value;
+                                  return newData;
+                                } else {
+                                  return {};
+                                }
+                              });
+                            }}
+                            placeholder="Pick-up & Drop-off Address"
+                            className="border-[1px] w-full mt-3 text-xs py-1 px-2"
+                          />
+                          <div className="flex justify-between mt-3 text-[var(--text-color-default)]">
+                            {service.options
+                              .split("*_*")
+                              .map((option, index) => (
+                                <div key={index} className="flex items-center">
+                                  <input
+                                    onChange={(e) => {
+                                      setDataTransfer((pre) => {
+                                        if (pre) {
+                                          const newData = { ...pre };
+                                          if (e.target.checked) {
+                                            newData.options =
+                                              newData.options?.filter(
+                                                (i) => i != option
+                                              );
+                                            return newData;
+                                          } else {
+                                            if (newData.options) {
+                                              newData.options = [
+                                                ...newData.options,
+                                                option,
+                                              ];
+                                            }
+                                            return newData;
+                                          }
+                                        } else {
+                                          return {};
+                                        }
+                                      });
+                                    }}
+                                    checked={dataTransfer.options?.includes(
+                                      option
+                                    )}
+                                    type="checkbox"
+                                    className="mr-1"
+                                  />
+                                  <span className="text-xs">{option}</span>
+                                </div>
+                              ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+        </div>
+        {/* Contact */}
+        <div className="mt-10 bg-white rounded-md py-5 px-6">
+          <h6 className="text-center border-b-[1px] border-[#f5f5f5] text-[var(--text-hover-default)] text-2xl font-bold pb-3">
+            <FontAwesomeIcon icon={faHeart} className="mr-2" />
+            Contact Info
+          </h6>
+          <div className="grid grid-cols-3 text-xs">
+            <div className="flex flex-col items-center mt-5">
+              <p className="text-[var(--text-color-default)] text-sm">
+                Book with{" "}
+              </p>
+              <Image
+                alt="confidence"
+                src={"/booking/choice2023.webp"}
+                width={128}
+                height={129}
+                className="object-contain"
+              />
+              <p className="my-2">Travelers' Choice by Tripadvisor</p>
+              <Image
+                alt="confidence"
+                src={"/booking/bestprice.jpg"}
+                width={118}
+                height={92}
+                className="object-contain"
+              />
+              <p className="my-2">Best Price Guarantee Policy</p>
+              <Image
+                alt="confidence"
+                src={"/booking/viet-logo.png"}
+                width={118}
+                height={92}
+                className="object-contain"
+              />
+              <p className="my-2">
+                International Tour License No.01-638/GPLHQT
+              </p>
+              <div className="h-[50px] flex my-1">
+                <div className="bg-[url(/home/footer/chl_partner.png)] bg-no-repeat bg-[-66px_0] bg-[length:835px] w-[85px] h-full opacity-60 hover:opacity-100"></div>
+                <div className="bg-[url(/home/footer/chl_partner.png)] bg-no-repeat bg-[-154px_0px] bg-[length:712px] w-[85px] h-full opacity-60 hover:opacity-100"></div>
+                <div className="bg-[url(/home/footer/chl_partner.png)] bg-no-repeat bg-[-522px_0px] bg-[length:650px] w-[130px] h-full opacity-60 hover:opacity-100"></div>
+              </div>
+              <p className="my-2">
+                Official Member: ATTA#4516, ASTA#900260032, FTA#3227385
+              </p>
+            </div>
+
+            <div className="col-span-2">
+              <form className="grid grid-cols-2 gap-x-5 gap-y-3 mt-5">
+                <div className="">
+                  <label className="block font-bold text-sm text-[var(--text-hover-default)] mb-2">
+                    Full Name*
+                  </label>
+                  <input
+                    required
+                    name="name"
+                    className="w-full text-sm px-3 py-3 outline-none border-[1px]"
+                  />
+                </div>
+                <div className="">
+                  <label className="block font-bold text-sm text-[var(--text-hover-default)] mb-2">
+                    Country*
+                  </label>
+                  <select className="w-full text-sm px-3 py-3 outline-none border-[1px]">
+                    {countries.map((country) => (
+                      <option key={country.code} value={country.code}>
+                        {country.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="">
+                  <label className="block font-bold text-sm text-[var(--text-hover-default)] mb-2">
+                    Email Address*
+                  </label>
+                  <input
+                    required
+                    name="name"
+                    className="w-full text-sm px-3 py-3 outline-none border-[1px]"
+                  />
+                </div>
+                <div className="">
+                  <label className="block font-bold text-sm text-[var(--text-hover-default)] mb-2">
+                    Phone*
+                  </label>
+                  <input
+                    required
+                    name="name"
+                    className="w-full text-sm px-3 py-3 outline-none border-[1px]"
+                  />
+                </div>
+                <div className="col-span-2">
+                  <label className="block font-bold text-sm text-[var(--text-hover-default)] mb-2">
+                    Other Request
+                  </label>
+                  <textarea
+                    name="name"
+                    className="w-full min-h-[160px] text-sm px-3 py-3 outline-none border-[1px]"
+                  />
+                </div>
+                <span className="block">{"{ * fields are required }"}</span>
+                <button
+                  type="submit"
+                  className={cx(
+                    "submit_search",
+                    "col-span-2 mx-2 rounded-xl p-3 font-bold text-base uppercase text-white bg-[#d0720b]"
+                  )}
+                >
+                  SEND
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
       {/* Room Detail */}
       {roomTypeActive != undefined ? (

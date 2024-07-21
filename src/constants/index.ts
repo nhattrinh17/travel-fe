@@ -32,4 +32,10 @@ export const mapAmenitiesIcons: { [key: string]: IconDefinition } = {
   airConditioning: faWind,
 };
 
+export const TypeOtherServiceBooking = {
+  other: 0,
+  transfer: 1,
+};
+
 export * from "./message";
+export * from "./country";
