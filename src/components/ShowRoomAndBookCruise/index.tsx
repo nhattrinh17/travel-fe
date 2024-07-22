@@ -50,7 +50,7 @@ export function ShowRoomAndBookCruise({
   >([]);
 
   const [itinerariesSelect, setItinerariesSelect] = useState(
-    cruiseDetail?.itineraries[0].name || ""
+    cruiseDetail?.itineraries[0]?.name || ""
   );
 
   //   total person
@@ -1164,7 +1164,7 @@ export function ShowRoomAndBookCruise({
             <div className="flex mt-1 text-[var(--text-hover-default)] items-center text-base font-bold pb-2">
               <FontAwesomeIcon icon={faCheck} className="mr-2" />
               <span className="">
-                {itinerariesSelect || cruiseDetail?.itineraries[0].name}
+                {itinerariesSelect || cruiseDetail?.itineraries[0]?.name}
               </span>
             </div>
             <div className="flex mt-1 text-[var(--text-hover-default)] items-center text-base font-bold pb-2">
