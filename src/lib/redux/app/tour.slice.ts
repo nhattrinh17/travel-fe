@@ -24,6 +24,8 @@ interface TourItem {
 
 interface TourSliceDto {
   tours: TourItem[];
+  tourFlashSle?: TourItem[];
+  tourTopDaily?: TourItem[];
   tourNav: TourItem[];
   page: number;
   limit: number;
@@ -44,6 +46,13 @@ const tourSlice = createSlice({
     refreshDataNav: true,
   } as TourSliceDto,
   reducers: {
+    setDataTourFlashSle: (state, action) => {
+      state.tourFlashSle = action.payload.data;
+    },
+
+    setDataTourTopDaily: (state, action) => {
+      state.tourTopDaily = action.payload.data;
+    },
     setDataToursNav: (state, action) => {
       state.tourNav = action.payload?.data;
       state.total = action.payload?.total;
@@ -79,6 +88,8 @@ const tourSlice = createSlice({
 
 export const {
   //
+  setDataTourFlashSle,
+  setDataTourTopDaily,
   refreshDataTour,
   resetDataTour,
   setDataTours,

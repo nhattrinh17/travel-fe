@@ -261,7 +261,10 @@ export function HeaderLayout(): JSX.Element {
                 ))}
               </div>
             </div>
-            <div className="px-2 cursor-pointer py-1 lg:py-0 lg:hover:bg-[var(--primary-color)] text-white font-bold lg:h-full flex items-center">
+            <Link
+              href={"flash-deal"}
+              className="px-2 cursor-pointer py-1 lg:py-0 lg:hover:bg-[var(--primary-color)] text-white font-bold lg:h-full flex items-center"
+            >
               <Image
                 alt="flash deal"
                 src={"/home/gif-flash.gif"}
@@ -269,7 +272,7 @@ export function HeaderLayout(): JSX.Element {
                 height={25}
               />
               <h2 className="uppercase text-xl lg:text-xs">Flash Deals</h2>
-            </div>
+            </Link>
             <Link
               href={"/about-us"}
               className="px-2 cursor-pointer py-1 lg:py-0 lg:hover:bg-[var(--primary-color)] text-white font-bold lg:h-full flex items-center"

@@ -3,58 +3,19 @@ import { useEffect, useRef, useState } from "react";
 import moment from "moment";
 import {
   resetDataTour,
+  setDataTourFlashSle,
+  setDataTourTopDaily,
   setDataTours,
   setDataToursNav,
 } from "@/lib/redux/app/tour.slice";
-import { getAllItinerariesTour, getAllTour, getAllTourNav } from "./api";
+import {
+  getAllItinerariesTour,
+  getAllTour,
+  getAllTourNav,
+  getAllTourSort,
+  getTopTourDaily,
+} from "./api";
 import { calculateTotalLikes } from "@/share";
-
-// export const useTour = (packetTourId: number, type?: number) => {
-//   const { tours, refreshData, page, limit, total } = useAppSelector(
-//     (state) => state.tour
-//   );
-//   const packetTourRef = useRef(packetTourId);
-//   const typeTourRef = useRef(type);
-//   const dispatch = useAppDispatch();
-
-//   useEffect(() => {
-//     async function fetchData() {
-//       if (
-//         refreshData ||
-//         packetTourId !== packetTourRef.current ||
-//         type !== typeTourRef.current
-//       ) {
-//
-//         packetTourRef.current = packetTourId;
-//         typeTourRef.current = type;
-//         const res = await getAllTour(page, limit, packetTourId, type);
-//         if (res?.data) {
-//           const { data, pagination } = res?.data;
-//           dispatch(setDataTours({ data, ...pagination }));
-//         }
-//         dispatch(setLoadingApp({ loading: false }));
-//       }
-//     }
-
-//     fetchData();
-//   }, [refreshData, packetTourId, type]);
-
-//   return {
-//     data:
-//       tours.map((i) => {
-//         return {
-//           ...i,
-//           isFlashSale: i.isFlashSale ? "Run flash sales" : "Normal",
-//           createdAt: moment(i.createdAt).format("YYYY-MM-DD HH:mm:ss"),
-//         };
-//       }) || [],
-//     pagination: {
-//       total: total,
-//       limit: limit,
-//       page: page,
-//     },
-//   };
-// };
 
 export const useTourNav = () => {
   const { tourNav, refreshDataNav, page, limit, total } = useAppSelector(
@@ -138,6 +99,74 @@ export const useHomeTour = (
       totalStar: 5,
     };
   });
+};
+
+export const useTourFlashSale = () => {
+  const { tourFlashSle } = useAppSelector((state) => state.tour);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    async function fetchData() {
+      if (tourFlashSle == undefined) {
+        const res = await getAllTourSort(1, 20, "isFlashSale", "DESC");
+        if (res?.data) {
+          const { data, pagination } = res?.data;
+          dispatch(setDataTourFlashSle({ data }));
+        }
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  return {
+    data:
+      tourFlashSle?.map((i) => {
+        return {
+          ...i,
+          travelerLoves: i.travelerLoves.split("*_*"),
+          images: i.images.split("*_*"),
+          isAllMeals: i.accompaniedServices.some((i) => i.slug == "allMeals"),
+          createdAt: moment(i.createdAt).format("YYYY-MM-DD HH:mm:ss"),
+          totalStar: 5,
+        };
+      }) || [],
+  };
+};
+
+export const useTourTopDaily = () => {
+  const { tourTopDaily } = useAppSelector((state) => state.tour);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    async function fetchData() {
+      if (tourTopDaily == undefined) {
+        const res = await getTopTourDaily(1, 10, "price", "ASC");
+        if (res?.data) {
+          const { data, pagination } = res?.data;
+          dispatch(setDataTourTopDaily({ data }));
+        }
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  return {
+    data:
+      tourTopDaily?.map((i) => {
+        return {
+          ...i,
+          travelerLoves: i.travelerLoves.split("*_*"),
+          images: i.images.split("*_*"),
+          isAllMeals: i.accompaniedServices.some((i) => i.slug == "allMeals"),
+          createdAt: moment(i.createdAt).format("YYYY-MM-DD HH:mm:ss"),
+          totalStar: 5,
+        };
+      }) || [],
+  };
 };
 
 export const useItinerariesTour = (idTour: number, refreshData: boolean) => {

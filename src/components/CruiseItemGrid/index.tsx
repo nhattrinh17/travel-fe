@@ -36,6 +36,7 @@ export function CruiseItemGrid({
   travelerLoves,
   totalStar,
   slug,
+  topCruise,
 }: {
   name: string;
   slug: string;
@@ -53,16 +54,17 @@ export function CruiseItemGrid({
   totalRoom: number;
   specialOffers: { name: string; content: string }[];
   travelerLoves: string[];
+  topCruise?: number;
 }): JSX.Element {
   const [showTravelerLoves, setShowTravelerLoves] = useState(false);
   const [showDetailSpecial, setShowDetailSpecial] = useState<number[]>([]);
   const [mountLike, setMountLike] = useState(false);
 
   return (
-    <div className="group bg-white w-full shadow-md mb-10 flex flex-col lg:flex-row p-8 rounded-md">
+    <div className="group bg-white w-full shadow-md mb-10 grid grid-cols-12 gap-5 p-3 lg:p-5 rounded-md">
       <Link
         href={`/cruise/${slug}`}
-        className="relative w-[550px] max-w-full h-fit block overflow-hidden mr-3"
+        className="relative col-span-12 lg:col-span-5 max-w-full h-fit block overflow-hidden"
       >
         <div>
           <div className="overflow-hidden ">
@@ -81,7 +83,7 @@ export function CruiseItemGrid({
                 src={images[1]}
                 width={275}
                 height={250}
-                className="w-full object-contain hover:scale-[1.15] transition-all duration-500"
+                className="w-full object-cover h-full hover:scale-[1.15] transition-all duration-500"
               />
             </div>
             <div className="basis-1/2 overflow-hidden">
@@ -90,7 +92,7 @@ export function CruiseItemGrid({
                 src={images[2]}
                 width={275}
                 height={250}
-                className="w-full object-contain hover:scale-[1.15] transition-all duration-500"
+                className="w-full object-cover h-full hover:scale-[1.15] transition-all duration-500"
               />
             </div>
           </div>
@@ -137,8 +139,20 @@ export function CruiseItemGrid({
         </div>
       </Link>
 
-      <div className="">
-        <div className="flex flex-col lg:flex-row justify-between items-start pb-2 border-b-[1px] border-[#ddd] border-dotted">
+      <div className="col-span-12 lg:col-span-7 relative">
+        <div
+          className={classNames(
+            "absolute top-0 right-0 bg-[url(/home/icon-best.svg)] bg-no-repeat w-10 h-14 bg-contain flex justify-center",
+            {
+              hidden: !topCruise,
+            }
+          )}
+        >
+          <span className="font-bold text-[var(--text-hover-default)] mt-2">
+            {topCruise}
+          </span>
+        </div>
+        <div className="flex flex-col justify-between items-start pb-2 border-b-[1px] border-[#ddd] border-dotted">
           <h3 className="text-[var(--secondary-color)] font-bold text-xl mb-2">
             <Link href={`/cruise/${slug}`}>{name}</Link>
           </h3>

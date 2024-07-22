@@ -54,10 +54,10 @@ export function TourItemGrid({
   const [mountLike, setMountLike] = useState(false);
 
   return (
-    <div className="group bg-white w-full shadow-md mb-10 flex flex-col lg:flex-row p-8 rounded-md">
+    <div className="group bg-white w-full shadow-md mb-10 grid grid-cols-12 gap-5 p-3 lg:p-5 rounded-md">
       <Link
         href={`/tour/${slug}`}
-        className="relative w-full lg:w-2/5 max-w-full h-fit block overflow-hidden mr-3"
+        className="relative w-full col-span-12 lg:col-span-5 h-fit block overflow-hidden mr-3"
       >
         <div>
           <div className="overflow-hidden ">
@@ -121,7 +121,7 @@ export function TourItemGrid({
         </div>
       </Link>
 
-      <div className="w-full lg:w-3/5">
+      <div className="col-span-12 lg:col-span-7">
         <div className="pb-2 border-b-[1px] border-[#ddd] border-dotted">
           <h3 className="text-[var(--secondary-color)] font-bold text-xl mb-2 ">
             <Link href={`/tour/${slug}`}>{name}</Link>

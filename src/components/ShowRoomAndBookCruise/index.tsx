@@ -45,8 +45,8 @@ export function ShowRoomAndBookCruise({
   const [roomTypeActive, setRoomTypeActive] = useState<number>();
   const [showDetailSpecial, setShowDetailSpecial] = useState<number[]>([]);
 
-  const dataRoomSelect = useRef<
-    { indexRoom: number; nameRoom: string; price: number }[]
+  const [dataRoomSelect, setDataRoomSelect] = useState<
+    { indexRoom: number; nameRoom: string; price: number; image: string }[]
   >([]);
 
   const [itinerariesSelect, setItinerariesSelect] = useState(
@@ -70,6 +70,7 @@ export function ShowRoomAndBookCruise({
   const [dataOtherService, setDataOtherService] = useState<
     {
       name: string;
+      description: string;
       adult?: number;
       child?: number;
       infant?: number;
@@ -666,6 +667,7 @@ export function ShowRoomAndBookCruise({
           </div>
         ))}
       </div>
+
       {/* Cruise Booking */}
       <div
         className={cx({
@@ -792,22 +794,25 @@ export function ShowRoomAndBookCruise({
                   <div className="border-r-[1px] h-full flex justify-center text-center border-[#ddd] py-[6px] col-span-2 lg:col-span-1">
                     <input
                       onChange={() => {
-                        const dataOld = dataRoomSelect.current?.find(
-                          (i) => (i.indexRoom = index + 1)
-                        );
-                        if (dataOld) {
-                          dataOld.nameRoom = room1.name;
-                          dataOld.price = room1.price;
-                        } else {
-                          dataRoomSelect.current = [
-                            ...dataRoomSelect.current,
-                            {
+                        setDataRoomSelect((pre) => {
+                          const newData = [...pre];
+                          const dataOld = newData?.find(
+                            (i) => (i.indexRoom = index + 1)
+                          );
+                          if (dataOld) {
+                            dataOld.nameRoom = room1.name;
+                            dataOld.price = room1.price;
+                            return newData;
+                          } else {
+                            newData.push({
                               indexRoom: index + 1,
                               nameRoom: room1.name,
                               price: room1.price,
-                            },
-                          ];
-                        }
+                              image: room1.images[0],
+                            });
+                            return newData;
+                          }
+                        });
                       }}
                       type="radio"
                       name={`select-room-${index}`}
@@ -847,6 +852,7 @@ export function ShowRoomAndBookCruise({
                                 ...pre,
                                 {
                                   name: service.name,
+                                  description: service.description,
                                 },
                               ];
                             });
@@ -889,6 +895,7 @@ export function ShowRoomAndBookCruise({
                                   {
                                     name: service.name,
                                     adult: +e.target.value,
+                                    description: service.description,
                                   },
                                 ];
                               }
@@ -929,6 +936,7 @@ export function ShowRoomAndBookCruise({
                                   {
                                     name: service.name,
                                     child: +e.target.value,
+                                    description: service.description,
                                   },
                                 ];
                               }
@@ -968,6 +976,7 @@ export function ShowRoomAndBookCruise({
                                   {
                                     name: service.name,
                                     infant: +e.target.value,
+                                    description: service.description,
                                   },
                                 ];
                               }
@@ -1079,7 +1088,7 @@ export function ShowRoomAndBookCruise({
                               });
                             }}
                             placeholder="Pick-up & Drop-off Address"
-                            className="border-[1px] w-full mt-3 text-xs py-1 px-2"
+                            className="border-[1px] outline-none w-full mt-3 text-xs py-[6px] px-3"
                           />
                           <div className="flex justify-between mt-3 text-[var(--text-color-default)]">
                             {service.options
@@ -1091,7 +1100,7 @@ export function ShowRoomAndBookCruise({
                                       setDataTransfer((pre) => {
                                         if (pre) {
                                           const newData = { ...pre };
-                                          if (e.target.checked) {
+                                          if (!e.target.checked) {
                                             newData.options =
                                               newData.options?.filter(
                                                 (i) => i != option
@@ -1126,6 +1135,126 @@ export function ShowRoomAndBookCruise({
                     </div>
                   </div>
                 ))}
+            </div>
+          </div>
+        </div>
+        {/* Booking Summary */}
+        <div
+          className={cx(
+            "mt-10 py-5 px-6 border-[1px] border-dotted bg-white shadow-sm",
+            {
+              hidden:
+                dataRoomSelect?.length < dataBooking.totalRom || !bookingPage,
+            }
+          )}
+        >
+          <h3
+            className={cx(
+              "text-xl text-center pb-4 text-[var(--secondary-color)] font-bold border-b-[1px] border-[#f5f5f5]"
+            )}
+          >
+            <FontAwesomeIcon
+              icon={faCheckSquare}
+              className="text-[#25ab4b] text-2xl mr-3"
+            />
+            Booking Summary
+          </h3>
+
+          <div className="py-4 lg:w-2/3 mx-auto">
+            <div className="flex mt-1 text-[var(--text-hover-default)] items-center text-base font-bold pb-2">
+              <FontAwesomeIcon icon={faCheck} className="mr-2" />
+              <span className="">
+                {itinerariesSelect || cruiseDetail?.itineraries[0].name}
+              </span>
+            </div>
+            <div className="flex mt-1 text-[var(--text-hover-default)] items-center text-base font-bold pb-2">
+              <FontAwesomeIcon icon={faCheck} className="mr-2" />
+              <span className="">
+                Departure Date: {moment(date).format("YYYY/MM/DD")}
+              </span>
+            </div>
+            <div className="py-2 border-t-[1px] border-b-[1px] border-dotted">
+              {dataRoomSelect.map((item, index) => (
+                <div
+                  className="flex justify-between items-end bg-[#fbfbfb]"
+                  key={index}
+                >
+                  <div className="flex">
+                    <Image
+                      alt="room"
+                      src={item.image}
+                      width={60}
+                      height={53}
+                      className="w-16 h-auto object-contain"
+                    />
+                    <div className="ml-2">
+                      <p className="text-sm">
+                        <span className="font-bold text-[var(--text-hover-default)]">
+                          Room 1:
+                        </span>
+                        {item.nameRoom}
+                      </p>
+                      <p className="text-[var(--text-color-default)] text-sm">
+                        - Included tax 10%, Service charge 5%
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="min-w-8">
+                    <span className="text-[#fe8802] font-bold">
+                      {item.price} $
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div
+              className={cx("pb-2 border-b-[1px] border-dotted", {
+                hidden: !dataTransfer.name,
+              })}
+            >
+              <div className="flex items-end mt-1 text-[var(--text-hover-default)] font-bold">
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  className="mr-2 relative bottom-1"
+                />
+                <span className="">Transportation:</span>
+
+                <span className="block ml-2 text-sm text-[var(--text-color-default)]">
+                  {dataTransfer.name}
+                </span>
+              </div>
+
+              <div className="ml-2 text-[var(--text-color-default)] text-sm">
+                <p className="mb-[2px]">
+                  -Pick-up address: {dataTransfer.address}
+                </p>
+                {dataTransfer.options?.map((option, index) => (
+                  <p key={index} className="mb-[2px]">
+                    -{option}
+                  </p>
+                ))}
+              </div>
+            </div>
+
+            <div
+              className={cx("py-2 border-b-[1px] border-dotted", {
+                hidden: !dataOtherService.length,
+              })}
+            >
+              <div className="flex mt-1 text-[var(--text-hover-default)] font-bold">
+                <FontAwesomeIcon icon={faCheck} className="mr-2" />
+                <span className="text-sm"> Other services:</span>
+              </div>
+
+              <div className="text-[var(--text-color-default)] text-sm">
+                {dataOtherService.map((service, index) => (
+                  <p key={index} className="text-sm ml-3 font-normal">
+                    -{service.name} (Departure :{service.time}, {service.adult}
+                    Adult, {service.child} Children, {service.infant} Infant)
+                  </p>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -1181,14 +1310,17 @@ export function ShowRoomAndBookCruise({
                 className="block lg:grid grid-cols-2 gap-x-5 gap-y-3 mt-5"
                 onSubmit={async (e) => {
                   e.preventDefault();
-                  if (dataRoomSelect.current?.length < dataBooking.totalRom)
+                  if (dataRoomSelect?.length < dataBooking.totalRom)
                     setTextWarning("Please kindly select your rooms...");
                   const dataRoomSelectSend = dataMartsRoom.current.map(
                     (item, index) => {
                       return {
-                        nameRoom: dataRoomSelect.current.find(
+                        nameRoom: dataRoomSelect.find(
                           (i) => i.indexRoom == index + 1
                         )?.nameRoom,
+                        price: dataRoomSelect.find(
+                          (i) => i.indexRoom == index + 1
+                        )?.price,
                         indexRoom: index + 1,
                         ...item,
                       };
@@ -1200,7 +1332,8 @@ export function ShowRoomAndBookCruise({
                     country,
                     email,
                     phone: `${phoneCountry} ${phone}`,
-                    typeItineraries: itinerariesSelect,
+                    typeItineraries:
+                      itinerariesSelect || cruiseDetail?.itineraries[0].name,
                     date,
                     totalRoom: dataBooking.totalRom,
                     totalAdult: dataBooking.dataAdult.reduce(
@@ -1222,6 +1355,10 @@ export function ShowRoomAndBookCruise({
                     dataTransfer,
                   };
                   const res = await bookingCruise(dataSend);
+                  console.log("🚀 ~ onSubmit={ ~ res:", res);
+                  if (res?.data) {
+                    router.push("/booking/success");
+                  }
                 }}
               >
                 <div className="">
@@ -1300,7 +1437,7 @@ export function ShowRoomAndBookCruise({
                       }}
                       required
                       name="phone"
-                      className="outline-none absolute top-0 right-0 bottom-0 left-[100px] z-[2]"
+                      className="outline-none absolute top-0 right-0 bottom-0 left-[90px] z-[2] pl-2"
                     />
                   </div>
                 </div>

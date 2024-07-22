@@ -6,8 +6,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Keyboard, Navigation, Pagination } from "swiper/modules";
+import { useCruiseFlashSale } from "@/utils/handleCruise";
 
 export function Top10Cruise(): JSX.Element {
+  const { data } = useCruiseFlashSale();
+  console.log("🚀 ~ Top10Cruise ~ data:", data);
+
   return (
     <section className="bg-[#f1f1f1] py-5">
       <div className="container">
@@ -73,7 +77,7 @@ export function Top10Cruise(): JSX.Element {
             className="mySwiper"
             loop
           >
-            {topCruise.map((cruise, index) => (
+            {data.map((cruise, index) => (
               <SwiperSlide key={index}>
                 <CruiseItem {...cruise} marginBottom={80} />
               </SwiperSlide>
@@ -91,7 +95,7 @@ export function Top10Cruise(): JSX.Element {
             className="mySwiper"
             loop
           >
-            {topCruise.map((cruise, index) => (
+            {data.slice(0, 9).map((cruise, index) => (
               <SwiperSlide key={index}>
                 <CruiseItem {...cruise} marginBottom={80} />
               </SwiperSlide>

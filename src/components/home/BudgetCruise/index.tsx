@@ -11,9 +11,11 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { useRef } from "react";
+import { useCruiseBudget } from "@/utils/handleCruise";
 
 export function BudgetCruise(): JSX.Element {
   const sectionRef = useRef<HTMLElement>(null);
+  const { data } = useCruiseBudget();
 
   return (
     <section ref={sectionRef} className="bg-[#f1f1f1] py-5">
@@ -45,7 +47,7 @@ export function BudgetCruise(): JSX.Element {
             className="swiper-luxury"
             loop
           >
-            {luxuryCruise.map((cruise, index) => (
+            {data.map((cruise, index) => (
               <SwiperSlide key={index}>
                 <CruiseHomeLuxuryOrBudget {...cruise} />
               </SwiperSlide>
@@ -59,7 +61,7 @@ export function BudgetCruise(): JSX.Element {
             className="swiper-luxury"
             loop
           >
-            {luxuryCruise.map((cruise, index) => (
+            {data.map((cruise, index) => (
               <SwiperSlide key={index}>
                 <CruiseHomeLuxuryOrBudget {...cruise} />
               </SwiperSlide>

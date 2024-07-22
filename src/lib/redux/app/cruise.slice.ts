@@ -50,6 +50,9 @@ interface CruiseItem {
 
 interface cruiseSlice {
   cruises: CruiseItem[];
+  cruiseFashSale?: CruiseItem[];
+  cruiseBudget?: CruiseItem[];
+  cruiseLuxury?: CruiseItem[];
   cruiseDetail?: CruiseItem;
   page: number;
   limit: number;
@@ -101,6 +104,16 @@ const cruiseSlice = createSlice({
     },
   } as cruiseSlice,
   reducers: {
+    setDataCruiseFashSale: (state, action) => {
+      state.cruiseFashSale = action.payload?.data;
+    },
+    setDataCruiseBudget: (state, action) => {
+      state.cruiseBudget = action.payload?.data;
+    },
+    setDataCruiseLuxury: (state, action) => {
+      state.cruiseLuxury = action.payload?.data;
+    },
+
     setDataCruiseDetail: (state, action) => {
       state.cruiseDetail = action.payload.data;
     },
@@ -190,6 +203,9 @@ const cruiseSlice = createSlice({
 });
 
 export const {
+  setDataCruiseLuxury,
+  setDataCruiseFashSale,
+  setDataCruiseBudget,
   refreshDataCruise,
   resetDataCruise,
   setDataCruises,

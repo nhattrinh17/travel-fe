@@ -7,9 +7,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { TourItem } from "@/components/TourItem";
 import { useRef } from "react";
+import { useTourFlashSale } from "@/utils/handleTour";
 
 export function Top10PacketTour(): JSX.Element {
   const sectionRef = useRef<HTMLElement>(null);
+
+  const { data } = useTourFlashSale();
 
   return (
     <section ref={sectionRef} className="bg-[#f1f1f1] py-5">
@@ -80,7 +83,7 @@ export function Top10PacketTour(): JSX.Element {
             className="mySwiper"
             loop
           >
-            {topTour.map((tour, index) => (
+            {data.slice(0, 9).map((tour, index) => (
               <SwiperSlide key={index}>
                 <TourItem {...tour} marginBottom={80} />
               </SwiperSlide>
@@ -98,7 +101,7 @@ export function Top10PacketTour(): JSX.Element {
             className="mySwiper"
             loop
           >
-            {topTour.map((tour, index) => (
+            {data.map((tour, index) => (
               <SwiperSlide key={index}>
                 <TourItem {...tour} marginBottom={80} />
               </SwiperSlide>

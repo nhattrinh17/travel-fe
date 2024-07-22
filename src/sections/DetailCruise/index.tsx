@@ -32,6 +32,7 @@ import { CruiseHomeLuxuryOrBudget } from "@/components/home/CruiseHomeLuxuryOrBu
 import { PopupShowAllImages } from "@/components/ShowAllImages";
 import { useCruise, useCruiseDetail } from "@/utils/handleCruise";
 import { ShowRoomAndBookCruise } from "@/components/ShowRoomAndBookCruise";
+import { ShowReviewCruiseAndTour } from "@/components/ShowReview";
 const cx = classNames.bind(styles);
 
 export function DetailCruise({ slug }: { slug: string }): JSX.Element {
@@ -537,7 +538,11 @@ export function DetailCruise({ slug }: { slug: string }): JSX.Element {
                 </div>
               </div>
             </div>
-            <div className={cx()}>
+            <div
+              className={cx({
+                hidden: tabIndexActive != 0,
+              })}
+            >
               <div
                 className="py-5"
                 dangerouslySetInnerHTML={{ __html: cruiseDetail.detail }}
@@ -632,6 +637,13 @@ export function DetailCruise({ slug }: { slug: string }): JSX.Element {
                   <span>All Meals Included</span>
                 </div>
               </div> */}
+            </div>
+            <div
+              className={cx("py-5 px-2", {
+                hidden: tabIndexActive != 1,
+              })}
+            >
+              <ShowReviewCruiseAndTour idCruise={cruiseDetail.id} idTour={0} />
             </div>
           </section>
 

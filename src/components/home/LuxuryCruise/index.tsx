@@ -11,9 +11,12 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { useRef } from "react";
+import { useCruiseLuxury } from "@/utils/handleCruise";
 
 export function LuxuryCruise(): JSX.Element {
   const sectionRef = useRef<HTMLElement>(null);
+
+  const { data } = useCruiseLuxury();
 
   return (
     <section ref={sectionRef} className="bg-[#f1f1f1] py-5">
@@ -45,7 +48,7 @@ export function LuxuryCruise(): JSX.Element {
             className="swiper-luxury"
             loop
           >
-            {luxuryCruise.map((cruise, index) => (
+            {data.map((cruise, index) => (
               <SwiperSlide key={index}>
                 <CruiseHomeLuxuryOrBudget {...cruise} />
               </SwiperSlide>
@@ -59,7 +62,7 @@ export function LuxuryCruise(): JSX.Element {
             className="swiper-luxury"
             loop
           >
-            {luxuryCruise.map((cruise, index) => (
+            {data.map((cruise, index) => (
               <SwiperSlide key={index}>
                 <CruiseHomeLuxuryOrBudget {...cruise} />
               </SwiperSlide>

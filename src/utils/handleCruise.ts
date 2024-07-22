@@ -3,13 +3,17 @@ import { useEffect, useRef, useState } from "react";
 import moment from "moment";
 import {
   getAllCruise,
+  getAllCruiseSort,
   getAllItinerariesCruise,
   getAllRoomCruise,
   getCruiseBySlug,
 } from "./api";
 import {
   resetDataCruise,
+  setDataCruiseBudget,
   setDataCruiseDetail,
+  setDataCruiseFashSale,
+  setDataCruiseLuxury,
   setDataCruises,
 } from "@/lib/redux/app/cruise.slice";
 
@@ -68,6 +72,108 @@ export const useCruise = (
       limit: limit,
       page: page,
     },
+  };
+};
+
+export const useCruiseFlashSale = () => {
+  const { cruiseFashSale } = useAppSelector((state) => state.cruise);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    async function fetchData() {
+      if (cruiseFashSale == undefined) {
+        const res = await getAllCruiseSort(1, 20, "isFlashSale", "DESC");
+        if (res?.data) {
+          const { data, pagination } = res?.data;
+          dispatch(setDataCruiseFashSale({ data }));
+        }
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  return {
+    data:
+      cruiseFashSale?.map((i) => {
+        return {
+          ...i,
+          travelerLoves: i.travelerLoves.split("*_*"),
+          images: i.images.split("*_*"),
+          isAllMeals: i.accompaniedServices.some((i) => i.slug == "allMeals"),
+          createdAt: moment(i.createdAt).format("YYYY-MM-DD HH:mm:ss"),
+          totalStar: 5,
+        };
+      }) || [],
+  };
+};
+
+export const useCruiseBudget = () => {
+  const { cruiseBudget } = useAppSelector((state) => state.cruise);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    async function fetchData() {
+      if (cruiseBudget == undefined) {
+        const res = await getAllCruiseSort(1, 20, "price", "DESC");
+        if (res?.data) {
+          const { data, pagination } = res?.data;
+          dispatch(setDataCruiseBudget({ data }));
+        }
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  return {
+    data:
+      cruiseBudget?.map((i) => {
+        return {
+          ...i,
+          travelerLoves: i.travelerLoves.split("*_*"),
+          images: i.images.split("*_*"),
+          isAllMeals: i.accompaniedServices.some((i) => i.slug == "allMeals"),
+          createdAt: moment(i.createdAt).format("YYYY-MM-DD HH:mm:ss"),
+          totalStar: 5,
+        };
+      }) || [],
+  };
+};
+
+export const useCruiseLuxury = () => {
+  const { cruiseLuxury } = useAppSelector((state) => state.cruise);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    async function fetchData() {
+      if (cruiseLuxury == undefined) {
+        const res = await getAllCruiseSort(1, 20, "price", "ASC");
+        if (res?.data) {
+          const { data, pagination } = res?.data;
+          dispatch(setDataCruiseLuxury({ data }));
+        }
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  return {
+    data:
+      cruiseLuxury?.map((i) => {
+        return {
+          ...i,
+          travelerLoves: i.travelerLoves.split("*_*"),
+          images: i.images.split("*_*"),
+          isAllMeals: i.accompaniedServices.some((i) => i.slug == "allMeals"),
+          createdAt: moment(i.createdAt).format("YYYY-MM-DD HH:mm:ss"),
+          totalStar: 5,
+        };
+      }) || [],
   };
 };
 

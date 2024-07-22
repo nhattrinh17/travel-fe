@@ -66,6 +66,22 @@ export const getAllCruise = (
   return axios.get(url);
 };
 
+export const getAllCruiseSort = (
+  page: number,
+  limit: number,
+  sort: string,
+  typeSort: string
+) => {
+  const axios = new BaseAxios();
+  let url = "cruise?";
+  if (page) url += "page=" + page;
+  if (limit) url += "&limit=" + limit;
+  if (sort) url += "&sort=" + sort;
+  if (typeSort) url += "&typeSort=" + typeSort;
+
+  return axios.get(url);
+};
+
 export const getAllRoomCruise = (idCruise: number) => {
   const axios = new BaseAxios();
   return axios.get(`cruise/${idCruise}/room`);
@@ -87,6 +103,38 @@ export const getAllTour = (
   if (packetTourId) url += "&packetTourId=" + packetTourId;
   if (sort) url += "&sort=" + sort;
   if (typeSort) url += "&typeSort=" + typeSort;
+  return axios.get(url);
+};
+
+export const getAllTourSort = (
+  page: number,
+  limit: number,
+  sort: string,
+  typeSort: string
+) => {
+  const axios = new BaseAxios();
+  let url = "tour?";
+  if (page) url += "page=" + page;
+  if (limit) url += "&limit=" + limit;
+  if (sort) url += "&sort=" + sort;
+  if (typeSort) url += "&typeSort=" + typeSort;
+
+  return axios.get(url);
+};
+
+export const getTopTourDaily = (
+  page: number,
+  limit: number,
+  sort: string,
+  typeSort: string
+) => {
+  const axios = new BaseAxios();
+  let url = "tour?type=1&";
+  if (page) url += "page=" + page;
+  if (limit) url += "&limit=" + limit;
+  if (sort) url += "&sort=" + sort;
+  if (typeSort) url += "&typeSort=" + typeSort;
+
   return axios.get(url);
 };
 
@@ -117,4 +165,25 @@ export const bookingCruise = (data: any) => {
   const axios = new BaseAxios();
   let url = `cruise/booking`;
   return axios.post(url, data);
+};
+
+export const bookingTour = (data: any) => {
+  const axios = new BaseAxios();
+  let url = `tour/booking`;
+  return axios.post(url, data);
+};
+
+export const getAllReview = (
+  page: number,
+  limit: number,
+  cruiseId: number,
+  tourId: number
+) => {
+  const axios = new BaseAxios();
+  let url = "review?";
+  if (page) url += "page=" + page;
+  if (limit) url += "&limit=" + limit;
+  if (cruiseId) url += "&cruiseId=" + cruiseId;
+  if (tourId) url += "&tourId=" + tourId;
+  return axios.get(url);
 };

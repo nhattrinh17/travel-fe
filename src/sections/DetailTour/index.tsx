@@ -26,13 +26,15 @@ import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { top10DailyTour } from "@/mocks";
 import { TourHomeTop10Item } from "@/components/home/TourHomeTopItem";
 import { useAppSelector } from "@/lib";
-import { getTourBySlug } from "@/utils/api";
-import { redirect } from "next/navigation";
+import { bookingTour, getTourBySlug } from "@/utils/api";
+import { redirect, useRouter } from "next/navigation";
 import { PopupShowAllImages } from "@/components/ShowAllImages";
 import { Tooltip } from "react-tooltip";
-import { mapServiceIcons } from "@/constants";
+import { countries, mapServiceIcons } from "@/constants";
 import { useHomeTour } from "@/utils/handleTour";
 import { LoadingModal } from "@/components/Loading";
+import { DatePickerCustomer } from "@/uiCore";
+import { ShowReviewCruiseAndTour } from "@/components/ShowReview";
 
 const cx = classNames.bind(styles);
 
@@ -40,12 +42,18 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
   const [tabActive, setTabActive] = useState<number>(0);
   const [showDetailSpecial, setShowDetailSpecial] = useState<number[]>([]);
   const [showAllImages, setShowAllImages] = useState(false);
+  const router = useRouter();
 
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
-  const [date, setDate] = useState<string>("");
+  const [phoneNumber, setPhoneNumber] = useState<number>();
+  const [date, setDate] = useState<string>("YYYY/MM/DD");
+  const [showSelectDate, setShowSelectDate] = useState(false);
+  const boxSelectDateRef = useRef<HTMLDivElement>(null);
   const [quantity, setQuantity] = useState<number>();
+  const [otherRequest, setOtherRequest] = useState<string>("");
+  const [phoneCountry, setPhoneCountry] = useState(countries[0].dial_code);
+  const [country, setCountry] = useState<string>("");
   const sectionMayAlsoRef = useRef<HTMLElement>(null);
 
   const [tourDetails, setTourDetails] = useState<any>(null);
@@ -445,67 +453,19 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                   </div>
 
                   {/* Review */}
-                  <div className="mt-3 basis-full flex-1 bg-white shadow-md">
+                  <div className="mt-3 basis-full flex-1 bg-white shadow-md px-3">
                     <h2 className="my-3 uppercase text-2xl font-bold text-[var(--secondary-color)] w-full text-center relative line-text">
                       Tour review
                     </h2>
                     <div className="py-5">
-                      <div className="border-b-[1px] border-dotted">
-                        <div className="px-10 border-b-[1px] border-dotted pb-5">
-                          {Array.from({ length: 5 }, (v, i) => i + 1)?.map(
-                            (i, index) => (
-                              <FontAwesomeIcon
-                                key={index}
-                                icon={faStar}
-                                className="mr-1 text-[orange] text-sm"
-                              />
-                            )
-                          )}
-                          <span>4.000 based on 1 review</span>
-                        </div>
-                        <div className="grid grid-cols-4 gap-5 py-3 px-10">
-                          <div className="flex flex-col items-center">
-                            <Image
-                              alt="user review"
-                              src={"/home/sup3.jpg"}
-                              width={112}
-                              height={112}
-                              className="object-contain rounded-full"
-                            />
-                            <span className="mt-2 text-center block font-bold text-[var(--text-hover-default)]">
-                              Minh Nhat
-                            </span>
-                          </div>
-                          <div className="col-span-3 lg:col-span-3">
-                            <div className="flex justify-between my-2">
-                              <div className="flex">
-                                {Array.from(
-                                  { length: 5 },
-                                  (v, i) => i + 1
-                                )?.map((i, index) => (
-                                  <FontAwesomeIcon
-                                    key={index}
-                                    icon={faStar}
-                                    className="mr-1 text-[orange] text-xs"
-                                  />
-                                ))}
-                              </div>
-                              <span className="text-[var(text-color-default)] font-semibold">
-                                June 21, 2024{" "}
-                              </span>
-                            </div>
-                            <p>
-                              Pretium vel nascetur maecenas fames. Aptent.
-                              Montes nisl mollis duis sapien egestas litora
-                              dictumst arcu augue felis odio ultrices Potenti
-                              sit natoque vel dis diam faucibus vitae proin
-                              habitasse dapibus.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+                      <ShowReviewCruiseAndTour
+                        idCruise={0}
+                        idTour={tourDetails.id}
+                      />
+                      {/* <div className="border-b-[1px] border-dotted">
+                      </div> */}
 
-                      <div className="mt-5 px-10">
+                      {/* <div className="mt-5 px-10">
                         <h5 className="text-lg text-black">Leave a Review</h5>
                         <div className="flex my-3 items-center">
                           <span className="mr-3">Rating</span>
@@ -537,7 +497,7 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                         <button className="py-2 px-5 bg-[var(--secondary1-color)] text-white rounded-sm">
                           Submit
                         </button>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
@@ -566,8 +526,27 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                     One tour per person
                   </div>
                 </div>
-                <form className="bg-[var(--primary-color)] relative py-9 px-4">
-                  <h3 className="text-white text-center mb-3 font-semibold">
+                <form
+                  className="bg-[var(--primary-color)] relative py-9 px-4"
+                  onSubmit={async (e) => {
+                    e.preventDefault();
+                    const dataSend = {
+                      tourId: tourDetails.id,
+                      fullName: name,
+                      country,
+                      email,
+                      phone: `${phoneCountry} ${phoneNumber}`,
+                      date,
+                      quantity,
+                      otherRequest,
+                    };
+                    const res = await bookingTour(dataSend);
+                    if (res?.data) {
+                      router.push("/booking/success");
+                    }
+                  }}
+                >
+                  <h3 className="text-white text-center mb-3 font-bold">
                     Book the tour
                   </h3>
                   <div className="relative p-2 bg-white mb-2">
@@ -584,11 +563,28 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                       className="absolute top-1/2 -translate-y-1/2 right-2 text-[var(--text-hover-default)]"
                     />
                   </div>
+                  <div className="relative bg-white mb-2">
+                    <select
+                      required
+                      name="country"
+                      defaultValue={country}
+                      onChange={(e) => setCountry(e.target.value)}
+                      className="w-full h-full p-2 cursor-pointer text-sm outline-none border-[1px]"
+                    >
+                      <option>-- Country --</option>
+                      {countries.map((country) => (
+                        <option key={country.code} value={country.name}>
+                          {country.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                   <div className="relative p-2 bg-white mb-2">
                     <input
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      type="text"
+                      type="email"
+                      name="email"
                       placeholder="Email address"
                       required
                       className="w-full outline-none border-none text-black"
@@ -598,29 +594,70 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                       className="absolute top-1/2 -translate-y-1/2 right-2 text-[var(--text-hover-default)]"
                     />
                   </div>
-                  <div className="relative p-2 bg-white mb-2">
+                  <div className="relative p-2 bg-white mb-2 h-10">
+                    <select
+                      id="select-phone"
+                      defaultValue={phoneCountry}
+                      onChange={(e) => setPhoneCountry(e.target.value)}
+                      className="absolute cursor-pointer text-transparent bg-transparent top-0 px-3 z-[1] left-0 right-0 bottom-0 w-full text-sm py-3 outline-none"
+                    >
+                      {countries.map((country) => (
+                        <option
+                          key={country.code}
+                          value={country.dial_code}
+                          className="text-black"
+                        >
+                          {country.name}
+                        </option>
+                      ))}
+                    </select>
+                    <label className="absolute top-0 left-1 bottom-0 flex items-center justify-center w-14 bg-white border-r-[1px] text-xs">{`${
+                      countries.find((i) => i.dial_code == phoneCountry)?.code
+                    }(${phoneCountry})`}</label>
                     <input
                       value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
-                      type="text"
-                      placeholder="Phone number"
+                      onChange={(e) => {
+                        if (Number(e.target.value) > 0) {
+                          setPhoneNumber(+e.target.value);
+                        } else {
+                          setPhoneNumber(0);
+                        }
+                      }}
                       required
-                      className="w-full outline-none border-none text-black"
+                      name="phone"
+                      className="outline-none absolute top-0 right-0 bottom-0 left-[60px] z-[2] pl-2"
                     />
+
                     <FontAwesomeIcon
                       icon={faPhone}
-                      className="absolute top-1/2 -translate-y-1/2 right-2 text-[var(--text-hover-default)]"
+                      className="absolute z-10 top-1/2 -translate-y-1/2 right-2 text-[var(--text-hover-default)]"
                     />
                   </div>
                   <div className="relative p-2 bg-white mb-2">
-                    <input
-                      type="date"
-                      placeholder="Date"
-                      value={date}
-                      onChange={(e) => setDate(e.target.value)}
-                      required
-                      className="w-full outline-none border-none text-black"
-                    />
+                    <label
+                      onClick={() => setShowSelectDate((pre) => !pre)}
+                      className="block w-full h-full text-[var(--text-color-default)]"
+                    >
+                      {date}
+                    </label>
+                    {showSelectDate ? (
+                      <div
+                        ref={boxSelectDateRef}
+                        className={cx(
+                          "absolute z-[20] top-[calc(100%+20px)] left-0 lg:-left-10"
+                        )}
+                      >
+                        <DatePickerCustomer
+                          onChangePicker={(date) => setDate(date)}
+                          selectsRange={false}
+                          dateFormat="YYYY/MM/DD"
+                          showDate={false}
+                          minDate={new Date()}
+                        />
+                      </div>
+                    ) : (
+                      <></>
+                    )}
                     <FontAwesomeIcon
                       icon={faCalendarDays}
                       className="absolute top-1/2 -translate-y-1/2 right-2 text-[var(--text-hover-default)]"
@@ -640,6 +677,12 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                       className="absolute top-1/2 -translate-y-1/2 right-2 text-[var(--text-hover-default)]"
                     />
                   </div>
+                  <textarea
+                    value={otherRequest}
+                    onChange={(e) => setOtherRequest(e.target.value)}
+                    placeholder="Other Request"
+                    className="w-full py-2 px-2 min-h-[160px] outline-none"
+                  ></textarea>
                   <div className="absolute left-0 right-0 -bottom-3 flex justify-center">
                     <button
                       type="submit"

@@ -10,9 +10,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useRef } from "react";
 import { TourHomeTop10Item } from "../TourHomeTopItem";
+import { useTourTopDaily } from "@/utils/handleTour";
 
 export function Top10DailyTour(): JSX.Element {
   const sectionRef = useRef<HTMLElement>(null);
+
+  const { data } = useTourTopDaily();
 
   return (
     <section ref={sectionRef} className="bg-[#f1f1f1] py-5">
@@ -44,7 +47,7 @@ export function Top10DailyTour(): JSX.Element {
             className="swiper-luxury"
             loop
           >
-            {top10DailyTour.map((cruise, index) => (
+            {data.map((cruise, index) => (
               <SwiperSlide key={index}>
                 <TourHomeTop10Item {...cruise} />
               </SwiperSlide>
@@ -58,7 +61,7 @@ export function Top10DailyTour(): JSX.Element {
             className="swiper-luxury"
             loop
           >
-            {top10DailyTour.map((cruise, index) => (
+            {data.map((cruise, index) => (
               <SwiperSlide key={index}>
                 <TourHomeTop10Item {...cruise} />
               </SwiperSlide>
