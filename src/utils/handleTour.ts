@@ -58,7 +58,8 @@ export const useTourNav = () => {
 export const useHomeTour = (
   packetTourId: number | undefined,
   sort: string,
-  typeSort: string
+  typeSort: string,
+  search: string
 ) => {
   const { refreshData, tours } = useAppSelector((state) => state.tour);
 
@@ -70,16 +71,15 @@ export const useHomeTour = (
   useEffect(() => {
     async function fetchData() {
       if (
-        (refreshData ||
-          packetTourId !== packetTourRef.current ||
-          sort !== sortTourRef.current ||
-          typeSort !== typeSortTourRef.current) &&
-        packetTourId
+        refreshData ||
+        packetTourId !== packetTourRef.current ||
+        sort !== sortTourRef.current ||
+        typeSort !== typeSortTourRef.current
       ) {
         packetTourRef.current = packetTourId;
         sortTourRef.current = sort;
         typeSortTourRef.current = typeSort;
-        const res = await getAllTour(packetTourId, sort, typeSort);
+        const res = await getAllTour(packetTourId, search, sort, typeSort);
         if (res?.data) {
           const { data, pagination } = res?.data;
           dispatch(setDataTours({ data, ...pagination }));

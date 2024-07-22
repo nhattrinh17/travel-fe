@@ -8,6 +8,7 @@ import classNames from "classnames/bind";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
+import { useRouter } from "next/navigation";
 
 const cx = classNames.bind(styles);
 
@@ -15,6 +16,7 @@ export function SliderAndSearch(): JSX.Element {
   const [sliderActive, setSliderActive] = useState(0);
   const [optionSearch, setOptionSearch] = useState("cruise");
   const [search, setSearch] = useState("");
+  const router = useRouter();
 
   // Room box
   const [showSelectRoom, setShowSelectRoom] = useState(false);
@@ -150,7 +152,23 @@ export function SliderAndSearch(): JSX.Element {
             </div>
             <form
               className="bg-white flex flex-col lg:flex-row items-center p-3 font-bold"
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={(e) => {
+                e.preventDefault();
+                const isHome =
+                  window.location.pathname == "/" ||
+                  window.location.pathname == "/flash-deal";
+                if (isHome) {
+                  if (optionSearch == "cruise") {
+                    router.push(`/cruise?search=${search}`);
+                  } else {
+                    router.push(`/tour?search=${search}`);
+                  }
+                } else {
+                  const urlParams = new URLSearchParams(window.location.search);
+                  urlParams.set("search", search);
+                  window.location.search = urlParams.toString();
+                }
+              }}
             >
               <div className="px-2 my-3 py-3 lg:pb-0 w-[300px]  h-full relative text-[var(--text-hover-default)]">
                 <label
@@ -168,6 +186,7 @@ export function SliderAndSearch(): JSX.Element {
                 <input
                   id="search"
                   type="text"
+                  value={search}
                   required
                   onChange={(e) => setSearch(e.target.value)}
                   className="absolute left-2 right-2 top-1/2 -translate-y-1/2 outline-none border-b-[1px] border-b-[#4da981] border-dashed"

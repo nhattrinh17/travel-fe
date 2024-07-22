@@ -53,14 +53,17 @@ export const getAllDetailLocation = (
 export const getAllCruise = (
   page: number,
   limit: number,
-  destinationId: number,
-  detailLocationId?: number
+  destinationId?: number,
+  detailLocationId?: number,
+  search?: string
 ) => {
   const axios = new BaseAxios();
   let url = "cruise?";
   if (page) url += "page=" + page;
   if (limit) url += "&limit=" + limit;
-  if (destinationId > 0) url += "&destinationId=" + destinationId;
+  if (search) url += "&search=" + search;
+  if (destinationId && destinationId > 0)
+    url += "&destinationId=" + destinationId;
   if (detailLocationId && detailLocationId > 0)
     url += "&detailLocationId=" + detailLocationId;
   return axios.get(url);
@@ -93,7 +96,8 @@ export const getAllItinerariesCruise = (idCruise: number) => {
 };
 
 export const getAllTour = (
-  packetTourId: number,
+  packetTourId: number | undefined,
+  search: string,
   sort: string,
   typeSort: string
 ) => {
@@ -101,6 +105,7 @@ export const getAllTour = (
   let url = "tour?page=1&limit=100";
 
   if (packetTourId) url += "&packetTourId=" + packetTourId;
+  if (search) url += "&search=" + search;
   if (sort) url += "&sort=" + sort;
   if (typeSort) url += "&typeSort=" + typeSort;
   return axios.get(url);

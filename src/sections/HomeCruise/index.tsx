@@ -25,6 +25,7 @@ import { Tooltip } from "react-tooltip";
 export function HomeCruiseSection(): JSX.Element {
   const searchParams = useSearchParams();
   const destinationSlug = searchParams.get("destination") || "";
+  const search = searchParams.get("search") || "";
   const detail = searchParams.get("detail") || "";
   const [typeShow, setTypeShow] = useState("list");
 
@@ -37,16 +38,22 @@ export function HomeCruiseSection(): JSX.Element {
   const idDestination = dataDestination?.id;
   const idDetailLocation = dataDetailLocation?.id;
 
-  const { data } = useCruise(true, idDestination, idDetailLocation);
+  const { data } = useCruise(true, idDestination, idDetailLocation, search);
 
   return (
     <div className="-mt-[var(--height-header)]">
       <SliderAndSearch />
       <IntroduceHome />
       <IntroCruiseAndTour
-        title={dataDetailLocation?.title || dataDestination?.title || ""}
+        title={
+          dataDetailLocation?.title ||
+          dataDestination?.title ||
+          "SEARCH RESULTS"
+        }
         description={
-          dataDetailLocation?.description || dataDestination?.description || ""
+          dataDetailLocation?.description ||
+          dataDestination?.description ||
+          `<p style="text-align: center">If you couldn't find suitable cruise for yourself? Let us help you!</p>`
         }
       />
       <section className="bg-[var(--bg-container-color)]  py-4">
@@ -119,7 +126,11 @@ export function HomeCruiseSection(): JSX.Element {
         </div>
       </section>
 
-      <section className="bg-[var(--bg-container-color)] py-4">
+      <section
+        className={classNames("bg-[var(--bg-container-color)] py-4", {
+          hidden: !idDestination && !idDetailLocation,
+        })}
+      >
         <div className="container">
           <div className="flex flex-col items-center mb-5">
             <FontAwesomeIcon
@@ -127,11 +138,11 @@ export function HomeCruiseSection(): JSX.Element {
               className="text-3xl text-[var(--primary-color)] mb-2"
             />
             <h2 className="my-3 text-2xl font-bold text-[var(--secondary-color)] w-full text-center relative line-text">
-              Other Bai Tu Long Bay Cruise Destinations
+              {dataDetailLocation?.name || dataDestination?.name}
             </h2>
           </div>
           <div>
-            {/* {destinationNear.map((item, index) => (
+            {dataDestination?.detailLocations.map((item, index) => (
               <div
                 key={index}
                 className="bg-white border-[1px] rounded-lg p-4 grid grid-cols-1 lg:grid-cols-4 gap-5 mb-4"
@@ -139,7 +150,7 @@ export function HomeCruiseSection(): JSX.Element {
                 <Link href={""} className="block">
                   <Image
                     alt="destination"
-                    src={item.image}
+                    src={item.images.split("*_*")[0]}
                     width={260}
                     height={155}
                     className="w-full object-contain hover:opacity-95"
@@ -150,7 +161,7 @@ export function HomeCruiseSection(): JSX.Element {
                     {item.name}
                   </h4>
                   <div className="flex items-center">
-                    <div className="flex">
+                    {/* <div className="flex">
                       {item.services.map((service, index) => (
                         <div key={index}>
                           <FontAwesomeIcon
@@ -163,23 +174,22 @@ export function HomeCruiseSection(): JSX.Element {
                           <Tooltip id={`tooltip-service-${service.slug}`} />
                         </div>
                       ))}
-                    </div>
+                    </div> */}
                     <div className="flex">
                       <FontAwesomeIcon
                         icon={faLocationDot}
                         className="text-[#aaa] mx-1"
                       />
-                      <span className="text-sm text-[#aaa]">
-                        {item.location}
-                      </span>
+                      <span className="text-sm text-[#aaa]">{item.title}</span>
                     </div>
                   </div>
-                  <p className="text-start text-[#666] text-sm">
-                    {item.content}
-                  </p>
+                  <p
+                    className="text-start text-[#666] text-sm pt-1"
+                    dangerouslySetInnerHTML={{ __html: item.description }}
+                  ></p>
                 </div>
               </div>
-            ))} */}
+            ))}
           </div>
         </div>
       </section>

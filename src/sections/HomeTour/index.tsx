@@ -16,12 +16,13 @@ import { useState } from "react";
 export function HomeTourSection(): JSX.Element {
   const searchParams = useSearchParams();
   const slugDestination = searchParams.get("name") || "";
+  const search = searchParams.get("search") || "";
 
   const [sort, setSort] = useState("");
   const [typeSort, setTypeSort] = useState("");
   const { packetTours } = useAppSelector((state) => state.packetTour);
   const packetTourBySlug = packetTours.find((i) => i.slug == slugDestination);
-  const dataTour = useHomeTour(packetTourBySlug?.id, sort, typeSort);
+  const dataTour = useHomeTour(packetTourBySlug?.id, sort, typeSort, search);
 
   const [typeShow, setTypeShow] = useState("list");
   return (
@@ -29,8 +30,11 @@ export function HomeTourSection(): JSX.Element {
       <SliderAndSearch />
       <IntroduceHome />
       <IntroCruiseAndTour
-        title="All 43 Best Family Halong Bay Tour"
-        description="With many years of experience working as Halong Bay Cruise expert as well as receiving and summarizing several valuable feedbacks from our old customers, I group a list of cruises for families based on common criteria such as cruises and cabins' features as well as their itineraries. These choices belong to all three classes of cruises in Halong Bay. Therefore, it is suitable for each family's requirement. These Halong bay cruises are commonly chosen by family due to their connecting cabins, large sundecks and elegant dining rooms & bars which will surely make your family feel comfortable."
+        title={packetTourBySlug?.name || "All 43 Best Family Halong Bay Tour"}
+        description={
+          packetTourBySlug?.description ||
+          "With many years of experience working as Halong Bay Cruise expert as well as receiving and summarizing several valuable feedbacks from our old customers, I group a list of cruises for families based on common criteria such as cruises and cabins' features as well as their itineraries. These choices belong to all three classes of cruises in Halong Bay. Therefore, it is suitable for each family's requirement. These Halong bay cruises are commonly chosen by family due to their connecting cabins, large sundecks and elegant dining rooms & bars which will surely make your family feel comfortable."
+        }
       />
       <section className="bg-[var(--bg-container-color)]  py-4">
         <div className="container">

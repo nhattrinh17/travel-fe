@@ -20,30 +20,35 @@ import {
 export const useCruise = (
   resetCruiseDetail: boolean,
   idDestination?: number,
-  idDetailLocation?: number
+  idDetailLocation?: number,
+  search?: string
 ) => {
   const { cruises, refreshData, page, limit, total } = useAppSelector(
     (state) => state.cruise
   );
   const destinationRef = useRef(idDestination);
   const detailLocationRef = useRef(idDetailLocation);
+  const searchRef = useRef(search);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     async function fetchData() {
       if (
-        (refreshData ||
-          idDestination !== destinationRef.current ||
-          idDetailLocation !== detailLocationRef.current) &&
-        idDestination
+        refreshData ||
+        idDestination !== destinationRef.current ||
+        search !== searchRef.current ||
+        idDetailLocation !== detailLocationRef.current
       ) {
+        console.log("Fetching data");
         destinationRef.current = idDestination;
         detailLocationRef.current = idDetailLocation;
+        searchRef.current = search;
         const res = await getAllCruise(
           page,
           limit,
           idDestination,
-          idDetailLocation
+          idDetailLocation,
+          search
         );
         if (res?.data) {
           const { data, pagination } = res?.data;
