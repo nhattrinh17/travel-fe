@@ -16,3 +16,27 @@
     );
   }
 }
+
+.booking-steps__item {
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: 50%;
+    height: 2px;
+    z-index: 0;
+    background-color: var(--text-hover-default);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 20px;
+    width: 50%;
+    height: 2px;
+    z-index: 0;
+    background-color: #d0d0d0;
+  }
+}

@@ -28,6 +28,7 @@ import { setDataBookingCruise } from "@/lib/redux/app/cruise.slice";
 import { useRouter } from "next/navigation";
 import { TypeOtherServiceBooking, countries } from "@/constants";
 import { bookingCruise } from "@/utils/api";
+import { Tooltip } from "react-tooltip";
 
 const cx = classNames.bind(styles);
 
@@ -139,6 +140,22 @@ export function ShowRoomAndBookCruise({
       setRefreshDataMarts(false);
     }
   }, [refreshDataMarts]);
+
+  const handleScrollToElement = (event: any) => {
+    event.preventDefault();
+    const targetId = event.currentTarget.getAttribute("href").substring(1);
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      const yOffset = -200; // Khoảng cách từ đầu trang
+      const y =
+        targetElement.getBoundingClientRect().top +
+        window.pageYOffset +
+        yOffset;
+
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
 
   return cruiseDetail ? (
     <section className="py-4 ">
@@ -256,6 +273,7 @@ export function ShowRoomAndBookCruise({
         ))}
       </ul>
       <form
+        id="check-rate"
         className="bg-[var(--secondary1-color)] rounded-xl grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-8 p-3 font-bold"
         onSubmit={(e) => e.preventDefault()}
       >
@@ -667,9 +685,63 @@ export function ShowRoomAndBookCruise({
           </div>
         ))}
       </div>
-
+      <ul
+        className={cx("flex pt-10 text-[var(--text-color-default)]", {
+          hidden: !bookingPage,
+        })}
+      >
+        <li
+          className={cx("flex-1 text-center relative", "booking-steps__item")}
+        >
+          <a
+            href="#check-rate"
+            onClick={handleScrollToElement}
+            data-tooltip-id={`tooltip-check-rate`}
+            data-tooltip-content={"Check room rate"}
+            data-tooltip-place="top"
+            className="mx-auto text-base hover:bg-[var(--text-hover-default)] hover:text-white cursor-pointer relative z-[1] flex items-center w-10 h-10 justify-center rounded-full bg-white border-[1px] border-[#f5f5f5]"
+          >
+            1
+            <Tooltip id={`tooltip-check-rate`} />
+          </a>
+          <p className="text-xs">Check room rate</p>
+        </li>
+        <li
+          className={cx("flex-1 text-center relative", "booking-steps__item")}
+        >
+          <a
+            href="#select-room"
+            onClick={handleScrollToElement}
+            data-tooltip-id={`tooltip-select-room`}
+            data-tooltip-content={"Select your room(s)"}
+            data-tooltip-place="top"
+            className="mx-auto text-base hover:bg-[var(--text-hover-default)] hover:text-white cursor-pointer relative z-[1] flex items-center w-10 h-10 justify-center rounded-full bg-white border-[1px] border-[#f5f5f5]"
+          >
+            2
+            <Tooltip id={`tooltip-select-room`} />
+          </a>
+          <p className="text-xs">Select your room(s)</p>
+        </li>
+        <li
+          className={cx("flex-1 text-center relative", "booking-steps__item")}
+        >
+          <a
+            href="#submit-booking"
+            onClick={handleScrollToElement}
+            data-tooltip-id={`tooltip-submit-booking`}
+            data-tooltip-content={"Confirm & submit"}
+            data-tooltip-place="top"
+            className="mx-auto text-base hover:bg-[var(--text-hover-default)] hover:text-white cursor-pointer relative z-[1] flex items-center w-10 h-10 justify-center rounded-full bg-white border-[1px] border-[#f5f5f5]"
+          >
+            3
+            <Tooltip id={`tooltip-submit-booking`} />
+          </a>
+          <p className="text-xs">Confirm & submit</p>
+        </li>
+      </ul>
       {/* Cruise Booking */}
       <div
+        id="select-room"
         className={cx({
           hidden: !bookingPage,
         })}
@@ -1259,7 +1331,10 @@ export function ShowRoomAndBookCruise({
           </div>
         </div>
         {/* Contact */}
-        <div className="mt-10 bg-white rounded-md py-5 px-6">
+        <div
+          id="submit-booking"
+          className="mt-10 bg-white rounded-md py-5 px-6"
+        >
           <h6 className="text-center border-b-[1px] border-[#f5f5f5] text-[var(--text-hover-default)] text-2xl font-bold pb-3">
             <FontAwesomeIcon icon={faHeart} className="mr-2" />
             Contact Info
