@@ -45,14 +45,14 @@ export function SliderAndSearch(): JSX.Element {
   const boxSelectDateRef = useRef<HTMLDivElement>(null);
 
   const sliders = [
-    "https://d1k2oi80tv211b.cloudfront.net/chl/images/background/bg-22.webp",
-    "https://d1k2oi80tv211b.cloudfront.net/chl/images/background/bg-55.webp",
-    "https://d1k2oi80tv211b.cloudfront.net/chl/images/background/bg-33.webp",
+    "https://storage.googleapis.com/viet-travel-bae44.appspot.com/image/1721637870457-bg-22.webp?GoogleAccessId=firebase-adminsdk-a62cq%40viet-travel-bae44.iam.gserviceaccount.com&Expires=16446992400&Signature=cDzb2KKVgqYy%2FslRW8qglHJzvLImg4g8Zm%2Fxudbv0cBsYnz1zM7w0ev6P7XAF1Hgvs3z53OQD%2BTQtW9Das54ASvNrxQDp8ozsGx2S%2Bh5PRRmQHas%2FX0Lt70YQJLx9D5U1lOXRWROQer%2BDDyusJ%2BfTGx6i7FMQMx75Vbuqwc0s3oU%2FvcoDlDCr%2Fjn4%2B0Bii5BPMx8FcalfGyDPVShyptq3vjF2%2BnictvFhSAcPowUFLhfz9efVTPNGYvkEmTvT5Y6NiiQVhwQVISv5vpvWkWK433y06VCwufRLP9Xe0lLGbJdP6AHf%2FBt%2FNdS%2FgXngZJzzx%2Fok3H27NcZFyu9d6EkPQ%3D%3D",
+    "https://storage.googleapis.com/viet-travel-bae44.appspot.com/image/1721637930603-bg-33.webp?GoogleAccessId=firebase-adminsdk-a62cq%40viet-travel-bae44.iam.gserviceaccount.com&Expires=16446992400&Signature=zBrB8l41gWRsgtv%2BNBCFsdpjhG%2F80p%2B2jV7NNlkpi6S8A7oKH0D1d%2F6557iVk2WjOukp6G%2F5KVvK2A9hnPFSXq1EnY%2FElMLa28dl4w77uXEDnundcQhIBj2hvwWLjCp%2BEXNOWB4UQ%2FHhvsxa2RB2AQcSQaIc6LpFS4mLheEoNVNh30L1gB5H3EEutPsRiffJeBwDkFMJc%2FYiWP9lWBFwZJtIA%2BzZtKRm8zsmkbtfc1FxzbxWdkAukH6QjxUKsWZISHdFkrUvzBucF60T4N8lJ9ORM57SO0nNi%2FQMJFfJHtwRTRVah3YOXxRf8t51l1WnIA5Qb6G2Xxj61TNP1EpaGw%3D%3D",
+    "https://storage.googleapis.com/viet-travel-bae44.appspot.com/image/1721637930603-bg-55.webp?GoogleAccessId=firebase-adminsdk-a62cq%40viet-travel-bae44.iam.gserviceaccount.com&Expires=16446992400&Signature=wQfbwxH3m%2FFUQFkqE8TblLgYI8cs7GCKfGDXIRvDxlsOByGBY4vIE3IRvk5pUhSLf1VWUklW3HktMdjAiv57ugaXNEOFDvGXii5HsYP2ADK%2Fmlr%2BmLP9yLEy53hsv%2F4z%2BcCuYs8CJuk%2BqWzVhtkhuxlG4JfVXRXjZAOs9osp4Sew2SwMkJz8Dm5p7T1OdtU0W5RT%2Bi%2Brsl48FZMAGkIRujpNLTTSrmnbfW7i%2FeFPFW3CigBJw%2B4r4Sn2OukaO%2FhE3EeJTlZrjE0%2BTOYk81BLlZ5KIcmhXoSXvLW9ZI9jSxXqw70f7OUUPjWCgBo0Hr7%2B5YwEpJk6t%2B29m%2Fj7IVareA%3D%3D",
   ];
 
-  const logoCenter = "https://d1k2oi80tv211b.cloudfront.net/trip24.webp";
-  const imageBottom =
-    "https://d1k2oi80tv211b.cloudfront.net/chl/images/save10-40.svg";
+  const logoCenter =
+    "https://storage.googleapis.com/viet-travel-bae44.appspot.com/image/1721637992209-trip24.webp?GoogleAccessId=firebase-adminsdk-a62cq%40viet-travel-bae44.iam.gserviceaccount.com&Expires=16446992400&Signature=GvoPJpZlKaMIG5h%2F6aqeo2mfIsXLIt6hKtxup7C6ncZI2cfqUHEaZq1E%2BMqwxVZIyT4LuwsLNJDTFg7KtY5TtK4dcNMtIvVw7JfnGaeUEdXQZ3bLa5AAZsd4QUaIbpO2eNhN9%2FNzi6wugHptGqJeaXn7w7qdXYGRstcvVZq7p10g7375Mtv285x5y5P5zKuosAkZor2FU8ZJmFmvkCcibAk3GXsj0oYTY%2FtpCVcfu%2Fd2UzAzw0SH4I7%2BqUpDS0Aej6c4j5BHuyGuNiClu5GdkZOdmKCFFV1bR%2Fjxko24mud7kR4Js6%2BtxoXarTLt0OnbjA4eFA8abTiPT%2FqX0vRBpQ%3D%3D";
+  const imageBottom = "/home/save10-40.svg";
 
   useEffect(() => {
     const nextSlider = () => {

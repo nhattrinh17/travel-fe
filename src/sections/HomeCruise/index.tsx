@@ -7,7 +7,7 @@ import { SliderAndSearch } from "@/components/SliderAndSearch";
 import { IntroduceHome } from "@/components/home/Introduce";
 import { mapServiceIcons } from "@/constants";
 import { useAppSelector } from "@/lib";
-import { cruiseHome, destinationNear } from "@/mocks";
+// import { destinationNear } from "@/mocks";
 import { useCruise } from "@/utils/handleCruise";
 import {
   faBorderAll,
@@ -131,7 +131,7 @@ export function HomeCruiseSection(): JSX.Element {
             </h2>
           </div>
           <div>
-            {destinationNear.map((item, index) => (
+            {/* {destinationNear.map((item, index) => (
               <div
                 key={index}
                 className="bg-white border-[1px] rounded-lg p-4 grid grid-cols-1 lg:grid-cols-4 gap-5 mb-4"
@@ -179,7 +179,7 @@ export function HomeCruiseSection(): JSX.Element {
                   </p>
                 </div>
               </div>
-            ))}
+            ))} */}
           </div>
         </div>
       </section>

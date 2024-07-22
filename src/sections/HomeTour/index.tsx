@@ -6,7 +6,6 @@ import { TourItem } from "@/components/TourItem";
 import { TourItemGrid } from "@/components/TourItemGrid";
 import { IntroduceHome } from "@/components/home/Introduce";
 import { useAppSelector } from "@/lib";
-import { tourHome } from "@/mocks";
 import { useHomeTour } from "@/utils/handleTour";
 import { faBorderAll, faListUl } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

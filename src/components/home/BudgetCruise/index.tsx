@@ -1,8 +1,6 @@
 "use client";
 
 import { CruiseHomeLuxuryOrBudget } from "@/components/home/CruiseHomeLuxuryOrBudget";
-
-import { luxuryCruise } from "@/mocks";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

@@ -6,10 +6,10 @@ const nextConfig = {
     API_URL: "https://be.trinhminhnhat.info.vn/api",
   },
   images: {
-    domains: [
-      "www.insidetravel.com",
-      "d1k2oi80tv211b.cloudfront.net",
-      "storage.googleapis.com",
+    remotePatterns: [
+      //
+      { hostname: "storage.googleapis.com" },
+      // { hostname: "d1k2oi80tv211b.cloudfront.net" },
     ],
   },
 };

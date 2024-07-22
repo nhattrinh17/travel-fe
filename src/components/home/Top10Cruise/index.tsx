@@ -1,7 +1,6 @@
 "use client";
 
 import { CruiseItem } from "@/components/CruiseItem";
-import { topCruise } from "@/mocks";
 import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";

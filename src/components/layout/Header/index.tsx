@@ -10,7 +10,6 @@ import { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import classNames from "classnames/bind";
 import { TourHeaderItem } from "../TourHeaderItem";
-import { cruises, packetTour } from "@/mocks";
 import { CruisesHeaderItem } from "../CruisesHeaderItem";
 import { languageList } from "@/constants";
 import { usePacketTour } from "@/utils/handlePacketTour";

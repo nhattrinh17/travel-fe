@@ -1,6 +1,5 @@
 "use client";
 
-import { top10DailyTour } from "@/mocks";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

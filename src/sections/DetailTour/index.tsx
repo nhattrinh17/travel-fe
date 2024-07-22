@@ -23,7 +23,6 @@ import styles from "./styles.module.scss";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
-import { top10DailyTour } from "@/mocks";
 import { TourHomeTop10Item } from "@/components/home/TourHomeTopItem";
 import { useAppSelector } from "@/lib";
 import { bookingTour, getTourBySlug } from "@/utils/api";
