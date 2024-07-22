@@ -101,6 +101,7 @@ export function SliderAndSearch(): JSX.Element {
             width={2000}
             height={970}
             className="w-full h-full object-cover animate-zoomInZoomOut"
+            loading="eager"
           />
         </div>
         <div className="z-10 absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center">
@@ -110,6 +111,7 @@ export function SliderAndSearch(): JSX.Element {
             width={160}
             height={160}
             className="object-contain"
+            loading="eager"
           />
 
           <div className="py-5">
@@ -119,6 +121,7 @@ export function SliderAndSearch(): JSX.Element {
               width={388}
               height={160}
               className="object-contain hidden lg:block"
+              loading="eager"
             />
           </div>
 
