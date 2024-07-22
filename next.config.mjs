@@ -12,6 +12,7 @@ const nextConfig = {
     //   // { hostname: "d1k2oi80tv211b.cloudfront.net" },
     // ],
     domains: ["storage.googleapis.com"],
+    unoptimized: true,
   },
 };
 
