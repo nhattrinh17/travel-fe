@@ -57,7 +57,12 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
 
   const [tourDetails, setTourDetails] = useState<any>(null);
 
-  const dataTourSuggest = useHomeTour(tourDetails?.packetTourId, "id", "DESC");
+  const dataTourSuggest = useHomeTour(
+    tourDetails?.packetTourId,
+    "id",
+    "DESC",
+    ""
+  );
 
   useEffect(() => {
     async function fetchData() {
