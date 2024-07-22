@@ -6,11 +6,12 @@ const nextConfig = {
     API_URL: "https://be.trinhminhnhat.info.vn/api",
   },
   images: {
-    remotePatterns: [
-      //
-      { hostname: "storage.googleapis.com" },
-      // { hostname: "d1k2oi80tv211b.cloudfront.net" },
-    ],
+    // remotePatterns: [
+    //   //
+    //   { hostname: "storage.googleapis.com" },
+    //   // { hostname: "d1k2oi80tv211b.cloudfront.net" },
+    // ],
+    domains: ["storage.googleapis.com"],
   },
 };
 
