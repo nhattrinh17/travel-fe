@@ -53,7 +53,7 @@ export function TourItem({
 
   return (
     <div
-      className="group w-full shadow-md"
+      className="group w-full shadow-md bg-white"
       style={{ marginBottom: marginBottom }}
     >
       <Link
