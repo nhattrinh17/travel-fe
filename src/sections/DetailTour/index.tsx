@@ -90,7 +90,7 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
           {/* Intro */}
           <section>
             <div
-              className="w-full h-[600px] bg-cover flex items-center justify-center"
+              className="w-full h-[600px] bg-cover flex items-center justify-center bg-no-repeat"
               style={{
                 backgroundImage: `url(${
                   tourDetails?.images && tourDetails?.images[0]
@@ -131,7 +131,7 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
             </div>
           </section>
 
-          <div className="container mt-5 lg:-mt-20 pb-20 ">
+          <div className="container mt-5 lg:-mt-40 pb-20 ">
             <div className="grid grid-cols-4 gap-10">
               <div className="col-span-4 lg:col-span-3">
                 <div className="hidden lg:flex border-b-[3px] border-[var(--primary-color)]">
