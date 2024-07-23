@@ -16,6 +16,7 @@ export const languageList = [
   { name: "ko", positionY: -151 },
   { name: "zh-CN", positionY: -200 },
   { name: "ja", positionY: -176 },
+  { name: "de", positionY: -78 },
 ];
 
 export const mapServiceIcons: { [key: string]: IconDefinition } = {
