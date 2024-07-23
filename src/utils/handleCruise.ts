@@ -25,6 +25,7 @@ export const useCruise = (
   idDetailLocation?: number,
   search?: string
 ) => {
+  console.log("🚀 ~ sort:", sort);
   const { cruises, refreshData, page, limit, total } = useAppSelector(
     (state) => state.cruise
   );
@@ -45,6 +46,7 @@ export const useCruise = (
         sort !== sortTourRef.current ||
         typeSort !== typeSortTourRef.current
       ) {
+        console.log("Fetching data cruise home...");
         destinationRef.current = idDestination;
         detailLocationRef.current = idDetailLocation;
         sortTourRef.current = sort;
@@ -67,7 +69,7 @@ export const useCruise = (
     }
 
     fetchData();
-  }, [refreshData, idDestination, idDetailLocation]);
+  }, [refreshData, idDestination, idDetailLocation, sort, typeSort]);
 
   return {
     data:

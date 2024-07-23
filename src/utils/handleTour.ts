@@ -89,7 +89,7 @@ export const useHomeTour = (
     }
 
     fetchData();
-  }, [packetTourId, sort, typeSort]);
+  }, [packetTourId, sort, typeSort, search]);
 
   return tours.map((tour) => {
     return {
