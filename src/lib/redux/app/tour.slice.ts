@@ -39,7 +39,7 @@ const tourSlice = createSlice({
   initialState: {
     tourNav: [],
     tours: [],
-    limit: 10,
+    limit: 20,
     page: 1,
     total: 0,
     refreshData: true,
