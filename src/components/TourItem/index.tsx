@@ -56,47 +56,49 @@ export function TourItem({
       className="group w-full shadow-md bg-white"
       style={{ marginBottom: marginBottom }}
     >
-      <Link
-        href={`/tour/${slug}`}
-        className="relative w-full block overflow-hidden"
-      >
-        <Image
-          alt="image cruise"
-          src={images[0]}
-          width={570}
-          height={306}
-          className="w-full object-contain group-hover:scale-[1.15] transition-all duration-500"
-        />
-        <div
-          className={classNames(
-            "absolute top-2 left-2 flex text-xs font-bold text-white bg-[#ff5722] py-1 px-2 rounded-sm",
-            {
-              hidden: !isFlashSale && !discount,
-            }
-          )}
+      <figure className="relative w-full overflow-hidden">
+        <Link
+          href={`/tour/${slug}`}
+          className="relative w-full block overflow-hidden pt-[54%]"
         >
-          <div
-            className={classNames("flex", {
-              hidden: !isFlashSale,
-            })}
-          >
-            <FontAwesomeIcon icon={faBolt} />
-            <span className="">Flash Sale</span>
-          </div>
-          <span>-{discount}%</span>
-        </div>
-
-        <div
-          onMouseEnter={() => setMountLike(true)}
-          onMouseLeave={() => setMountLike(false)}
-          className="group/like absolute top-2 right-2 text-white"
-        >
-          <FontAwesomeIcon
-            icon={mountLike ? faHeartSolid : faHeart}
-            className="text-2xl"
+          <Image
+            alt="image cruise"
+            src={images[0]}
+            width={570}
+            height={306}
+            className="absolute w-full h-full top-0 bottom-0 left-0 right-0 object-cover group-hover:scale-[1.15] transition-all duration-500"
           />
-        </div>
-      </Link>
+          <div
+            className={classNames(
+              "absolute top-2 left-2 flex text-xs font-bold text-white bg-[#ff5722] py-1 px-2 rounded-sm",
+              {
+                hidden: !isFlashSale && !discount,
+              }
+            )}
+          >
+            <div
+              className={classNames("flex", {
+                hidden: !isFlashSale,
+              })}
+            >
+              <FontAwesomeIcon icon={faBolt} />
+              <span className="">Flash Sale</span>
+            </div>
+            <span>-{discount}%</span>
+          </div>
+
+          <div
+            onMouseEnter={() => setMountLike(true)}
+            onMouseLeave={() => setMountLike(false)}
+            className="group/like absolute top-2 right-2 text-white"
+          >
+            <FontAwesomeIcon
+              icon={mountLike ? faHeartSolid : faHeart}
+              className="text-2xl"
+            />
+          </div>
+        </Link>
+      </figure>
 
       <div className="px-2 py-3">
         <div className="flex justify-between items-start mb-2">
