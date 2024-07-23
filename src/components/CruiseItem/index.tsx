@@ -233,12 +233,15 @@ export function CruiseItem({
             <div className="flex mr-2">
               <FontAwesomeIcon
                 icon={faBookmark}
-                className="relative top-1 mr-1"
+                className="relative top-[2px] mr-1"
               />
               <span>Style:{styleCruise}</span>
             </div>
             <div className="flex mr-2">
-              <FontAwesomeIcon icon={faBed} className="relative top-1 mr-1" />
+              <FontAwesomeIcon
+                icon={faBed}
+                className="relative top-[2px] mr-1"
+              />
               <span>Rooms:{totalRoom}</span>
             </div>
           </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { mapServiceIcons } from "@/constants";
+import { handleOpenLinkNewTab } from "@/share";
 import {
   faHeart,
   faStar as faStarRegular,
@@ -211,23 +212,22 @@ export function CruiseItemGrid({
               />
               <span className="font-bold mr-1">Excellent</span>
 
-              {Array.from({ length: 5 }, (v, i) => i + 1).map((i, index) => (
-                <Image
-                  key={index}
-                  alt="cicel"
-                  src={"/share/icontripadvisor2.svg"}
-                  width={15}
-                  height={15}
-                  className="mr-[1px]"
-                />
-              ))}
-              <a
-                href={linkTripadvisor}
-                rel="nofollow"
-                className="hover:underline cursor-pointer"
+              <div
+                onClick={() => handleOpenLinkNewTab(linkTripadvisor)}
+                className="flex cursor-pointer hover:underline"
               >
-                - {reviewTripadvisor || 3651} Review
-              </a>
+                {Array.from({ length: 5 }, (v, i) => i + 1).map((i, index) => (
+                  <Image
+                    key={index}
+                    alt="cicel"
+                    src={"/share/icontripadvisor2.svg"}
+                    width={15}
+                    height={15}
+                    className="mr-[1px]"
+                  />
+                ))}
+                <span className=""> - {reviewTripadvisor || 3651} Review</span>
+              </div>
             </div>
           </div>
         </div>
@@ -250,7 +250,7 @@ export function CruiseItemGrid({
               <FontAwesomeIcon
                 icon={faClock}
                 color="#bbb"
-                className="relative top-1 mr-1"
+                className="relative top-[2px] mr-1"
               />
               <span className="text-[var(--text-hover-default)]">
                 Launched:{timeLaunched}
@@ -259,7 +259,7 @@ export function CruiseItemGrid({
             <div className="flex mr-2">
               <FontAwesomeIcon
                 icon={faBed}
-                className="relative top-1 mr-1"
+                className="relative top-[2px] mr-1"
                 color="#bbb"
               />
               <span className="text-[var(--text-hover-default)]">
