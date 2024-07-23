@@ -107,14 +107,14 @@ export function SliderAndSearch(): JSX.Element {
           />
         </div>
         <div className="z-10 absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center">
-          <Image
+          {/* <Image
             alt="logoCenter"
             src={logoCenter}
             width={160}
             height={160}
             className="object-contain"
             loading="eager"
-          />
+          /> */}
 
           <div className="py-5">
             <Image
