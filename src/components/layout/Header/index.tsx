@@ -261,7 +261,7 @@ export function HeaderLayout(): JSX.Element {
               </div>
             </div>
             <Link
-              href={"flash-deal"}
+              href={"/flash-deal"}
               className="px-2 cursor-pointer py-1 lg:py-0 lg:hover:bg-[var(--primary-color)] text-white font-bold lg:h-full flex items-center"
             >
               <Image
