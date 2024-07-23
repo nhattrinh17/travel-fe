@@ -9,11 +9,29 @@ import "./globals.css";
 import Script from "next/script";
 import { MainLayout } from "@/layout/main";
 import StoreProvider from "./StoreProvider";
+import { Metadata } from "next";
 
 // // import function to register Swiper custom elements
 // import { register } from "swiper/element/bundle";
 // // register Swiper custom elements
 // register();
+
+export const metadata: Metadata = {
+  title: "Global Travel",
+  description: "Global Travel",
+  icons: [
+    {
+      media: "(prefers-color-scheme: light)",
+      url: "/favicon.png",
+      href: "/favicon.png",
+    },
+    {
+      media: "(prefers-color-scheme: dark)",
+      url: "/favicon.png",
+      href: "/favicon.png",
+    },
+  ],
+};
 
 export default function RootLayout({
   children,

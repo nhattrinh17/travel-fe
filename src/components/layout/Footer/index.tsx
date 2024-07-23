@@ -329,7 +329,7 @@ export function FooterLayout(): JSX.Element {
               </div>
             </div>
           </div>
-          <Image
+          {/* <Image
             alt="mekong-river-cruises"
             src={"/home/footer/mekong-river-cruises.webp"}
             width={1500}
@@ -342,7 +342,7 @@ export function FooterLayout(): JSX.Element {
             width={1500}
             height={209}
             className="w-full object-contain py-4 opacity-80 hover:opacity-100"
-          />
+          /> */}
           <Image
             alt="logo_footer_partner"
             src={"/home/footer/logo_footer_partner.jpg"}

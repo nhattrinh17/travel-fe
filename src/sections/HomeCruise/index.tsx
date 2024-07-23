@@ -5,7 +5,6 @@ import { CruiseItemGrid } from "@/components/CruiseItemGrid";
 import { IntroCruiseAndTour } from "@/components/IntroCruiseAndTour";
 import { SliderAndSearch } from "@/components/SliderAndSearch";
 import { IntroduceHome } from "@/components/home/Introduce";
-import { mapServiceIcons } from "@/constants";
 import { useAppSelector } from "@/lib";
 // import { destinationNear } from "@/mocks";
 import { useCruise } from "@/utils/handleCruise";
@@ -20,7 +19,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { Tooltip } from "react-tooltip";
 
 export function HomeCruiseSection(): JSX.Element {
   const searchParams = useSearchParams();
