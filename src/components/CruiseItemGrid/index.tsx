@@ -36,6 +36,8 @@ export function CruiseItemGrid({
   travelerLoves,
   totalStar,
   slug,
+  linkTripadvisor,
+  reviewTripadvisor,
   topCruise,
 }: {
   name: string;
@@ -54,6 +56,8 @@ export function CruiseItemGrid({
   totalRoom: number;
   specialOffers: { name: string; content: string }[];
   travelerLoves: string[];
+  linkTripadvisor: string;
+  reviewTripadvisor: number;
   topCruise?: number;
 }): JSX.Element {
   const [showTravelerLoves, setShowTravelerLoves] = useState(false);
@@ -174,7 +178,14 @@ export function CruiseItemGrid({
                 )
               )}
             </div>
-            <div className="text-[var(--text-hover-default)] flex items-center text-sm">
+            <div
+              className={classNames(
+                "text-[var(--text-hover-default)] flex items-center text-sm",
+                {
+                  hidden: linkTripadvisor,
+                }
+              )}
+            >
               <FontAwesomeIcon
                 icon={faThumbsUp}
                 className="p-1 rounded-full border-[1px]"
@@ -183,6 +194,40 @@ export function CruiseItemGrid({
               <span className="hover:underline cursor-pointer">
                 - 34 Review
               </span>
+            </div>
+            <div
+              className={classNames(
+                "text-[var(--text-hover-default)] flex items-center text-sm",
+                {
+                  hidden: !linkTripadvisor,
+                }
+              )}
+            >
+              <Image
+                alt="tripadvisor"
+                src={"/share/tripadvisor-logo.svg"}
+                width={29}
+                height={18}
+              />
+              <span className="font-bold mr-1">Excellent</span>
+
+              {Array.from({ length: 5 }, (v, i) => i + 1).map((i, index) => (
+                <Image
+                  key={index}
+                  alt="cicel"
+                  src={"/share/icontripadvisor2.svg"}
+                  width={15}
+                  height={15}
+                  className="mr-[1px]"
+                />
+              ))}
+              <a
+                href={linkTripadvisor}
+                rel="nofollow"
+                className="hover:underline cursor-pointer"
+              >
+                - {reviewTripadvisor || 3651} Review
+              </a>
             </div>
           </div>
         </div>

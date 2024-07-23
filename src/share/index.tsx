@@ -15,3 +15,21 @@ export function calculateTotalLikes(createdDate: string): number {
 
   return totalLikes;
 }
+
+export const handleOpenLinkNewTab = (path: string) => {
+  const left = screen.width / 2 - 950 / 2;
+  const top = screen.height / 2 - 750 / 2;
+
+  window.open(
+    path,
+    "",
+    "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=" +
+      780 +
+      ", height=" +
+      600 +
+      ", top=" +
+      top +
+      ", left=" +
+      left
+  );
+};

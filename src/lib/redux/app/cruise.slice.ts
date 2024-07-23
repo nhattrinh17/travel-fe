@@ -17,6 +17,8 @@ interface CruiseItem {
   createdAt: string;
   slug: string;
   totalRoom: number;
+  linkTripadvisor: string;
+  reviewTripadvisor: number;
   itineraries: { day: number; id: number; name: string; content: string }[];
   specialOffers: { id: number; name: string; content: string }[];
   accompaniedServices: { id: number; name: string; slug: string }[];

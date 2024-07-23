@@ -9,7 +9,6 @@ import { useCruiseFlashSale } from "@/utils/handleCruise";
 
 export function Top10Cruise(): JSX.Element {
   const { data } = useCruiseFlashSale();
-  console.log("🚀 ~ Top10Cruise ~ data:", data);
 
   return (
     <section className="bg-[#f1f1f1] py-5">

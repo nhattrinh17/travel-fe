@@ -1,6 +1,7 @@
 "use client";
 
 import { mapServiceIcons } from "@/constants";
+import { handleOpenLinkNewTab } from "@/share";
 import {
   faHeart,
   faStar as faStarRegular,
@@ -36,6 +37,8 @@ export function CruiseItem({
   specialOffers,
   marginBottom,
   totalStar,
+  linkTripadvisor,
+  reviewTripadvisor,
   slug,
 }: {
   name: string;
@@ -54,6 +57,8 @@ export function CruiseItem({
   totalRoom: number;
   contentBrief: string;
   specialOffers: { name: string; content: string }[];
+  linkTripadvisor: string;
+  reviewTripadvisor: number;
   marginBottom: number;
 }): JSX.Element {
   const [showContent, setShowContent] = useState(false);
@@ -160,13 +165,53 @@ export function CruiseItem({
           </div>
         </div>
         <div className="flex justify-between items-center mb-3">
-          <div className="text-[var(--text-hover-default)] flex items-center text-sm">
+          <div
+            className={classNames(
+              "text-[var(--text-hover-default)] flex items-center text-sm",
+              {
+                hidden: linkTripadvisor,
+              }
+            )}
+          >
             <FontAwesomeIcon
               icon={faThumbsUp}
               className="p-1 rounded-full border-[1px]"
             />
             <span className="font-bold mr-1">Excellent</span>
-            <span className="hover:underline cursor-pointer"> - 34 Review</span>
+            <span className="hover:underline cursor-pointer">- 34 Review</span>
+          </div>
+          <div
+            className={classNames(
+              "text-[var(--text-hover-default)] flex items-center text-sm",
+              {
+                hidden: !linkTripadvisor,
+              }
+            )}
+          >
+            <Image
+              alt="tripadvisor"
+              src={"/share/tripadvisor-logo.svg"}
+              width={29}
+              height={18}
+            />
+            <span className="font-bold mr-1">Excellent</span>
+
+            <div
+              onClick={() => handleOpenLinkNewTab(linkTripadvisor)}
+              className="flex cursor-pointer hover:underline"
+            >
+              {Array.from({ length: 5 }, (v, i) => i + 1).map((i, index) => (
+                <Image
+                  key={index}
+                  alt="cicel"
+                  src={"/share/icontripadvisor2.svg"}
+                  width={15}
+                  height={15}
+                  className="mr-[1px]"
+                />
+              ))}
+              <span className=""> - {reviewTripadvisor || 3651} Review</span>
+            </div>
           </div>
           <div className="flex items-end">
             <span className="text-sm text-[#999]">From</span>
