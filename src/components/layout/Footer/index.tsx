@@ -70,21 +70,21 @@ export function FooterLayout(): JSX.Element {
               ))}
             </ul>
           </div>
-          <Image
+          {/* <Image
             alt="halong-bay-cruises"
             src={"/home/footer/halong-bay-cruises.jpg"}
             width={1500}
             height={209}
             className="w-full object-contain py-4 opacity-80 hover:opacity-100"
-          />
+          /> */}
           <div className="grid lg:grid-cols-6 gap-10 text-xs text-[#ccc]">
             <div className="col-span-6 lg:col-span-2 flex flex-col">
-              <Image
+              {/* <Image
                 alt="inside travel"
                 src={"/home/footer/inside-travel-logo.webp"}
                 width={800}
                 height={300}
-              />
+              /> */}
               <h1 className="font-bold my-2">
                 Operated by INSIDE TRAVEL Experts - Best Price Guarantee!
               </h1>
