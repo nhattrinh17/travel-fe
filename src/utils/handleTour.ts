@@ -61,6 +61,7 @@ export const useHomeTour = (
   typeSort: string,
   search: string
 ) => {
+  console.log("🚀 ~ sort:", sort, typeSort);
   const { refreshData, tours } = useAppSelector((state) => state.tour);
 
   const packetTourRef = useRef(packetTourId);
@@ -88,7 +89,7 @@ export const useHomeTour = (
     }
 
     fetchData();
-  }, [packetTourId, sort]);
+  }, [packetTourId, sort, typeSort]);
 
   return tours.map((tour) => {
     return {

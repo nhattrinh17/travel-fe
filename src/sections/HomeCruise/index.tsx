@@ -35,8 +35,17 @@ export function HomeCruiseSection(): JSX.Element {
 
   const idDestination = dataDestination?.id;
   const idDetailLocation = dataDetailLocation?.id;
+  const [sort, setSort] = useState("");
+  const [typeSort, setTypeSort] = useState("");
 
-  const { data } = useCruise(true, idDestination, idDetailLocation, search);
+  const { data } = useCruise(
+    true,
+    sort,
+    typeSort,
+    idDestination,
+    idDetailLocation,
+    search
+  );
 
   return (
     <div className="-mt-[var(--height-header)]">
@@ -61,18 +70,24 @@ export function HomeCruiseSection(): JSX.Element {
               <span className="font-bold">Sort by:</span>
               <select className="border-b-[1px] border-dashed bg-transparent mx-2 outline-none py-2 pl-1 pr-3">
                 <option>--Star rating--</option>
-                <option>Ascending</option>
-                <option>Descending</option>
+                <option value={"ASC"}>Ascending</option>
+                <option value={"DESC"}>Descending</option>
               </select>
               <select className="border-b-[1px] border-dashed bg-transparent mx-2 outline-none py-2 pl-1 pr-3">
                 <option>--Guest rating--</option>
-                <option>Ascending</option>
-                <option>Descending</option>
+                <option value={"ASC"}>Ascending</option>
+                <option value={"DESC"}>Descending</option>
               </select>
-              <select className="border-b-[1px] border-dashed bg-transparent mx-2 outline-none py-2 pl-1 pr-3">
+              <select
+                onChange={(e) => {
+                  setSort("price");
+                  setTypeSort(e.target.value);
+                }}
+                className="border-b-[1px] border-dashed bg-transparent mx-2 outline-none py-2 pl-1 pr-3"
+              >
                 <option>--Pricing--</option>
-                <option>Ascending</option>
-                <option>Descending</option>
+                <option value={"ASC"}>Ascending</option>
+                <option value={"DESC"}>Descending</option>
               </select>
             </div>
             <div className="flex">

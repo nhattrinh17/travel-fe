@@ -56,6 +56,8 @@ export function DetailCruise({ slug }: { slug: string }): JSX.Element {
 
   const { data: dataCruiseSuggest } = useCruise(
     false,
+    "",
+    "",
     cruiseDetail?.destinationId,
     cruiseDetail?.detailLocationId
   );

@@ -53,6 +53,8 @@ export const getAllDetailLocation = (
 export const getAllCruise = (
   page: number,
   limit: number,
+  sort: string,
+  typeSort: string,
   destinationId?: number,
   detailLocationId?: number,
   search?: string
@@ -66,6 +68,8 @@ export const getAllCruise = (
     url += "&destinationId=" + destinationId;
   if (detailLocationId && detailLocationId > 0)
     url += "&detailLocationId=" + detailLocationId;
+  if (sort) url += "&sort=" + sort;
+  if (typeSort) url += "&typeSort=" + typeSort;
   return axios.get(url);
 };
 

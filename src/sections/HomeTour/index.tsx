@@ -43,32 +43,24 @@ export function HomeTourSection(): JSX.Element {
               <span className="font-bold">Sort by:</span>
               <select className="border-b-[1px] border-dashed bg-transparent mx-2 outline-none py-2 pl-1 pr-3">
                 <option>--Star rating--</option>
-                <option>Ascending</option>
-                <option>Descending</option>
+                <option value={"ASC"}>Ascending</option>
+                <option value={"DESC"}>Descending</option>
               </select>
               <select className="border-b-[1px] border-dashed bg-transparent mx-2 outline-none py-2 pl-1 pr-3">
                 <option>--Guest rating--</option>
-                <option>Ascending</option>
-                <option>Descending</option>
+                <option value={"ASC"}>Ascending</option>
+                <option value={"DESC"}>Descending</option>
               </select>
-              <select className="border-b-[1px] border-dashed bg-transparent mx-2 outline-none py-2 pl-1 pr-3">
+              <select
+                onChange={(e) => {
+                  setSort("price");
+                  setTypeSort(e.target.value);
+                }}
+                className="border-b-[1px] border-dashed bg-transparent mx-2 outline-none py-2 pl-1 pr-3"
+              >
                 <option>--Pricing--</option>
-                <option
-                  onClick={() => {
-                    setSort("price");
-                    setTypeSort("ASC");
-                  }}
-                >
-                  Ascending
-                </option>
-                <option
-                  onClick={() => {
-                    setSort("price");
-                    setTypeSort("DESC");
-                  }}
-                >
-                  Descending
-                </option>
+                <option value={"ASC"}>Ascending</option>
+                <option value={"DESC"}>Descending</option>
               </select>
             </div>
             <div className="flex">

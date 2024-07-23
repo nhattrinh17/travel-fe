@@ -19,6 +19,8 @@ import {
 
 export const useCruise = (
   resetCruiseDetail: boolean,
+  sort: string,
+  typeSort: string,
   idDestination?: number,
   idDetailLocation?: number,
   search?: string
@@ -29,6 +31,8 @@ export const useCruise = (
   const destinationRef = useRef(idDestination);
   const detailLocationRef = useRef(idDetailLocation);
   const searchRef = useRef(search);
+  const sortTourRef = useRef(sort);
+  const typeSortTourRef = useRef(typeSort);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -37,15 +41,20 @@ export const useCruise = (
         refreshData ||
         idDestination !== destinationRef.current ||
         search !== searchRef.current ||
-        idDetailLocation !== detailLocationRef.current
+        idDetailLocation !== detailLocationRef.current ||
+        sort !== sortTourRef.current ||
+        typeSort !== typeSortTourRef.current
       ) {
-        console.log("Fetching data");
         destinationRef.current = idDestination;
         detailLocationRef.current = idDetailLocation;
+        sortTourRef.current = sort;
+        typeSortTourRef.current = typeSort;
         searchRef.current = search;
         const res = await getAllCruise(
           page,
           limit,
+          sort,
+          typeSort,
           idDestination,
           idDetailLocation,
           search
