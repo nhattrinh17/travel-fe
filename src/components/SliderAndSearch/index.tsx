@@ -52,8 +52,7 @@ export function SliderAndSearch(): JSX.Element {
     "https://storage.googleapis.com/viet-travel-bae44.appspot.com/image/1721637930603-bg-55.webp?GoogleAccessId=firebase-adminsdk-a62cq%40viet-travel-bae44.iam.gserviceaccount.com&Expires=16446992400&Signature=wQfbwxH3m%2FFUQFkqE8TblLgYI8cs7GCKfGDXIRvDxlsOByGBY4vIE3IRvk5pUhSLf1VWUklW3HktMdjAiv57ugaXNEOFDvGXii5HsYP2ADK%2Fmlr%2BmLP9yLEy53hsv%2F4z%2BcCuYs8CJuk%2BqWzVhtkhuxlG4JfVXRXjZAOs9osp4Sew2SwMkJz8Dm5p7T1OdtU0W5RT%2Bi%2Brsl48FZMAGkIRujpNLTTSrmnbfW7i%2FeFPFW3CigBJw%2B4r4Sn2OukaO%2FhE3EeJTlZrjE0%2BTOYk81BLlZ5KIcmhXoSXvLW9ZI9jSxXqw70f7OUUPjWCgBo0Hr7%2B5YwEpJk6t%2B29m%2Fj7IVareA%3D%3D",
   ];
 
-  const logoCenter =
-    "https://storage.googleapis.com/viet-travel-bae44.appspot.com/image/1721637992209-trip24.webp?GoogleAccessId=firebase-adminsdk-a62cq%40viet-travel-bae44.iam.gserviceaccount.com&Expires=16446992400&Signature=GvoPJpZlKaMIG5h%2F6aqeo2mfIsXLIt6hKtxup7C6ncZI2cfqUHEaZq1E%2BMqwxVZIyT4LuwsLNJDTFg7KtY5TtK4dcNMtIvVw7JfnGaeUEdXQZ3bLa5AAZsd4QUaIbpO2eNhN9%2FNzi6wugHptGqJeaXn7w7qdXYGRstcvVZq7p10g7375Mtv285x5y5P5zKuosAkZor2FU8ZJmFmvkCcibAk3GXsj0oYTY%2FtpCVcfu%2Fd2UzAzw0SH4I7%2BqUpDS0Aej6c4j5BHuyGuNiClu5GdkZOdmKCFFV1bR%2Fjxko24mud7kR4Js6%2BtxoXarTLt0OnbjA4eFA8abTiPT%2FqX0vRBpQ%3D%3D";
+  const logoCenter = "/share/trip24.png";
   const imageBottom = "/home/save10-40.svg";
 
   useEffect(() => {
@@ -107,14 +106,14 @@ export function SliderAndSearch(): JSX.Element {
           />
         </div>
         <div className="z-10 absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center">
-          {/* <Image
+          <Image
             alt="logoCenter"
             src={logoCenter}
             width={160}
             height={160}
             className="object-contain"
             loading="eager"
-          /> */}
+          />
 
           <div className="py-5">
             <Image

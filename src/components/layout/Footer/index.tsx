@@ -122,14 +122,14 @@ export function FooterLayout(): JSX.Element {
               <div className="grid grid-cols-2 gap-1">
                 <Image
                   alt="travel"
-                  src={"/home/footer/inside-travel-travellers-choice-2023.webp"}
+                  src={"/home/footer/traveler-choice-2023.png"}
                   width={300}
                   height={300}
                   className="w-full object-contain"
                 />
                 <Image
                   alt="travel"
-                  src={"/home/footer/trip24.webp"}
+                  src={"/share/trip24.png"}
                   width={300}
                   height={300}
                   className="w-full object-contain"
