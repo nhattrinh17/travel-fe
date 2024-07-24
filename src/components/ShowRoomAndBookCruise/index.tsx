@@ -1552,6 +1552,7 @@ export function ShowRoomAndBookCruise({
       {roomTypeActive != undefined ? (
         <TypeRoomCruiseItem
           {...cruiseDetail.roomCruises[roomTypeActive]}
+          nameCruise={cruiseDetail.name}
           onClose={() => setRoomTypeActive(undefined)}
         />
       ) : (

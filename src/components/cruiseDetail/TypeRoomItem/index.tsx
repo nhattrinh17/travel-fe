@@ -31,6 +31,7 @@ interface Params {
   amenities: string[];
   images: string[];
   content: string;
+  nameCruise: string;
   onClose: () => void;
 }
 
@@ -44,6 +45,7 @@ export function TypeRoomCruiseItem({
   maxAdult,
   maxChildren,
   name,
+  nameCruise,
   onClose,
   specialService,
   totalRooms,
@@ -62,7 +64,7 @@ export function TypeRoomCruiseItem({
       >
         <h4 className="text-[var(--secondary-color)] text-xl font-semibold">
           <FontAwesomeIcon icon={faShip} className="mr-2" />
-          Ambassador Signature Cruise
+          {nameCruise}
         </h4>
         <div
           onClick={onClose}
