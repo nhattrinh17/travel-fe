@@ -18,7 +18,6 @@ import {
 } from "@/lib/redux/app/cruise.slice";
 
 export const useCruise = (
-  resetCruiseDetail: boolean,
   sort: string,
   typeSort: string,
   idDestination?: number,
@@ -63,7 +62,7 @@ export const useCruise = (
         );
         if (res?.data) {
           const { data, pagination } = res?.data;
-          dispatch(setDataCruises({ data, ...pagination, resetCruiseDetail }));
+          dispatch(setDataCruises({ data, ...pagination }));
         }
       }
     }
@@ -226,7 +225,7 @@ export const useCruiseDetail = (slug: string) => {
     }
 
     fetchData();
-  }, [slug]);
+  }, [cruiseDetail]);
 
   return cruiseDetail;
 };

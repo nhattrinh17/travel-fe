@@ -22,7 +22,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames/bind";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Tooltip } from "react-tooltip";
 import styles from "./styles.module.scss";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons/faLocationDot";
@@ -33,6 +33,8 @@ import { PopupShowAllImages } from "@/components/ShowAllImages";
 import { useCruise, useCruiseDetail } from "@/utils/handleCruise";
 import { ShowRoomAndBookCruise } from "@/components/ShowRoomAndBookCruise";
 import { ShowReviewCruiseAndTour } from "@/components/ShowReview";
+import { useAppDispatch } from "@/lib";
+import { resetDataCruiseDetail } from "@/lib/redux/app/cruise.slice";
 const cx = classNames.bind(styles);
 
 export function DetailCruise({ slug }: { slug: string }): JSX.Element {
@@ -41,6 +43,7 @@ export function DetailCruise({ slug }: { slug: string }): JSX.Element {
   const [mountLike, setMountLike] = useState(false);
   const [showTravelerLoves, setShowTravelerLoves] = useState(false);
   const [showAllImages, setShowAllImages] = useState(false);
+  const dispatch = useAppDispatch();
 
   // Itineraries
   const [itinerariesActive, setItinerariesActive] = useState<number[]>([]);
@@ -55,12 +58,18 @@ export function DetailCruise({ slug }: { slug: string }): JSX.Element {
   const cruiseDetail = useCruiseDetail(slug);
 
   const { data: dataCruiseSuggest } = useCruise(
-    false,
     "",
     "",
     cruiseDetail?.destinationId,
     cruiseDetail?.detailLocationId
   );
+
+  useEffect(() => {
+    return () => {
+      console.log("delete cruise details");
+      dispatch(resetDataCruiseDetail());
+    };
+  }, []);
 
   return (
     <div className="bg-[var(--bg-container-color)]">

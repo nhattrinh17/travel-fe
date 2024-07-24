@@ -45,7 +45,7 @@ export function TourHomeTop10Item({
     <div className="group w-full mb-5">
       <figure className="relative w-full overflow-hidden">
         <Link
-          href={`tour/${slug}`}
+          href={`/tour/${slug}`}
           className="relative w-full block overflow-hidden pt-[52%]"
         >
           <Image

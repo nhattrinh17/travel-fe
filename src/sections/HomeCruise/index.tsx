@@ -39,7 +39,6 @@ export function HomeCruiseSection(): JSX.Element {
   const [typeSort, setTypeSort] = useState("");
 
   const { data } = useCruise(
-    true,
     sort,
     typeSort,
     idDestination,

@@ -118,6 +118,31 @@ const cruiseSlice = createSlice({
 
     setDataCruiseDetail: (state, action) => {
       state.cruiseDetail = action.payload.data;
+      state.booking = {
+        date: undefined,
+        totalRom: 1,
+        dataAdult: [
+          {
+            room1: 2,
+          },
+        ],
+        dataChildren: [
+          {
+            room1: 0,
+          },
+        ],
+        dataInfant: [
+          {
+            room1: 0,
+          },
+        ],
+        dataTypeRoom: [
+          {
+            room1: "Double",
+          },
+        ],
+        type: "",
+      };
     },
     resetDataCruiseDetail(state) {
       state.cruiseDetail = undefined;
@@ -126,34 +151,6 @@ const cruiseSlice = createSlice({
       state.cruises = action.payload?.data;
       state.total = action.payload?.total;
       state.page = action.payload.page;
-      if (action.payload.resetCruiseDetail) {
-        state.cruiseDetail = undefined;
-        state.booking = {
-          date: undefined,
-          totalRom: 1,
-          dataAdult: [
-            {
-              room1: 2,
-            },
-          ],
-          dataChildren: [
-            {
-              room1: 0,
-            },
-          ],
-          dataInfant: [
-            {
-              room1: 0,
-            },
-          ],
-          dataTypeRoom: [
-            {
-              room1: "Double",
-            },
-          ],
-          type: "",
-        };
-      }
       state.refreshData = false;
     },
     setDataBookingCruise: (
