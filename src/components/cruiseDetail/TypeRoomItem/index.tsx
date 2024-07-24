@@ -140,7 +140,10 @@ export function TypeRoomCruiseItem({
                 </span>
               ))}
             </div>
-            <p className="text-[var(--text-color-default)] py-2">{content}</p>
+            <div
+              className="text-[var(--text-color-default)] py-2"
+              dangerouslySetInnerHTML={{ __html: content }}
+            ></div>
             <ul className="text-[var(--text-color-default)] text-xs flex items-center pt-1 pb-3">
               <li className="mx-2 ">
                 <FontAwesomeIcon className="mr-2" icon={faUser} />
