@@ -226,7 +226,7 @@ export const useCruiseDetail = (slug: string) => {
     }
 
     fetchData();
-  }, []);
+  }, [slug]);
 
   return cruiseDetail;
 };
