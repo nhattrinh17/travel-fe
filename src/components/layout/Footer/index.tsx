@@ -27,7 +27,7 @@ export function FooterLayout(): JSX.Element {
           <span>Call us</span>
         </a>
         <a
-          href="#"
+          href="https://api.whatsapp.com/send?phone=84985637445"
           className="flex flex-col justify-center items-center text-white py-2 text-[13px] border-r-[1px] border-[#fff]"
         >
           <FontAwesomeIcon icon={faWhatsapp} className="mb-2 text-lg" />
