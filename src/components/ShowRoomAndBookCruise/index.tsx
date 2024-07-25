@@ -805,7 +805,10 @@ export function ShowRoomAndBookCruise({
                       className="w-16 h-auto object-contain"
                     />
                     <div className="flex-1 ml-2">
-                      <h4 className="text-base text-[var(--text-hover-default)] mb-1 font-bold hover:underline cursor-pointer">
+                      <h4
+                        onClick={() => setRoomTypeActive(index)}
+                        className="text-base text-[var(--text-hover-default)] mb-1 font-bold hover:underline cursor-pointer"
+                      >
                         {room1.name}
                       </h4>
                       <div className="flex">
