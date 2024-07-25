@@ -1,5 +1,6 @@
 "use client";
 
+import { handleOpenLinkNewTab } from "@/share";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import {
   faStar,
@@ -27,6 +28,9 @@ export function CruiseHomeLuxuryOrBudget({
   totalRoom,
   totalStar,
   slug,
+  isAllMeals,
+  linkTripadvisor,
+  reviewTripadvisor,
 }: {
   name: string;
   isFlashSale: boolean;
@@ -38,6 +42,8 @@ export function CruiseHomeLuxuryOrBudget({
   totalRoom: number;
   totalStar: number;
   slug: string;
+  linkTripadvisor: string;
+  reviewTripadvisor: number;
 }): JSX.Element {
   const [mountLike, setMountLike] = useState(false);
 
@@ -95,7 +101,7 @@ export function CruiseHomeLuxuryOrBudget({
         </Link>
       </figure>
       <div className="px-2 py-3 bg-white">
-        <div className={classNames("  items-center")}>
+        <div className={classNames("flex items-center")}>
           {Array.from({ length: totalStar }, (v, i) => i + 1).map(
             (i, index) => (
               <FontAwesomeIcon
@@ -106,9 +112,41 @@ export function CruiseHomeLuxuryOrBudget({
             )
           )}
 
-          <span className="hover:underline text-xs cursor-pointer text-[#25ab4b]">
-            - 34 Review
-          </span>
+          <div
+            className={classNames(
+              "text-[var(--text-hover-default)] flex items-center text-sm",
+              {
+                hidden: !linkTripadvisor,
+              }
+            )}
+          >
+            <Image
+              alt="tripadvisor"
+              src={"/share/tripadvisor-logo.svg"}
+              width={24}
+              height={16}
+            />
+            <span className="font-bold mr-1">Excellent</span>
+
+            <div
+              onClick={() => handleOpenLinkNewTab(linkTripadvisor)}
+              className="flex cursor-pointer hover:underline"
+            >
+              {Array.from({ length: 5 }, (v, i) => i + 1).map((i, index) => (
+                <Image
+                  key={index}
+                  alt="cicel"
+                  src={"/share/icontripadvisor2.svg"}
+                  width={12}
+                  height={12}
+                  className="mr-[1px]"
+                />
+              ))}
+              <span className="text-xs">
+                - {reviewTripadvisor || 3651} Review
+              </span>
+            </div>
+          </div>
         </div>
 
         <div className={classNames("flex items-center justify-between my-3")}>

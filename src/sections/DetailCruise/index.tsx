@@ -35,6 +35,8 @@ import { ShowRoomAndBookCruise } from "@/components/ShowRoomAndBookCruise";
 import { ShowReviewCruiseAndTour } from "@/components/ShowReview";
 import { useAppDispatch } from "@/lib";
 import { resetDataCruiseDetail } from "@/lib/redux/app/cruise.slice";
+import { LoadingModal } from "@/components/Loading";
+import { handleOpenLinkNewTab } from "@/share";
 const cx = classNames.bind(styles);
 
 export function DetailCruise({ slug }: { slug: string }): JSX.Element {
@@ -101,7 +103,14 @@ export function DetailCruise({ slug }: { slug: string }): JSX.Element {
                         className="mr-1 text-[orange] text-xs"
                       />
                     ))}
-                    <div className="text-[var(--text-hover-default)] flex items-center text-sm">
+                    <div
+                      className={cx(
+                        "text-[var(--text-hover-default)] flex items-center text-sm",
+                        {
+                          hidden: cruiseDetail.linkTripadvisor,
+                        }
+                      )}
+                    >
                       <FontAwesomeIcon
                         icon={faThumbsUp}
                         className="p-1 rounded-full border-[1px]"
@@ -110,6 +119,45 @@ export function DetailCruise({ slug }: { slug: string }): JSX.Element {
                       <span className="hover:underline cursor-pointer">
                         - 34 Review
                       </span>
+                    </div>
+                    <div
+                      className={cx(
+                        "text-[var(--text-hover-default)] flex items-center text-sm",
+                        {
+                          hidden: !cruiseDetail.linkTripadvisor,
+                        }
+                      )}
+                    >
+                      <Image
+                        alt="tripadvisor"
+                        src={"/share/tripadvisor-logo.svg"}
+                        width={29}
+                        height={18}
+                      />
+                      <span className="font-bold mr-1">Excellent</span>
+
+                      <div
+                        onClick={() =>
+                          handleOpenLinkNewTab(cruiseDetail.linkTripadvisor)
+                        }
+                        className="flex cursor-pointer hover:underline"
+                      >
+                        {Array.from({ length: 5 }, (v, i) => i + 1).map(
+                          (i, index) => (
+                            <Image
+                              key={index}
+                              alt="cicel"
+                              src={"/share/icontripadvisor2.svg"}
+                              width={15}
+                              height={15}
+                              className="mr-[1px]"
+                            />
+                          )
+                        )}
+                        <span className="">
+                          - {cruiseDetail.reviewTripadvisor || 3651} Review
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -733,7 +781,7 @@ export function DetailCruise({ slug }: { slug: string }): JSX.Element {
           </section>
         </div>
       ) : (
-        <></>
+        <LoadingModal />
       )}
     </div>
   );
