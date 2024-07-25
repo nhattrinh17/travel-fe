@@ -32,7 +32,7 @@ export function BudgetCruise(): JSX.Element {
               if (preBtnSwiper) (preBtnSwiper as HTMLElement).click();
             }
           }}
-          className="cursor-pointer w-5 h-5 absolute top-1/3 -translate-y-1/2 z-10 text-[#555555cc] bg-[#ffffff99] hover:bg-[#ffffffe6] drop-shadow-md p-3 rounded-full -left-2 "
+          className="hidden lg:block cursor-pointer w-5 h-5 absolute top-1/3 -translate-y-1/2 z-10 text-[#555555cc] bg-[#ffffff99] hover:bg-[#ffffffe6] drop-shadow-md p-3 rounded-full -left-2 "
           icon={faChevronLeft}
         />
 
@@ -75,7 +75,7 @@ export function BudgetCruise(): JSX.Element {
               if (preBtnSwiper) (preBtnSwiper as HTMLElement).click();
             }
           }}
-          className="cursor-pointer w-5 h-5 absolute top-1/3 -translate-y-1/2 z-10 text-[#555555cc] bg-[#ffffff99] hover:bg-[#ffffffe6] drop-shadow-md p-3 rounded-full -right-2 "
+          className="hidden lg:block cursor-pointer w-5 h-5 absolute top-1/3 -translate-y-1/2 z-10 text-[#555555cc] bg-[#ffffff99] hover:bg-[#ffffffe6] drop-shadow-md p-3 rounded-full -right-2 "
           icon={faChevronRight}
         />
       </div>

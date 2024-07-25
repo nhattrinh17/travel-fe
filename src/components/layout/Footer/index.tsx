@@ -41,7 +41,7 @@ export function FooterLayout(): JSX.Element {
           <span>Booking</span>
         </a>
       </div>
-      <footer className="relative z-[-1]">
+      <footer className="relative z-[-1] mb-[60px] lg:mb-0">
         <div className="bg-white py-5">
           <div className="container flex flex-col lg:flex-row justify-between items-center">
             <div className="w-[70px]">
