@@ -786,10 +786,10 @@ export function ShowRoomAndBookCruise({
               .filter(
                 (room) =>
                   room.maxAdult >= item.adult &&
-                  room.maxChildren >= item.child + item.infant &&
-                  room.typeBed
-                    .toLowerCase()
-                    .includes(item.typeRoom.toLowerCase())
+                  room.maxChildren >= item.child + item.infant
+                // && room.typeBed
+                //   .toLowerCase()
+                //   .includes(item.typeRoom.toLowerCase())
               )
               .map((room1, index1) => (
                 <div
