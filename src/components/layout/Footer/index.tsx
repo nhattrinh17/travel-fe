@@ -1,4 +1,6 @@
-import { languageList } from "@/constants";
+"use client";
+
+import { countries, languageList } from "@/constants";
 import {
   faFacebookF,
   faGooglePlusG,
@@ -10,14 +12,28 @@ import {
   faCalendarDays,
   faEnvelope,
 } from "@fortawesome/free-regular-svg-icons";
-import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faPhone, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import classNames from "classnames/bind";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import styles from "./styles.module.scss";
+import { sendMailHome } from "@/utils/api";
+
+const cx = classNames.bind(styles);
 
 export function FooterLayout(): JSX.Element {
+  const [showSendMail, setShowSendMail] = useState(false);
+  const [phoneCountry, setPhoneCountry] = useState(countries[0].dial_code);
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState<number>();
+  const [otherRequest, setOtherRequest] = useState("");
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
   return (
-    <>
+    <div>
       <div className="fixed z-10 bottom-0 left-0 right-0 bg-[var(--bg-header-color)] grid lg:hidden grid-cols-3">
         <a
           href="tel:0556565521"
@@ -33,15 +49,172 @@ export function FooterLayout(): JSX.Element {
           <FontAwesomeIcon icon={faWhatsapp} className="mb-2 text-lg" />
           <span>Whatsapp</span>
         </a>
-        <a
-          href="#"
+        <div
+          onClick={() => setShowSendMail(true)}
           className="flex flex-col justify-center items-center text-white py-2 text-[13px]"
         >
           <FontAwesomeIcon icon={faCalendarDays} className="mb-2 text-lg" />
           <span>Booking</span>
-        </a>
+        </div>
       </div>
-      <footer className="relative z-[-1] mb-[60px] lg:mb-0">
+      <div
+        className={cx(
+          "fixed top-0 left-0 right-0 bottom-0 bg-[#00000091] z-[12] flex justify-center items-center",
+          {
+            hidden: !showSendMail,
+          }
+        )}
+        onClick={() => setShowSendMail(false)}
+      >
+        <div className="w-full max-w-[400px] h-fit p-4 bg-[url(/home/footer/bg-flash.jpg)] bg-cover bg-no-repeat shadow-md rounded-md animate-slideDownSort">
+          <div className="flex" onClick={(e) => e.stopPropagation()}>
+            <Image
+              alt="HELP"
+              src={"/home/sup3.jpg"}
+              width={150}
+              height={150}
+              className="w-[67px] object-contain rounded-full mr-2"
+            />
+            <h4 className="text-2xl text-white font-semibold">
+              We are here to help you{" "}
+              <span className="text-[#f3c576]">24/7</span>
+            </h4>
+            <FontAwesomeIcon
+              icon={faXmark}
+              className="text-black text-base cursor-pointer"
+              onClick={() => setShowSendMail(false)}
+            />
+          </div>
+          <span className="block text-sm text-[#f3c576] my-3 font-semibold drop-shadow-sm">
+            Save time - Save Money - Travel More
+          </span>
+          <form
+            className={cx("pt-5", {
+              hidden: submitSuccess,
+            })}
+            onSubmit={async (e) => {
+              e.preventDefault();
+              const dataSend = {
+                otherRequest,
+                fullName,
+                email,
+                phone,
+              };
+
+              const res = await sendMailHome(dataSend);
+              if (res.data) {
+                setSubmitSuccess(true);
+              }
+            }}
+          >
+            <div className="mb-3">
+              <label className="text-black text-sm font-semibold pb-1 block">
+                Request
+              </label>
+              <textarea
+                value={otherRequest}
+                onChange={(e) => setOtherRequest(e.target.value)}
+                className="min-h-32 w-full p-2 font-semibold rounded-md outline-none"
+                placeholder="Type your request here ..."
+              ></textarea>
+            </div>
+
+            <div className="mb-3">
+              <label className="text-black text-sm font-semibold pb-1 block">
+                Name
+              </label>
+              <input
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                className="w-full p-2 font-semibold rounded-md outline-none"
+                placeholder="Full Name"
+                required
+              />
+            </div>
+
+            <div className="mb-3">
+              <label className="text-black text-sm font-semibold pb-1 block">
+                Email
+              </label>
+              <input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full p-2 font-semibold rounded-md outline-none"
+                placeholder="Email Address"
+                required
+              />
+            </div>
+
+            <div className="flex items-start mb-4">
+              <input id="checkBox" type="checkbox" className="mr-2" />
+              <label htmlFor="checkBox" className="flex text-white text-xs">
+                <FontAwesomeIcon icon={faPhone} className="mx-1" />
+                Sometimes emails get lost, help us: you'll receive our email.
+              </label>
+            </div>
+
+            <div className="mb-3">
+              <div className="relative w-full text-sm h-10  py-2 outline-none border-[1px]">
+                <select
+                  id="select-phone"
+                  defaultValue={phoneCountry}
+                  onChange={(e) => setPhoneCountry(e.target.value)}
+                  className="absolute cursor-pointer text-transparent bg-transparent top-0 px-3 z-[1] left-0 right-0 bottom-0 w-full text-sm py-3 outline-none"
+                >
+                  {countries.map((country) => (
+                    <option
+                      key={country.code}
+                      value={country.dial_code}
+                      className="text-black"
+                    >
+                      {country.name}
+                    </option>
+                  ))}
+                </select>
+                <label className="absolute top-0 left-0 bottom-0 flex items-center justify-center w-20 bg-white border-r-[1px]">{`${
+                  countries.find((i) => i.dial_code == phoneCountry)?.code
+                }(${phoneCountry})`}</label>
+                <input
+                  value={phone}
+                  onChange={(e) => {
+                    if (Number(e.target.value) > 0) {
+                      setPhone(+e.target.value);
+                    } else {
+                      setPhone(0);
+                    }
+                  }}
+                  required
+                  name="phone"
+                  className="outline-none absolute top-0 right-0 bottom-0 left-[80px] z-[2] pl-2"
+                />
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              className={cx(
+                "submit_search",
+                "col-span-2 w-full rounded-lg p-3 font-bold text-base border-[1px] border-white uppercase text-white bg-[#d0720b]"
+              )}
+            >
+              SEND ME BEST OFFERS
+            </button>
+            <span className="text-xs font-bold text-white mt-2 block">
+              We will send you the Best Deals what you can not find anywhere
+              else. Best Price Guarantee!
+            </span>
+          </form>
+
+          <p
+            className={cx("text-base text-white font-semibold", {
+              hidden: !submitSuccess,
+            })}
+          >
+            We will contact you soon, please keep an eye on your email inbox.
+          </p>
+        </div>
+      </div>
+      <footer className="relative  mb-[60px] lg:mb-0">
         <div className="bg-white py-5">
           <div className="container flex flex-col lg:flex-row justify-between items-center">
             <div className="w-[70px]">
@@ -70,12 +243,12 @@ export function FooterLayout(): JSX.Element {
                 your requests. We will send you the best offers shortly!
               </p>
             </div>
-            <button className="h-fit ml-auto mt-3 lg:mt-0 px-4 py-2 flex items-center rounded-3xl text-white justify-center bg-[var(--primary-color)]">
+            <button
+              onClick={() => setShowSendMail(true)}
+              className="h-fit cursor-pointer ml-auto mt-3 lg:mt-0 px-4 py-2 flex items-center rounded-3xl text-white justify-center bg-[var(--primary-color)]"
+            >
               <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
-              <span className="uppercase font-bold">
-                {" "}
-                Help me find a cruise
-              </span>
+              <span className="uppercase font-bold">Help me find a cruise</span>
             </button>
           </div>
         </div>
@@ -394,6 +567,6 @@ export function FooterLayout(): JSX.Element {
           </div>
         </div>
       </footer>
-    </>
+    </div>
   );
 }

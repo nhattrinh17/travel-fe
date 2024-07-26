@@ -1,0 +1,42 @@
+.submit_search {
+  background-image: linear-gradient(
+    to right,
+    #e6b834 0%,
+    #f5a42a 51%,
+    #d0720b 100%
+  );
+
+  &:hover {
+    background-color: #d0720b;
+    background-image: linear-gradient(
+      to right,
+      #e6b834 0%,
+      #ffd400 51%,
+      #d0720b 100%
+    );
+  }
+}
+
+.booking-steps__item {
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: 50%;
+    height: 2px;
+    z-index: 0;
+    background-color: var(--text-hover-default);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 20px;
+    width: 50%;
+    height: 2px;
+    z-index: 0;
+    background-color: #d0d0d0;
+  }
+}

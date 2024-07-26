@@ -60,7 +60,7 @@ export function TypeRoomCruiseItem({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative bg-white shadow-md mx-auto rounded-md p-3 w-full lg:w-[950px] animate-slideDownSort"
+        className="relative bg-white shadow-md mx-auto rounded-md p-3 w-full lg:w-[950px] max-h-[85%] animate-slideDownSort overflow-hidden"
       >
         <h4 className="text-[var(--secondary-color)] text-xl font-semibold">
           <FontAwesomeIcon icon={faShip} className="mr-2" />
@@ -121,7 +121,7 @@ export function TypeRoomCruiseItem({
               </Swiper>
             </div>
           </div>
-          <div>
+          <div className="overflow-y-scroll">
             <h5
               className={cx(
                 "text-[var(--text-hover-default)] font-bold text-xl relative text-center",

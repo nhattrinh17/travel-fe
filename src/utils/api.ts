@@ -196,3 +196,8 @@ export const getAllReview = (
   if (tourId) url += "&tourId=" + tourId;
   return axios.get(url);
 };
+
+export const sendMailHome = (data: any) => {
+  const axios = new BaseAxios();
+  return axios.post("user/send-mail", data);
+};
