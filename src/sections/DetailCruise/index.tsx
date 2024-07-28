@@ -302,9 +302,9 @@ export function DetailCruise({ slug }: { slug: string }): JSX.Element {
             )}
             <div
               onClick={() => setShowAllImages(true)}
-              className="grid grid-cols-5 gap-2 max-h-[376px] overflow-hidden"
+              className="flex gap-2 max-h-[376px] overflow-hidden"
             >
-              <div className="col-span-5 lg:col-span-3 overflow-hidden relative h-fit">
+              <div className="basis-full lg:basis-3/5 overflow-hidden relative h-fit">
                 <Image
                   alt="aaaa"
                   src={cruiseDetail.images[0]}
@@ -361,8 +361,8 @@ export function DetailCruise({ slug }: { slug: string }): JSX.Element {
                   <p>See All {cruiseDetail.images.length} photos</p>
                 </div>
               </div>
-              <div className=" hidden lg:flex col-span-2 flex-col max-h-full">
-                <div className="col-span-1 overflow-hidden relative basis-[39%] pb-1 ">
+              <div className="flex-1 hidden lg:flex flex-col max-h-full overflow-hidden">
+                <div className="col-span-1 overflow-hidden relative basis-1/2 pb-1 ">
                   <Image
                     alt="aaaa"
                     src={cruiseDetail.images[1]}
@@ -371,7 +371,7 @@ export function DetailCruise({ slug }: { slug: string }): JSX.Element {
                     className="object-cover h-full hover:scale-[1.2] transition-all duration-500"
                   />
                 </div>
-                <div className="col-span-1 overflow-hidden basis-[39%] pt-1">
+                <div className="col-span-1 overflow-hidden basis-1/2 pt-1">
                   <Image
                     alt="aaaa"
                     src={cruiseDetail.images[2]}
