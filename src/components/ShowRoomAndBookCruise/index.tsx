@@ -1166,44 +1166,51 @@ export function ShowRoomAndBookCruise({
                             className="border-[1px] outline-none w-full mt-3 text-xs py-[6px] px-3"
                           />
                           <div className="flex justify-between mt-3 text-[var(--text-color-default)]">
-                            {service.options
-                              .split("*_*")
-                              .map((option, index) => (
-                                <div key={index} className="flex items-center">
-                                  <input
-                                    onChange={(e) => {
-                                      setDataTransfer((pre) => {
-                                        if (pre) {
-                                          const newData = { ...pre };
-                                          if (!e.target.checked) {
-                                            newData.options =
-                                              newData.options?.filter(
-                                                (i) => i != option
-                                              );
-                                            return newData;
-                                          } else {
-                                            if (newData.options) {
-                                              newData.options = [
-                                                ...newData.options,
-                                                option,
-                                              ];
+                            {service.options?.trim() ? (
+                              service.options
+                                .split("*_*")
+                                .map((option, index) => (
+                                  <div
+                                    key={index}
+                                    className="flex items-center"
+                                  >
+                                    <input
+                                      onChange={(e) => {
+                                        setDataTransfer((pre) => {
+                                          if (pre) {
+                                            const newData = { ...pre };
+                                            if (!e.target.checked) {
+                                              newData.options =
+                                                newData.options?.filter(
+                                                  (i) => i != option
+                                                );
+                                              return newData;
+                                            } else {
+                                              if (newData.options) {
+                                                newData.options = [
+                                                  ...newData.options,
+                                                  option,
+                                                ];
+                                              }
+                                              return newData;
                                             }
-                                            return newData;
+                                          } else {
+                                            return {};
                                           }
-                                        } else {
-                                          return {};
-                                        }
-                                      });
-                                    }}
-                                    checked={dataTransfer.options?.includes(
-                                      option
-                                    )}
-                                    type="checkbox"
-                                    className="mr-1"
-                                  />
-                                  <span className="text-xs">{option}</span>
-                                </div>
-                              ))}
+                                        });
+                                      }}
+                                      checked={dataTransfer.options?.includes(
+                                        option
+                                      )}
+                                      type="checkbox"
+                                      className="mr-1"
+                                    />
+                                    <span className="text-xs">{option}</span>
+                                  </div>
+                                ))
+                            ) : (
+                              <></>
+                            )}
                           </div>
                         </div>
                       </div>
