@@ -61,6 +61,16 @@ export function HomeCruiseSection(): JSX.Element {
           dataDestination?.description ||
           `<p style="text-align: center">If you couldn't find suitable cruise for yourself? Let us help you!</p>`
         }
+        textListCruise={
+          dataDetailLocation?.title
+            ? `${dataDestination?.title} visit ${dataDetailLocation.title}`
+            : ""
+        }
+        images={
+          dataDetailLocation?.title
+            ? dataDetailLocation.images.split("*_*")
+            : []
+        }
       />
       <section className="bg-[var(--bg-container-color)]  py-4">
         <div className="container">
@@ -155,7 +165,8 @@ export function HomeCruiseSection(): JSX.Element {
           </div>
           <div>
             {dataDestination?.detailLocations.map((item, index) => (
-              <div
+              <Link
+                href={`/cruise?destination=${dataDestination.slug}&detail=${item.slug}`}
                 key={index}
                 className="bg-white border-[1px] rounded-lg p-4 grid grid-cols-1 lg:grid-cols-4 gap-5 mb-4"
               >
@@ -200,7 +211,7 @@ export function HomeCruiseSection(): JSX.Element {
                     dangerouslySetInnerHTML={{ __html: item.description }}
                   ></p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

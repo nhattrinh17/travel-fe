@@ -24,7 +24,7 @@ export const useCruise = (
   idDetailLocation?: number,
   search?: string
 ) => {
-  console.log("🚀 ~ sort:", sort);
+  // console.log("🚀 ~ sort:", sort);
   const { cruises, refreshData, page, limit, total } = useAppSelector(
     (state) => state.cruise
   );

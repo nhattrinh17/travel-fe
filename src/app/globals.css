@@ -83,6 +83,20 @@ body {
   background-color: #06b28b;
 }
 
+.arrow-top {
+  position: relative;
+}
+
+.arrow-top::after {
+  content: "";
+  position: absolute;
+  top: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 16px solid transparent;
+  border-bottom-color: #fff;
+}
+
 
 /* Over wite css slider */
 

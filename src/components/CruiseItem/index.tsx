@@ -166,10 +166,10 @@ export function CruiseItem({
             ))}
           </div>
         </div>
-        <div className="flex justify-between items-center mb-3">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end">
           <div
             className={classNames(
-              "text-[var(--text-hover-default)] flex items-center text-sm",
+              "text-[var(--text-hover-default)] flex items-center text-sm mb-3",
               {
                 hidden: linkTripadvisor,
               }
@@ -184,7 +184,7 @@ export function CruiseItem({
           </div>
           <div
             className={classNames(
-              "text-[var(--text-hover-default)] flex items-center text-sm",
+              "text-[var(--text-hover-default)] flex items-center text-sm mb-3",
               {
                 hidden: !linkTripadvisor,
               }
@@ -215,7 +215,7 @@ export function CruiseItem({
               <span className=""> - {reviewTripadvisor || 3651} Review</span>
             </div>
           </div>
-          <div className="flex items-end">
+          <div className="flex items-end mb-3">
             <span className="text-sm text-[#999]">From</span>
             <del
               className={classNames("mx-1 text-[#FF9900] font-bold text-2xl", {
