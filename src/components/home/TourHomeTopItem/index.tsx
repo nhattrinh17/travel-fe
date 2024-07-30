@@ -112,7 +112,7 @@ export function TourHomeTop10Item({
           </span>
         </div>
 
-        <div className={classNames("flex items-center justify-between my-3")}>
+        {/* <div className={classNames("flex items-center justify-between my-3")}>
           <div className="flex items-center text-[#888888] text-xs">
             <div className="flex mr-2">
               <FontAwesomeIcon
@@ -129,7 +129,7 @@ export function TourHomeTop10Item({
               <span>Rooms:{totalRoms}</span>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className={classNames("flex justify-between items-center mb-3")}>
           <div className="flex items-end">

@@ -50,9 +50,9 @@ export function TourHeaderItem({
         </div>
         <div className="lg:absolute left-0 right-0 bottom-0 w-full text-center bg-[#ffffff12] lg:bg-[url(/home/op50.png)]">
           <h3
-            className={classNames("py-2 uppercase font-bold", {
-              "text-xs": name.length < 30,
-              "text-[7px]": name.length >= 30,
+            className={classNames("py-2 uppercase font-bold text-xs", {
+              // "text-xs": name.length < 30,
+              // "text-[7px]": name.length >= 30,
             })}
           >
             {name}

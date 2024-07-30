@@ -527,7 +527,7 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                     </span>
                   </div>
                   <div className="bg-[#334960e6] text-center text-base text-white py-3">
-                    One tour per person
+                    Price per person
                   </div>
                 </div>
                 <form

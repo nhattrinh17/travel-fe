@@ -773,7 +773,7 @@ export function ShowRoomAndBookCruise({
                 <span>Pax</span>
               </div>
               <div className="my-auto border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-2 lg:col-span-1">
-                <span>Total in USD</span>
+                <span>Price per person</span>
               </div>
               <div className="border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-2">
                 <span>Notes</span>
