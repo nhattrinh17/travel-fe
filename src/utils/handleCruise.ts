@@ -132,7 +132,7 @@ export const useCruiseBudget = () => {
   useEffect(() => {
     async function fetchData() {
       if (cruiseBudget == undefined) {
-        const res = await getAllCruiseSort(1, 20, "price", "DESC");
+        const res = await getAllCruiseSort(1, 20, "price", "ASC");
         if (res?.data) {
           const { data, pagination } = res?.data;
           dispatch(setDataCruiseBudget({ data }));
@@ -166,7 +166,7 @@ export const useCruiseLuxury = () => {
   useEffect(() => {
     async function fetchData() {
       if (cruiseLuxury == undefined) {
-        const res = await getAllCruiseSort(1, 20, "price", "ASC");
+        const res = await getAllCruiseSort(1, 20, "price", "DESC");
         if (res?.data) {
           const { data, pagination } = res?.data;
           dispatch(setDataCruiseLuxury({ data }));

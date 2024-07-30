@@ -1052,6 +1052,7 @@ export function ShowRoomAndBookCruise({
                                     name: service.name,
                                     infant: +e.target.value,
                                     description: service.description,
+                                    time: "8:00",
                                   },
                                 ];
                               }
@@ -1098,11 +1099,11 @@ export function ShowRoomAndBookCruise({
                           }}
                           className="px-3 border-[1px] w-full lg:w-auto rounded-md outline-none py-[2px]"
                         >
-                          <option value={""}>Time</option>
-                          <option value={"10:30"}>10:30</option>
+                          <option value={"8:00"}>8: 00 AM</option>
+                          {/* <option value={"10:30"}>10:30</option>
                           <option value={"11:30"}>11:30</option>
                           <option value={"13:30"}>13:30</option>
-                          <option value={"14:30"}>14:30</option>
+                          <option value={"14:30"}>14:30</option> */}
                         </select>
                       </div>
                     </div>
