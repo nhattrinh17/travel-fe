@@ -40,7 +40,7 @@ const cx = classNames.bind(styles);
 export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
   const [tabActive, setTabActive] = useState<number>(0);
   const [showDetailSpecial, setShowDetailSpecial] = useState<number[]>([]);
-  const [showAllImages, setShowAllImages] = useState(false);
+  const [imageActive, setImageActive] = useState<number>();
   const router = useRouter();
 
   const [name, setName] = useState<string>("");
@@ -409,7 +409,7 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                       })}
                     >
                       <Image
-                        onClick={() => setShowAllImages((pre) => !pre)}
+                        onClick={() => setImageActive(0)}
                         alt={tourDetails.name}
                         src={tourDetails.images && tourDetails.images[0]}
                         width={750}
@@ -418,10 +418,10 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                       />
                       <div className="grid grid-cols-3 gap-5 mt-5">
                         {tourDetails.images
-                          ?.slice(0, 5)
+                          ?.slice(0, 8)
                           ?.map((image: string, index: number) => (
                             <Image
-                              onClick={() => setShowAllImages((pre) => !pre)}
+                              onClick={() => setImageActive(index)}
                               key={index}
                               alt={tourDetails.name}
                               src={image}
@@ -431,11 +431,11 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                             />
                           ))}
                         <div
-                          onClick={() => setShowAllImages((pre) => !pre)}
+                          onClick={() => setImageActive(0)}
                           className={cx(
                             "w-full h-full cursor-pointer bg-slate-200 text-lg flex items-center justify-center font-semibold text-[var(--text-color-default)]",
                             {
-                              hidden: tourDetails.images?.length <= 4,
+                              hidden: tourDetails.images?.length <= 8,
                             }
                           )}
                         >
@@ -445,10 +445,11 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                     </div>
 
                     {/* All Image */}
-                    {showAllImages ? (
+                    {imageActive != undefined ? (
                       <PopupShowAllImages
+                        imageActiveInit={imageActive}
                         images={tourDetails.images}
-                        onCancel={() => setShowAllImages(false)}
+                        onCancel={() => setImageActive(undefined)}
                         title={tourDetails.name}
                       />
                     ) : (

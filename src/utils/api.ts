@@ -155,7 +155,7 @@ export const getAllTourNav = () => {
 
 export const getTourBySlug = (slug: string) => {
   const axios = new BaseAxios();
-  let url = `tour/${slug}`;
+  let url = `tour/slug?name=${slug}`;
   return axios.get(url);
 };
 

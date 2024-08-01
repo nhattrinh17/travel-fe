@@ -14,10 +14,12 @@ export function PopupShowAllImages({
   images,
   title,
   onCancel,
+  imageActiveInit = 0,
 }: {
   images: string[];
   title: string;
   onCancel: () => void;
+  imageActiveInit?: number;
 }): JSX.Element {
   const [imageActive, setImageActive] = useState<any>(null);
 
@@ -41,6 +43,7 @@ export function PopupShowAllImages({
           thumbs={{ swiper: imageActive }}
           modules={[FreeMode, Thumbs, Navigation]}
           className="swiper__image--tour-active"
+          initialSlide={imageActiveInit}
         >
           {images?.map((image: string, index: number) => (
             <SwiperSlide key={index}>
@@ -65,6 +68,7 @@ export function PopupShowAllImages({
           watchSlidesProgress={true}
           modules={[FreeMode, Navigation, Thumbs]}
           className="mySwiper-image-bottom"
+          initialSlide={imageActiveInit}
         >
           {images?.map((image: string, index: number) => (
             <SwiperSlide key={index}>

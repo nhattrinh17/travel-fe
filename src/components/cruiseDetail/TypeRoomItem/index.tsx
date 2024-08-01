@@ -60,19 +60,21 @@ export function TypeRoomCruiseItem({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative bg-white shadow-md mx-auto rounded-md p-3 w-full lg:w-[950px] max-h-[85%] animate-slideDownSort overflow-hidden"
+        className="relative bg-white shadow-md mx-auto rounded-md p-3 w-[95%] lg:w-[950px] max-h-fit animate-slideDownSort overflow-hidden flex flex-col"
       >
-        <h4 className="text-[var(--secondary-color)] text-xl font-semibold">
-          <FontAwesomeIcon icon={faShip} className="mr-2" />
-          {nameCruise}
-        </h4>
-        <div
-          onClick={onClose}
-          className="cursor-pointer p-2 absolute top-1 right-1 text-[var(--text-color-default)]"
-        >
-          <FontAwesomeIcon icon={faXmark} className="text-xl" />
+        <div>
+          <h4 className="text-[var(--secondary-color)] text-xl font-semibold">
+            <FontAwesomeIcon icon={faShip} className="mr-2" />
+            {nameCruise}
+          </h4>
+          <div
+            onClick={onClose}
+            className="cursor-pointer p-2 absolute top-1 right-1 text-[var(--text-color-default)]"
+          >
+            <FontAwesomeIcon icon={faXmark} className="text-xl" />
+          </div>
         </div>
-        <div className="p-4 grid grid-cols-2 gap-5">
+        <div className="flex-1 p-4 grid grid-cols-2 gap-5">
           <div>
             <Swiper
               thumbs={{ swiper: imageActive }}
@@ -87,13 +89,15 @@ export function TypeRoomCruiseItem({
             >
               {images.map((img, index) => (
                 <SwiperSlide key={index}>
-                  <Image
-                    alt="image room"
-                    src={img}
-                    width={444}
-                    height={265}
-                    className="w-full object-contain"
-                  />
+                  <div className="relative w-full pt-[67%]">
+                    <Image
+                      alt="image room"
+                      src={img}
+                      width={444}
+                      height={265}
+                      className="absolute top-0 left-0 right-0 bottom-0 w-full h-full object-cover"
+                    />
+                  </div>
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -121,7 +125,7 @@ export function TypeRoomCruiseItem({
               </Swiper>
             </div>
           </div>
-          <div className="overflow-y-scroll">
+          <div className="max-h-[70vh] lg:max-h-[80vh] overflow-y-scroll">
             <h5
               className={cx(
                 "text-[var(--text-hover-default)] font-bold text-xl relative text-center",
@@ -144,24 +148,24 @@ export function TypeRoomCruiseItem({
               className="text-[var(--text-color-default)] py-2"
               dangerouslySetInnerHTML={{ __html: content }}
             ></div>
-            <ul className="text-[var(--text-color-default)] text-xs flex items-center pt-1 pb-3">
-              <li className="mx-2 ">
+            <ul className="text-[var(--text-color-default)] text-xs grid grid-cols-1 lg:grid-cols-2 items-center pt-1 pb-3">
+              <li className="mb-2">
                 <FontAwesomeIcon className="mr-2" icon={faUser} />
                 <span>{maxAdult + maxChildren}</span>
               </li>
               <li
-                className={cx("flex items-center mx-2 ", {
+                className={cx("flex items-start mb-2 ", {
                   hidden: !isViewOcean,
                 })}
               >
                 <FontAwesomeIcon className="mr-2" icon={faEye} />
                 <span>Ocean View</span>
               </li>
-              <li className="flex items-center mx-2 ">
+              <li className="flex items-start mb-2 ">
                 <FontAwesomeIcon className="mr-2" icon={faBed} />
                 <span>{typeBed}</span>
               </li>
-              <li className="flex items-center mx-2 ">
+              <li className="flex items-start mb-2 ">
                 <FontAwesomeIcon
                   className="mr-2"
                   icon={faArrowsUpDownLeftRight}

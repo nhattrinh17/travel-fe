@@ -44,6 +44,7 @@ export function ShowRoomAndBookCruise({
   const router = useRouter();
 
   const [roomTypeActive, setRoomTypeActive] = useState<number>();
+  console.log("🚀 ~ roomTypeActive:", roomTypeActive);
   const [showDetailSpecial, setShowDetailSpecial] = useState<number[]>([]);
 
   const [dataRoomSelect, setDataRoomSelect] = useState<
@@ -806,7 +807,7 @@ export function ShowRoomAndBookCruise({
                     />
                     <div className="flex-1 ml-2">
                       <h4
-                        onClick={() => setRoomTypeActive(index)}
+                        onClick={() => setRoomTypeActive(index1)}
                         className="text-base text-[var(--text-hover-default)] mb-1 font-bold hover:underline cursor-pointer"
                       >
                         {room1.name}
