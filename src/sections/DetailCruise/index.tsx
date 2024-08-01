@@ -237,9 +237,12 @@ export function DetailCruise({ slug }: { slug: string }): JSX.Element {
                       />
                     </div>
                     <div
-                      className={cx("border-[1px] bg-[#F9F9F9] mb-3 p-[10px]", {
-                        hidden: !showDetailSpecial.includes(index),
-                      })}
+                      className={cx(
+                        "border-[1px] bg-[#F9F9F9] mb-3 p-[10px] text-black",
+                        {
+                          hidden: !showDetailSpecial.includes(index),
+                        }
+                      )}
                       dangerouslySetInnerHTML={{ __html: item.content }}
                     ></div>
                   </li>
@@ -536,7 +539,7 @@ export function DetailCruise({ slug }: { slug: string }): JSX.Element {
                     </div>
                   </div>
                   <div
-                    className={cx("p-3 bg-white", {
+                    className={cx("p-3 bg-white text-black", {
                       hidden: !itinerariesActive.includes(index),
                     })}
                     dangerouslySetInnerHTML={{ __html: itinerary.content }}
@@ -603,7 +606,7 @@ export function DetailCruise({ slug }: { slug: string }): JSX.Element {
               })}
             >
               <div
-                className="py-5"
+                className="py-5 text-black"
                 dangerouslySetInnerHTML={{ __html: cruiseDetail.detail }}
               ></div>
               {/* <h4 className="font-bold text-[var(--text-color-default)]">

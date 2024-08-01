@@ -34,7 +34,7 @@ export function ShowReviewCruiseAndTour({
     return () => {
       dispatch(resetDataReview());
     };
-  }, []);
+  }, [idCruise, idTour]);
 
   return (
     <div className="">
@@ -58,12 +58,16 @@ export function ShowReviewCruiseAndTour({
                 className="w-[80%] h-[80%] object-cover rounded-full m-3"
               />
             </div>
-            <span>{review.fullName}</span>
+            <span className="text-[var(--text-color-default)]">
+              {review.fullName}
+            </span>
           </div>
 
           <div className="col-span-3">
             <div className="flex items-center">
-              <h3 className="font-semibold text-base ">{review.title}</h3>
+              <h3 className="font-semibold text-base text-[var(--text-color-default)]">
+                {review.title}
+              </h3>
               <div className="flex items-center my-2 text-[var(--text-hover-default)]">
                 <FontAwesomeIcon icon={faThumbsUp} className="mx-2" />
                 {Array.from({ length: review.star }, (v, i) => i + 1).map(

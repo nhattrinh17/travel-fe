@@ -194,7 +194,7 @@ export function TourItemGrid({
           </div>
           <div>
             <ul
-              className={classNames({
+              className={classNames("text-[var(--text-color-default)]", {
                 "h-[140px] overflow-hidden": !showTravelerLoves,
                 "h-auto": showTravelerLoves,
               })}

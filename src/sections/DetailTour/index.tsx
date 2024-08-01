@@ -90,7 +90,7 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
           {/* Intro */}
           <section>
             <div
-              className="w-full h-[600px] bg-cover flex items-center justify-center bg-no-repeat"
+              className="w-full h-[500px] lg:h-[600px] bg-cover flex items-center justify-center bg-no-repeat"
               style={{
                 backgroundImage: `url(${
                   tourDetails?.images && tourDetails?.images[0]
@@ -174,7 +174,7 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                 </div>
                 <div className="flex flex-wrap lg:overflow-hidden">
                   {/* Detail */}
-                  <div className="basis-full flex-1 shadow-md mb-3 lg:mb-0">
+                  <div className="basis-full flex-1 shadow-md mb-3 lg:mb-0 text-black">
                     <div
                       onClick={() => setTabActive(0)}
                       className={cx(
@@ -200,7 +200,7 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                     </div>
                   </div>
                   {/* Itinerany */}
-                  <div className="basis-full flex-1 shadow-md mb-3 lg:mb-0">
+                  <div className="basis-full flex-1 shadow-md mb-3 lg:mb-0 text-[var(--text-color-default)]">
                     <div
                       onClick={() => setTabActive(1)}
                       className={cx(
@@ -220,8 +220,9 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                         hidden: tabActive != 1,
                       })}
                     >
-                      {tourDetails.itineraries?.map(
-                        (itinerary: any, index: number) => (
+                      {tourDetails.itineraries
+                        ?.filter((i: any) => i.name)
+                        ?.map((itinerary: any, index: number) => (
                           <div key={index} className={cx("flex ")}>
                             <div
                               className={cx(
@@ -241,7 +242,7 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                               </div>
                             </div>
                             <div className="flex-1 ">
-                              <h5 className="text-xl font-bold my-3">
+                              <h5 className="text-xl font-bold my-3 text-black">
                                 Day {itinerary.day}: {itinerary.name}
                               </h5>
                               <div
@@ -251,12 +252,11 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                               ></div>
                             </div>
                           </div>
-                        )
-                      )}
+                        ))}
                     </div>
                   </div>
                   {/* Deals */}
-                  <div className="basis-full flex-1 shadow-md mb-3 lg:mb-0">
+                  <div className="basis-full flex-1 shadow-md mb-3 lg:mb-0 text-[var(--text-color-default)]">
                     <div
                       onClick={() => setTabActive(2)}
                       className={cx(

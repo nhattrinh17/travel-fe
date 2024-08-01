@@ -53,7 +53,7 @@ export function TourItem({
 
   return (
     <div
-      className="group w-full shadow-md bg-white"
+      className="group w-full shadow-md bg-white flex flex-col"
       style={{ marginBottom: marginBottom }}
     >
       <figure className="relative w-full overflow-hidden">
@@ -100,7 +100,7 @@ export function TourItem({
         </Link>
       </figure>
 
-      <div className="px-2 py-3">
+      <div className="px-2 py-3 flex-1">
         <div className="flex justify-between items-start mb-2">
           <div>
             <h3 className="text-[var(--secondary-color)] font-bold text-xl">
@@ -194,9 +194,9 @@ export function TourItem({
         </div>
 
         <div className={classNames("w-full")}>
-          <div className="h-1 w-5 bg-[#BBBBBB] mt-4 rounded-md"></div>
+          <div className="h-1 w-5 bg-[#BBBBBB] mt-4 rounded-md text-black"></div>
           <div
-            className={classNames({
+            className={classNames("text-black", {
               "h-[36px] overflow-hidden": !showContent,
               "h-auto": showContent,
             })}

@@ -44,7 +44,6 @@ export function ShowRoomAndBookCruise({
   const router = useRouter();
 
   const [roomTypeActive, setRoomTypeActive] = useState<number>();
-  console.log("🚀 ~ roomTypeActive:", roomTypeActive);
   const [showDetailSpecial, setShowDetailSpecial] = useState<number[]>([]);
 
   const [dataRoomSelect, setDataRoomSelect] = useState<
@@ -265,9 +264,12 @@ export function ShowRoomAndBookCruise({
               />
             </div>
             <div
-              className={cx("border-[1px] bg-[#F9F9F9] mb-3 p-[10px]", {
-                hidden: !showDetailSpecial.includes(index),
-              })}
+              className={cx(
+                "border-[1px] bg-[#F9F9F9] mb-3 p-[10px] text-black",
+                {
+                  hidden: !showDetailSpecial.includes(index),
+                }
+              )}
               dangerouslySetInnerHTML={{ __html: item.content }}
             ></div>
           </li>
@@ -900,7 +902,7 @@ export function ShowRoomAndBookCruise({
           </div>
         ))}
         {/* Other service */}
-        <div className="mt-10 bg-white rounded-md py-5 px-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="mt-10 bg-white rounded-md py-5 px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 text-black">
           <div className="h-auto">
             <h6 className="border-b-[1px] border-[#f5f5f5] text-[var(--text-hover-default)] text-xl font-bold pb-3">
               Other Service

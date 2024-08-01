@@ -29,7 +29,12 @@ const reviewSlice = createSlice({
   } as ReviewSliceDto,
   reducers: {
     setDataReviews: (state, action) => {
-      state.reviews = [...state.reviews, ...action.payload?.data];
+      state.reviews = [
+        ...state.reviews,
+        ...action.payload?.data?.filter(
+          (i: any) => !state.reviews.find((i1) => i1.id == i?.id)
+        ),
+      ];
       state.total = action.payload?.total;
       state.page = action.payload.page;
       state.refreshData = false;

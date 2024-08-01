@@ -68,7 +68,7 @@ export function CruiseItem({
 
   return (
     <div
-      className={classNames("group w-full shadow-md")}
+      className={classNames("group w-full shadow-md flex flex-col")}
       style={{ marginBottom: marginBottom }}
     >
       <figure className="relative w-full overflow-hidden">
@@ -126,7 +126,7 @@ export function CruiseItem({
         </Link>
       </figure>
 
-      <div className="px-2 py-3 bg-white">
+      <div className="px-2 py-3 bg-white flex-1">
         <div className="flex justify-between items-start mb-2">
           <div>
             <h3 className="text-[var(--secondary-color)] font-bold text-xl">
@@ -282,7 +282,7 @@ export function CruiseItem({
         >
           <div className="h-1 w-5 bg-[#BBBBBB] mt-4 rounded-md"></div>
           <div
-            className={classNames({
+            className={classNames("text-black", {
               "h-[36px] overflow-hidden": !showContent,
               "h-auto": showContent,
             })}
@@ -341,7 +341,7 @@ export function CruiseItem({
               </div>
               <div
                 className={classNames(
-                  "border-[1px] bg-[#F9F9F9] mb-3 p-[10px]",
+                  "border-[1px] bg-[#F9F9F9] mb-3 p-[10px] text-black",
                   {
                     hidden: !showDetailSpecial.includes(index),
                   }
