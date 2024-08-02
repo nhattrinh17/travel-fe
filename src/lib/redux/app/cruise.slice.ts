@@ -26,6 +26,7 @@ interface CruiseItem {
     cruiseId: number;
     name: string;
     price: number;
+    priceDetail: string;
     totalRooms: number;
     typeBed: string;
     isViewOcean: boolean;

@@ -775,12 +775,12 @@ export function ShowRoomAndBookCruise({
               <div className="hidden lg:block border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-2">
                 <span>Pax</span>
               </div>
-              <div className="my-auto border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-2 lg:col-span-1">
+              <div className="my-auto border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-4 lg:col-span-3">
                 <span>Price per person</span>
               </div>
-              <div className="border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-2">
+              {/* <div className="border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-2">
                 <span>Notes</span>
-              </div>
+              </div> */}
               <div className="border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-2 lg:col-span-1">
                 <span>Select</span>
               </div>
@@ -861,14 +861,18 @@ export function ShowRoomAndBookCruise({
                       ))}
                     </div>
                   </div>
-                  <div className="border-r-[1px] w-full h-full text-center border-[#ddd] py-[6px] col-span-2 lg:col-span-1">
-                    <span className="text-[#fc8f30] h-full font-bold text-lg flex items-center justify-center">
-                      {room1.price}$
+                  <div className="border-r-[1px] w-full h-full text-center border-[#ddd] py-[6px] col-span-4 lg:col-span-3">
+                    <span
+                      // text-[#fc8f30]
+                      className=" h-full text-[var(--text-color-default)] font-bold text-lg flex items-center justify-center"
+                      dangerouslySetInnerHTML={{ __html: room1.priceDetail }}
+                    >
+                      {/* {room1.price}$ */}
                     </span>
                   </div>
-                  <div className="border-r-[1px] h-full text-center border-[#ddd] py-[6px] col-span-2">
+                  {/* <div className="border-r-[1px] h-full text-center border-[#ddd] py-[6px] col-span-2">
                     <span></span>
-                  </div>
+                  </div> */}
                   <div className="border-r-[1px] h-full flex justify-center text-center border-[#ddd] py-[6px] col-span-2 lg:col-span-1">
                     <input
                       onChange={() => {

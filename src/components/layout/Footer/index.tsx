@@ -66,8 +66,11 @@ export function FooterLayout(): JSX.Element {
         )}
         onClick={() => setShowSendMail(false)}
       >
-        <div className="w-full max-w-[400px] h-fit p-4 bg-[url(/home/footer/bg-flash.jpg)] bg-cover bg-no-repeat shadow-md rounded-md animate-slideDownSort">
-          <div className="flex" onClick={(e) => e.stopPropagation()}>
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className="w-full max-w-[400px] h-fit p-4 bg-[url(/home/footer/bg-flash.jpg)] bg-cover bg-no-repeat shadow-md rounded-md animate-slideDownSort"
+        >
+          <div className="flex">
             <Image
               alt="HELP"
               src={"/home/sup3.jpg"}
