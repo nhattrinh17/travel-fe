@@ -51,7 +51,7 @@ export function ShowRoomAndBookCruise({
   >([]);
 
   const [itinerariesSelect, setItinerariesSelect] = useState(
-    cruiseDetail?.itineraries[0]?.name || ""
+    cruiseDetail?.itineraries[0]?.id
   );
 
   //   total person
@@ -283,14 +283,14 @@ export function ShowRoomAndBookCruise({
         <div className="px-2 w-full mb-0 p-3 flex flex-col lg:flex-row items-center font-bold  h-full ">
           <select
             defaultValue={itinerariesSelect}
-            onChange={(e) => setItinerariesSelect(e.target.value)}
+            onChange={(e) => setItinerariesSelect(+e.target.value)}
             className={cx(
               "cursor-pointer w-full bg-transparent outline-none text-white border-b-[1px] border-b-[#fff] border-dashed flex items-center justify-between"
             )}
           >
             {cruiseDetail.itineraries.map((item, index: number) => (
               <option
-                value={item.name}
+                value={item.id}
                 key={index}
                 className="text-black font-bold"
               >{`${item.day} day » ${item.name}`}</option>
@@ -585,108 +585,114 @@ export function ShowRoomAndBookCruise({
             <span className="font-bold block text-end">Rate</span>
           </div>
         </div>
-        {cruiseDetail.roomCruises.map((room: any, index: number) => (
-          <div
-            key={index}
-            className={cx("py-3 border-dotted grid grid-cols-6", {
-              "border-b-[1px]": cruiseDetail.roomCruises.length - 1 != index,
-            })}
-          >
-            <div className="col-span-6 lg:col-span-4 block lg:flex">
-              <figure className="w-full lg:w-[40%] ">
-                <Image
-                  alt="image room"
-                  src={room.images[0]}
-                  width={650}
-                  height={388}
-                  className="w-full object-contain hover:opacity-90"
-                />
-                <span
-                  onClick={() => setRoomTypeActive(index)}
-                  className="block cursor-pointer text-[13px] text-[var(--text-color-default)] mt-3"
-                >
-                  More info »
-                </span>
-              </figure>
-              <div className="lg:ml-5">
-                <h3
-                  onClick={() => setRoomTypeActive(index)}
-                  className="hover:underline cursor-pointer text-[var(--text-hover-default)] text-xl font-semibold"
-                >
-                  {room.name}
-                </h3>
-                <div className="flex">
-                  {room.specialService.map((item: any, index: number) => (
-                    <span
-                      key={index}
-                      className="block mr-2 rounded-sm bg-[#DDD] text-[10px] text-[var(--text-color-default)] py-1 px-2"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-                <ul className="text-[var(--text-color-default)] text-xs">
-                  <li className="my-1">{room.totalRooms} Rooms</li>
-                  <li
-                    className={cx("flex items-center my-1", {
-                      hidden: !room.isViewOcean,
-                    })}
+        {cruiseDetail.roomCruises
+          .filter(
+            (r) =>
+              r.itinerariesId ==
+              (itinerariesSelect || cruiseDetail?.itineraries[0]?.id)
+          )
+          .map((room: any, index: number) => (
+            <div
+              key={index}
+              className={cx("py-3 border-dotted grid grid-cols-6", {
+                "border-b-[1px]": cruiseDetail.roomCruises.length - 1 != index,
+              })}
+            >
+              <div className="col-span-6 lg:col-span-4 block lg:flex">
+                <figure className="w-full lg:w-[40%] ">
+                  <Image
+                    alt="image room"
+                    src={room.images[0]}
+                    width={650}
+                    height={388}
+                    className="w-full object-contain hover:opacity-90"
+                  />
+                  <span
+                    onClick={() => setRoomTypeActive(index)}
+                    className="block cursor-pointer text-[13px] text-[var(--text-color-default)] mt-3"
                   >
-                    <FontAwesomeIcon className="mr-2" icon={faEye} />
-                    <span>Ocean View</span>
-                  </li>
-                  <li className="flex items-center my-1">
-                    <FontAwesomeIcon className="mr-2" icon={faBed} />
-                    <span>{room.typeBed}</span>
-                  </li>
-                  <li className="flex items-center my-1">
+                    More info »
+                  </span>
+                </figure>
+                <div className="lg:ml-5">
+                  <h3
+                    onClick={() => setRoomTypeActive(index)}
+                    className="hover:underline cursor-pointer text-[var(--text-hover-default)] text-xl font-semibold"
+                  >
+                    {room.name}
+                  </h3>
+                  <div className="flex">
+                    {room.specialService.map((item: any, index: number) => (
+                      <span
+                        key={index}
+                        className="block mr-2 rounded-sm bg-[#DDD] text-[10px] text-[var(--text-color-default)] py-1 px-2"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                  <ul className="text-[var(--text-color-default)] text-xs">
+                    <li className="my-1">{room.totalRooms} Rooms</li>
+                    <li
+                      className={cx("flex items-center my-1", {
+                        hidden: !room.isViewOcean,
+                      })}
+                    >
+                      <FontAwesomeIcon className="mr-2" icon={faEye} />
+                      <span>Ocean View</span>
+                    </li>
+                    <li className="flex items-center my-1">
+                      <FontAwesomeIcon className="mr-2" icon={faBed} />
+                      <span>{room.typeBed}</span>
+                    </li>
+                    <li className="flex items-center my-1">
+                      <FontAwesomeIcon
+                        className="mr-2"
+                        icon={faArrowsUpDownLeftRight}
+                      />
+                      <span>{room.acreage}m²</span>
+                    </li>
+                    <li className="flex items-center my-1">
+                      <FontAwesomeIcon className="mr-2" icon={faLocationDot} />
+                      <span>{room.location}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="hidden lg:flex col-span-1 px-3 items-end justify-end my-auto">
+                {Array.from({ length: room.maxAdult }, (v, i) => i + 1).map(
+                  (i, index) => (
                     <FontAwesomeIcon
-                      className="mr-2"
-                      icon={faArrowsUpDownLeftRight}
+                      key={index}
+                      icon={faUser}
+                      className={cx("text-[#aaa] mr-[1px] text-xs")}
                     />
-                    <span>{room.acreage}m²</span>
-                  </li>
-                  <li className="flex items-center my-1">
-                    <FontAwesomeIcon className="mr-2" icon={faLocationDot} />
-                    <span>{room.location}</span>
-                  </li>
-                </ul>
+                  )
+                )}
+                {Array.from({ length: room.maxChildren }, (v, i) => i + 1).map(
+                  (i, index) => (
+                    <FontAwesomeIcon
+                      key={index}
+                      icon={faUser}
+                      className={cx("text-[#aaa] mr-[1px] text-[10px]")}
+                    />
+                  )
+                )}
+              </div>
+              <div className="hidden lg:block col-span-1 my-auto ml-auto">
+                <Image
+                  alt="flash sale"
+                  src={"/share/flash_text.png"}
+                  width={90}
+                  height={65}
+                  className="object-contain"
+                />
+                <span className="block mt-1 text-[#ffa500] text-xs font-semibold text-end">
+                  Available
+                </span>
               </div>
             </div>
-            <div className="hidden lg:flex col-span-1 px-3 items-end justify-end my-auto">
-              {Array.from({ length: room.maxAdult }, (v, i) => i + 1).map(
-                (i, index) => (
-                  <FontAwesomeIcon
-                    key={index}
-                    icon={faUser}
-                    className={cx("text-[#aaa] mr-[1px] text-xs")}
-                  />
-                )
-              )}
-              {Array.from({ length: room.maxChildren }, (v, i) => i + 1).map(
-                (i, index) => (
-                  <FontAwesomeIcon
-                    key={index}
-                    icon={faUser}
-                    className={cx("text-[#aaa] mr-[1px] text-[10px]")}
-                  />
-                )
-              )}
-            </div>
-            <div className="hidden lg:block col-span-1 my-auto ml-auto">
-              <Image
-                alt="flash sale"
-                src={"/share/flash_text.png"}
-                width={90}
-                height={65}
-                className="object-contain"
-              />
-              <span className="block mt-1 text-[#ffa500] text-xs font-semibold text-end">
-                Available
-              </span>
-            </div>
-          </div>
-        ))}
+          ))}
       </div>
       <ul
         className={cx("flex pt-10 text-[var(--text-color-default)]", {
@@ -769,18 +775,18 @@ export function ShowRoomAndBookCruise({
               <span className="text-xs">{"(0 - 4)"}</span>
             </div>
             <div className="mt-6 border-[1px] border-[#ddd] border-r-0 grid grid-cols-12 text-xs lg:text-sm bg-[var(--secondary1-color)]">
-              <div className="flex-1 border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-6">
+              <div className="flex-1 border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-7 lg:col-span-6">
                 <span>Room's info</span>
               </div>
               <div className="hidden lg:block border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-2">
                 <span>Pax</span>
               </div>
-              <div className="my-auto border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-4 lg:col-span-3">
+              <div className="my-auto border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-3 lg:col-span-1">
                 <span>Price per person</span>
               </div>
-              {/* <div className="border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-2">
+              <div className="border-r-[1px] text-center hidden lg:block border-[#ddd] py-[6px] text-white font-bold col-span-2">
                 <span>Notes</span>
-              </div> */}
+              </div>
               <div className="border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-2 lg:col-span-1">
                 <span>Select</span>
               </div>
@@ -788,18 +794,21 @@ export function ShowRoomAndBookCruise({
             {cruiseDetail.roomCruises
               .filter(
                 (room) =>
+                  room.itinerariesId ==
+                    (itinerariesSelect || cruiseDetail?.itineraries[0]?.id) &&
                   room.maxAdult >= item.adult &&
                   room.maxChildren >= item.child + item.infant
                 // && room.typeBed
                 //   .toLowerCase()
                 //   .includes(item.typeRoom.toLowerCase())
               )
+              // .sort((r1, r2) => r1.price - r2.price)
               .map((room1, index1) => (
                 <div
                   key={index1}
                   className="grid grid-cols-12 hover:bg-[#eff9eb] items-start border-[1px] border-[#ddd] border-r-0 "
                 >
-                  <div className="py-1 px-1 border-r-[1px] border-[#ddd] flex flex-col lg:flex-row col-span-6">
+                  <div className="py-1 px-1 border-r-[1px] border-[#ddd] flex flex-col lg:flex-row col-span-7 lg:col-span-6">
                     <Image
                       alt="room"
                       src={room1.images[0]}
@@ -861,18 +870,17 @@ export function ShowRoomAndBookCruise({
                       ))}
                     </div>
                   </div>
-                  <div className="border-r-[1px] w-full h-full text-center border-[#ddd] py-[6px] col-span-4 lg:col-span-3">
-                    <span
-                      // text-[#fc8f30]
-                      className=" h-full text-[var(--text-color-default)] font-bold text-lg flex items-center justify-center"
-                      dangerouslySetInnerHTML={{ __html: room1.priceDetail }}
-                    >
-                      {/* {room1.price}$ */}
+                  <div className="border-r-[1px] w-full h-full text-center border-[#ddd] py-[6px] col-span-3 lg:col-span-1">
+                    <span className=" h-full text-[#fc8f30] font-bold text-lg flex items-center justify-center">
+                      {room1.price}$
                     </span>
                   </div>
-                  {/* <div className="border-r-[1px] h-full text-center border-[#ddd] py-[6px] col-span-2">
-                    <span></span>
-                  </div> */}
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: room1.notes,
+                    }}
+                    className="border-r-[1px] h-full text-[var(--text-color-default)] px-2 hidden lg:flex justify-center items-center border-[#ddd] py-[6px] col-span-2"
+                  ></div>
                   <div className="border-r-[1px] h-full flex justify-center text-center border-[#ddd] py-[6px] col-span-2 lg:col-span-1">
                     <input
                       onChange={() => {
@@ -1254,7 +1262,8 @@ export function ShowRoomAndBookCruise({
             <div className="flex mt-1 text-[var(--text-hover-default)] items-center text-base font-bold pb-2">
               <FontAwesomeIcon icon={faCheck} className="mr-2" />
               <span className="">
-                {itinerariesSelect || cruiseDetail?.itineraries[0]?.name}
+                {cruiseDetail.itineraries.find((i) => i.id == itinerariesSelect)
+                  ?.name || cruiseDetail?.itineraries[0]?.name}
               </span>
             </div>
             <div className="flex mt-1 text-[var(--text-hover-default)] items-center text-base font-bold pb-2">
@@ -1426,7 +1435,9 @@ export function ShowRoomAndBookCruise({
                     email,
                     phone: `${phoneCountry} ${phone}`,
                     typeItineraries:
-                      itinerariesSelect || cruiseDetail?.itineraries[0].name,
+                      cruiseDetail.itineraries.find(
+                        (i) => i.id == itinerariesSelect
+                      )?.name || cruiseDetail?.itineraries[0].name,
                     date,
                     totalRoom: dataBooking.totalRom,
                     totalAdult: dataBooking.dataAdult.reduce(

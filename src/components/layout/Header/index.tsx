@@ -154,7 +154,7 @@ export function HeaderLayout(): JSX.Element {
                     "w-full h-full hidden items-center justify-center bg-[url(/home/op50.png)] hover:text-[var(--text-hover-default)]",
                     {
                       hidden: showAllTour || dataPacketTour.length < 13,
-                      "lg:flex": dataPacketTour.length > 13,
+                      "lg:flex": !showAllTour && dataPacketTour.length > 13,
                     }
                   )}
                 >
@@ -215,7 +215,7 @@ export function HeaderLayout(): JSX.Element {
                     "w-full h-full hidden items-center justify-center bg-[url(/home/op50.png)] hover:text-[var(--text-hover-default)]",
                     {
                       hidden: showAllTour || dataDailyTour.length < 13,
-                      "lg:flex": !showAllTour || dataDailyTour.length >= 13,
+                      "lg:flex": !showAllTour && dataDailyTour.length > 13,
                     }
                   )}
                 >

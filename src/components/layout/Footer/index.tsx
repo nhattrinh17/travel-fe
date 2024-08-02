@@ -535,7 +535,7 @@ export function FooterLayout(): JSX.Element {
                   <div className="bg-[url(/home/footer/chl_partner.png)] bg-no-repeat bg-[-61px_0] bg-[length:835px] w-[85px] h-[60px] opacity-60 hover:opacity-100"></div>
                   <div className="bg-[url(/home/footer/chl_partner.png)] bg-no-repeat bg-[-165px_0px] bg-[length:712px] w-[85px] h-[60px] opacity-60 hover:opacity-100"></div>
                   <div className="bg-[url(/home/footer/chl_partner.png)] bg-no-repeat bg-[-522px_0px] bg-[length:650px] w-[130px] h-[44px] opacity-60 hover:opacity-100"></div>
-                  <div className="bg-[url(/home/footer/inside-travel-travellers-choice-2023.webp)] bg-no-repeat bg-contain w-[70px] h-[70px] opacity-60 hover:opacity-100"></div>
+                  <div className="bg-[url(/home/footer/traveler-choice-2023.png)] bg-no-repeat bg-contain w-[70px] h-[70px] opacity-60 hover:opacity-100"></div>
                   <div className="bg-[url(/home/footer/traveler-choice-2020.png)] bg-no-repeat bg-contain w-[70px] h-[73px] opacity-60 hover:opacity-100"></div>
                   <div className="bg-[url(/home/footer/tripad.png)] bg-no-repeat bg-contain w-[70px] h-[73px] opacity-60 hover:opacity-100"></div>
                   <div className="bg-[url(/home/footer/tripad2016.png)] bg-no-repeat bg-contain w-[70px] h-[73px] opacity-60 hover:opacity-100"></div>

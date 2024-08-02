@@ -24,6 +24,7 @@ interface CruiseItem {
   accompaniedServices: { id: number; name: string; slug: string }[];
   roomCruises: {
     cruiseId: number;
+    itinerariesId: number;
     name: string;
     price: number;
     priceDetail: string;
@@ -35,6 +36,7 @@ interface CruiseItem {
     images: string[]; // custom
     specialService: string[]; // custom
     content: string;
+    notes: string;
     maxAdult: number;
     maxChildren: number;
     amenities: string[]; // custom
