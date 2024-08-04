@@ -11,6 +11,7 @@ interface TourItem {
   images: string;
   totalRoms: number;
   price: number;
+  stars: number;
   discount: number;
   timeLaunched: number;
   isFlashSale: boolean;

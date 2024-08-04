@@ -36,23 +36,23 @@ export function CruiseItem({
   contentBrief,
   specialOffers,
   marginBottom,
-  totalStar,
   linkTripadvisor,
   reviewTripadvisor,
   slug,
+  stars,
 }: {
   name: string;
   slug: string;
   isFlashSale: boolean;
   discount: number;
   images: string[];
-  totalStar: number;
   isAllMeals: boolean;
   accompaniedServices: {
     name: string;
     slug: string;
   }[];
   price: number;
+  stars: number;
   styleCruise: string;
   totalRoom: number;
   contentBrief: string;
@@ -133,8 +133,8 @@ export function CruiseItem({
               <Link href={`/cruise/${slug}`}>{name}</Link>
             </h3>
             <div className="flex">
-              {Array.from({ length: 5 }, (v, i) => i + 1).map((i, index) =>
-                i <= totalStar ? (
+              {Array.from({ length: 6 }, (v, i) => i + 1).map((i, index) =>
+                i <= stars ? (
                   <FontAwesomeIcon
                     key={index}
                     icon={faStar}

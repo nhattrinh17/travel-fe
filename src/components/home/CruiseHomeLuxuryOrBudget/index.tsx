@@ -1,7 +1,10 @@
 "use client";
 
 import { handleOpenLinkNewTab } from "@/share";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import {
+  faHeart,
+  faStar as faStarRegular,
+} from "@fortawesome/free-regular-svg-icons";
 import {
   faStar,
   faHeart as faHeartSolid,
@@ -26,7 +29,7 @@ export function CruiseHomeLuxuryOrBudget({
   price,
   timeLaunched,
   totalRoom,
-  totalStar,
+  stars,
   slug,
   isAllMeals,
   linkTripadvisor,
@@ -40,7 +43,7 @@ export function CruiseHomeLuxuryOrBudget({
   price: number;
   timeLaunched: number;
   totalRoom: number;
-  totalStar: number;
+  stars: number;
   slug: string;
   linkTripadvisor: string;
   reviewTripadvisor: number;
@@ -102,12 +105,18 @@ export function CruiseHomeLuxuryOrBudget({
       </figure>
       <div className="px-2 py-3 bg-white">
         <div className={classNames("flex items-center")}>
-          {Array.from({ length: totalStar }, (v, i) => i + 1).map(
-            (i, index) => (
+          {Array.from({ length: 6 }, (v, i) => i + 1).map((i, index) =>
+            i <= stars ? (
               <FontAwesomeIcon
                 key={index}
                 icon={faStar}
                 className="mr-1 text-[orange] text-xs"
+              />
+            ) : (
+              <FontAwesomeIcon
+                key={index}
+                icon={faStarRegular}
+                className="mr-1 text-[var(--text-color-default)] text-xs"
               />
             )
           )}

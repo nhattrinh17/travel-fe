@@ -1,6 +1,9 @@
 "use client";
 
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import {
+  faHeart,
+  faStar as faStarRegular,
+} from "@fortawesome/free-regular-svg-icons";
 import {
   faStar,
   faHeart as faHeartSolid,
@@ -25,8 +28,8 @@ export function TourHomeTop10Item({
   price,
   timeLaunched,
   totalRoms,
-  totalStar,
   slug,
+  stars,
 }: {
   name: string;
   isFlashSale: boolean;
@@ -36,8 +39,8 @@ export function TourHomeTop10Item({
   price: number;
   timeLaunched: number;
   totalRoms: number;
-  totalStar: number;
   slug: string;
+  stars: number;
 }): JSX.Element {
   const [mountLike, setMountLike] = useState(false);
 
@@ -97,12 +100,18 @@ export function TourHomeTop10Item({
 
       <div className="px-2 py-3 bg-white">
         <div className={classNames("  items-center")}>
-          {Array.from({ length: totalStar }, (v, i) => i + 1).map(
-            (i, index) => (
+          {Array.from({ length: 6 }, (v, i) => i + 1).map((i, index) =>
+            i <= stars ? (
               <FontAwesomeIcon
                 key={index}
                 icon={faStar}
                 className="mr-1 text-[orange] text-xs"
+              />
+            ) : (
+              <FontAwesomeIcon
+                key={index}
+                icon={faStarRegular}
+                className="mr-1 text-[var(--text-color-default)] text-xs"
               />
             )
           )}

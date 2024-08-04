@@ -1360,7 +1360,7 @@ export function ShowRoomAndBookCruise({
         {/* Contact */}
         <div
           id="submit-booking"
-          className="mt-10 bg-white rounded-md py-5 px-6"
+          className="mt-10 bg-white rounded-md py-5 px-6 text-black"
         >
           <h6 className="text-center border-b-[1px] border-[#f5f5f5] text-[var(--text-hover-default)] text-2xl font-bold pb-3">
             <FontAwesomeIcon icon={faHeart} className="mr-2" />

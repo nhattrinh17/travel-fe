@@ -31,12 +31,12 @@ export function TourItem({
   specialOffers,
   marginBottom,
   accompaniedServices,
-  totalStar,
+  stars,
   slug,
 }: {
   name: string;
   slug: string;
-  totalStar: number;
+  stars: number;
   isFlashSale: boolean;
   discount: number;
   images: string[];
@@ -107,8 +107,8 @@ export function TourItem({
               <Link href={`/tour/${slug}`}>{name}</Link>
             </h3>
             <div className="flex">
-              {Array.from({ length: 5 }, (v, i) => i + 1).map((i, index) =>
-                i <= totalStar ? (
+              {Array.from({ length: 6 }, (v, i) => i + 1).map((i, index) =>
+                i <= stars ? (
                   <FontAwesomeIcon
                     key={index}
                     icon={faStar}

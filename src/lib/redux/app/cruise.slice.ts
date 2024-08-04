@@ -12,6 +12,7 @@ interface CruiseItem {
   isFlashSale: boolean;
   travelerLoves: any;
   price: number;
+  stars: number;
   timeLaunched: number;
   styleCruise: string;
   createdAt: string;

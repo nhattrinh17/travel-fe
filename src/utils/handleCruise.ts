@@ -118,7 +118,6 @@ export const useCruiseFlashSale = () => {
           images: i.images.split("*_*"),
           isAllMeals: i.accompaniedServices.some((i) => i.slug == "allMeals"),
           createdAt: moment(i.createdAt).format("YYYY-MM-DD HH:mm:ss"),
-          totalStar: 5,
         };
       }) || [],
   };

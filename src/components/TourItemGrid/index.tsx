@@ -32,17 +32,17 @@ export function TourItemGrid({
   totalRoms,
   specialOffers,
   travelerLoves,
-  totalStar,
   accompaniedServices,
   slug,
+  stars,
 }: {
   name: string;
   slug: string;
   isFlashSale: boolean;
-  totalStar: number;
   discount: number;
   images: string[];
   price: number;
+  stars: number;
   timeLaunched: number;
   totalRoms: number;
   specialOffers: { name: string; content: string }[];
@@ -128,8 +128,8 @@ export function TourItemGrid({
           </h3>
           <div className="flex items-center mb-2">
             <div className="flex">
-              {Array.from({ length: 5 }, (v, i) => i + 1).map((i, index) =>
-                i <= totalStar ? (
+              {Array.from({ length: 6 }, (v, i) => i + 1).map((i, index) =>
+                i <= stars ? (
                   <FontAwesomeIcon
                     key={index}
                     icon={faStar}

@@ -35,7 +35,7 @@ export function CruiseItemGrid({
   totalRoom,
   specialOffers,
   travelerLoves,
-  totalStar,
+  stars,
   slug,
   linkTripadvisor,
   reviewTripadvisor,
@@ -44,7 +44,7 @@ export function CruiseItemGrid({
   name: string;
   slug: string;
   isFlashSale: boolean;
-  totalStar: number;
+  stars: number;
   discount: number;
   images: string[];
   isAllMeals: boolean;
@@ -163,8 +163,8 @@ export function CruiseItemGrid({
           </h3>
           <div className="flex items-center mb-2">
             <div className="flex">
-              {Array.from({ length: 5 }, (v, i) => i + 1).map((i, index) =>
-                i <= totalStar ? (
+              {Array.from({ length: 6 }, (v, i) => i + 1).map((i, index) =>
+                i <= stars ? (
                   <FontAwesomeIcon
                     key={index}
                     icon={faStar}
