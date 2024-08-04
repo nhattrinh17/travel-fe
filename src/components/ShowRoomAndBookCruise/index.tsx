@@ -50,9 +50,10 @@ export function ShowRoomAndBookCruise({
     { indexRoom: number; nameRoom: string; price: number; image: string }[]
   >([]);
 
-  const [itinerariesSelect, setItinerariesSelect] = useState(
-    cruiseDetail?.itineraries[0]?.id
-  );
+  const itinerariesSelect = useRef(cruiseDetail?.itineraries[0]?.id);
+  // const [itinerariesSelect, setItinerariesSelect] = useState(
+
+  // );
 
   //   total person
   const [refreshDataMarts, setRefreshDataMarts] = useState(true);
@@ -282,8 +283,8 @@ export function ShowRoomAndBookCruise({
       >
         <div className="px-2 w-full mb-0 p-3 flex flex-col lg:flex-row items-center font-bold  h-full ">
           <select
-            defaultValue={itinerariesSelect}
-            onChange={(e) => setItinerariesSelect(+e.target.value)}
+            defaultValue={itinerariesSelect.current}
+            onChange={(e) => (itinerariesSelect.current = +e.target.value)}
             className={cx(
               "cursor-pointer w-full bg-transparent outline-none text-white border-b-[1px] border-b-[#fff] border-dashed flex items-center justify-between"
             )}
@@ -555,6 +556,11 @@ export function ShowRoomAndBookCruise({
         <button
           onClick={() => {
             if (bookingPage) {
+              // console.log("Before setDataRoomSelect:", dataRoomSelect);
+              setDataRoomSelect((pre) => {
+                return [];
+              });
+              // console.log("After setDataRoomSelect:", dataRoomSelect);
               setRefreshDataMarts(true);
             } else {
               router.push(`/booking/cruise?name=${cruiseDetail.slug}`);
@@ -589,7 +595,7 @@ export function ShowRoomAndBookCruise({
           .filter(
             (r) =>
               r.itinerariesId ==
-              (itinerariesSelect || cruiseDetail?.itineraries[0]?.id)
+              (itinerariesSelect.current || cruiseDetail?.itineraries[0]?.id)
           )
           .map((room: any, index: number) => (
             <div
@@ -795,7 +801,8 @@ export function ShowRoomAndBookCruise({
               .filter(
                 (room) =>
                   room.itinerariesId ==
-                    (itinerariesSelect || cruiseDetail?.itineraries[0]?.id) &&
+                    (itinerariesSelect.current ||
+                      cruiseDetail?.itineraries[0]?.id) &&
                   room.maxAdult >= item.adult &&
                   room.maxChildren >= item.child + item.infant
                 // && room.typeBed
@@ -1262,8 +1269,9 @@ export function ShowRoomAndBookCruise({
             <div className="flex mt-1 text-[var(--text-hover-default)] items-center text-base font-bold pb-2">
               <FontAwesomeIcon icon={faCheck} className="mr-2" />
               <span className="">
-                {cruiseDetail.itineraries.find((i) => i.id == itinerariesSelect)
-                  ?.name || cruiseDetail?.itineraries[0]?.name}
+                {cruiseDetail.itineraries.find(
+                  (i) => i.id == itinerariesSelect.current
+                )?.name || cruiseDetail?.itineraries[0]?.name}
               </span>
             </div>
             <div className="flex mt-1 text-[var(--text-hover-default)] items-center text-base font-bold pb-2">
@@ -1436,7 +1444,7 @@ export function ShowRoomAndBookCruise({
                     phone: `${phoneCountry} ${phone}`,
                     typeItineraries:
                       cruiseDetail.itineraries.find(
-                        (i) => i.id == itinerariesSelect
+                        (i) => i.id == itinerariesSelect.current
                       )?.name || cruiseDetail?.itineraries[0].name,
                     date,
                     totalRoom: dataBooking.totalRom,
