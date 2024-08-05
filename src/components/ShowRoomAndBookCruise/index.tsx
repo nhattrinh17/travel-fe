@@ -44,6 +44,9 @@ export function ShowRoomAndBookCruise({
   const router = useRouter();
 
   const [roomTypeActive, setRoomTypeActive] = useState<number>();
+  const dataRoomActive = cruiseDetail?.roomCruises.find(
+    (r) => r.id == roomTypeActive
+  );
   const [showDetailSpecial, setShowDetailSpecial] = useState<number[]>([]);
 
   const [dataRoomSelect, setDataRoomSelect] = useState<
@@ -597,7 +600,7 @@ export function ShowRoomAndBookCruise({
               r.itinerariesId ==
               (itinerariesSelect.current || cruiseDetail?.itineraries[0]?.id)
           )
-          .map((room: any, index: number) => (
+          .map((room, index: number) => (
             <div
               key={index}
               className={cx("py-3 border-dotted grid grid-cols-6", {
@@ -614,7 +617,7 @@ export function ShowRoomAndBookCruise({
                     className="w-full object-contain hover:opacity-90"
                   />
                   <span
-                    onClick={() => setRoomTypeActive(index)}
+                    onClick={() => setRoomTypeActive(room.id)}
                     className="block cursor-pointer text-[13px] text-[var(--text-color-default)] mt-3"
                   >
                     More info »
@@ -622,7 +625,7 @@ export function ShowRoomAndBookCruise({
                 </figure>
                 <div className="lg:ml-5">
                   <h3
-                    onClick={() => setRoomTypeActive(index)}
+                    onClick={() => setRoomTypeActive(room.id)}
                     className="hover:underline cursor-pointer text-[var(--text-hover-default)] text-xl font-semibold"
                   >
                     {room.name}
@@ -825,7 +828,7 @@ export function ShowRoomAndBookCruise({
                     />
                     <div className="flex-1 ml-2">
                       <h4
-                        onClick={() => setRoomTypeActive(index1)}
+                        onClick={() => setRoomTypeActive(room1.id)}
                         className="text-base text-[var(--text-hover-default)] mb-1 font-bold hover:underline cursor-pointer"
                       >
                         {room1.name}
@@ -894,11 +897,13 @@ export function ShowRoomAndBookCruise({
                         setDataRoomSelect((pre) => {
                           const newData = [...pre];
                           const dataOld = newData?.find(
-                            (i) => (i.indexRoom = index + 1)
+                            (i) => i.indexRoom == index + 1
                           );
+
                           if (dataOld) {
                             dataOld.nameRoom = room1.name;
                             dataOld.price = room1.price;
+
                             return newData;
                           } else {
                             newData.push({
@@ -907,6 +912,7 @@ export function ShowRoomAndBookCruise({
                               price: room1.price,
                               image: room1.images[0],
                             });
+
                             return newData;
                           }
                         });
@@ -1283,7 +1289,7 @@ export function ShowRoomAndBookCruise({
             <div className="py-2 border-t-[1px] border-b-[1px] border-dotted">
               {dataRoomSelect.map((item, index) => (
                 <div
-                  className="flex justify-between items-end bg-[#fbfbfb]"
+                  className="flex justify-between items-end bg-[#fbfbfb] mb-4"
                   key={index}
                 >
                   <div className="flex">
@@ -1422,54 +1428,58 @@ export function ShowRoomAndBookCruise({
                   e.preventDefault();
                   if (dataRoomSelect?.length < dataBooking.totalRom)
                     setTextWarning("Please kindly select your rooms...");
-                  const dataRoomSelectSend = dataMartsRoom.current.map(
-                    (item, index) => {
-                      return {
-                        nameRoom: dataRoomSelect.find(
-                          (i) => i.indexRoom == index + 1
-                        )?.nameRoom,
-                        price: dataRoomSelect.find(
-                          (i) => i.indexRoom == index + 1
-                        )?.price,
-                        indexRoom: index + 1,
-                        ...item,
-                      };
-                    }
-                  );
-                  const dataSend = {
-                    cruiseId: cruiseDetail.id,
-                    fullName,
-                    country,
-                    email,
-                    phone: `${phoneCountry} ${phone}`,
-                    typeItineraries:
-                      cruiseDetail.itineraries.find(
-                        (i) => i.id == itinerariesSelect.current
-                      )?.name || cruiseDetail?.itineraries[0].name,
-                    date,
-                    totalRoom: dataBooking.totalRom,
-                    totalAdult: dataBooking.dataAdult.reduce(
-                      (pre, item, index) => (pre += item[`room${index + 1}`]),
-                      0
-                    ),
-                    totalChildren:
-                      dataBooking.dataChildren.reduce(
-                        (pre, item, index) => (pre += item[`room${index + 1}`]),
-                        0
-                      ) +
-                      dataBooking.dataInfant.reduce(
+                  else {
+                    const dataRoomSelectSend = dataMartsRoom.current.map(
+                      (item, index) => {
+                        return {
+                          nameRoom: dataRoomSelect.find(
+                            (i) => i.indexRoom == index + 1
+                          )?.nameRoom,
+                          price: dataRoomSelect.find(
+                            (i) => i.indexRoom == index + 1
+                          )?.price,
+                          indexRoom: index + 1,
+                          ...item,
+                        };
+                      }
+                    );
+                    const dataSend = {
+                      cruiseId: cruiseDetail.id,
+                      fullName,
+                      country,
+                      email,
+                      phone: `${phoneCountry} ${phone}`,
+                      typeItineraries:
+                        cruiseDetail.itineraries.find(
+                          (i) => i.id == itinerariesSelect.current
+                        )?.name || cruiseDetail?.itineraries[0].name,
+                      date: moment(date).format("YYYY-MM-DD"),
+                      totalRoom: dataBooking.totalRom,
+                      totalAdult: dataBooking.dataAdult.reduce(
                         (pre, item, index) => (pre += item[`room${index + 1}`]),
                         0
                       ),
-                    otherRequest,
-                    dataRoomSelect: dataRoomSelectSend,
-                    otherServices: dataOtherService,
-                    dataTransfer,
-                  };
-                  const res = await bookingCruise(dataSend);
-                  console.log("🚀 ~ onSubmit={ ~ res:", res);
-                  if (res?.data) {
-                    router.push("/booking/success");
+                      totalChildren:
+                        dataBooking.dataChildren.reduce(
+                          (pre, item, index) =>
+                            (pre += item[`room${index + 1}`]),
+                          0
+                        ) +
+                        dataBooking.dataInfant.reduce(
+                          (pre, item, index) =>
+                            (pre += item[`room${index + 1}`]),
+                          0
+                        ),
+                      otherRequest,
+                      dataRoomSelect: dataRoomSelectSend,
+                      otherServices: dataOtherService,
+                      dataTransfer,
+                    };
+                    const res = await bookingCruise(dataSend);
+                    console.log("🚀 ~ onSubmit={ ~ res:", res);
+                    if (res?.data) {
+                      router.push("/booking/success");
+                    }
                   }
                 }}
               >
@@ -1586,9 +1596,9 @@ export function ShowRoomAndBookCruise({
         </div>
       </div>
       {/* Room Detail */}
-      {roomTypeActive != undefined ? (
+      {dataRoomActive ? (
         <TypeRoomCruiseItem
-          {...cruiseDetail.roomCruises[roomTypeActive]}
+          {...dataRoomActive}
           nameCruise={cruiseDetail.name}
           onClose={() => setRoomTypeActive(undefined)}
         />
