@@ -16,10 +16,10 @@ export function Top10Cruise(): JSX.Element {
         <Link href={""} className="relative">
           <Image
             alt="iamge"
-            src={"/home/top10Cruise/banner-sale.jpg"}
-            width={1500}
-            height={209}
-            className="w-full object-contain opacity-95 hover:opacity-100"
+            src={"/home/top10Cruise/banner-sale.png"}
+            width={798}
+            height={234}
+            className="w-full object-cover opacity-95 hover:opacity-100 h-[120px] lg:h-[166px]"
           />
           <button className="absolute text-white bg-[#f5a528cc] hover:bg-[var(--bg-footer-color)] font-bold px-4 py-3 rounded-3xl bottom-0 mb-2 left-1/2 -translate-x-1/2">
             7 Cruise Details

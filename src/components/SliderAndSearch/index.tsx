@@ -47,10 +47,10 @@ export function SliderAndSearch(): JSX.Element {
   const boxSelectDateRef = useRef<HTMLDivElement>(null);
 
   const sliders = [
+    "/share/sliders/Halong-bay.jpg",
+    "/share/sliders/Vinh-Ha-Long.jpg",
+    "/share/sliders/diem-qua-11-dia-diem.jpg",
     "/share/sliders/Hang_Mua_Caves_3.jpg",
-    "/share/sliders/Halong bay.jpg",
-    "/share/sliders/Tam Coc.jpeg",
-    "/share/sliders/Vinh Ha Long.jpg",
   ];
 
   const logoCenter = "/share/trip24.png";
@@ -100,8 +100,8 @@ export function SliderAndSearch(): JSX.Element {
           <Image
             alt="slider"
             src={sliders[sliderActive]}
-            width={2000}
-            height={970}
+            width={900}
+            height={500}
             className="w-full h-full object-cover animate-zoomInZoomOut"
             loading="eager"
           />
