@@ -351,16 +351,16 @@ export function ShowRoomAndBookCruise({
           >
             {dataBooking?.totalRom} Room(s),
             {dataBooking.dataAdult.reduce(
-              (pre, item, index) => (pre += item[`room${index + 1}`]),
+              (pre, item, index) => (pre += item[`room${index + 1}`] || 0),
               0
             )}
             Adult(s),
             {dataBooking.dataChildren.reduce(
-              (pre, item, index) => (pre += item[`room${index + 1}`]),
+              (pre, item, index) => (pre += item[`room${index + 1}`] || 0),
               0
             ) +
               dataBooking.dataInfant.reduce(
-                (pre, item, index) => (pre += item[`room${index + 1}`]),
+                (pre, item, index) => (pre += item[`room${index + 1}`] || 0),
                 0
               )}
             Children
