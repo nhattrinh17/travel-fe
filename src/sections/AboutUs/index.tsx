@@ -1,46 +1,100 @@
+"use client";
+
 import { AnimatedCounter } from "@/components/AnimatedCouter";
 import Image from "next/image";
+import { useEffect } from "react";
+import { Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const dataUser = [
   {
-    image: "/about-us/user1.jpeg",
-    name: "Tessane Padares",
-    position: "Sale Manager",
+    image: "/about-us/users/user1.png",
+    name: "Le Van Tuan",
+    position: "Leader",
   },
   {
-    image: "/about-us/user2.jpeg",
-    name: "Tessane Padares",
-    position: "Sale Manager",
+    image: "/about-us/users/user2.png",
+    name: "Kyle Cannon",
+    position: "Sales Manager",
   },
   {
-    image: "/about-us/user3.jpeg",
-    name: "Tessane Padares",
-    position: "CEO",
+    image: "/about-us/users/user3.png",
+    name: "Mark Lusk",
+    position: "Sales Representative",
   },
   {
-    image: "/about-us/user4.jpeg",
-    name: "Tessane Padares",
-    position: "Sale Manager",
+    image: "/about-us/users/user4.png",
+    name: "Hien Cao",
+    position: "Marketing",
   },
   {
-    image: "/about-us/user5.jpeg",
-    name: "Tessane Padares",
-    position: "Marketing Manager",
+    image: "/about-us/users/user5.png",
+    name: "Danni Uncini",
+    position: "Creative Manager",
+  },
+  {
+    image: "/about-us/users/user6.png",
+    name: "Lee Spangenberg",
+    position: "Sales Representative",
   },
 ];
 
+const dataSlider = [
+  "/about-us/sliders/slider1.png",
+  "/about-us/sliders/slider2.png",
+  "/about-us/sliders/slider3.png",
+  "/about-us/sliders/slider4.png",
+  "/about-us/sliders/slider5.png",
+  "/about-us/sliders/slider6.png",
+];
+
 export function AboutUsSection(): JSX.Element {
+  useEffect(() => {
+    const autoNextSlider = setInterval(() => {
+      const preBtnSwiper = document.querySelector(".swiper-button-next");
+      if (preBtnSwiper) (preBtnSwiper as HTMLElement).click();
+    }, 5000);
+
+    return () => clearInterval(autoNextSlider);
+  }, []);
+
   return (
     <div className="bg-[var(--bg-container-color)]">
       {/* Video Intro */}
-      <section className="w-full relative overflow-hidden pb-[100%] lg:pb-[34%]">
-        <iframe
+      <section className="w-full relative overflow-hidden pb-[40%] lg:pb-[40%]">
+        <div className="absolute top-0 left-0 right-0 bottom-0">
+          <Swiper
+            slidesPerView={1}
+            //  pagination={{
+            //   clickable: true,
+            // }}
+            navigation={true}
+            modules={[Navigation]}
+            className="mySwiper h-full"
+            loop
+          >
+            {dataSlider.map((image, index) => (
+              <SwiperSlide key={index}>
+                <Image
+                  key={index}
+                  alt="slider"
+                  src={image}
+                  width={1589}
+                  height={874}
+                  className="absolute top-0 left-0 right-0 bottom-0 w-full h-full"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        {/* <iframe
           className="absolute top-0 left-0 w-full h-full scale-[2]"
           src="https://www.youtube.com/embed/JPe2mwq96cw?autoplay=1&mute=1&loop=1&playlist=JPe2mwq96cw&controls=0&showinfo=0&modestbranding=1"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-        ></iframe>
-        <div className="absolute top-0 left-0 right-0 bottom-0 z-10 flex items-center justify-center">
+        ></iframe> */}
+        {/* <div className="absolute top-0 left-0 right-0 bottom-0 z-10 flex items-center justify-center">
           <div className="text-center text-white">
             <h1 className="text-xl lg:text-3xl font-bold">
               We are Grand Tour World Class Travel Agency
@@ -49,24 +103,28 @@ export function AboutUsSection(): JSX.Element {
               Trips, experiences, and places. All in one service.
             </p>
           </div>
-        </div>
+        </div> */}
       </section>
       {/* Text intro */}
       <section className="py-20 bg-black">
         <div className="container text-white text-center">
           <div className="lg:px-20">
             <h2 className="text-3xl font-bold">
-              This adventure isn’t about change but it seems to be an
-              inevitability.
+              Booking with Confidence: TH Global Travel's Commitment to Your
+              Safety and Satisfaction
             </h2>
             <p className="py-5">
-              Meh synth Schlitz, tempor duis single-origin coffee ea next level
-              ethnic fingerstache fanny pack nostrud.Photo booth anim 8-bit
-              hella, PBR 3 wolf moon beard Helvetica. Salvia esse nihil,
-              flexitarian Truffaut synth art party deep v chillwave. Seitan High
-              Life reprehenderit consectetur cupidatat kogi. Et leggings fanny
-              pack, elit bespoke vinyl art party Pitchfork selfies master
-              cleanse.
+              At TH Global Travel, we prioritize your safety and satisfaction
+              with secure booking, transparent pricing, and flexible policies.
+              Our licensed and accredited team ensures reliable service, while
+              our secure platform protects your personal and payment
+              information. We offer 24/7 customer support, recommend travel
+              insurance for added peace of mind, and implement health and safety
+              measures to mitigate risks. Our clear cancellation, modification,
+              refund, and compensation policies ensure fair handling of any
+              issues. We respect your privacy, protect your data, and value your
+              feedback to continuously improve our services. Choose TH Global
+              Travel for a seamless and secure travel experience.
             </p>
 
             <div className="grid grid-cols-2">
@@ -93,7 +151,6 @@ export function AboutUsSection(): JSX.Element {
             <div className="container h-full flex justify-end items-center py-5">
               <form className="p-10 bg-white shadow-md rounded-md">
                 <div className="mb-7">
-                  {" "}
                   <h4 className="text-4xl font-bold text-black">
                     Get In Touch With Us
                   </h4>
@@ -172,21 +229,23 @@ export function AboutUsSection(): JSX.Element {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-7">
+        <div className="flex justify-center flex-wrap">
           {dataUser.map((user, index) => (
-            <div key={index}>
-              <Image
-                alt="user"
-                src={user.image}
-                width={500}
-                height={500}
-                className="w-full object-contain rounded-full"
-              />
-              <div className="text-center mt-4">
-                <h6 className="text-xl font-bold text-black">{user.name}</h6>
-                <p className="text-[var(--text-color-default)] text-base py-1">
-                  {user.position}
-                </p>
+            <div key={index} className="basis-1/2 lg:basis-1/4">
+              <div className="px-4 py-2">
+                <Image
+                  alt="user"
+                  src={user.image}
+                  width={500}
+                  height={500}
+                  className="w-full object-contain rounded-full"
+                />
+                <div className="text-center mt-4">
+                  <h6 className="text-xl font-bold text-black">{user.name}</h6>
+                  <p className="text-[var(--text-color-default)] text-base py-1">
+                    {user.position}
+                  </p>
+                </div>
               </div>
             </div>
           ))}

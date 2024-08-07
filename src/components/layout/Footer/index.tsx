@@ -231,19 +231,21 @@ export function FooterLayout(): JSX.Element {
             </div>
             <div className="flex-1 mx-10 text-[#666]">
               <h3 className="font-bold text-base">
-                Being Halong bay cruise experts with over 10 years of
-                experience.
+                As Vietnam travel experts with over 10 years of experience
                 <span className="text-[--text-hover-default]">
                   Let us help you!
                 </span>
               </h3>
               <p className="text-sm">
-                Halong Bay Cruises team is grateful to bring you a cruise
-                vacation that will exceed your greatest expectations and offer
-                you exceptional value. With the confidence and knowledge to find
-                the right Halong bay cruise choice, we are always here to listen
-                and arrange everything as your desire. Don't hesitate to send us
-                your requests. We will send you the best offers shortly!
+                TH Global Travel is dedicated to providing you with an
+                unforgettable cruise and travel vacation that exceeds your
+                expectations and offers exceptional value. Our knowledgeable
+                team is here to help you find the perfect Halong Bay cruise,
+                tailored travel packages to your desire. We are always ready to
+                listen and arrange everything to ensure a seamless experience.
+                Don't hesitate to send us your requests, and we will promptly
+                send you the best offers! Let TH Global Travel make your dream
+                cruise and travel vacation a reality.
               </p>
             </div>
             <button
