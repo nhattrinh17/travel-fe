@@ -1,9 +1,12 @@
 "use client";
 
 import { AnimatedCounter } from "@/components/AnimatedCouter";
+import { countries } from "@/constants";
+import { sendMailHome } from "@/utils/api";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -51,6 +54,14 @@ const dataSlider = [
 ];
 
 export function AboutUsSection(): JSX.Element {
+  const [phoneCountry, setPhoneCountry] = useState(countries[0].dial_code);
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState<number>();
+  const [numberPerson, setNumberPerson] = useState<number>();
+  const [otherRequest, setOtherRequest] = useState("");
+  const router = useRouter();
+
   useEffect(() => {
     const autoNextSlider = setInterval(() => {
       const preBtnSwiper = document.querySelector(".swiper-button-next");
@@ -688,19 +699,38 @@ export function AboutUsSection(): JSX.Element {
         <div className="w-full h-[800px]">
           <div className="bg-[url(/about-us/bg1.jpeg)] bg-no-repeat bg-cover w-full h-full object-cover">
             <div className="container h-full flex justify-end items-center py-5">
-              <form className="p-10 bg-white shadow-md rounded-md">
+              <form
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  const dataSend = {
+                    otherRequest,
+                    fullName,
+                    email,
+                    phone: `${phoneCountry} ${phone}`,
+                    numberPerson,
+                  };
+
+                  const res = await sendMailHome(dataSend);
+                  if (res.data) {
+                    router.push("/");
+                  }
+                }}
+                className="p-10 bg-white shadow-md rounded-md"
+              >
                 <div className="mb-7">
                   <h4 className="text-4xl font-bold text-black">
                     Get In Touch With Us
                   </h4>
                   <p className="text-[var(--text-color-default)]">
-                    This is sample of sub title
+                    We will contact you within 24 hours
                   </p>
                 </div>
                 <div className="mb-4">
                   <label htmlFor="fullName">Full Name</label>
                   <input
                     id="fullName"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
                     required
                     placeholder="Nhat Trinh"
                     className="w-full outline-none border-[1px] rounded-md p-2"
@@ -712,6 +742,8 @@ export function AboutUsSection(): JSX.Element {
                   <input
                     id="email"
                     required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="halong@travel.com.vn"
                     className="w-full outline-none border-[1px] rounded-md p-2"
                     type="text"
@@ -719,32 +751,62 @@ export function AboutUsSection(): JSX.Element {
                 </div>
                 <div className="mb-4">
                   <label htmlFor="phoneNumber">Phone Number</label>
-                  <input
-                    id="phoneNumber"
-                    required
-                    placeholder="0334343323"
-                    className="w-full outline-none border-[1px] rounded-md p-2"
-                    type="text"
-                  />
-                </div>
-                <div className="mb-4">
-                  <label htmlFor="interestedIn">Interested In</label>
-                  <input
-                    id="interestedIn"
-                    required
-                    placeholder="Asia Trip"
-                    className="w-full outline-none border-[1px] rounded-md p-2"
-                    type="text"
-                  />
+                  <div className="relative w-full text-sm h-10  py-2 outline-none border-[1px]">
+                    <select
+                      id="select-phone"
+                      defaultValue={phoneCountry}
+                      onChange={(e) => setPhoneCountry(e.target.value)}
+                      className="absolute cursor-pointer text-transparent bg-transparent top-0 px-3 z-[1] left-0 right-0 bottom-0 w-full text-sm py-3 outline-none"
+                    >
+                      {countries.map((country) => (
+                        <option
+                          key={country.code}
+                          value={country.dial_code}
+                          className="text-black"
+                        >
+                          {country.name}
+                        </option>
+                      ))}
+                    </select>
+                    <label className="absolute top-0 left-0 bottom-0 flex items-center justify-center w-20 bg-white border-r-[1px]">{`${
+                      countries.find((i) => i.dial_code == phoneCountry)?.code
+                    }(${phoneCountry})`}</label>
+                    <input
+                      value={phone}
+                      onChange={(e) => {
+                        if (Number(e.target.value) > 0) {
+                          setPhone(+e.target.value);
+                        } else {
+                          setPhone(0);
+                        }
+                      }}
+                      required
+                      name="phone"
+                      className="outline-none absolute top-0 right-0 bottom-0 left-[80px] z-[2] pl-2"
+                    />
+                  </div>
                 </div>
                 <div className="mb-4">
                   <label htmlFor="numberPerson">Number of Person</label>
                   <input
                     id="numberPerson"
                     required
-                    placeholder="Nhat Trinh"
+                    value={numberPerson}
+                    onChange={(e) => setNumberPerson(+e.target.value)}
+                    placeholder="Enter person number"
                     className="w-full outline-none border-[1px] rounded-md p-2"
-                    type="text"
+                    type="number"
+                  />
+                </div>
+                <div className="mb-4">
+                  <label htmlFor="interestedIn">Other Request</label>
+                  <textarea
+                    id="interestedIn"
+                    required
+                    value={otherRequest}
+                    onChange={(e) => setOtherRequest(e.target.value)}
+                    placeholder="Request"
+                    className="w-full outline-none border-[1px] rounded-md p-2 min-h-32"
                   />
                 </div>
 

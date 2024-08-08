@@ -101,7 +101,7 @@ export function FooterLayout(): JSX.Element {
                 otherRequest,
                 fullName,
                 email,
-                phone,
+                phone: `${phoneCountry} ${phone}`,
               };
 
               const res = await sendMailHome(dataSend);
