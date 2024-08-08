@@ -36,7 +36,7 @@ export function ContactUsSection(): JSX.Element {
           </p>
         </div>
       </section>
-      <section className="bg-[var(--bg-container-color)] py-10">
+      <section className="bg-[var(--bg-container-color)] py-10 text-black">
         <div className="container grid grid-cols-1 lg:grid-cols-2 gap-5">
           <div>
             <div className="mb-[30px]">
@@ -103,7 +103,7 @@ export function ContactUsSection(): JSX.Element {
               </div> */}
             </div>
           </div>
-          <div>
+          <div className="text-black">
             <div className="mb-[30px]">
               <span className="mb-[10px]">Have a question?</span>
               <h2 className="uppercase text-3xl font-semibold">Get in touch</h2>

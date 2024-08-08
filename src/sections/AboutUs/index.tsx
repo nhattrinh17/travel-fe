@@ -696,7 +696,7 @@ export function AboutUsSection(): JSX.Element {
       </section>
       {/* Form */}
       <section>
-        <div className="w-full h-[800px]">
+        <div className="w-full h-[800px] text-black">
           <div className="bg-[url(/about-us/bg1.jpeg)] bg-no-repeat bg-cover w-full h-full object-cover">
             <div className="container h-full flex justify-end items-center py-5">
               <form
