@@ -156,7 +156,8 @@ export function SliderAndSearch(): JSX.Element {
                 e.preventDefault();
                 const isHome =
                   window.location.pathname == "/" ||
-                  window.location.pathname == "/flash-deal";
+                  window.location.pathname == "/flash-deal" ||
+                  window.location.pathname == "/destination";
                 if (isHome) {
                   if (optionSearch == "cruise") {
                     router.push(`/cruise?search=${search}`);
