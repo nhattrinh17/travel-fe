@@ -17,7 +17,7 @@ export function LuxuryCruise(): JSX.Element {
   const { data } = useCruiseLuxury();
 
   return (
-    <section ref={sectionRef} className="bg-[#f1f1f1] py-5">
+    <section ref={sectionRef} className="bg-[#f1f1f1] py-5" id="luxury-cruise">
       <div className="container">
         <h2 className="my-3 text-2xl font-bold text-[var(--secondary-color)] w-full text-center relative line-text">
           Luxury Cruises

@@ -12,7 +12,7 @@ export function Top10Cruise(): JSX.Element {
 
   return (
     <section className="bg-[#f1f1f1] py-5">
-      <div className="container">
+      <div className="container" id="best-cruise">
         <Link href={""} className="relative">
           <Image
             alt="iamge"
@@ -42,7 +42,7 @@ export function Top10Cruise(): JSX.Element {
         />
 
         <h2 className="my-3 text-2xl font-bold text-[var(--secondary-color)] w-full text-center relative line-text">
-          TOP 10 BEST HALONG BAY CRUISE DEALS RECOMMENDED FOR YOU
+          TOP 10 BEST CRUISE DEALS RECOMMENDED FOR YOU
         </h2>
 
         <p className="text-[#666] text-sm text-center px-0 lg:px-12">

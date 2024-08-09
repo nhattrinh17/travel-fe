@@ -16,7 +16,7 @@ export function BudgetCruise(): JSX.Element {
   const { data } = useCruiseBudget();
 
   return (
-    <section ref={sectionRef} className="bg-[#f1f1f1] py-5">
+    <section ref={sectionRef} className="bg-[#f1f1f1] py-5" id="budget-cruise">
       <div className="container">
         <h2 className="my-3 text-2xl font-bold text-[var(--secondary-color)] w-full text-center relative line-text">
           Budget Cruises

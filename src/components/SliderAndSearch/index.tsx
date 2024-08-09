@@ -94,7 +94,7 @@ export function SliderAndSearch(): JSX.Element {
   }, []);
 
   return (
-    <section className="h-[600px] lg:h-[640px]">
+    <section className="h-[600px] lg:h-[640px]" id="top">
       <div className={cx("h-full w-full relative")}>
         <div className={cx("h-full overflow-hidden")}>
           <Image

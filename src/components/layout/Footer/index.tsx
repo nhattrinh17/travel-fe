@@ -298,28 +298,23 @@ export function FooterLayout(): JSX.Element {
                 width={800}
                 height={300}
               /> */}
-                <h1 className="font-bold my-2">
-                  Operated by INSIDE TRAVEL Experts - Best Price Guarantee!
-                </h1>
+                <h1 className="font-bold my-2">TH Global Travel Company</h1>
                 <p className="my-2">
-                  Hanoi: No.20-C2, Song Long Building, Nam Trung Yen Urban,
-                  Trung Hoa, Cau Giay Dist, Hanoi Capital
+                  No 19,lane 4 Trung Lap-Tri Trung-Phu Xuyen-Hanoi-Viet Nam
                 </p>
-                <p className="my-2">
-                  Halong bay: No.16 Anh Dao St., Bai Chay Ward, Ha Long city
-                </p>
-                <a className="my-2" href="tel:+84 2462 698 528">
-                  Phone: (+84) 2462 698 528
+
+                <a className="my-2" href="tel:+84946707266">
+                  Phone: (+84) 946 707 266
                 </a>
-                <a className="my-2" href="tel:+84 243 99 88 668">
-                  Hotline: (+84) 243 99 88 668
+                <a className="my-2" href="tel:+84946707266">
+                  Hotline: (+84) 946 707 266
                 </a>
-                <a className="my-2" href="mailto:sales@halongbaycruises.com">
-                  Email1: sales@halongbaycruises.com
+                <a className="my-2" href="mailto:info@thglobaltravel.com">
+                  Email: info@thglobaltravel.com
                 </a>
-                <a className="my-2" href="mailto:experts@insidetravel.com">
+                {/* <a className="my-2" href="mailto:experts@insidetravel.com">
                   Email2: experts@insidetravel.com
-                </a>
+                </a> */}
                 <div className="flex my-2 text-[var(--text-hover-default)]">
                   <FontAwesomeIcon
                     icon={faFacebookF}
@@ -367,79 +362,84 @@ export function FooterLayout(): JSX.Element {
                   </Link>
                 </li>
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={""} className="block py-2">
+                  <Link href={"/about-us"} className="block py-2">
                     Meet Our Team
                   </Link>
                 </li>
-                <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
+                {/* <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
                   <Link href={""} className="block py-2">
+                    Why Book With Us
+                  </Link>
+                </li> */}
+                <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
+                  <Link href={"/about-us"} className="block py-2">
                     Why Book With Us
                   </Link>
                 </li>
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={""} className="block py-2">
-                    Why Book With Us
-                  </Link>
-                </li>
-                <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={""} className="block py-2">
+                  <Link href={"/about-us"} className="block py-2">
                     Deposit & Payment
                   </Link>
                 </li>
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={""} className="block py-2">
+                  <Link href={"/about-us"} className="block py-2">
                     Cancellation Policy
                   </Link>
                 </li>
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={""} className="block py-2">
+                  <Link href={"/about-us"} className="block py-2">
                     Terms & Conditions
                   </Link>
                 </li>
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={""} className="block py-2">
+                  <Link href={"/about-us"} className="block py-2">
                     Privacy Policy
                   </Link>
                 </li>
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={""} className="block py-2">
+                  <Link href={"#top"} className="block py-2">
                     Myanmar river cruise
                   </Link>
                 </li>
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={""} className="block py-2">
+                  <Link href={"#top"} className="block py-2">
                     Asia Tours Official Web
                   </Link>
                 </li>
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={""} className="block py-2">
+                  <Link
+                    href={
+                      "/tour?name=vietnam-highlights-adventure-10-days-from-ha-noi&type=packet"
+                    }
+                    className="block py-2"
+                  >
                     Vietnam Tours
                   </Link>
                 </li>
               </ul>
               <ul className="col-span-3 lg:col-span-1">
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={""} className="block py-2">
+                  <Link href={"#best-cruise"} className="block py-2">
                     Best Halong Bay Cruises
                   </Link>
                 </li>
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={""} className="block py-2">
+                  <Link href={"#best-cruise"} className="block py-2">
                     Newest Halong Bay Cruises
                   </Link>
                 </li>
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={""} className="block py-2">
+                  <Link href={"#luxury-cruise"} className="block py-2">
                     Luxury Halong Bay Cruises
                   </Link>
                 </li>
-                <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
+                {/* <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
                   <Link href={""} className="block py-2">
                     Deluxe Halong Bay Cruises
                   </Link>
-                </li>
+                </li> */}
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={""} className="block py-2">
+                  <Link href={"#budget-cruise"} className="block py-2">
                     Budget Halong Bay Cruises
                   </Link>
                 </li>
@@ -449,7 +449,7 @@ export function FooterLayout(): JSX.Element {
                   </Link>
                 </li>
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={""} className="block py-2">
+                  <Link href={"#best-cruise"} className="block py-2">
                     Halong Bay Day Cruises
                   </Link>
                 </li>
@@ -459,22 +459,30 @@ export function FooterLayout(): JSX.Element {
                   </Link>
                 </li>
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={""} className="block py-2">
+                  <Link href={"#top"} className="block py-2">
                     Halong bay destinations
                   </Link>
                 </li>
-                <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
+                {/* <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
                   <Link href={""} className="block py-2">
                     Sea Stars Cruise
                   </Link>
-                </li>
+                </li> */}
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={""} className="block py-2">
+                  <Link
+                    href={"/cruise?destination=lan-ha-bay-cruise"}
+                    className="block py-2"
+                  >
                     Lan Ha Bay Cruises
                   </Link>
                 </li>
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={""} className="block py-2">
+                  <Link
+                    href={
+                      "/tour?name=vietnam-highlights-adventure-10-days-from-ha-noi&type=packet"
+                    }
+                    className="block py-2"
+                  >
                     Vietnam Family Tours
                   </Link>
                 </li>
@@ -490,17 +498,17 @@ export function FooterLayout(): JSX.Element {
                 <p className="py-3">
                   © 2024 Official website of
                   <span className="text-[var(--text-hover-default)] font-bold mx-1">
-                    Halong Bay Cruises
+                    TH Global Travel
                   </span>
                   all rights reserved.
                 </p>
-                <p className="py-7">
+                {/* <p className="py-7">
                   Proudly a part of
                   <span className="text-[var(--text-hover-default)] font-bold mx-1">
                     INSIDE TRAVEL
                   </span>
                   Corporation.
-                </p>
+                </p> */}
                 <p>
                   International Tour Operator Licence No:
                   <span className="text-[var(--text-hover-default)] font-bold mx-1">
