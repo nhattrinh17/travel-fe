@@ -48,6 +48,7 @@ interface CruiseItem {
     description: string;
     options: string;
     type: number;
+    price: number;
   }[];
 
   // custom

@@ -10,6 +10,7 @@ import {
 import { useRef } from "react";
 import { TourHomeTop10Item } from "../TourHomeTopItem";
 import { useTourTopDaily } from "@/utils/handleTour";
+import Link from "next/link";
 
 export function Top10DailyTour(): JSX.Element {
   const sectionRef = useRef<HTMLElement>(null);
@@ -20,7 +21,7 @@ export function Top10DailyTour(): JSX.Element {
     <section ref={sectionRef} className="bg-[#f1f1f1] py-5">
       <div className="container">
         <h2 className="my-3 text-2xl font-bold text-[var(--secondary-color)] w-full text-center relative line-text">
-          Top 10 Daily Tour
+          Top 10 Daily Tours
         </h2>
       </div>
       <div className="relative container pt-5">
@@ -82,9 +83,12 @@ export function Top10DailyTour(): JSX.Element {
       </div>
 
       <div className="container flex justify-center">
-        <button className="mx-auto text-sm font-bold text-[var(--text-hover-default)] w-fit px-10 py-2 rounded-3xl border-[2px] border-dotted border-[#0cab5b] mt-3 hover:bg-[#06b28b] hover:text-white ">
-          View Daily Tour <span>{`>>`}</span>
-        </button>
+        <Link
+          href={"/tour?type=1"}
+          className="mx-auto text-sm font-bold text-[var(--text-hover-default)] w-fit px-10 py-2 rounded-3xl border-[2px] border-dotted border-[#0cab5b] mt-3 hover:bg-[#06b28b] hover:text-white "
+        >
+          View Daily Tours <span>{`>>`}</span>
+        </Link>
       </div>
     </section>
   );

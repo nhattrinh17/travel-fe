@@ -13,7 +13,6 @@ import {
   getAllTour,
   getAllTourNav,
   getAllTourSort,
-  getTopTourDaily,
 } from "./api";
 import { calculateTotalLikes } from "@/share";
 
@@ -102,6 +101,60 @@ export const useHomeTour = (
   });
 };
 
+export const useHomeTourForType = (
+  typeTour: number,
+  sort: string,
+  typeSort: string,
+  search: string
+) => {
+  console.log("🚀 ~ sort:", sort, typeSort);
+  const { refreshData, tours } = useAppSelector((state) => state.tour);
+
+  const typeTourRef = useRef(typeTour);
+  const sortTourRef = useRef(sort);
+  const typeSortTourRef = useRef(typeSort);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    async function fetchData() {
+      if (
+        refreshData ||
+        typeTour !== typeTourRef.current ||
+        sort !== sortTourRef.current ||
+        typeSort !== typeSortTourRef.current
+      ) {
+        typeTourRef.current = typeTour;
+        sortTourRef.current = sort;
+        typeSortTourRef.current = typeSort;
+        const res = await getAllTourSort(
+          1,
+          40,
+          typeTour,
+          sort,
+          typeSort,
+          search
+        );
+        if (res?.data) {
+          const { data, pagination } = res?.data;
+          dispatch(setDataTours({ data, ...pagination }));
+        }
+      }
+    }
+
+    fetchData();
+  }, [typeTour, sort, typeSort, search]);
+
+  return tours.map((tour) => {
+    return {
+      ...tour,
+      travelerLoves: tour.travelerLoves.split("*_*"),
+      images: tour.images.split("*_*"),
+      isAllMeals: tour.accompaniedServices.some((i) => i.slug == "allMeals"),
+      totalStar: 5,
+    };
+  });
+};
+
 export const useTourFlashSale = () => {
   const { tourFlashSle } = useAppSelector((state) => state.tour);
 
@@ -110,7 +163,7 @@ export const useTourFlashSale = () => {
   useEffect(() => {
     async function fetchData() {
       if (tourFlashSle == undefined) {
-        const res = await getAllTourSort(1, 20, "isFlashSale", "DESC");
+        const res = await getAllTourSort(1, 20, 0, "isFlashSale", "DESC");
         if (res?.data) {
           const { data, pagination } = res?.data;
           dispatch(setDataTourFlashSle({ data }));
@@ -143,7 +196,7 @@ export const useTourTopDaily = () => {
   useEffect(() => {
     async function fetchData() {
       if (tourTopDaily == undefined) {
-        const res = await getTopTourDaily(1, 10, "price", "ASC");
+        const res = await getAllTourSort(1, 10, 1, "price", "ASC");
         if (res?.data) {
           const { data, pagination } = res?.data;
           dispatch(setDataTourTopDaily({ data }));

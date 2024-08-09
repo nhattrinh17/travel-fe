@@ -5,35 +5,47 @@ import { SliderAndSearch } from "@/components/SliderAndSearch";
 import { TourItem } from "@/components/TourItem";
 import { TourItemGrid } from "@/components/TourItemGrid";
 import { IntroduceHome } from "@/components/home/Introduce";
-import { useAppSelector } from "@/lib";
-import { useHomeTour } from "@/utils/handleTour";
+import { useAppDispatch, useAppSelector } from "@/lib";
+import { resetDataTour } from "@/lib/redux/app/tour.slice";
+import { useHomeTour, useHomeTourForType } from "@/utils/handleTour";
 import { faBorderAll, faListUl } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function HomeTourSection(): JSX.Element {
   const searchParams = useSearchParams();
   const slugDestination = searchParams.get("name") || "";
   const search = searchParams.get("search") || "";
+  const typeTour = searchParams.get("typeTour") || "";
+  const [typeShow, setTypeShow] = useState("list");
 
   const [sort, setSort] = useState("");
   const [typeSort, setTypeSort] = useState("");
   const { packetTours } = useAppSelector((state) => state.packetTour);
   const packetTourBySlug = packetTours.find((i) => i.slug == slugDestination);
-  const dataTour = useHomeTour(packetTourBySlug?.id, sort, typeSort, search);
+  const dataTour = packetTourBySlug
+    ? useHomeTour(packetTourBySlug?.id, sort, typeSort, search)
+    : useHomeTourForType(+typeTour, sort, typeSort, search);
 
-  const [typeShow, setTypeShow] = useState("list");
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetDataTour());
+    };
+  }, []);
+
   return (
     <div className="-mt-[var(--height-header)]">
       <SliderAndSearch />
       <IntroduceHome />
       <IntroCruiseAndTour
-        title={packetTourBySlug?.name || "All 43 Best Family Halong Bay Tour"}
+        title={packetTourBySlug?.name || "All 43 Best Family Tours"}
         description={
           packetTourBySlug?.description ||
-          "With many years of experience working as Halong Bay Cruise expert as well as receiving and summarizing several valuable feedbacks from our old customers, I group a list of cruises for families based on common criteria such as cruises and cabins' features as well as their itineraries. These choices belong to all three classes of cruises in Halong Bay. Therefore, it is suitable for each family's requirement. These Halong bay cruises are commonly chosen by family due to their connecting cabins, large sundecks and elegant dining rooms & bars which will surely make your family feel comfortable."
+          "With many years of experience working as tours expert as well as receiving and summarizing several valuable feedbacks from our old customers, I group a list of cruises for families based on common criteria such as cruises and cabins' features as well as their itineraries. These choices belong to all three classes of cruises in Halong Bay. Therefore, it is suitable for each family's requirement. These Halong bay cruises are commonly chosen by family due to their connecting cabins, large sundecks and elegant dining rooms & bars which will surely make your family feel comfortable."
         }
       />
       <section className="bg-[var(--bg-container-color)]  py-4">

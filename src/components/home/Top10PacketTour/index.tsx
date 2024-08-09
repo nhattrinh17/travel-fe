@@ -38,7 +38,7 @@ export function Top10PacketTour(): JSX.Element {
         />
 
         <h2 className="my-3 text-2xl uppercase font-bold text-[var(--secondary-color)] w-full text-center relative line-text">
-          TOP 10 BEST PACKET TOUR DEALS RECOMMENDED FOR YOU
+          TOP 10 BEST PACKAGES TOUR DEALS RECOMMENDED FOR YOU
         </h2>
 
         <p className="text-[#666] text-sm text-center px-0 lg:px-12">

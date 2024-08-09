@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useRef } from "react";
 import { useCruiseLuxury } from "@/utils/handleCruise";
+import Link from "next/link";
 
 export function LuxuryCruise(): JSX.Element {
   const sectionRef = useRef<HTMLElement>(null);
@@ -82,9 +83,12 @@ export function LuxuryCruise(): JSX.Element {
       </div>
 
       <div className="container flex justify-center">
-        <button className="mx-auto text-sm font-bold text-[var(--text-hover-default)] w-fit px-10 py-2 rounded-3xl border-[2px] border-dotted border-[#0cab5b] mt-3 hover:bg-[#06b28b] hover:text-white ">
+        <Link
+          href={"/luxury-budget-cruise?type=luxury"}
+          className="mx-auto text-sm font-bold text-[var(--text-hover-default)] w-fit px-10 py-2 rounded-3xl border-[2px] border-dotted border-[#0cab5b] mt-3 hover:bg-[#06b28b] hover:text-white "
+        >
           View Luxury Cruises <span>{`»`}</span>
-        </button>
+        </Link>
       </div>
     </section>
   );

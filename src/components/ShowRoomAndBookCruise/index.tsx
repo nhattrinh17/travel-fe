@@ -80,9 +80,11 @@ export function ShowRoomAndBookCruise({
       child?: number;
       infant?: number;
       time?: string;
+      price?: number;
     }[]
   >([]);
   const [dataTransfer, setDataTransfer] = useState<{
+    price?: number;
     name?: string;
     address?: string;
     options?: string[];
@@ -190,13 +192,13 @@ export function ShowRoomAndBookCruise({
             {cruiseDetail.name}
             <div className="ml-2 text-[orange]">
               {Array.from(
-                { length: cruiseDetail.totalStar },
+                { length: cruiseDetail.totalStar + 1 },
                 (v, i) => i + 1
               ).map((i, index) => (
                 <FontAwesomeIcon
                   key={index}
                   icon={faStar}
-                  className="ml-1 w-[10px]"
+                  className="mr-1 text-[orange] text-xs"
                 />
               ))}
             </div>
@@ -956,6 +958,8 @@ export function ShowRoomAndBookCruise({
                                 {
                                   name: service.name,
                                   description: service.description,
+                                  price: service.price,
+                                  time: "8:00",
                                 },
                               ];
                             });
@@ -999,6 +1003,8 @@ export function ShowRoomAndBookCruise({
                                     name: service.name,
                                     adult: +e.target.value,
                                     description: service.description,
+                                    price: service.price,
+                                    time: "8:00",
                                   },
                                 ];
                               }
@@ -1040,6 +1046,8 @@ export function ShowRoomAndBookCruise({
                                     name: service.name,
                                     child: +e.target.value,
                                     description: service.description,
+                                    price: service.price,
+                                    time: "8:00",
                                   },
                                 ];
                               }
@@ -1080,6 +1088,7 @@ export function ShowRoomAndBookCruise({
                                     name: service.name,
                                     infant: +e.target.value,
                                     description: service.description,
+                                    price: service.price,
                                     time: "8:00",
                                   },
                                 ];
@@ -1120,6 +1129,7 @@ export function ShowRoomAndBookCruise({
                                   {
                                     name: service.name,
                                     time: +e.target.value,
+                                    price: service.price,
                                   },
                                 ];
                               }
@@ -1158,6 +1168,7 @@ export function ShowRoomAndBookCruise({
                             return {
                               name: service.name,
                               address: "",
+                              price: service.price,
                               options: [],
                             };
                           });

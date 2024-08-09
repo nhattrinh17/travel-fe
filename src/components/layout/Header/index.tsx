@@ -114,7 +114,11 @@ export function HeaderLayout(): JSX.Element {
               )}
             >
               <div className="flex lg:h-full w-full lg:w-auto items-center justify-center">
-                <h2 className="uppercase text-xl lg:text-xs">Packages Tour</h2>
+                <Link href={"/tour?type=0"}>
+                  <h2 className="uppercase text-xl lg:text-xs">
+                    Packages Tours
+                  </h2>
+                </Link>
                 <FontAwesomeIcon
                   icon={faSortDown}
                   className="w-3 ml-2 relative -top-1"
@@ -174,7 +178,9 @@ export function HeaderLayout(): JSX.Element {
               )}
             >
               <div className="flex lg:h-full w-full lg:w-auto items-center justify-center">
-                <h2 className="uppercase text-xl lg:text-xs">daily Tour</h2>
+                <Link href={"/tour?type=1"}>
+                  <h2 className="uppercase text-xl lg:text-xs">daily Tours</h2>
+                </Link>
                 <FontAwesomeIcon
                   icon={faSortDown}
                   className="w-3 ml-2 relative -top-1"
@@ -232,7 +238,9 @@ export function HeaderLayout(): JSX.Element {
               )}
             >
               <div className="flex lg:h-full w-full lg:w-auto py-1 lg:py-0 items-center justify-center">
-                <h2 className="uppercase text-xl lg:text-xs">Cruises</h2>
+                <Link href={"/destination"}>
+                  <h2 className="uppercase text-xl lg:text-xs">Cruises</h2>
+                </Link>
                 <FontAwesomeIcon
                   icon={faSortDown}
                   className="w-3 ml-2 relative -top-1"

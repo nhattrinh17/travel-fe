@@ -283,13 +283,22 @@ export function FooterLayout(): JSX.Element {
                 ))}
               </ul>
             </div>
-            {/* <Image
-            alt="halong-bay-cruises"
-            src={"/home/footer/halong-bay-cruises.jpg"}
-            width={1500}
-            height={209}
-            className="w-full object-contain py-4 opacity-80 hover:opacity-100"
-          /> */}
+            <div className="relative my-4">
+              <Image
+                alt="halong-bay-cruises"
+                src={"/home/footer/halong-bay-cruises.jpg"}
+                width={1500}
+                height={209}
+                className="w-full object-contain  opacity-80 hover:opacity-100"
+              />
+              <Image
+                alt="logo"
+                src={"/logo.png"}
+                width={234}
+                height={56}
+                className="absolute top-1 left-4 w-[15%]"
+              />
+            </div>
             <div className="grid lg:grid-cols-6 gap-10 text-xs text-[#ccc]">
               <div className="col-span-6 lg:col-span-2 flex flex-col">
                 {/* <Image
@@ -423,11 +432,7 @@ export function FooterLayout(): JSX.Element {
                     Best Halong Bay Cruises
                   </Link>
                 </li>
-                <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={"#best-cruise"} className="block py-2">
-                    Newest Halong Bay Cruises
-                  </Link>
-                </li>
+
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
                   <Link href={"#luxury-cruise"} className="block py-2">
                     Luxury Halong Bay Cruises

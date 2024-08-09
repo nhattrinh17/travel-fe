@@ -107,7 +107,6 @@ export const getAllTour = (
 ) => {
   const axios = new BaseAxios();
   let url = "tour?page=1&limit=100";
-
   if (packetTourId) url += "&packetTourId=" + packetTourId;
   if (search) url += "&search=" + search;
   if (sort) url += "&sort=" + sort;
@@ -118,34 +117,39 @@ export const getAllTour = (
 export const getAllTourSort = (
   page: number,
   limit: number,
+  type: number,
   sort: string,
-  typeSort: string
+  typeSort: string,
+  search?: string
 ) => {
+  console.log("🚀 ~ page:", page, limit, type, sort, typeSort);
   const axios = new BaseAxios();
   let url = "tour?";
   if (page) url += "page=" + page;
   if (limit) url += "&limit=" + limit;
   if (sort) url += "&sort=" + sort;
+  if (type != undefined) url += "&type=" + type;
   if (typeSort) url += "&typeSort=" + typeSort;
+  if (search) url += "&search=" + search;
 
   return axios.get(url);
 };
 
-export const getTopTourDaily = (
-  page: number,
-  limit: number,
-  sort: string,
-  typeSort: string
-) => {
-  const axios = new BaseAxios();
-  let url = "tour?type=1&";
-  if (page) url += "page=" + page;
-  if (limit) url += "&limit=" + limit;
-  if (sort) url += "&sort=" + sort;
-  if (typeSort) url += "&typeSort=" + typeSort;
+// export const getTopTourDaily = (
+//   page: number,
+//   limit: number,
+//   sort: string,
+//   typeSort: string
+// ) => {
+//   const axios = new BaseAxios();
+//   let url = "tour?type=1&";
+//   if (page) url += "page=" + page;
+//   if (limit) url += "&limit=" + limit;
+//   if (sort) url += "&sort=" + sort;
+//   if (typeSort) url += "&typeSort=" + typeSort;
 
-  return axios.get(url);
-};
+//   return axios.get(url);
+// };
 
 export const getAllTourNav = () => {
   const axios = new BaseAxios();
