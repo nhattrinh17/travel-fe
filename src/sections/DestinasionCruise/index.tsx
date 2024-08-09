@@ -1,31 +1,15 @@
 "use client";
 
-import { CruiseItem } from "@/components/CruiseItem";
-import { CruiseItemGrid } from "@/components/CruiseItemGrid";
 import { IntroCruiseAndTour } from "@/components/IntroCruiseAndTour";
 import { SliderAndSearch } from "@/components/SliderAndSearch";
 import { IntroduceHome } from "@/components/home/Introduce";
 import { useAppSelector } from "@/lib";
-// import { destinationNear } from "@/mocks";
-import {
-  useCruise,
-  useCruiseBudget,
-  useCruiseLuxury,
-} from "@/utils/handleCruise";
-import {
-  faBorderAll,
-  faListUl,
-  faLocationDot,
-} from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { useState } from "react";
 
 export function DestinationCruiseSection(): JSX.Element {
-  const searchParams = useSearchParams();
   const { destinations } = useAppSelector((state) => state.destination);
 
   return (
