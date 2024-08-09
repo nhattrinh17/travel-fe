@@ -3,6 +3,7 @@
 import { sendMailHome } from "@/utils/api";
 import { faSkype } from "@fortawesome/free-brands-svg-icons";
 import {
+  faEnvelope,
   faLocationDot,
   faPaperPlane,
   faPhone,
@@ -51,14 +52,23 @@ export function ContactUsSection(): JSX.Element {
               details listed below or fill in the form on the right.
             </p>
             <div className="">
+              <p className="text-[var(--primary-color)] block font-bold text-sm mb-2">
+                TH Global Travel Company
+              </p>
               <div className="flex mb-2">
-                <div className="w-[25px] h-[25px] mr-2 rounded-full flex items-center justify-center bg-[var(--primary-color)]">
+                <div className="w-[28px] lg:w-[25px] h-[25px] mr-2 rounded-full flex items-center justify-center bg-[var(--primary-color)]">
                   <FontAwesomeIcon
                     icon={faLocationDot}
-                    className="text-sm text-white "
+                    className="text-sm text-white w-2/3"
                   />
                 </div>
-                <a href="" className="text-[var(--primary-color)]">
+
+                <a
+                  //
+                  href=""
+                  className="text-wrap"
+                  // className="text-[var(--primary-color)]"
+                >
                   No 19, lane 4 Trung Lap-Tri Trung-Phu Xuyen-Hanoi-Viet Nam
                 </a>
               </div>
@@ -71,7 +81,7 @@ export function ContactUsSection(): JSX.Element {
                 </div>
                 <a
                   href="tel:+84946707266"
-                  className="text-[var(--primary-color)]"
+                  // className="text-[var(--primary-color)]"
                 >
                   +84946707266
                 </a>
@@ -79,17 +89,21 @@ export function ContactUsSection(): JSX.Element {
               <div className="flex mb-2">
                 <div className="w-[25px] h-[25px] mr-2 rounded-full flex items-center justify-center bg-[var(--primary-color)]">
                   <FontAwesomeIcon
-                    icon={faLocationDot}
+                    icon={faEnvelope}
                     className="text-sm text-white "
                   />
                 </div>
                 <a
-                  href="mail:info@thglobaltravel.com"
-                  className="text-[var(--primary-color)]"
+                  href="mailto:info@thglobaltravel.com"
+                  // className="text-[var(--primary-color)]"
                 >
                   info@thglobaltravel.com
                 </a>
               </div>
+              <p>
+                <span className="">Business License:</span> 0110524158
+              </p>
+
               {/* <div className="flex mb-2">
                 <div className="w-[25px] h-[25px] mr-2 rounded-full flex items-center justify-center bg-[var(--primary-color)]">
                   <FontAwesomeIcon
@@ -101,6 +115,91 @@ export function ContactUsSection(): JSX.Element {
                   adventure.tours
                 </a>
               </div> */}
+            </div>
+            <div className="pt-2">
+              <p className="text-[var(--primary-color)] block font-bold text-sm mb-2">
+                Office Admin
+              </p>
+              <div className="flex mb-2">
+                <div className="w-[25px] h-[25px] mr-2 rounded-full flex items-center justify-center bg-[var(--primary-color)]">
+                  <FontAwesomeIcon
+                    icon={faEnvelope}
+                    className="text-sm text-white "
+                  />
+                </div>
+                <a
+                  href="mailto:info@thglobaltravel.com"
+                  // className="text-[var(--primary-color)]"
+                >
+                  info@thglobaltravel.com
+                </a>
+              </div>
+            </div>
+            <div className="pt-2">
+              <h3 className="text-[var(--primary-color)] block font-bold text-sm mb-2">
+                Le Van Tuan
+              </h3>
+              <div className="flex mb-2">
+                <div className="w-[25px] h-[25px] mr-2 rounded-full flex items-center justify-center bg-[var(--primary-color)]">
+                  <FontAwesomeIcon
+                    icon={faEnvelope}
+                    className="text-sm text-white "
+                  />
+                </div>
+                <a
+                  href="mailto:tuan.sales@thglobaltravel.com"
+                  // className="text-[var(--primary-color)]"
+                >
+                  tuan.sales@thglobaltravel.com
+                </a>
+              </div>
+              <div className="flex mb-2">
+                <div className="w-[25px] h-[25px] mr-2 rounded-full flex items-center justify-center bg-[var(--primary-color)]">
+                  <FontAwesomeIcon
+                    icon={faPhone}
+                    className="text-sm text-white "
+                  />
+                </div>
+                <a
+                  href="tel:+84946707266"
+                  // className="text-[var(--primary-color)]"
+                >
+                  +84946707266
+                </a>
+              </div>
+            </div>
+            <div className="pt-2">
+              <h3 className="text-[var(--primary-color)] block font-bold text-sm mb-2">
+                Kyle Cannon
+              </h3>
+              <div className="flex mb-2">
+                <div className="w-[25px] h-[25px] mr-2 rounded-full flex items-center justify-center bg-[var(--primary-color)]">
+                  <FontAwesomeIcon
+                    icon={faEnvelope}
+                    className="text-sm text-white "
+                  />
+                </div>
+                <a
+                  href="mailto:kyle.sales@thglobaltravel.com"
+                  // className="text-[var(--primary-color)]"
+                >
+                  kyle.sales@thglobaltravel.com
+                </a>
+              </div>
+              <div className="flex mb-2">
+                <div className="w-[25px] h-[25px] mr-2 rounded-full flex items-center justify-center bg-[var(--primary-color)]">
+                  <FontAwesomeIcon
+                    icon={faPhone}
+                    className="text-sm text-white "
+                  />
+                </div>
+                <a
+                  href="tel:+84853490585"
+                  // className="text-[var(--primary-color)]"
+                >
+                  +84853490585
+                </a>
+              </div>
             </div>
           </div>
           <div className="text-black">
