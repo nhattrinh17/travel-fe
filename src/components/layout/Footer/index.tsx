@@ -405,7 +405,7 @@ export function FooterLayout(): JSX.Element {
                     Privacy Policy
                   </Link>
                 </li>
-                <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
+                {/* <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
                   <Link href={"#top"} className="block py-2">
                     Myanmar river cruise
                   </Link>
@@ -414,7 +414,7 @@ export function FooterLayout(): JSX.Element {
                   <Link href={"#top"} className="block py-2">
                     Asia Tours Official Web
                   </Link>
-                </li>
+                </li> */}
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
                   <Link
                     href={
@@ -493,13 +493,15 @@ export function FooterLayout(): JSX.Element {
                 </li>
               </ul>
               <div className="col-span-6 lg:col-span-2">
-                <Image
-                  alt="confirm "
-                  src={"/home/footer/chl_secure.jpg"}
-                  width={723}
-                  height={85}
-                  className="w-full object-contain"
-                />
+                <a target="_blank" rel="noreferrer" href="/license.jpg">
+                  <Image
+                    alt="confirm "
+                    src={"/home/footer/chl_secure.jpg"}
+                    width={723}
+                    height={85}
+                    className="w-full object-contain"
+                  />
+                </a>
                 <p className="py-3">
                   © 2024 Official website of
                   <span className="text-[var(--text-hover-default)] font-bold mx-1">
@@ -514,7 +516,7 @@ export function FooterLayout(): JSX.Element {
                   </span>
                   Corporation.
                 </p> */}
-                <p>
+                {/* <p>
                   International Tour Operator Licence No:
                   <span className="text-[var(--text-hover-default)] font-bold mx-1">
                     #01-638/GPLHQT
@@ -537,7 +539,7 @@ export function FooterLayout(): JSX.Element {
                     2015, 2016, 2017, 2018 & 2019
                   </span>
                   by Tripadviosr
-                </p>
+                </p> */}
                 <p className="py-3">
                   Travelers' Choice Awards winner
                   <span className="text-[var(--text-hover-default)] font-bold mx-1">
