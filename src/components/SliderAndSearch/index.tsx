@@ -47,10 +47,12 @@ export function SliderAndSearch(): JSX.Element {
   const boxSelectDateRef = useRef<HTMLDivElement>(null);
 
   const sliders = [
-    "/share/sliders/Halong-bay.jpg",
-    "/share/sliders/Vinh-Ha-Long.jpg",
-    "/share/sliders/diem-qua-11-dia-diem.jpg",
-    "/share/sliders/Hang_Mua_Caves_3.jpg",
+    "/share/sliders/slider1.jpg",
+    "/share/sliders/slider4.jpg",
+    "/share/sliders/slider3.jpg",
+    "/share/sliders/slider5.jpg",
+    "/share/sliders/slider2.jpg",
+    "/share/sliders/slider6.jpg",
   ];
 
   const logoCenter = "/share/trip24.png";

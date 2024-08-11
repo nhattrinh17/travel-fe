@@ -21,7 +21,7 @@ export function ContactUsSection(): JSX.Element {
 
   return (
     <div>
-      <section className="h-[600px] bg-cover bg-[url(/contact-us/bg-header.jpg)] flex justify-center items-center">
+      <section className="h-[650px] bg-cover bg-[url(/contact-us/bg-header.jpg)] flex justify-center items-center">
         <div className="text-center text-white">
           <h1
             className="text-3xl font-semibold mb-4"

@@ -45,12 +45,11 @@ const dataUser = [
 ];
 
 const dataSlider = [
-  "/about-us/sliders/slider1.png",
-  "/about-us/sliders/slider2.png",
-  "/about-us/sliders/slider3.png",
-  "/about-us/sliders/slider4.png",
-  "/about-us/sliders/slider5.png",
-  "/about-us/sliders/slider6.png",
+  "/about-us/sliders/slider1.jpg",
+  "/about-us/sliders/slider2.jpg",
+  "/about-us/sliders/slider3.jpg",
+  "/about-us/sliders/slider4.jpg",
+  "/about-us/sliders/slider5.jpg",
 ];
 
 export function AboutUsSection(): JSX.Element {
@@ -76,7 +75,7 @@ export function AboutUsSection(): JSX.Element {
   return (
     <div className="bg-[var(--bg-container-color)]">
       {/* Video Intro */}
-      <section className="w-full relative overflow-hidden pb-[40%] lg:pb-[40%]">
+      <section className="w-full relative overflow-hidden pb-[60%] lg:pb-[50%]">
         <div className="absolute top-0 left-0 right-0 bottom-0">
           <Swiper
             slidesPerView={1}
