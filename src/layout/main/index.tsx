@@ -3,8 +3,8 @@ import { HeaderLayout } from "@/components/layout/Header";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Global Travel",
-  description: "Global Travel",
+  title: "Your Gateway to Vietnamese Adventures",
+  description: "Your Gateway to Vietnamese Adventures",
   icons: [
     {
       media: "(prefers-color-scheme: light)",

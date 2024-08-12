@@ -17,8 +17,8 @@ import { Metadata } from "next";
 // register();
 
 export const metadata: Metadata = {
-  title: "Global Travel",
-  description: "Global Travel",
+  title: "Your Gateway to Vietnamese Adventures",
+  description: "Your Gateway to Vietnamese Adventures",
   icons: [
     {
       media: "(prefers-color-scheme: light)",
@@ -32,7 +32,6 @@ export const metadata: Metadata = {
     },
   ],
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{

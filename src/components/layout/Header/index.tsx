@@ -293,7 +293,17 @@ export function HeaderLayout(): JSX.Element {
               <h2 className="uppercase text-xl lg:text-xs">Contact US</h2>
             </Link>
 
-            <div className="px-2 cursor-pointer py-1 lg:py-0 lg:hover:bg-[var(--primary-color)] text-white font-bold lg:h-full hidden lg:flex items-center">
+            <div
+              onClick={() => {
+                const btnHelpMe = document.querySelector(
+                  "#help-me-find-cruise"
+                ) as any;
+                if (btnHelpMe) {
+                  btnHelpMe.click();
+                }
+              }}
+              className="px-2 cursor-pointer py-1 lg:py-0 lg:hover:bg-[var(--primary-color)] text-white font-bold lg:h-full hidden lg:flex items-center"
+            >
               <Image
                 alt="HELP"
                 src={"/home/sup3.jpg"}

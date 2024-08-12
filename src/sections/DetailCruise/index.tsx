@@ -37,6 +37,8 @@ import { useAppDispatch } from "@/lib";
 import { resetDataCruiseDetail } from "@/lib/redux/app/cruise.slice";
 import { LoadingModal } from "@/components/Loading";
 import { handleOpenLinkNewTab } from "@/share";
+import { useReview } from "@/utils/handleReview";
+import { ShowReviewCruiseTop } from "../ShowReviewCruiseTop";
 const cx = classNames.bind(styles);
 
 export function DetailCruise({ slug }: { slug: string }): JSX.Element {
@@ -47,6 +49,9 @@ export function DetailCruise({ slug }: { slug: string }): JSX.Element {
   const [showAllImages, setShowAllImages] = useState(false);
   const dispatch = useAppDispatch();
 
+  // Data Cruise
+  const cruiseDetail = useCruiseDetail(slug);
+
   // Itineraries
   const [itinerariesActive, setItinerariesActive] = useState<number[]>([]);
 
@@ -55,9 +60,6 @@ export function DetailCruise({ slug }: { slug: string }): JSX.Element {
 
   // May be like
   const sectionMayAlsoRef = useRef<HTMLElement>(null);
-
-  // Data Cruise
-  const cruiseDetail = useCruiseDetail(slug);
 
   const { data: dataCruiseSuggest } = useCruise(
     "",
@@ -428,51 +430,19 @@ export function DetailCruise({ slug }: { slug: string }): JSX.Element {
                   )}
                 >
                   {showTravelerLoves ? "Show less" : "Show More"}
-                  <FontAwesomeIcon icon={faSortDown} className="text-xs" />
+                  <FontAwesomeIcon
+                    icon={faSortDown}
+                    className="text-xs relative bottom-[2px]"
+                  />
                 </span>
                 <div className="h-[2px] w-6 bg-[#BBBBBB] mt-4 rounded-md"></div>
               </div>
             </div>
-            <div className=" hidden lg:flex col-span-1 flex-col py-3 items-center">
-              <div className="w-28 h-28">
-                <Image
-                  alt=""
-                  src={
-                    "https://d1k2oi80tv211b.cloudfront.net/uploads/review/cus-70921-414104168250-250.jpg"
-                  }
-                  width={90}
-                  height={90}
-                  className="w-full rounded-full border-[1px] p-2 border-[#dfdfdf]"
-                />
-              </div>
-              <div className="flex items-center my-2 text-[var(--text-hover-default)]">
-                <FontAwesomeIcon
-                  icon={faThumbsUp}
-                  className="p-1 text-xs rounded-full border-[1px]"
-                />
-                {Array.from({ length: 5 }, (v, i) => i + 1).map((i, index) => (
-                  <FontAwesomeIcon
-                    key={index}
-                    icon={faStar}
-                    className="mr-1 w-[10px]"
-                  />
-                ))}
-              </div>
-              <p className="text-center text-[#666] text-sm">
-                <i className="text-4xl font-[Aria] font-bold">“</i>
-                Rosie from Inside travel Vietnam was great organising our Renea
-                Cruise to Bai Tu Long Bay in Vietnam. Everything was excellent,
-                highly recommend.
-                <span className="font-bold block">
-                  Bai Tu Long Bay Cruise organised by Rosie from Inside Travel
-                  Vietnam -
-                </span>
-                Australia
-              </p>
-              <span className="text-[var(--text-hover-default)] text-xs">
-                Read more...
-              </span>
-            </div>
+            {cruiseDetail ? (
+              <ShowReviewCruiseTop idCruise={cruiseDetail.id} />
+            ) : (
+              <></>
+            )}
           </section>
           {/* Type Room */}
           <ShowRoomAndBookCruise bookingPage={false} />

@@ -532,7 +532,7 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                   </div>
                 </div>
                 <form
-                  className="bg-[var(--primary-color)] relative py-9 px-4"
+                  className="bg-[var(--primary-color)] relative py-9 px-4 text-black"
                   onSubmit={async (e) => {
                     e.preventDefault();
                     const dataSend = {

@@ -24,16 +24,16 @@ export function BookingSuccessSection(): JSX.Element {
               />
             </div>
 
-            <div className="mx-3 px-3 py-2 border-[1px] bg-[#F1E9DD]">
+            <div className="mx-3 px-3 py-2 border-[1px] bg-[#F1E9DD] text-black">
               <p className="text-center text-sm">
                 <span className="mr-2 text-[#C31F41] font-bold">Note:</span>
                 To ensure that you can receive a reply from
                 <span className="text-black font-semibold mx-[2px]">
-                  "www.abcd.com"
+                  "thglobaltravel.com"
                 </span>
                 , Please kindly add the
                 <span className="text-black font-semibold mx-[2px]">
-                  "www.abcd.com"
+                  "thglobaltravel.com"
                 </span>
                 domain to your e-email "safe list". If you do not receive a
                 response in your "inbox" within 24 hours, check your "bulk mail"

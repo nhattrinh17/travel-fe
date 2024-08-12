@@ -249,6 +249,7 @@ export function FooterLayout(): JSX.Element {
               </p>
             </div>
             <button
+              id="help-me-find-cruise"
               onClick={() => setShowSendMail(true)}
               className="h-fit cursor-pointer ml-auto mt-3 lg:mt-0 px-4 py-2 flex items-center rounded-3xl text-white justify-center bg-[var(--primary-color)]"
             >
