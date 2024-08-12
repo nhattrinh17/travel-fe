@@ -287,18 +287,18 @@ export function FooterLayout(): JSX.Element {
             <div className="relative my-4">
               <Image
                 alt="halong-bay-cruises"
-                src={"/home/footer/halong-bay-cruises.jpg"}
+                src={"/home/footer/halong-bay-cruises.png"}
                 width={1500}
                 height={209}
                 className="w-full object-contain  opacity-80 hover:opacity-100"
               />
-              <Image
+              {/* <Image
                 alt="logo"
                 src={"/logo.png"}
                 width={234}
                 height={56}
                 className="absolute top-1 left-4 w-[15%]"
-              />
+              /> */}
             </div>
             <div className="grid lg:grid-cols-6 gap-10 text-xs text-[#ccc]">
               <div className="col-span-6 lg:col-span-2 flex flex-col">
