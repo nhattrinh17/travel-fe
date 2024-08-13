@@ -232,7 +232,7 @@ export function FooterLayout(): JSX.Element {
             <div className="flex-1 mx-10 text-[#666]">
               <h3 className="font-bold text-base">
                 As Vietnam travel experts with over 10 years of experience
-                <span className="text-[--text-hover-default]">
+                <span className="text-[--text-hover-default] ml-1">
                   Let us help you!
                 </span>
               </h3>
@@ -362,12 +362,12 @@ export function FooterLayout(): JSX.Element {
               </div>
               <ul className="col-span-3 lg:col-span-1">
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={""} className="block py-2">
+                  <Link href={"/about-us"} className="block py-2">
                     About Us
                   </Link>
                 </li>
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={""} className="block py-2">
+                  <Link href={"/contact-us"} className="block py-2">
                     Contact Us
                   </Link>
                 </li>

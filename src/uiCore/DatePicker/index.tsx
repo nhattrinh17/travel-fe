@@ -59,13 +59,19 @@ export function DatePickerCustomer({
   minDate: Date;
 }): JSX.Element {
   const [startDateCus, setStartDateCus] = useState(
-    startDate ? new Date(startDate) : new Date()
+    startDate
+      ? new Date(startDate)
+      : new Date(new Date().getTime() + 1000 * 60 * 60 * 24)
   );
   const [endDateCus, setEndDateCus] = useState(
-    endDate ? new Date(endDate) : new Date()
+    endDate
+      ? new Date(endDate)
+      : new Date(new Date().getTime() + 1000 * 60 * 60 * 24)
   );
   const [dateCusPicker, setDateCusPicker] = useState(
-    datePicker ? new Date(datePicker) : new Date()
+    datePicker
+      ? new Date(datePicker)
+      : new Date(new Date().getTime() + 1000 * 60 * 60 * 24)
   );
   const [openSelectDate, setOpenSelectDate] = useState(!showDate);
 

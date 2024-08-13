@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import { useRouter } from "next/navigation";
+import moment from "moment";
 
 const cx = classNames.bind(styles);
 
@@ -42,7 +43,9 @@ export function SliderAndSearch(): JSX.Element {
   ]);
 
   // Date Box
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(
+    new Date(new Date().getTime() + 1000 * 60 * 60 * 24).toISOString()
+  );
   const [showSelectDate, setShowSelectDate] = useState(false);
   const boxSelectDateRef = useRef<HTMLDivElement>(null);
 
@@ -237,7 +240,7 @@ export function SliderAndSearch(): JSX.Element {
                   htmlFor="select"
                   className="cursor-pointer w-full text-[var(--text-hover-default)] border-b-[1px] border-b-[#4da981] border-dashed flex items-center justify-between"
                 >
-                  {date ? date : "Departure"}
+                  {date ? moment(date).format("YYYY/MM/DD") : "Departure"}
                   <FontAwesomeIcon icon={faCalendarDays} />
                 </label>
 
@@ -251,7 +254,9 @@ export function SliderAndSearch(): JSX.Element {
                       selectsRange={false}
                       dateFormat="YYYY/MM/DD"
                       showDate={false}
-                      minDate={new Date()}
+                      minDate={
+                        new Date(new Date().getTime() + 1000 * 60 * 60 * 24)
+                      }
                     />
                   </div>
                 ) : (

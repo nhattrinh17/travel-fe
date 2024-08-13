@@ -67,7 +67,9 @@ export function ShowRoomAndBookCruise({
 
   // Date Box
   const [showSelectRoom, setShowSelectRoom] = useState(false);
-  const [date, setDate] = useState(new Date().toISOString());
+  const [date, setDate] = useState(
+    new Date(new Date().getTime() + 1000 * 60 * 60 * 24).toISOString()
+  );
   const [showSelectDate, setShowSelectDate] = useState(false);
   const boxSelectDateRef = useRef<HTMLDivElement>(null);
 
@@ -330,7 +332,7 @@ export function ShowRoomAndBookCruise({
                 selectsRange={false}
                 dateFormat="YYYY/MM/DD"
                 showDate={false}
-                minDate={new Date()}
+                minDate={new Date(new Date().getTime() + 1000 * 60 * 60 * 24)}
               />
             </div>
           ) : (
