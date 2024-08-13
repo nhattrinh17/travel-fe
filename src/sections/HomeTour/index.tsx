@@ -18,7 +18,7 @@ export function HomeTourSection(): JSX.Element {
   const searchParams = useSearchParams();
   const slugDestination = searchParams.get("name") || "";
   const search = searchParams.get("search") || "";
-  const typeTour = searchParams.get("typeTour") || "";
+  const typeTour = searchParams.get("type") || "";
   const [typeShow, setTypeShow] = useState("list");
 
   const [sort, setSort] = useState("");
