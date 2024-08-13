@@ -49,9 +49,9 @@ export function SliderAndSearch(): JSX.Element {
   const sliders = [
     "/share/sliders/slider1.jpg",
     "/share/sliders/slider4.jpg",
-    "/share/sliders/slider3.jpg",
+    "/share/sliders/slider3.png",
     "/share/sliders/slider5.jpg",
-    "/share/sliders/slider2.jpg",
+    "/share/sliders/slider2.png",
     "/share/sliders/slider6.jpg",
   ];
 

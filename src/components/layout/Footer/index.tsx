@@ -303,7 +303,7 @@ export function FooterLayout(): JSX.Element {
             <div className="grid lg:grid-cols-6 gap-10 text-xs text-[#ccc]">
               <div className="col-span-6 lg:col-span-2 flex flex-col">
                 {/* <Image
-                alt="inside travel"
+                alt="inside travel" 
                 src={"/home/footer/inside-travel-logo.webp"}
                 width={800}
                 height={300}
