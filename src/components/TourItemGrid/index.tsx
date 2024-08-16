@@ -128,7 +128,7 @@ export function TourItemGrid({
           </h3>
           <div className="flex items-center mb-2">
             <div className="flex">
-              {Array.from({ length: 6 }, (v, i) => i + 1).map((i, index) =>
+              {/* {Array.from({ length: 6 }, (v, i) => i + 1).map((i, index) =>
                 i <= stars ? (
                   <FontAwesomeIcon
                     key={index}
@@ -142,7 +142,7 @@ export function TourItemGrid({
                     className="mr-1 text-[var(--text-color-default)] text-xs"
                   />
                 )
-              )}
+              )} */}
             </div>
             <div className="text-[var(--text-hover-default)] flex items-center text-sm">
               <FontAwesomeIcon

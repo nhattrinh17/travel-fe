@@ -107,7 +107,7 @@ export function TourItem({
               <Link href={`/tour/${slug}`}>{name}</Link>
             </h3>
             <div className="flex">
-              {Array.from({ length: 6 }, (v, i) => i + 1).map((i, index) =>
+              {/* {Array.from({ length: 6 }, (v, i) => i + 1).map((i, index) =>
                 i <= stars ? (
                   <FontAwesomeIcon
                     key={index}
@@ -121,7 +121,7 @@ export function TourItem({
                     className="mr-1 text-[var(--text-color-default)] text-xs"
                   />
                 )
-              )}
+              )} */}
             </div>
           </div>
           <div className="flex flex-1 ml-4">

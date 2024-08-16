@@ -105,7 +105,7 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                   {tourDetails.name}
                 </h1>
                 <div className="flex justify-center items-center mt-3">
-                  {Array.from({ length: 5 }, (v, i) => i + 1)?.map((i, index) =>
+                  {/* {Array.from({ length: 5 }, (v, i) => i + 1)?.map((i, index) =>
                     i <= tourDetails.totalStar ? (
                       <FontAwesomeIcon
                         key={index}
@@ -119,7 +119,7 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                         className="mr-1 text-[var(--text-color-default)] text-sm"
                       />
                     )
-                  )}
+                  )} */}
                   <span
                     className=""
                     style={{ textShadow: "#0000008f 2px 2px" }}

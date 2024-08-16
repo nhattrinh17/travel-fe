@@ -26,8 +26,6 @@ export function TourHomeTop10Item({
   isFlashSale,
   name,
   price,
-  timeLaunched,
-  totalRoms,
   slug,
   stars,
 }: {
@@ -37,8 +35,6 @@ export function TourHomeTop10Item({
   images: string[];
   isAllMeals: boolean;
   price: number;
-  timeLaunched: number;
-  totalRoms: number;
   slug: string;
   stars: number;
 }): JSX.Element {
@@ -100,7 +96,7 @@ export function TourHomeTop10Item({
 
       <div className="px-2 py-3 bg-white">
         <div className={classNames("  items-center")}>
-          {Array.from({ length: 6 }, (v, i) => i + 1).map((i, index) =>
+          {/* {Array.from({ length: 6 }, (v, i) => i + 1).map((i, index) =>
             i <= stars ? (
               <FontAwesomeIcon
                 key={index}
@@ -114,7 +110,7 @@ export function TourHomeTop10Item({
                 className="mr-1 text-[var(--text-color-default)] text-xs"
               />
             )
-          )}
+          )} */}
 
           <span className="hover:underline text-xs cursor-pointer text-[#25ab4b]">
             - 34 Review
