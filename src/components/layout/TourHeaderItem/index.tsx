@@ -32,7 +32,7 @@ export function TourHeaderItem({
             cancelNavMobile();
           }
           if (typeTour == "packet") {
-            route.push(`/tour?name=${slug}&type=${typeTour}`);
+            route.push(`/tour?name=${slug}&type=0`);
           } else {
             route.push(`/tour/${slug}`);
           }

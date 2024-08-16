@@ -126,3 +126,8 @@ body {
 .swiper__image--tour-active {
   height: 100%;
 }
+
+/* froala */
+p:has(a[href*="froala"]) {
+  display: none !important;
+}
