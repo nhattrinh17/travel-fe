@@ -79,7 +79,7 @@ export function HeaderLayout(): JSX.Element {
             alt="Logo Viet Travel"
             src={"/logo.png"}
             height={100}
-            width={512}
+            width={511}
             className="w-full h-full object-contain"
           />
         </Link>
@@ -157,8 +157,8 @@ export function HeaderLayout(): JSX.Element {
                   className={cx(
                     "w-full h-full hidden items-center justify-center bg-[url(/home/op50.png)] hover:text-[var(--text-hover-default)]",
                     {
-                      hidden: showAllTour || dataPacketTour.length < 13,
-                      "lg:flex": !showAllTour && dataPacketTour.length > 13,
+                      hidden: showAllTour || dataPacketTour.length <= 11,
+                      "lg:flex": !showAllTour && dataPacketTour.length > 11,
                     }
                   )}
                 >
@@ -220,8 +220,8 @@ export function HeaderLayout(): JSX.Element {
                   className={cx(
                     "w-full h-full hidden items-center justify-center bg-[url(/home/op50.png)] hover:text-[var(--text-hover-default)]",
                     {
-                      hidden: showAllTour || dataDailyTour.length < 13,
-                      "lg:flex": !showAllTour && dataDailyTour.length > 13,
+                      hidden: showAllTour || dataDailyTour.length <= 11,
+                      "lg:flex": !showAllTour && dataDailyTour.length > 11,
                     }
                   )}
                 >
@@ -249,7 +249,7 @@ export function HeaderLayout(): JSX.Element {
 
               <div
                 className={cx(
-                  "lg:absolute top-full grid-cols-3 p-2 left-[-200%] gap-2 w-full h-fit lg:w-[740px] bg-[#ffffff12] lg:bg-[var(--primary-color)]",
+                  "lg:absolute top-full grid-cols-3 p-2 left-[-200%] gap-2 w-full h-fit lg:w-[740px] bg-[#ffffff11] lg:bg-[var(--primary-color)]",
                   {
                     // "grid-cols-3 left-[-200%]": dataDestination.length >= 3,
                     // [`grid-cols-${dataDestination.length}`]:

@@ -1,6 +1,8 @@
 import { FooterLayout } from "@/components/layout/Footer";
 import { HeaderLayout } from "@/components/layout/Header";
 import { Metadata } from "next";
+import Head from "next/head";
+import Script from "next/script";
 
 // export const metadata: Metadata = {
 //   title: "Your Gateway to Vietnamese Adventures",
@@ -25,10 +27,26 @@ export function MainLayout({
   children: React.ReactNode;
 }>): JSX.Element {
   return (
-    <main>
-      <HeaderLayout />
-      {children}
-      <FooterLayout />
-    </main>
+    <>
+      <head>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-TQ4RLJMGFL"
+        />
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-TQ4RLJMGFL');
+          `}
+        </Script>
+      </head>
+      <main>
+        <HeaderLayout />
+        {children}
+        <FooterLayout />
+      </main>
+    </>
   );
 }

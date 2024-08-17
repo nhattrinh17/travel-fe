@@ -1,10 +1,14 @@
 "use client";
 
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronLeft,
+  faChevronRight,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames/bind";
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -22,6 +26,9 @@ export function PopupShowAllImages({
   imageActiveInit?: number;
 }): JSX.Element {
   const [imageActive, setImageActive] = useState<any>(null);
+
+  // Create a ref to store the Swiper instance
+  const swiperRef = useRef<any>(null);
 
   return (
     <div
@@ -41,7 +48,7 @@ export function PopupShowAllImages({
           spaceBetween={10}
           navigation={true}
           thumbs={{ swiper: imageActive }}
-          modules={[FreeMode, Thumbs, Navigation]}
+          modules={[FreeMode, Thumbs]}
           className="swiper__image--tour-active"
           initialSlide={imageActiveInit}
         >
@@ -60,12 +67,26 @@ export function PopupShowAllImages({
         </Swiper>
       </div>
       <div className="relative">
+        <FontAwesomeIcon
+          onClick={(e) => {
+            e.stopPropagation();
+            if (swiperRef.current) {
+              swiperRef.current.swiper.slidePrev(); // Move to the previous slide
+            }
+          }}
+          className="hidden lg:block cursor-pointer w-5 h-5 absolute top-1/3 z-10 text-[#555555cc] bg-[#ffffff99] hover:bg-[#ffffffe6] drop-shadow-md p-3 rounded-full -left-5 "
+          icon={faChevronLeft}
+        />
         <Swiper
+          ref={swiperRef} // Attach the ref to Swiper
           onSwiper={setImageActive}
           spaceBetween={10}
           slidesPerView={4}
           freeMode={true}
           watchSlidesProgress={true}
+          navigation={{
+            enabled: true,
+          }}
           modules={[FreeMode, Navigation, Thumbs]}
           className="mySwiper-image-bottom"
           initialSlide={imageActiveInit}
@@ -83,6 +104,16 @@ export function PopupShowAllImages({
             </SwiperSlide>
           ))}
         </Swiper>
+        <FontAwesomeIcon
+          onClick={(e) => {
+            e.stopPropagation();
+            if (swiperRef.current) {
+              swiperRef.current.swiper.slideNext(); // Move to the next slide
+            }
+          }}
+          className="hidden lg:block cursor-pointer w-5 h-5 absolute top-1/3 z-10 text-[#555555cc] bg-[#ffffff99] hover:bg-[#ffffffe6] drop-shadow-md p-3 rounded-full -right-5 "
+          icon={faChevronRight}
+        />
       </div>
     </div>
   );

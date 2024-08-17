@@ -20,7 +20,7 @@ const packetTourSlice = createSlice({
   name: "packetTour",
   initialState: {
     packetTours: [],
-    limit: 10,
+    limit: 30,
     page: 1,
     total: 0,
     refreshData: true,
