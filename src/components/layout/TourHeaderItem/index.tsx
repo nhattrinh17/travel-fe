@@ -40,13 +40,15 @@ export function TourHeaderItem({
         className="w-full h-full"
       >
         <div className="w-full h-full overflow-hidden transition-transform">
-          <Image
-            alt="image tour"
-            src={image}
-            width={172}
-            height={122}
-            className="hidden lg:block w-full h-full object-cover group-hover:scale-110 "
-          />
+          <figure className=" hidden lg:block relative w-full overflow-hidden pt-[70%]">
+            <Image
+              alt="image tour"
+              src={image}
+              width={172}
+              height={122}
+              className="absolute top-0 left-0 right-0 bottom-0 w-full h-full object-cover group-hover:scale-110 "
+            />
+          </figure>
         </div>
         <div className="lg:absolute left-0 right-0 bottom-0 w-full text-center bg-[#ffffff12] lg:bg-[url(/home/op50.png)]">
           <h3

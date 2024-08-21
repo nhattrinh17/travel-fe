@@ -3,6 +3,7 @@ import {
   faBanSmoking,
   faBicycle,
   faChildReaching,
+  faCookieBite,
   faHotTubPerson,
   faKitchenSet,
   faPeopleGroup,
@@ -21,11 +22,11 @@ export const languageList = [
 
 export const mapServiceIcons: { [key: string]: IconDefinition } = {
   allMeals: faUtensils,
+  lunch: faCookieBite,
   spa: faHotTubPerson,
   cookingClass: faKitchenSet,
   taiChiClass: faChildReaching,
   cyCling: faBicycle,
-  familyRoom: faPeopleGroup,
 };
 
 export const mapAmenitiesIcons: { [key: string]: IconDefinition } = {

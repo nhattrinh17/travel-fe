@@ -1,9 +1,50 @@
-"use client";
-
 import { DetailTourSection } from "@/sections/DetailTour";
-import { Suspense } from "react";
+import { Metadata, ResolvingMetadata } from "next";
 
-export default function CruisePageBySlug({
+type Props = {
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+// Hàm generateMetadata để tạo metadata động cho trang
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const slug = params.slug;
+  const res = await fetch(`${process.env.API_URL}/tour/${slug}/seo`).then(
+    (res) => res.json()
+  );
+
+  // Kiểm tra xem dữ liệu có tồn tại không
+  const tourBrief = res?.data;
+  if (!tourBrief) {
+    return {
+      title: "Tour Details",
+      openGraph: {
+        title: "Tour Details",
+        description: "No details available",
+        images: [], // Không có hình ảnh
+        url: `${process.env.URL_MAIN}/tour/${slug}`,
+      },
+    };
+  }
+
+  // Xử lý URL hình ảnh
+  const imageUrl = tourBrief.images?.split("*_*")[0]; // Lấy ảnh đầu tiên
+
+  return {
+    title: tourBrief?.name || "Tour Details",
+    openGraph: {
+      title: tourBrief?.name || "Tour Details",
+      description: tourBrief?.contentBrief || "No description available",
+      images: ["/some-specific-page-image.jpg", ...[imageUrl].filter(Boolean)],
+      url: `${process.env.URL_MAIN}/Tour/${slug}`,
+    },
+  };
+}
+
+export default function TourPageBySlug({
   params,
 }: {
   params: { slug: string };

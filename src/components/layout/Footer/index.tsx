@@ -36,14 +36,14 @@ export function FooterLayout(): JSX.Element {
     <div>
       <div className="fixed z-10 bottom-0 left-0 right-0 bg-[var(--bg-header-color)] grid lg:hidden grid-cols-3">
         <a
-          href="tel:0556565521"
+          href="tel:+84946707266"
           className="flex flex-col justify-center items-center text-white py-2 text-[13px] border-r-[1px] border-[#fff]"
         >
           <FontAwesomeIcon icon={faPhone} className="mb-2 text-base" />
           <span>Call us</span>
         </a>
         <a
-          href="https://api.whatsapp.com/send?phone=84985637445"
+          href="https://api.whatsapp.com/send?phone=84946707266"
           className="flex flex-col justify-center items-center text-white py-2 text-[13px] border-r-[1px] border-[#fff]"
         >
           <FontAwesomeIcon icon={faWhatsapp} className="mb-2 text-lg" />
