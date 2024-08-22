@@ -38,7 +38,7 @@ export async function generateMetadata(
     openGraph: {
       title: tourBrief?.name || "Tour Details",
       description: tourBrief?.contentBrief || "No description available",
-      images: ["/some-specific-page-image.jpg", ...[imageUrl].filter(Boolean)],
+      images: [imageUrl].filter(Boolean),
       url: `${process.env.URL_MAIN}/Tour/${slug}`,
     },
   };
