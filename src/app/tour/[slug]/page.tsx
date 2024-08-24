@@ -39,7 +39,7 @@ export async function generateMetadata(
       title: tourBrief?.name || "Tour Details",
       description: tourBrief?.contentBrief || "No description available",
       images: [imageUrl].filter(Boolean),
-      url: `${process.env.URL_MAIN}/Tour/${slug}`,
+      url: `${process.env.URL_MAIN}/tour/${slug}`,
     },
   };
 }
