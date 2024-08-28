@@ -20,7 +20,7 @@ import Link from "next/link";
 import { useState } from "react";
 import styles from "./styles.module.scss";
 import { sendMailHome } from "@/utils/api";
-import { setCookie } from "cookies-next";
+import { deleteCookie, setCookie } from "cookies-next";
 
 const cx = classNames.bind(styles);
 
@@ -35,9 +35,11 @@ export function FooterLayout(): JSX.Element {
 
   const switchLanguage = (lang: string) => () => {
     const COOKIE_NAME = "googtrans";
+    deleteCookie(COOKIE_NAME);
     setCookie(COOKIE_NAME, `/auto/${lang}`, {
       domain: window.location.hostname,
     });
+
     window.location.reload();
   };
 
