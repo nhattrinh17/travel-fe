@@ -52,7 +52,7 @@ const LanguageSwitcher = () => {
   }
 
   const switchLanguage = (lang: string) => () => {
-    setCookie(null, COOKIE_NAME, "/auto/" + lang);
+    setCookie(null, COOKIE_NAME, `/auto/${lang}`);
     window.location.reload();
   };
 

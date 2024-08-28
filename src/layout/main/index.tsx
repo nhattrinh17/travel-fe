@@ -27,26 +27,10 @@ export function MainLayout({
   children: React.ReactNode;
 }>): JSX.Element {
   return (
-    <>
-      <head>
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-TQ4RLJMGFL"
-        />
-        <Script id="google-analytics">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-TQ4RLJMGFL');
-          `}
-        </Script>
-      </head>
-      <main>
-        <HeaderLayout />
-        {children}
-        <FooterLayout />
-      </main>
-    </>
+    <main>
+      <HeaderLayout />
+      {children}
+      <FooterLayout />
+    </main>
   );
 }

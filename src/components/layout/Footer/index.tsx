@@ -20,6 +20,7 @@ import Link from "next/link";
 import { useState } from "react";
 import styles from "./styles.module.scss";
 import { sendMailHome } from "@/utils/api";
+import { setCookie } from "nookies";
 
 const cx = classNames.bind(styles);
 
@@ -31,6 +32,13 @@ export function FooterLayout(): JSX.Element {
   const [phone, setPhone] = useState<number>();
   const [otherRequest, setOtherRequest] = useState("");
   const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  const switchLanguage = (lang: string) => () => {
+    const COOKIE_NAME = "googtrans";
+    setCookie(null, COOKIE_NAME, `/auto/${lang}`);
+    console.log("Laiiiii");
+    window.location.reload();
+  };
 
   return (
     <div>
@@ -268,7 +276,8 @@ export function FooterLayout(): JSX.Element {
                 {languageList.map((ld, indx) => (
                   <li
                     key={indx}
-                    className="flex justify-center items-center mb-2 uppercase text-white mx-4"
+                    onClick={switchLanguage(ld.name)}
+                    className="flex cursor-pointer justify-center items-center mb-2 uppercase text-white mx-4"
                   >
                     <span className="block mr-2 font-bold">
                       {ld.name.split("-")[1] ? ld.name.split("-")[1] : ld.name}
