@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { parseCookies, setCookie } from "nookies";
+import { parseCookies } from "nookies";
+import { setCookie } from "cookies-next";
 
 const COOKIE_NAME = "googtrans";
 
@@ -51,8 +52,10 @@ const LanguageSwitcher = () => {
     return null;
   }
 
-  const switchLanguage = (lang: string) => () => {
-    setCookie(null, COOKIE_NAME, `/auto/${lang}`);
+  const switchLanguage = (lang: string) => {
+    setCookie(COOKIE_NAME, `/auto/${lang}`, {
+      domain: window.location.hostname,
+    });
     window.location.reload();
   };
 
@@ -61,7 +64,7 @@ const LanguageSwitcher = () => {
       {languageConfig.languages.map((ld: LanguageDescriptor, i: number) => (
         <div
           key={`l_s_${ld.name}`}
-          onClick={switchLanguage(ld.name)}
+          onClick={() => switchLanguage(ld.name)}
           className="uppercase p-1 w-full flex justify-center lg:justify-between items-center lg:bg-[var(--bg-header-color)] hover:text-[#f8d540]"
         >
           <span className="block mr-1 text-xs">
