@@ -30,6 +30,7 @@ export async function generateMetadata(
     };
   }
 
+  const previousImages = (await parent).openGraph?.images || [];
   // Xử lý URL hình ảnh
   const imageUrl = cruiseBrief.images?.split("*_*")[0]; // Lấy ảnh đầu tiên
 
@@ -38,7 +39,7 @@ export async function generateMetadata(
     openGraph: {
       title: cruiseBrief?.name || "Cruise Details",
       description: cruiseBrief?.contentBrief || "No description available",
-      images: [imageUrl].filter(Boolean), // Chỉ thêm hình ảnh nếu có
+      images: [imageUrl, ...previousImages],
       url: `${process.env.URL_MAIN}/cruise/${slug}`,
     },
   };
