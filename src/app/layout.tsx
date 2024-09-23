@@ -17,8 +17,8 @@ import { Metadata } from "next";
 // register();
 
 export const metadata: Metadata = {
-  title: "Your Gateway to Vietnamese Adventures",
-  description: "Your Gateway to Vietnamese Adventures",
+  title: "Vietnam holiday packages 2024 & 2025",
+  description: "Vietnam holiday packages 2024 & 2025",
   icons: [
     {
       media: "(prefers-color-scheme: light)",
