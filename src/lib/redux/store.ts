@@ -4,6 +4,8 @@ import cruiseReduce from "./app/cruise.slice";
 import packetTourReduce from "./app/packetTour.slice";
 import tourReduce from "./app/tour.slice";
 import reviewReduce from "./app/review.slice";
+import blogCategoryReduce from "./app/blogCategories.slice";
+import blogReduce from "./app/blog.slice";
 
 export const makeStore = () => {
   return configureStore({
@@ -13,6 +15,8 @@ export const makeStore = () => {
       packetTour: packetTourReduce,
       tour: tourReduce,
       review: reviewReduce,
+      blogCategories: blogCategoryReduce,
+      blog: blogReduce,
     },
   });
 };

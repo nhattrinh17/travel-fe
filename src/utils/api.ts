@@ -205,3 +205,24 @@ export const sendMailHome = (data: any) => {
   const axios = new BaseAxios();
   return axios.post("user/send-mail", data);
 };
+
+export const getAllBlogCategories = (page: number, limit: number) => {
+  const axios = new BaseAxios();
+  let url = "blog-category?";
+  if (page) url += "page=" + page;
+  if (limit) url += "&limit=" + limit;
+  return axios.get(url);
+};
+
+export const getAllBlog = (
+  page: number,
+  limit: number,
+  blogCategoryId?: number
+) => {
+  const axios = new BaseAxios();
+  let url = "blog?";
+  if (page) url += "page=" + page;
+  if (limit) url += "&limit=" + limit;
+  if (blogCategoryId) url += "&blogCategoryId=" + blogCategoryId;
+  return axios.get(url);
+};
