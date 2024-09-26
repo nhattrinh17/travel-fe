@@ -1,5 +1,10 @@
 import { HomeBlogSection } from "@/sections/Blog";
+import { Suspense } from "react";
 
 export default function BlogPage(): JSX.Element {
-  return <HomeBlogSection />;
+  return (
+    <Suspense>
+      <HomeBlogSection />
+    </Suspense>
+  );
 }

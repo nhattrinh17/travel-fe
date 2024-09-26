@@ -837,12 +837,12 @@ export function ShowRoomAndBookCruise({
                       >
                         {room1.name}
                       </h4>
-                      <div className="flex">
+                      <div className="flex flex-wrap">
                         {room1.specialService.map(
                           (item: any, index: number) => (
                             <span
                               key={index}
-                              className="block w-fit mr-2 rounded-sm bg-[#DDD] text-[10px] text-[var(--text-color-default)] py-1 px-2"
+                              className="block w-fit mr-2 mb-1 rounded-sm bg-[#DDD] text-[10px] text-[var(--text-color-default)] py-1 px-2"
                             >
                               {item}
                             </span>

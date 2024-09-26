@@ -15,10 +15,16 @@ import { languageList } from "@/constants";
 import { usePacketTour } from "@/utils/handlePacketTour";
 import { useTourNav } from "@/utils/handleTour";
 import { useDestination } from "@/utils/handleDestination";
+import { useRouter } from "next/navigation";
+import { resetDataBlog } from "@/lib/redux/app/blog.slice";
+import { useAppDispatch } from "@/lib";
 
 const cx = classNames.bind(styles);
 
 export function HeaderLayout(): JSX.Element {
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+
   const [showNav, setShowNav] = useState(true);
   const [language, setLanguage] = useState<{
     name: string;
@@ -282,6 +288,12 @@ export function HeaderLayout(): JSX.Element {
             </Link>
             <Link
               href={"/blog"}
+              onClick={(e) => {
+                e.preventDefault();
+
+                router.push("/blog");
+                dispatch(resetDataBlog());
+              }}
               className="px-2 cursor-pointer py-1 lg:py-0 lg:hover:bg-[var(--primary-color)] text-white font-bold lg:h-full flex items-center"
             >
               <h2 className="uppercase text-xl lg:text-xs">Blogs</h2>

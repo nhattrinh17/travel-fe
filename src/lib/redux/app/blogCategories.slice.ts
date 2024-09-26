@@ -7,6 +7,7 @@ interface BlogCategoriesSlice {
     description: string;
     image: string;
     createdAt: string;
+    slug: string;
   }[];
   page: number;
   limit: number;

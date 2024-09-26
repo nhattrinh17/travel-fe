@@ -1,17 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export interface BlogItemDto {
+  id: number;
+  blogCategoryId: string;
+  name: string;
+  description: string;
+  image: string;
+  content: string;
+  view: number;
+  createdAt: string;
+  slug: string;
+}
 interface BlogSlice {
-  blog: {
-    id: number;
-    blogCategoryId: string;
-    name: string;
-    description: string;
-    image: string;
-    content: string;
-    view: number;
-    createdAt: string;
-    slug: string;
-  }[];
+  blog: BlogItemDto[];
+  blogSuggest: BlogItemDto[];
   page: number;
   limit: number;
   total: number;
@@ -22,12 +24,16 @@ const blogSlice = createSlice({
   name: "blog",
   initialState: {
     blog: [],
+    blogSuggest: [],
     limit: 50,
     page: 1,
     total: 0,
     refreshData: true,
   } as BlogSlice,
   reducers: {
+    setDataBlogSuggest: (state, action) => {
+      state.blogSuggest = action.payload?.data;
+    },
     setDataBlog: (state, action) => {
       state.blog = action.payload?.data;
       state.total = action.payload?.total;
@@ -57,6 +63,7 @@ const blogSlice = createSlice({
 });
 
 export const {
+  setDataBlogSuggest,
   refreshDataBlog,
   resetDataBlog,
   setDataBlog,

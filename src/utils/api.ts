@@ -217,12 +217,22 @@ export const getAllBlogCategories = (page: number, limit: number) => {
 export const getAllBlog = (
   page: number,
   limit: number,
-  blogCategoryId?: number
+  blogCategoryId?: number,
+  sort?: string,
+  typeSort?: string
 ) => {
   const axios = new BaseAxios();
   let url = "blog?";
   if (page) url += "page=" + page;
   if (limit) url += "&limit=" + limit;
   if (blogCategoryId) url += "&blogCategoryId=" + blogCategoryId;
+  if (sort) url += "&sort=" + sort;
+  if (typeSort) url += "&typeSort=" + typeSort;
+  return axios.get(url);
+};
+
+export const getDetailBlogBySlug = (slug: string) => {
+  const axios = new BaseAxios();
+  let url = `blog/${slug}`;
   return axios.get(url);
 };
