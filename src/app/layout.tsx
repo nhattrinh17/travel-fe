@@ -18,7 +18,14 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Vietnam holiday packages 2024 & 2025",
-  description: "Vietnam holiday packages 2024 & 2025",
+  description:
+    "Join TH Global Travel for unforgettable tours and cruises. Explore diverse destinations and book your adventure today! Great deals and tailored experiences await you.",
+  keywords:
+    "travel tours, cruise packages, book tours, family vacations, adventure travel, luxury cruises, TH Global Travel",
+  robots: {
+    index: true,
+    follow: true,
+  },
   icons: [
     {
       media: "(prefers-color-scheme: light)",
