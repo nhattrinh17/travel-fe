@@ -32,8 +32,10 @@ import { Tooltip } from "react-tooltip";
 import { countries, mapServiceIcons } from "@/constants";
 import { useHomeTour } from "@/utils/handleTour";
 import { LoadingModal } from "@/components/Loading";
-import { DatePickerCustomer } from "@/uiCore";
+import { DatePickerCustomer, SwiperLayout } from "@/uiCore";
 import { ShowReviewCruiseAndTour } from "@/components/ShowReview";
+import { useBlogTour } from "@/utils/handleBlog";
+import { BlogItem } from "@/components/BlogItem";
 
 const cx = classNames.bind(styles);
 
@@ -53,9 +55,9 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
   const [otherRequest, setOtherRequest] = useState<string>("");
   const [phoneCountry, setPhoneCountry] = useState(countries[0].dial_code);
   const [country, setCountry] = useState<string>("");
-  const sectionMayAlsoRef = useRef<HTMLElement>(null);
 
   const [tourDetails, setTourDetails] = useState<any>(null);
+  const { blogDailyTour, blogPackageTour } = useBlogTour();
 
   const dataTourSuggest = useHomeTour(
     tourDetails?.packetTourId,
@@ -711,68 +713,22 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
             </div>
           </div>
 
-          <div className="container pb-5">
+          <section className="container pb-5">
             <h2 className="my-3 text-2xl font-bold text-[var(--secondary-color)] w-full text-center relative line-text">
               You May Also Like...
             </h2>
 
             <div className="relative container pt-5">
-              <FontAwesomeIcon
-                onClick={() => {
-                  if (sectionMayAlsoRef.current) {
-                    const preBtnSwiper =
-                      sectionMayAlsoRef.current.querySelector(
-                        ".swiper-button-prev"
-                      );
-                    if (preBtnSwiper) (preBtnSwiper as HTMLElement).click();
-                  }
-                }}
-                className="cursor-pointer w-5 h-5 absolute top-1/3 -translate-y-1/2 z-10 text-[#555555cc] bg-[#ffffff99] hover:bg-[#ffffffe6] drop-shadow-md p-3 rounded-full -left-2 "
-                icon={faChevronLeft}
-              />
-
-              <div className="hidden lg:block">
-                <Swiper
-                  slidesPerView={3}
-                  spaceBetween={30}
-                  navigation={{}}
-                  modules={[Navigation]}
-                  className="swiper-luxury"
-                  loop
-                >
-                  {dataTourSuggest?.map((cruise, index) => (
-                    <SwiperSlide key={index}>
-                      <TourHomeTop10Item {...cruise} />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </div>
-              <div className="block lg:hidden">
-                <Swiper
-                  slidesPerView={1}
-                  spaceBetween={0}
-                  className="swiper-luxury"
-                  loop
-                >
-                  {dataTourSuggest?.map((cruise, index) => (
-                    <SwiperSlide key={index}>
-                      <TourHomeTop10Item {...cruise} />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </div>
-              <FontAwesomeIcon
-                onClick={() => {
-                  if (sectionMayAlsoRef.current) {
-                    const preBtnSwiper =
-                      sectionMayAlsoRef.current.querySelector(
-                        ".swiper-button-next"
-                      );
-                    if (preBtnSwiper) (preBtnSwiper as HTMLElement).click();
-                  }
-                }}
-                className="cursor-pointer w-5 h-5 absolute top-1/3 -translate-y-1/2 z-10 text-[#555555cc] bg-[#ffffff99] hover:bg-[#ffffffe6] drop-shadow-md p-3 rounded-full -right-2 "
-                icon={faChevronRight}
+              <SwiperLayout
+                ComponentRenderDeskTop={TourHomeTop10Item}
+                ComponentRenderMobile={TourHomeTop10Item}
+                data={dataTourSuggest}
+                loop
+                slidesPerViewDesktop={3}
+                slidesPerViewMobile={1}
+                spaceBetweenDesktop={30}
+                spaceBetweenMobile={0}
+                modules={[Navigation]}
               />
             </div>
 
@@ -781,7 +737,37 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
                 View more <span>{`»`}</span>
               </button>
             </div>
-          </div>
+          </section>
+
+          <section className="pb-5">
+            <h2 className="my-3 text-2xl font-bold text-[var(--secondary-color)] w-full text-center relative line-text">
+              Blog for you...
+            </h2>
+
+            <div className="relative container pt-5">
+              <SwiperLayout
+                ComponentRenderDeskTop={BlogItem}
+                ComponentRenderMobile={BlogItem}
+                data={
+                  tourDetails?.packetTourId ? blogPackageTour : blogDailyTour
+                }
+                loop
+                slidesPerViewDesktop={3}
+                slidesPerViewMobile={1}
+                spaceBetweenDesktop={30}
+                spaceBetweenMobile={0}
+                modules={[Navigation]}
+              />
+            </div>
+            <div className="container flex justify-center">
+              <button
+                onClick={() => router.push("/blog")}
+                className="mx-auto text-sm font-bold text-[var(--text-hover-default)] w-fit px-10 py-2 rounded-3xl border-[2px] border-dotted border-[#0cab5b] mt-3 hover:bg-[#06b28b] hover:text-white "
+              >
+                View more <span>{`»`}</span>
+              </button>
+            </div>
+          </section>
         </div>
       ) : (
         <LoadingModal />

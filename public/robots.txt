@@ -1,0 +1,13 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /admin
+
+# Host
+Host: https://thglobaltravel.com/
+
+# Sitemaps
+Sitemap: https://thglobaltravel.com/sitemap.xml

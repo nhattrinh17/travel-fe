@@ -14,6 +14,9 @@ export interface BlogItemDto {
 interface BlogSlice {
   blog: BlogItemDto[];
   blogSuggest: BlogItemDto[];
+  blogDailyTour: BlogItemDto[];
+  blogPackageTour: BlogItemDto[];
+  blogCruise: BlogItemDto[];
   page: number;
   limit: number;
   total: number;
@@ -25,6 +28,9 @@ const blogSlice = createSlice({
   initialState: {
     blog: [],
     blogSuggest: [],
+    blogDailyTour: [],
+    blogPackageTour: [],
+    blogCruise: [],
     limit: 50,
     page: 1,
     total: 0,
@@ -32,6 +38,13 @@ const blogSlice = createSlice({
   } as BlogSlice,
   reducers: {
     setDataBlogSuggest: (state, action) => {
+      state.blogSuggest = action.payload?.data;
+    },
+    setDataBlogTour: (state, action) => {
+      state.blogDailyTour = action.payload?.dataBlogDaily;
+      state.blogPackageTour = action.payload?.dataBlogPackage;
+    },
+    setDataBlogCruise: (state, action) => {
       state.blogSuggest = action.payload?.data;
     },
     setDataBlog: (state, action) => {
@@ -68,6 +81,8 @@ export const {
   resetDataBlog,
   setDataBlog,
   setLimitOrPageBlog,
+  setDataBlogTour,
+  setDataBlogCruise,
 } = blogSlice.actions;
 
 export default blogSlice.reducer;
