@@ -5,7 +5,7 @@ import { setDataReviews } from "@/lib/redux/app/review.slice";
 import { getAllReview } from "./api";
 
 export const useReview = (idCruise: number, idTour: number) => {
-  console.log("🚀 ~ useReview ~ idCruise:", idCruise);
+  // console.log("🚀 ~ useReview ~ idCruise:", idCruise);
   const { reviews, refreshData, page, limit, total } = useAppSelector(
     (state) => state.review
   );

@@ -8,7 +8,7 @@ import {
   setDataBlogSuggest,
   setDataBlogCruise,
 } from "@/lib/redux/app/blog.slice";
-import { getAllBlog, getDetailBlogBySlug } from "./api";
+import { getAllBlog, getDetailBlogBySlug, incrementViewBlo } from "./api";
 
 export const useBlogSuggest = () => {
   const { blogSuggest } = useAppSelector((state) => state.blog);
@@ -66,8 +66,9 @@ export const useBlogCruise = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const res = await getAllBlog(1, 10, 0, "createdAt", "DESC");
+      const res = await getAllBlog(1, 10, 3, "createdAt", "DESC");
       if (res?.data) {
+        console.log("🚀 ~ fetchData ~ res?.data:", res?.data);
         const { data } = res?.data;
         dispatch(setDataBlogCruise({ data }));
       }
@@ -134,4 +135,18 @@ export const useDetailBlog = (slug: string) => {
   }, []);
 
   return data;
+};
+
+export const useIncrementViewBlog = (idBlog: number) => {
+  useEffect(() => {
+    const incrment = setTimeout(() => {
+      incrementViewBlo(idBlog);
+    }, 5000);
+
+    return () => {
+      clearTimeout(incrment);
+    };
+  }, [idBlog]);
+
+  return true;
 };

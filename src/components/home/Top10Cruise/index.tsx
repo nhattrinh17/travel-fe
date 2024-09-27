@@ -41,9 +41,9 @@ export function Top10Cruise(): JSX.Element {
           className="mx-auto mt-4"
         />
 
-        <h2 className="my-3 text-2xl font-bold text-[var(--secondary-color)] w-full text-center relative line-text">
+        <h1 className="my-3 text-2xl font-bold text-[var(--secondary-color)] w-full text-center relative line-text">
           TOP 10 BEST CRUISE DEALS RECOMMENDED FOR YOU
-        </h2>
+        </h1>
 
         <p className="text-[#666] text-sm text-center px-0 lg:px-12">
           The highly trusted collection of Best Halong Bay Cruises that is

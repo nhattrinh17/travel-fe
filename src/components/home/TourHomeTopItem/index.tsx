@@ -89,7 +89,7 @@ export function TourHomeTop10Item({
               "absolute bottom-2 left-0 px-2 py-1 text-white text-sm text-center font-bold text"
             )}
           >
-            <h3>{name}</h3>
+            <h2>{name}</h2>
           </div>
         </Link>
       </figure>

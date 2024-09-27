@@ -158,9 +158,9 @@ export function CruiseItemGrid({
           </span>
         </div>
         <div className="flex flex-col justify-between items-start pb-2 border-b-[1px] border-[#ddd] border-dotted">
-          <h3 className="text-[var(--secondary-color)] font-bold text-xl mb-2">
+          <h2 className="text-[var(--secondary-color)] font-bold text-xl mb-2">
             <Link href={`/cruise/${slug}`}>{name}</Link>
-          </h3>
+          </h2>
           <div className="flex items-center mb-2">
             <div className="flex">
               {Array.from({ length: 6 }, (v, i) => i + 1).map((i, index) =>

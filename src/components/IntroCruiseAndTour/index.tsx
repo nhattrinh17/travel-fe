@@ -29,9 +29,9 @@ export function IntroCruiseAndTour({
           className="mx-auto mt-4"
         />
 
-        <h2 className="my-3 text-2xl font-bold text-[var(--secondary-color)] w-full text-center relative line-text">
+        <h1 className="my-3 text-2xl font-bold text-[var(--secondary-color)] w-full text-center relative line-text">
           {title}
-        </h2>
+        </h1>
         <div className="text-[#666] text-sm text-center px-0 lg:px-12 bg-white py-6 mt-10 relative arrow-top">
           <div
             className="pb-3"

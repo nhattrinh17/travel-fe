@@ -45,7 +45,7 @@ const blogSlice = createSlice({
       state.blogPackageTour = action.payload?.dataBlogPackage;
     },
     setDataBlogCruise: (state, action) => {
-      state.blogSuggest = action.payload?.data;
+      state.blogCruise = action.payload?.data;
     },
     setDataBlog: (state, action) => {
       state.blog = action.payload?.data;

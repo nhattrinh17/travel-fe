@@ -103,9 +103,9 @@ export function TourItem({
       <div className="px-2 py-3 flex-1">
         <div className="flex justify-between items-start mb-2">
           <div>
-            <h3 className="text-[var(--secondary-color)] font-bold text-xl">
+            <h2 className="text-[var(--secondary-color)] font-bold text-xl">
               <Link href={`/tour/${slug}`}>{name}</Link>
-            </h3>
+            </h2>
             <div className="flex">
               {/* {Array.from({ length: 6 }, (v, i) => i + 1).map((i, index) =>
                 i <= stars ? (

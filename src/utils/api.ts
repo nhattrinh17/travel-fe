@@ -236,3 +236,9 @@ export const getDetailBlogBySlug = (slug: string) => {
   let url = `blog/${slug}`;
   return axios.get(url);
 };
+
+export const incrementViewBlo = (id: number) => {
+  const axios = new BaseAxios();
+  let url = `blog/${id}/view`;
+  return axios.patch(url, {});
+};

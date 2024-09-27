@@ -3,7 +3,12 @@
 import { LoadingModal } from "@/components/Loading";
 import { useAppDispatch } from "@/lib";
 import { resetDataBlog } from "@/lib/redux/app/blog.slice";
-import { useBlog, useBlogSuggest, useDetailBlog } from "@/utils/handleBlog";
+import {
+  useBlog,
+  useBlogSuggest,
+  useDetailBlog,
+  useIncrementViewBlog,
+} from "@/utils/handleBlog";
 import { useBlogCategories } from "@/utils/handleBlogCategory";
 import {
   faCalendar,
@@ -20,9 +25,10 @@ import { useEffect } from "react";
 export function DetailBlogSection({ slug }: { slug: string }): JSX.Element {
   const { data: dataCategories } = useBlogCategories();
   const detailBlog = useDetailBlog(slug);
+  useIncrementViewBlog(Number(detailBlog?.id));
   const dataBlogSuggest = useBlogSuggest();
   const router = useRouter();
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
 
   return (
     <main className="bg-white border-b">
@@ -64,7 +70,7 @@ export function DetailBlogSection({ slug }: { slug: string }): JSX.Element {
                   </div>
                   <div className="flex items-center gap-1 text-[var(--text-color-default)]">
                     <FontAwesomeIcon icon={faEye} />
-                    <span>{detailBlog?.view}</span>
+                    <span>{detailBlog?.view.toLocaleString()}</span>
                   </div>
                 </div>
               </section>
