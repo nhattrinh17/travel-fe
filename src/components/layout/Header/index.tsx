@@ -120,7 +120,7 @@ export function HeaderLayout(): JSX.Element {
               )}
             >
               <div className="flex lg:h-full w-full lg:w-auto items-center justify-center">
-                <Link href={"/tour?type=0"}>
+                <Link href={"/packages-tour"}>
                   <h2 className="uppercase text-xl lg:text-xs">
                     Packages Tours
                   </h2>
@@ -184,8 +184,8 @@ export function HeaderLayout(): JSX.Element {
               )}
             >
               <div className="flex lg:h-full w-full lg:w-auto items-center justify-center">
-                <Link href={"/tour?type=1"}>
-                  <h2 className="uppercase text-xl lg:text-xs">daily Tours</h2>
+                <Link href={"/daily-tour"}>
+                  <h2 className="uppercase text-xl lg:text-xs">Daily Tours</h2>
                 </Link>
                 <FontAwesomeIcon
                   icon={faSortDown}

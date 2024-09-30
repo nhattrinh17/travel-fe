@@ -31,7 +31,7 @@ export function CruisesHeaderItem({
             if (window.innerWidth < 1024) {
               cancelNavMobile();
             }
-            route.push(`/cruise?destination=${slug}`);
+            route.push(`/destination/${slug}`);
           }}
           className="group relative w-full text-white hover:text-[var(--text-hover-default)] transition-colors duration-500 hover:image:"
         >
@@ -53,7 +53,7 @@ export function CruisesHeaderItem({
           {detailLocations.map((item, index) => (
             <li key={`${item.name}-${index}`} className="w-full">
               <Link
-                href={`/cruise?destination=${slug}&detail=${item.slug}`}
+                href={`/destination/${item.slug}`}
                 className="mt-2 w-full flex justify-center lg:justify-start hover:text-[#f8d540]"
               >
                 <FontAwesomeIcon icon={faAngleRight} className="w-2 mr-1" />

@@ -2,7 +2,6 @@ import { useAppDispatch, useAppSelector } from "@/lib";
 import { useEffect, useRef, useState } from "react";
 import moment from "moment";
 import {
-  resetDataTour,
   setDataTourFlashSle,
   setDataTourTopDaily,
   setDataTours,
@@ -107,8 +106,8 @@ export const useHomeTourForType = (
   typeSort: string,
   search: string
 ) => {
-  console.log("🚀 ~ sort:", sort, typeSort);
   const { refreshData, tours } = useAppSelector((state) => state.tour);
+  console.log("🚀 ~ refreshData: 11111111", refreshData);
 
   const typeTourRef = useRef(typeTour);
   const sortTourRef = useRef(sort);
@@ -142,7 +141,7 @@ export const useHomeTourForType = (
     }
 
     fetchData();
-  }, [typeTour, sort, typeSort, search]);
+  }, [typeTour, sort, typeSort, search, refreshData]);
 
   return tours.map((tour) => {
     return {

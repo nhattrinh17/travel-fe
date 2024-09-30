@@ -5,72 +5,39 @@ import { CruiseItemGrid } from "@/components/CruiseItemGrid";
 import { IntroCruiseAndTour } from "@/components/IntroCruiseAndTour";
 import { SliderAndSearch } from "@/components/SliderAndSearch";
 import { IntroduceHome } from "@/components/home/Introduce";
-import { useAppSelector } from "@/lib";
 // import { destinationNear } from "@/mocks";
 import { useCruise } from "@/utils/handleCruise";
-import {
-  faBorderAll,
-  faListUl,
-  faLocationDot,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBorderAll, faListUl } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
-import Image from "next/image";
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 export function HomeCruiseSection(): JSX.Element {
   const searchParams = useSearchParams();
-  const destinationSlug = searchParams.get("destination") || "";
+
   const search = searchParams.get("search") || "";
-  const detail = searchParams.get("detail") || "";
+
   const [typeShow, setTypeShow] = useState("list");
 
-  const { destinations } = useAppSelector((state) => state.destination);
-  const dataDestination = destinations.find((d) => d.slug == destinationSlug);
-  const dataDetailLocation = dataDestination?.detailLocations.find(
-    (i) => i.slug == detail
-  );
-
-  const idDestination = dataDestination?.id;
-  const idDetailLocation = dataDetailLocation?.id;
   const [sort, setSort] = useState("");
   const [typeSort, setTypeSort] = useState("");
 
-  const { data } = useCruise(
-    sort,
-    typeSort,
-    idDestination,
-    idDetailLocation,
-    search
-  );
+  const { data } = useCruise(sort, typeSort, 0, 0, search);
 
   return (
     <div className="-mt-[var(--height-header)]">
       <SliderAndSearch />
       <IntroduceHome />
       <IntroCruiseAndTour
-        title={
-          dataDetailLocation?.title ||
-          dataDestination?.title ||
-          "SEARCH RESULTS"
-        }
+        title={search ? "SEARCH RESULTS" : "CRUISES FOR YOU"}
         description={
-          dataDetailLocation?.description ||
-          dataDestination?.description ||
-          `<p style="text-align: center">If you couldn't find suitable cruise for yourself? Let us help you!</p>`
+          search
+            ? `<p style="text-align: center">If you couldn't find suitable cruise for yourself? Let us help you!</p>`
+            : `<p style="text-align: center">These cruises are for you. Hope you enjoy them. Let us help you!</p>`
         }
-        textListCruise={
-          dataDetailLocation?.title
-            ? `${dataDestination?.title} visit ${dataDetailLocation.title}`
-            : ""
-        }
-        images={
-          dataDetailLocation?.title
-            ? dataDetailLocation.images.split("*_*")
-            : []
-        }
+        textListCruise={""}
+        images={[]}
       />
       <section className="bg-[var(--bg-container-color)]  py-4">
         <div className="container">
@@ -148,7 +115,7 @@ export function HomeCruiseSection(): JSX.Element {
         </div>
       </section>
 
-      <section
+      {/* <section
         className={classNames("bg-[var(--bg-container-color)] py-4", {
           hidden: !idDestination && !idDetailLocation,
         })}
@@ -184,20 +151,7 @@ export function HomeCruiseSection(): JSX.Element {
                     {item.name}
                   </h4>
                   <div className="flex items-center">
-                    {/* <div className="flex">
-                      {item.services.map((service, index) => (
-                        <div key={index}>
-                          <FontAwesomeIcon
-                            icon={mapServiceIcons[service.slug]}
-                            data-tooltip-id={`tooltip-service-${service.slug}`}
-                            data-tooltip-content={service.name}
-                            data-tooltip-place="top"
-                            className="text-[#aaa] text-xs p-2 rounded-full border-[1px] border-[#ddd] mx-1"
-                          />
-                          <Tooltip id={`tooltip-service-${service.slug}`} />
-                        </div>
-                      ))}
-                    </div> */}
+                   
                     <div className="flex">
                       <FontAwesomeIcon
                         icon={faLocationDot}
@@ -215,7 +169,7 @@ export function HomeCruiseSection(): JSX.Element {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

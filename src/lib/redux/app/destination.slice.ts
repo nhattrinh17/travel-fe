@@ -1,23 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface destinationSlice {
-  destinations: {
+export interface DestinationItem {
+  id: number;
+  name: string;
+  title: string;
+  description: string;
+  image: string;
+  slug: string;
+  createdAt: string;
+  detailLocations: {
     id: number;
-    name: string;
     title: string;
-    description: string;
-    image: string;
+    name: string;
     slug: string;
-    createdAt: string;
-    detailLocations: {
-      id: number;
-      title: string;
-      name: string;
-      slug: string;
-      images: string;
-      description: string;
-    }[];
+    images: string;
+    description: string;
   }[];
+}
+
+interface destinationSlice {
+  destinations: DestinationItem[];
   page: number;
   limit: number;
   total: number;

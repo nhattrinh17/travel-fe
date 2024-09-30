@@ -58,7 +58,6 @@ const tourSlice = createSlice({
       state.tourNav = action.payload?.data;
       state.total = action.payload?.total;
       state.page = action.payload.page;
-      state.refreshDataNav = false;
     },
     setDataTours: (state, action) => {
       state.tours = action.payload?.data;
