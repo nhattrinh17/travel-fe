@@ -49,14 +49,14 @@ export function DetailBlogSection({ slug }: { slug: string }): JSX.Element {
         {detailBlog ? (
           <div className="grid grid-cols-3 gap-7 pt-10">
             <article className="col-span-3 lg:col-span-2 ">
-              <figure className="pt-[60%] relative">
+              {/* <figure className="pt-[60%] relative">
                 <Image
                   fill
                   alt="Image Blog"
                   src={detailBlog?.image || ""}
                   className="absolute top-0 bottom-0 left-0 right-0 "
                 />
-              </figure>
+              </figure> */}
 
               <h1 className="text-2xl font-bold text-black mt-5">
                 {detailBlog?.name}
