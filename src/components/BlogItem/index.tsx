@@ -42,7 +42,9 @@ export function BlogItem({
       </figure>
       <div className="p-3">
         <Link href={`/blog/${slug}`}>
-          <h2 className="text-lg font-bold leading-tight mb-2">{name}</h2>
+          <h2 className="text-lg font-bold leading-tight mb-2 text-black">
+            {name}
+          </h2>
         </Link>
         <p className="text-gray-700 text-sm mb-2 line-clamp-6 py-1">
           {description}

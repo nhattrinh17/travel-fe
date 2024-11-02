@@ -48,7 +48,7 @@ export function DetailBlogSection({ slug }: { slug: string }): JSX.Element {
 
         {detailBlog ? (
           <div className="grid grid-cols-3 gap-7 pt-10">
-            <article className="col-span-3 lg:col-span-2 ">
+            <article className="col-span-3 lg:col-span-2 text-black">
               {/* <figure className="pt-[60%] relative">
                 <Image
                   fill
