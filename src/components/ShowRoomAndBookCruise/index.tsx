@@ -788,21 +788,24 @@ export function ShowRoomAndBookCruise({
               <span className="text-xs">{"(0 - 4)"}</span>
             </div>
             <div className="mt-6 border-[1px] border-[#ddd] border-r-0 grid grid-cols-12 text-xs lg:text-sm bg-[var(--secondary1-color)]">
-              <div className="flex-1 border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-7 lg:col-span-6">
+              <div className="my-auto  flex-1 border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-6 lg:col-span-6">
                 <span>Room's info</span>
               </div>
-              <div className="hidden lg:block border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-2">
+              <div className="my-auto hidden lg:block border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-2">
                 <span>Pax</span>
               </div>
               <div className="my-auto border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-3 lg:col-span-1">
-                <span>Price per person</span>
+                <span>Single room</span>
               </div>
-              <div className="border-r-[1px] text-center hidden lg:block border-[#ddd] py-[6px] text-white font-bold col-span-2">
+              <div className="my-auto border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-3 lg:col-span-1">
+                <span>Price Per Person</span>
+              </div>
+              <div className="my-auto border-r-[1px] text-center hidden lg:block border-[#ddd] py-[6px] text-white font-bold col-span-2">
                 <span>Notes</span>
               </div>
-              <div className="border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-2 lg:col-span-1">
+              {/* <div className="border-r-[1px] text-center border-[#ddd] py-[6px] text-white font-bold col-span-2 lg:col-span-1">
                 <span>Select</span>
-              </div>
+              </div> */}
             </div>
             {cruiseDetail.roomCruises
               .filter(
@@ -822,7 +825,7 @@ export function ShowRoomAndBookCruise({
                   key={index1}
                   className="grid grid-cols-12 hover:bg-[#eff9eb] items-start border-[1px] border-[#ddd] border-r-0 "
                 >
-                  <div className="py-1 px-1 border-r-[1px] border-[#ddd] flex flex-col lg:flex-row col-span-7 lg:col-span-6">
+                  <div className="py-1 px-1 border-r-[1px] border-[#ddd] flex flex-col lg:flex-row col-span-6 lg:col-span-6">
                     <Image
                       alt="room"
                       src={room1.images[0]}
@@ -884,19 +887,14 @@ export function ShowRoomAndBookCruise({
                       ))}
                     </div>
                   </div>
-                  <div className="border-r-[1px] w-full h-full text-center border-[#ddd] py-[6px] col-span-3 lg:col-span-1">
-                    <span className=" h-full text-[#fc8f30] font-bold text-lg flex items-center justify-center">
-                      {room1.price}$
+                  <div className="flex items-center justify-around border-r-[1px] w-full h-full text-center border-[#ddd] py-[6px] col-span-3 lg:col-span-1">
+                    <span className="text-[#fc8f30] font-bold text-lg">
+                      {room1.priceSingle}$
                     </span>
-                  </div>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: room1.notes,
-                    }}
-                    className="border-r-[1px] h-full text-[var(--text-color-default)] px-2 hidden lg:flex justify-center items-center border-[#ddd] py-[6px] col-span-2"
-                  ></div>
-                  <div className="border-r-[1px] h-full flex justify-center text-center border-[#ddd] py-[6px] col-span-2 lg:col-span-1">
                     <input
+                      className="cursor-pointer"
+                      name={`type-room-${index}`}
+                      type="radio"
                       onChange={() => {
                         setDataRoomSelect((pre) => {
                           const newData = [...pre];
@@ -906,14 +904,14 @@ export function ShowRoomAndBookCruise({
 
                           if (dataOld) {
                             dataOld.nameRoom = room1.name;
-                            dataOld.price = room1.price;
+                            dataOld.price = room1.priceSingle;
 
                             return newData;
                           } else {
                             newData.push({
                               indexRoom: index + 1,
                               nameRoom: room1.name,
-                              price: room1.price,
+                              price: room1.priceSingle,
                               image: room1.images[0],
                             });
 
@@ -921,11 +919,48 @@ export function ShowRoomAndBookCruise({
                           }
                         });
                       }}
-                      type="radio"
-                      name={`select-room-${index}`}
-                      className="bg-[var(--text-color-default)] checked:"
                     />
                   </div>
+                  <div className="flex items-center justify-around border-r-[1px] w-full h-full text-center border-[#ddd] py-[6px] col-span-3 lg:col-span-1">
+                    <span className="text-[#fc8f30] font-bold text-lg">
+                      {room1.priceDouble}$
+                    </span>
+                    <input
+                      className="cursor-pointer"
+                      name={`type-room-${index}`}
+                      type="radio"
+                      onChange={() => {
+                        setDataRoomSelect((pre) => {
+                          const newData = [...pre];
+                          const dataOld = newData?.find(
+                            (i) => i.indexRoom == index + 1
+                          );
+
+                          if (dataOld) {
+                            dataOld.nameRoom = room1.name;
+                            dataOld.price = room1.priceDouble;
+
+                            return newData;
+                          } else {
+                            newData.push({
+                              indexRoom: index + 1,
+                              nameRoom: room1.name,
+                              price: room1.priceDouble,
+                              image: room1.images[0],
+                            });
+
+                            return newData;
+                          }
+                        });
+                      }}
+                    />
+                  </div>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: room1.notes,
+                    }}
+                    className="border-r-[1px] h-full text-[var(--text-color-default)] px-2 hidden lg:flex justify-center items-center border-[#ddd] py-[6px] col-span-2"
+                  ></div>
                 </div>
               ))}
           </div>

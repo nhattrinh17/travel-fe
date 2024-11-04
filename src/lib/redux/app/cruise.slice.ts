@@ -28,8 +28,8 @@ interface CruiseItem {
     cruiseId: number;
     itinerariesId: number;
     name: string;
-    price: number;
-    priceDetail: string;
+    priceSingle: number;
+    priceDouble: number;
     totalRooms: number;
     typeBed: string;
     isViewOcean: boolean;
