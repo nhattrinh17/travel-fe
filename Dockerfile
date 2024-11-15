@@ -31,6 +31,7 @@ WORKDIR /app
 
 # Thiết lập biến môi trường cho Next.js
 ENV NODE_ENV=production
+ENV PORT=3002  
 
 COPY --from=build /app/public ./public
 COPY --from=build /app/next.config.mjs ./
@@ -42,6 +43,6 @@ COPY --from=build /app/.next/static ./.next/static
 RUN chmod +x /app/server.js \
     && chmod +x /usr/local/bin/docker-entrypoint.sh
 
-EXPOSE 3000
+EXPOSE 3002
 
 CMD ["node", "server.js"]

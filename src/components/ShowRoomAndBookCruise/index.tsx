@@ -889,10 +889,12 @@ export function ShowRoomAndBookCruise({
                   </div>
                   <div className="flex items-center justify-around border-r-[1px] w-full h-full text-center border-[#ddd] py-[6px] col-span-3 lg:col-span-1">
                     <span className="text-[#fc8f30] font-bold text-lg">
-                      {room1.priceSingle}$
+                      {room1.priceSingle ? `${room1.priceSingle}$` : "N/A"}
                     </span>
                     <input
-                      className="cursor-pointer"
+                      className={cx("cursor-pointer", {
+                        hidden: !room1.priceSingle,
+                      })}
                       name={`type-room-${index}`}
                       type="radio"
                       onChange={() => {
@@ -923,10 +925,12 @@ export function ShowRoomAndBookCruise({
                   </div>
                   <div className="flex items-center justify-around border-r-[1px] w-full h-full text-center border-[#ddd] py-[6px] col-span-3 lg:col-span-1">
                     <span className="text-[#fc8f30] font-bold text-lg">
-                      {room1.priceDouble}$
+                      {room1.priceDouble ? `${room1.priceDouble}$` : "N/A"}
                     </span>
                     <input
-                      className="cursor-pointer"
+                      className={cx("cursor-pointer", {
+                        hidden: !room1.priceDouble,
+                      })}
                       name={`type-room-${index}`}
                       type="radio"
                       onChange={() => {
