@@ -7,7 +7,7 @@ import { TourItemGrid } from "@/components/TourItemGrid";
 import { IntroduceHome } from "@/components/home/Introduce";
 import { useAppDispatch, useAppSelector } from "@/lib";
 import { resetDataTour } from "@/lib/redux/app/tour.slice";
-import { useHomePackageTour } from "@/utils/handleTour";
+import { usePackageOrDailyTour } from "@/utils/handleTour";
 import { faBorderAll, faListUl } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
@@ -24,8 +24,8 @@ export function HomeTourSection(): JSX.Element {
   const [typeSort, setTypeSort] = useState("");
   const { packetTours } = useAppSelector((state) => state.packetTour);
   const packetTourBySlug = packetTours.find((i) => i.slug == namePackage);
-  const dataTour = packetTourBySlug?.id
-    ? useHomePackageTour(packetTourBySlug?.id, sort, typeSort, search)
+  const dataTour = namePackage
+    ? usePackageOrDailyTour(packetTourBySlug?.id, sort, typeSort, search)
     : [];
 
   const dispatch = useAppDispatch();

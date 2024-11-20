@@ -53,13 +53,13 @@ export const useTourNav = () => {
   };
 };
 
-export const useHomePackageTour = (
+export const usePackageOrDailyTour = (
   packetTourId: number | undefined,
   sort: string,
   typeSort: string,
   search: string
 ) => {
-  console.log("🚀 ~ sort:", sort, typeSort, packetTourId);
+  console.log("🚀 ~ sort:", sort, typeSort);
   const { refreshData, tours } = useAppSelector((state) => state.tour);
 
   const packetTourRef = useRef(packetTourId);

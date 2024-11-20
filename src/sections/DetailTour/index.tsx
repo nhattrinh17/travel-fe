@@ -24,18 +24,19 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { TourHomeTop10Item } from "@/components/home/TourHomeTopItem";
-import { useAppSelector } from "@/lib";
+import { useAppDispatch, useAppSelector } from "@/lib";
 import { bookingTour, getTourBySlug } from "@/utils/api";
 import { redirect, useRouter } from "next/navigation";
 import { PopupShowAllImages } from "@/components/ShowAllImages";
 import { Tooltip } from "react-tooltip";
 import { countries, mapServiceIcons } from "@/constants";
-import { useHomePackageTour } from "@/utils/handleTour";
+import { usePackageOrDailyTour } from "@/utils/handleTour";
 import { LoadingModal } from "@/components/Loading";
 import { DatePickerCustomer, SwiperLayout } from "@/uiCore";
 import { ShowReviewCruiseAndTour } from "@/components/ShowReview";
 import { useBlogTour } from "@/utils/handleBlog";
 import { BlogItem } from "@/components/BlogItem";
+import { resetDataTour } from "@/lib/redux/app/tour.slice";
 
 const cx = classNames.bind(styles);
 
@@ -59,7 +60,7 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
   const [tourDetails, setTourDetails] = useState<any>(null);
   const { blogDailyTour, blogPackageTour } = useBlogTour();
 
-  const dataTourSuggest = useHomePackageTour(
+  const dataTourSuggest = usePackageOrDailyTour(
     tourDetails?.packetTourId,
     "id",
     "DESC",
@@ -83,6 +84,14 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
     }
 
     fetchData();
+  }, []);
+
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    return () => {
+      console.log("clean tour");
+      dispatch(resetDataTour());
+    };
   }, []);
 
   return (
