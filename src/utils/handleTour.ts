@@ -59,7 +59,7 @@ export const useHomePackageTour = (
   typeSort: string,
   search: string
 ) => {
-  console.log("🚀 ~ sort:", sort, typeSort);
+  console.log("🚀 ~ sort:", sort, typeSort, packetTourId);
   const { refreshData, tours } = useAppSelector((state) => state.tour);
 
   const packetTourRef = useRef(packetTourId);

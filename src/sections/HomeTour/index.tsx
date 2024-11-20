@@ -24,17 +24,15 @@ export function HomeTourSection(): JSX.Element {
   const [typeSort, setTypeSort] = useState("");
   const { packetTours } = useAppSelector((state) => state.packetTour);
   const packetTourBySlug = packetTours.find((i) => i.slug == namePackage);
-  const dataTour = useHomePackageTour(
-    packetTourBySlug?.id,
-    sort,
-    typeSort,
-    search
-  );
+  const dataTour = packetTourBySlug?.id
+    ? useHomePackageTour(packetTourBySlug?.id, sort, typeSort, search)
+    : [];
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     return () => {
+      console.log("clean tour");
       dispatch(resetDataTour());
     };
   }, [namePackage]);
