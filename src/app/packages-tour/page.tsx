@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 export default function PackagesTourPage() {
   return (
     <Suspense>
-      <DailyOrPackagesTourSection isDailyTour={false} />;
+      <DailyOrPackagesTourSection isDailyTour={false} />
     </Suspense>
   );
 }

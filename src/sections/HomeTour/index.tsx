@@ -7,7 +7,7 @@ import { TourItemGrid } from "@/components/TourItemGrid";
 import { IntroduceHome } from "@/components/home/Introduce";
 import { useAppDispatch, useAppSelector } from "@/lib";
 import { resetDataTour } from "@/lib/redux/app/tour.slice";
-import { useHomeTour, useHomeTourForType } from "@/utils/handleTour";
+import { useHomePackageTour } from "@/utils/handleTour";
 import { faBorderAll, faListUl } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
@@ -16,18 +16,20 @@ import { useEffect, useState } from "react";
 
 export function HomeTourSection(): JSX.Element {
   const searchParams = useSearchParams();
-  const slugDestination = searchParams.get("name") || "";
+  const namePackage = searchParams.get("name") || "";
   const search = searchParams.get("search") || "";
-  const typeTour = searchParams.get("type") || "";
   const [typeShow, setTypeShow] = useState("list");
 
   const [sort, setSort] = useState("");
   const [typeSort, setTypeSort] = useState("");
   const { packetTours } = useAppSelector((state) => state.packetTour);
-  const packetTourBySlug = packetTours.find((i) => i.slug == slugDestination);
-  const dataTour = packetTourBySlug
-    ? useHomeTour(packetTourBySlug?.id, sort, typeSort, search)
-    : useHomeTourForType(+typeTour, sort, typeSort, search);
+  const packetTourBySlug = packetTours.find((i) => i.slug == namePackage);
+  const dataTour = useHomePackageTour(
+    packetTourBySlug?.id,
+    sort,
+    typeSort,
+    search
+  );
 
   const dispatch = useAppDispatch();
 
@@ -35,7 +37,7 @@ export function HomeTourSection(): JSX.Element {
     return () => {
       dispatch(resetDataTour());
     };
-  }, []);
+  }, [namePackage]);
 
   return (
     <div className="-mt-[var(--height-header)]">

@@ -53,7 +53,7 @@ export const useTourNav = () => {
   };
 };
 
-export const useHomeTour = (
+export const useHomePackageTour = (
   packetTourId: number | undefined,
   sort: string,
   typeSort: string,
@@ -87,7 +87,7 @@ export const useHomeTour = (
     }
 
     fetchData();
-  }, [packetTourId, sort, typeSort, search]);
+  }, [packetTourId, sort, typeSort, search, refreshData]);
 
   return tours.map((tour) => {
     return {

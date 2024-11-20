@@ -30,7 +30,7 @@ import { redirect, useRouter } from "next/navigation";
 import { PopupShowAllImages } from "@/components/ShowAllImages";
 import { Tooltip } from "react-tooltip";
 import { countries, mapServiceIcons } from "@/constants";
-import { useHomeTour } from "@/utils/handleTour";
+import { useHomePackageTour } from "@/utils/handleTour";
 import { LoadingModal } from "@/components/Loading";
 import { DatePickerCustomer, SwiperLayout } from "@/uiCore";
 import { ShowReviewCruiseAndTour } from "@/components/ShowReview";
@@ -59,7 +59,7 @@ export function DetailTourSection({ slug }: { slug: string }): JSX.Element {
   const [tourDetails, setTourDetails] = useState<any>(null);
   const { blogDailyTour, blogPackageTour } = useBlogTour();
 
-  const dataTourSuggest = useHomeTour(
+  const dataTourSuggest = useHomePackageTour(
     tourDetails?.packetTourId,
     "id",
     "DESC",
