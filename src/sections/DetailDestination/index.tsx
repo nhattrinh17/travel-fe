@@ -5,7 +5,8 @@ import { CruiseItemGrid } from "@/components/CruiseItemGrid";
 import { IntroCruiseAndTour } from "@/components/IntroCruiseAndTour";
 import { SliderAndSearch } from "@/components/SliderAndSearch";
 import { IntroduceHome } from "@/components/home/Introduce";
-import { useAppSelector } from "@/lib";
+import { useAppDispatch, useAppSelector } from "@/lib";
+import { resetDataCruise } from "@/lib/redux/app/cruise.slice";
 import { DestinationItem } from "@/lib/redux/app/destination.slice";
 // import { destinationNear } from "@/mocks";
 import { useCruise } from "@/utils/handleCruise";
@@ -19,7 +20,7 @@ import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function DetailDestinationSection({
   slug,
@@ -27,6 +28,7 @@ export function DetailDestinationSection({
   slug: string;
 }): JSX.Element {
   const searchParams = useSearchParams();
+  const dispatch = useAppDispatch();
 
   const search = searchParams.get("search") || "";
   const [typeShow, setTypeShow] = useState("list");
@@ -70,6 +72,12 @@ export function DetailDestinationSection({
     dataDetailLocation?.id,
     search
   );
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetDataCruise());
+    };
+  }, [searchParams]);
 
   return (
     <div className="-mt-[var(--height-header)]">
