@@ -419,12 +419,12 @@ export function FooterLayout(): JSX.Element {
                   </Link>
                 </li>
                 {/* <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={"#top"} className="block py-2">
+                  <Link href={"/#top"} className="block py-2">
                     Myanmar river cruise
                   </Link>
                 </li>
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={"#top"} className="block py-2">
+                  <Link href={"/#top"} className="block py-2">
                     Asia Tours Official Web
                   </Link>
                 </li> */}
@@ -441,13 +441,13 @@ export function FooterLayout(): JSX.Element {
               </ul>
               <ul className="col-span-3 lg:col-span-1">
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={"#best-cruise"} className="block py-2">
+                  <Link href={"/#best-cruise"} className="block py-2">
                     Best Halong Bay Cruises
                   </Link>
                 </li>
 
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={"#luxury-cruise"} className="block py-2">
+                  <Link href={"/#luxury-cruise"} className="block py-2">
                     Luxury Halong Bay Cruises
                   </Link>
                 </li>
@@ -457,7 +457,7 @@ export function FooterLayout(): JSX.Element {
                   </Link>
                 </li> */}
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={"#budget-cruise"} className="block py-2">
+                  <Link href={"/#budget-cruise"} className="block py-2">
                     Budget Halong Bay Cruises
                   </Link>
                 </li>
@@ -467,7 +467,7 @@ export function FooterLayout(): JSX.Element {
                   </Link>
                 </li>
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={"#best-cruise"} className="block py-2">
+                  <Link href={"/#best-cruise"} className="block py-2">
                     Halong Bay Day Cruises
                   </Link>
                 </li>
@@ -477,7 +477,7 @@ export function FooterLayout(): JSX.Element {
                   </Link>
                 </li>
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link href={"#top"} className="block py-2">
+                  <Link href={"/#top"} className="block py-2">
                     Halong bay destinations
                   </Link>
                 </li>
@@ -488,19 +488,14 @@ export function FooterLayout(): JSX.Element {
                 </li> */}
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
                   <Link
-                    href={"/cruise?destination=lan-ha-bay-cruise"}
+                    href={"/destination/lan-ha-bay-cruise"}
                     className="block py-2"
                   >
                     Lan Ha Bay Cruises
                   </Link>
                 </li>
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
-                  <Link
-                    href={
-                      "/tour?name=vietnam-highlights-adventure-10-days-from-ha-noi&type=packet"
-                    }
-                    className="block py-2"
-                  >
+                  <Link href={"/packages-tour"} className="block py-2">
                     Vietnam Family Tours
                   </Link>
                 </li>

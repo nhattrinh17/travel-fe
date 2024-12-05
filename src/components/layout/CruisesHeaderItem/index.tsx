@@ -52,13 +52,18 @@ export function CruisesHeaderItem({
         <ul>
           {detailLocations.map((item, index) => (
             <li key={`${item.name}-${index}`} className="w-full">
-              <Link
-                href={`/destination/${item.slug}`}
+              <div
+                onClick={() => {
+                  if (window.innerWidth < 1024) {
+                    cancelNavMobile();
+                  }
+                  route.push(`/destination/${item.slug}`);
+                }}
                 className="mt-2 w-full flex justify-center lg:justify-start hover:text-[#f8d540]"
               >
                 <FontAwesomeIcon icon={faAngleRight} className="w-2 mr-1" />
                 <h4 className="text-xs">{item.name}</h4>
-              </Link>
+              </div>
             </li>
           ))}
         </ul>

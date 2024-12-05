@@ -35,8 +35,10 @@ export function DetailDestinationSection({
 
   const { destinations } = useAppSelector((state) => state.destination);
 
-  let dataDestination: DestinationItem | undefined;
-  let dataDetailLocation:
+  const [dataDestination, setDataDestination] = useState<
+    DestinationItem | undefined
+  >(undefined);
+  const [dataDetailLocation, setDataDetailLocation] = useState<
     | {
         id: number;
         title: string;
@@ -44,23 +46,28 @@ export function DetailDestinationSection({
         description: string;
         name: string;
       }
-    | undefined;
-  if (destinations.length) {
-    for (let index = 0; index < destinations.length; index++) {
-      const destination = destinations[index];
-      if (destination.slug == slug) {
-        dataDestination = destination;
-        break;
-      } else {
-        const dataDetailLocation = destination.detailLocations.find(
-          (location) => location.slug == slug
-        );
-        if (dataDetailLocation) {
-          dataDestination = destination;
+    | undefined
+  >(undefined);
+
+  useEffect(() => {
+    if (destinations.length) {
+      for (let index = 0; index < destinations.length; index++) {
+        const destination = destinations[index];
+        if (destination.slug == slug) {
+          setDataDestination(destination);
+          break;
+        } else {
+          const detailLocation = destination.detailLocations.find(
+            (location) => location.slug == slug
+          );
+          if (detailLocation) {
+            setDataDetailLocation(detailLocation);
+            setDataDestination(destination);
+          }
         }
       }
     }
-  }
+  }, [destinations]);
 
   const [sort, setSort] = useState("");
   const [typeSort, setTypeSort] = useState("");
@@ -77,7 +84,7 @@ export function DetailDestinationSection({
     return () => {
       dispatch(resetDataCruise());
     };
-  }, [searchParams]);
+  }, [searchParams, slug]);
 
   return (
     <div className="-mt-[var(--height-header)]">
