@@ -80,10 +80,10 @@ export function ContactUsSection(): JSX.Element {
                   />
                 </div>
                 <a
-                  href="tel:+84946707266"
+                  href="tel:+0912689730"
                   // className="text-[var(--primary-color)]"
                 >
-                  +84946707266
+                  0912689730
                 </a>
               </div>
               <div className="flex mb-2">
@@ -161,10 +161,10 @@ export function ContactUsSection(): JSX.Element {
                   />
                 </div>
                 <a
-                  href="tel:+84946707266"
+                  href="tel:+0912689730"
                   // className="text-[var(--primary-color)]"
                 >
-                  +84946707266
+                  0912689730
                 </a>
               </div>
             </div>
@@ -194,10 +194,10 @@ export function ContactUsSection(): JSX.Element {
                   />
                 </div>
                 <a
-                  href="tel:+84853490585"
+                  href="tel:+84912689730"
                   // className="text-[var(--primary-color)]"
                 >
-                  +84853490585
+                  +84912689730
                 </a>
               </div>
             </div>

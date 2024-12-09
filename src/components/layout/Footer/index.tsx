@@ -47,7 +47,7 @@ export function FooterLayout(): JSX.Element {
     <div>
       <div className="fixed z-10 bottom-0 left-0 right-0 bg-[var(--bg-header-color)] grid lg:hidden grid-cols-3">
         <a
-          href="tel:+84946707266"
+          href="tel:+0912689730"
           className="flex flex-col justify-center items-center text-white py-2 text-[13px] border-r-[1px] border-[#fff]"
         >
           <FontAwesomeIcon icon={faPhone} className="mb-2 text-base" />
@@ -325,11 +325,11 @@ export function FooterLayout(): JSX.Element {
                   No 19,lane 4 Trung Lap-Tri Trung-Phu Xuyen-Hanoi-Viet Nam
                 </p>
 
-                <a className="my-2" href="tel:+84946707266">
-                  Phone: (+84) 946 707 266
+                <a className="my-2" href="tel:+0912689730">
+                  Phone: (+84) 912 689 730
                 </a>
-                <a className="my-2" href="tel:+84946707266">
-                  Hotline: (+84) 946 707 266
+                <a className="my-2" href="tel:+0912689730">
+                  Hotline: (+84) 912 689 730
                 </a>
                 <a className="my-2" href="mailto:info@thglobaltravel.com">
                   Email: info@thglobaltravel.com
