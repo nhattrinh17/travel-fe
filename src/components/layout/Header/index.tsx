@@ -119,12 +119,27 @@ export function HeaderLayout(): JSX.Element {
                 "relative px-2 cursor-pointer text-center w-full lg:w-auto py-1 lg:py-0 lg:hover:bg-[var(--primary-color)] text-white font-bold lg:h-full"
               )}
             >
-              <div className="flex lg:h-full w-full lg:w-auto items-center justify-center">
-                <Link href={"/packages-tour"}>
-                  <h2 className="uppercase text-xl lg:text-xs">
-                    Packages Tours
-                  </h2>
-                </Link>
+              {/* PC */}
+              <Link
+                href={"/packages-tour"}
+                className="hidden lg:flex h-full w-auto items-center justify-center"
+              >
+                <h2 className="uppercase text-xs">Packages Tours</h2>
+                <FontAwesomeIcon
+                  icon={faSortDown}
+                  className="w-3 ml-2 relative -top-1"
+                />
+              </Link>
+
+              <div
+                onClick={(e) => {
+                  e.preventDefault();
+                  setShowNav(false);
+                  router.push("/packages-tour");
+                }}
+                className="flex lg:hidden w-full items-center justify-center"
+              >
+                <h2 className="uppercase text-xl">Packages Tours</h2>
                 <FontAwesomeIcon
                   icon={faSortDown}
                   className="w-3 ml-2 relative -top-1"
@@ -183,10 +198,27 @@ export function HeaderLayout(): JSX.Element {
                 "relative px-2 cursor-pointer text-center w-full lg:w-auto py-1 lg:py-0 lg:hover:bg-[var(--primary-color)] text-white font-bold lg:h-full"
               )}
             >
-              <div className="flex lg:h-full w-full lg:w-auto items-center justify-center">
-                <Link href={"/daily-tour"}>
-                  <h2 className="uppercase text-xl lg:text-xs">Daily Tours</h2>
-                </Link>
+              <Link
+                href={"/daily-tour"}
+                className="hidden lg:flex lg:h-full w-full lg:w-auto items-center justify-center"
+              >
+                <h2 className="uppercase text-xl lg:text-xs">Daily Tours</h2>
+
+                <FontAwesomeIcon
+                  icon={faSortDown}
+                  className="w-3 ml-2 relative -top-1"
+                />
+              </Link>
+
+              <div
+                onClick={(e) => {
+                  e.preventDefault();
+                  setShowNav(false);
+                  router.push("/daily-tour");
+                }}
+                className="flex lg:hidden w-full items-center justify-center"
+              >
+                <h2 className="uppercase text-xl">Daily Tours</h2>
                 <FontAwesomeIcon
                   icon={faSortDown}
                   className="w-3 ml-2 relative -top-1"
@@ -243,15 +275,32 @@ export function HeaderLayout(): JSX.Element {
                 "relative px-2 cursor-pointer w-full lg:w-auto lg:hover:bg-[var(--primary-color)] text-white font-bold lg:h-full"
               )}
             >
-              <div className="flex lg:h-full w-full lg:w-auto py-1 lg:py-0 items-center justify-center">
-                <Link href={"/destination"}>
-                  <h2 className="uppercase text-xl lg:text-xs">Cruises</h2>
-                </Link>
+              <Link
+                href={"/destination"}
+                className="hidden lg:flex h-full w-auto py-0 items-center justify-center"
+              >
+                <h2 className="uppercase text-xl lg:text-xs">Cruises</h2>
                 <FontAwesomeIcon
                   icon={faSortDown}
                   className="w-3 ml-2 relative -top-1"
                 />
-              </div>
+              </Link>
+
+              <Link
+                href={"/destination"}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setShowNav(false);
+                  router.push("/destination");
+                }}
+                className="flex lg:hidden w-full py-1 items-center justify-center"
+              >
+                <h2 className="uppercase text-xl lg:text-xs">Cruises</h2>
+                <FontAwesomeIcon
+                  icon={faSortDown}
+                  className="w-3 ml-2 relative -top-1"
+                />
+              </Link>
 
               <div
                 className={cx(
@@ -274,9 +323,11 @@ export function HeaderLayout(): JSX.Element {
                 ))}
               </div>
             </div>
+            {/* PC */}
+
             <Link
               href={"/flash-deal"}
-              className="px-2 cursor-pointer py-1 lg:py-0 lg:hover:bg-[var(--primary-color)] text-white font-bold lg:h-full flex items-center"
+              className="px-2 cursor-pointer py-1 lg:py-0 lg:hover:bg-[var(--primary-color)] text-white font-bold h-full hidden lg:flex items-center"
             >
               <Image
                 alt="flash deal"
@@ -286,27 +337,84 @@ export function HeaderLayout(): JSX.Element {
               />
               <h2 className="uppercase text-xl lg:text-xs">Flash Deals</h2>
             </Link>
+            {/* Mobile */}
+            <Link
+              href={"/flash-deal"}
+              onClick={(e) => {
+                e.preventDefault();
+                setShowNav(false);
+                router.push("/flash-deal");
+              }}
+              className="flex lg:hidden px-2 cursor-pointer py-1 text-white font-bold items-center"
+            >
+              <Image
+                alt="flash deal"
+                src={"/home/gif-flash.gif"}
+                width={20}
+                height={25}
+              />
+              <h2 className="uppercase text-xl lg:text-xs">Flash Deals</h2>
+            </Link>
+            {/* PC */}
             <Link
               href={"/blog"}
               onClick={(e) => {
                 e.preventDefault();
-
                 router.push("/blog");
                 dispatch(resetDataBlog());
               }}
-              className="px-2 cursor-pointer py-1 lg:py-0 lg:hover:bg-[var(--primary-color)] text-white font-bold lg:h-full flex items-center"
+              className="hidden lg:flex h-full px-2 cursor-pointer py-0 hover:bg-[var(--primary-color)] text-white font-bold items-center"
             >
               <h2 className="uppercase text-xl lg:text-xs">Blogs</h2>
             </Link>
+            {/* Mobile */}
+            <Link
+              href={"/blog"}
+              onClick={(e) => {
+                e.preventDefault();
+                setShowNav(false);
+                router.push("/blog");
+                dispatch(resetDataBlog());
+              }}
+              className="flex lg:hidden px-2 cursor-pointer py-1 text-white font-bold items-center"
+            >
+              <h2 className="uppercase text-xl lg:text-xs">Blogs</h2>
+            </Link>
+            {/* PC */}
             <Link
               href={"/about-us"}
-              className="px-2 cursor-pointer py-1 lg:py-0 lg:hover:bg-[var(--primary-color)] text-white font-bold lg:h-full flex items-center"
+              className="hidden lg:flex px-2 cursor-pointer py-0 hover:bg-[var(--primary-color)] text-white font-bold h-full items-center"
             >
               <h2 className="uppercase text-xl lg:text-xs">About US</h2>
             </Link>
+            {/* Mobile */}
+            <Link
+              href={"/about-us"}
+              onClick={(e) => {
+                e.preventDefault();
+                setShowNav(false);
+                router.push("/about-us");
+              }}
+              className="flex lg:hidden px-2 cursor-pointer py-1 text-white font-bold items-center"
+            >
+              <h2 className="uppercase text-xl lg:text-xs">About US</h2>
+            </Link>
+            {/* PC */}
             <Link
               href={"/contact-us"}
-              className="px-2 cursor-pointer py-1 lg:py-0 lg:hover:bg-[var(--primary-color)] text-white font-bold lg:h-full flex items-center"
+              className="hidden lg:flex px-2 cursor-pointer py-1 hover:bg-[var(--primary-color)] text-white font-bold h-full items-center"
+            >
+              <h2 className="uppercase text-xl lg:text-xs">Contact US</h2>
+            </Link>
+            {/* Mobile */}
+            <Link
+              href={"/contact-us"}
+              onClick={(e) => {
+                e.preventDefault();
+                setShowNav(false);
+                router.push("/contact-us");
+              }}
+              className="flex lg:hidden px-2 cursor-pointer py-1 text-white font-bold items-center"
             >
               <h2 className="uppercase text-xl lg:text-xs">Contact US</h2>
             </Link>
