@@ -355,7 +355,12 @@ export function FooterLayout(): JSX.Element {
                     className="mx-2 text-base"
                   />
                 </div>
-                <div className="grid grid-cols-2 gap-1">
+                <Link
+                  href={
+                    "https://www.tripadvisor.com/Attraction_Review-g293924-d26817879-Reviews-TH_Global_Travel-Hanoi.html"
+                  }
+                  className="grid grid-cols-2 gap-1"
+                >
                   <Image
                     alt="travel"
                     src={"/home/footer/traveler-choice-2023.png"}
@@ -370,7 +375,7 @@ export function FooterLayout(): JSX.Element {
                     height={300}
                     className="w-full object-contain"
                   />
-                </div>
+                </Link>
               </div>
               <ul className="col-span-3 lg:col-span-1">
                 <li className="relative hover:text-[var(--text-hover-default)] hover:translate-x-2 transition-transform duration-500">
