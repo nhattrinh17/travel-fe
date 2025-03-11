@@ -356,6 +356,7 @@ export function FooterLayout(): JSX.Element {
                   />
                 </div>
                 <Link
+                  target="_blank"
                   href={
                     "https://www.tripadvisor.com/Attraction_Review-g293924-d26817879-Reviews-TH_Global_Travel-Hanoi.html"
                   }
