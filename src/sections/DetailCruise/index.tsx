@@ -97,7 +97,7 @@ export function DetailCruise({ slug }: { slug: string }): JSX.Element {
                   </h1>
                   <div className="flex items-center my-2">
                     {Array.from(
-                      { length: cruiseDetail.totalStar },
+                      { length: cruiseDetail.stars },
                       (v, i) => i + 1
                     ).map((i, index) => (
                       <FontAwesomeIcon
