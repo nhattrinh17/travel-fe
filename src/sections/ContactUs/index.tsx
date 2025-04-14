@@ -69,7 +69,7 @@ export function ContactUsSection(): JSX.Element {
                   className="text-wrap"
                   // className="text-[var(--primary-color)]"
                 >
-                  No 19, lane 4 Trung Lap-Tri Trung-Phu Xuyen-Hanoi-Viet Nam
+                  58 Thuốc Bắc Street, Hoan Kiem,Ha Noi
                 </a>
               </div>
               <div className="flex mb-2">

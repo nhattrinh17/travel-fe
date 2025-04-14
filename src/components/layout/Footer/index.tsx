@@ -321,15 +321,16 @@ export function FooterLayout(): JSX.Element {
                 height={300}
               /> */}
                 <h1 className="font-bold my-2">TH Global Travel Company</h1>
-                <p className="my-2">
-                  No 19,lane 4 Trung Lap-Tri Trung-Phu Xuyen-Hanoi-Viet Nam
-                </p>
+                <p className="my-2">58 Thuốc Bắc Street, Hoan Kiem,Ha Noi</p>
 
-                <a className="my-2" href="tel:+0912689730">
-                  Phone: (+84) 912 689 730
+                <a
+                  className="my-2"
+                  href="https://api.whatsapp.com/send?phone=84946707266"
+                >
+                  WhatsApp: (+84) 946 707 266
                 </a>
-                <a className="my-2" href="tel:+0912689730">
-                  Hotline: (+84) 912 689 730
+                <a className="my-2" href="tel:+84912689730">
+                  Hotline: (+84) 912 689730
                 </a>
                 <a className="my-2" href="mailto:info@thglobaltravel.com">
                   Email: info@thglobaltravel.com

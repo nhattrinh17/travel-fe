@@ -29,11 +29,11 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/fe-thglobaltravel:${{ env.TAG }} .
-          docker push ${{ secrets.DOCKER_USERNAME }}/fe-thglobaltravel:${{ env.TAG }}
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/fe-thglobaltravel:latest .
+          docker push ${{ secrets.DOCKER_USERNAME }}/fe-thglobaltravel:latest
 
       # - name: Call deployment webhook
       #   run: |
       #     curl -X POST http://103.216.119.69:3000/deploy-webhook \
       #         -H "Content-Type: application/json" \
-      #         -d "{\"tag\": \"${{ env.TAG }}\"}"
+      #         -d "{\"tag\": \"latest\"}"
