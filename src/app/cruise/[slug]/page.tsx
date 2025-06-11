@@ -33,13 +33,14 @@ export async function generateMetadata(
   const previousImages = (await parent).openGraph?.images || [];
   // Xử lý URL hình ảnh
   const imageUrl = cruiseBrief.images?.split("*_*")[0]; // Lấy ảnh đầu tiên
+  const imageUrlSecond = cruiseBrief.images?.split("*_*")[1]; // Lấy ảnh thứ 2
 
   return {
     title: cruiseBrief?.name || "Cruise Details",
     openGraph: {
       title: cruiseBrief?.name || "Cruise Details",
       description: cruiseBrief?.contentBrief || "No description available",
-      images: [imageUrl, ...previousImages],
+      images: [imageUrl, imageUrlSecond, ...previousImages],
       url: `${process.env.URL_MAIN}/cruise/${slug}`,
     },
   };
